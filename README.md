@@ -41,3 +41,6 @@ um novo app não precisa passar de novo pela aprovação de segurança: basta li
    em andamento.
 7. **Marca Maind.** O mAIg leva a marca da Maind. Por enquanto, o desenho não considera apps vendidos com a marca
    de outra empresa (white label).
+8. **Só apps da Maind, por enquanto.** O mAIg não recebe sistemas do próprio cliente nem apps de outras empresas, e
+   não se vende sozinho: entra junto com um app da Maind. Reabrir quando um cliente pedir para ligar um sistema
+   próprio ao mAIg.

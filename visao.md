@@ -63,6 +63,8 @@ próximo.
 
 - O mAIg não é parte do Horus: é um produto à parte, com código, documentação, versões e decisões próprios.
 - O mAIg não leva os dados da empresa para a Maind e não altera os bancos da empresa.
+- Por enquanto, só os apps da Maind entram no mAIg. Ele não recebe sistemas do próprio cliente nem apps de outras
+  empresas, e não se vende sozinho: entra junto com um app da Maind.
 - Por enquanto, o desenho não considera a venda de apps com a marca de outra empresa (white label).
 
 ## O que ainda está em aberto
