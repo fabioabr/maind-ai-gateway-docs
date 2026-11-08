@@ -33,8 +33,11 @@ um novo app não precisa passar de novo pela aprovação de segurança: basta li
    - os servidores MCP do cliente.
 
    Nenhum app toca uma senha de banco ou uma chave de IA: pede ao mAIg, que confere a permissão e registra no log.
+6. **O mAIg liga para fora.** Ele abre a conexão com a Maind e a mantém aberta, e as partes de fora dos apps
+   respondem por ela. O cliente não abre porta de entrada nenhuma; só libera a saída para o endereço da Maind. O
+   certificado do handshake vale dentro dessa conexão. Se ela cair, o mAIg reconecta sozinho e guarda o que estava
+   em andamento.
 
 ## Em aberto
 
-- A direção da conexão: se o mAIg liga para fora (o cliente não abre porta de entrada) ou se os apps ligam para ele.
 - A marca Maind visível dentro de um app white label, como o Horus vendido com a marca de quem o contrata.
