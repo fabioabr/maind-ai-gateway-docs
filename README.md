@@ -27,11 +27,14 @@ um novo app não precisa passar de novo pela aprovação de segurança: basta li
 4. **Um app tem duas partes:** uma parte fora do mAIg (no Horus, a que roda no SaaS da Maind), registrada com
    certificado e permissões, e um **módulo** que roda isolado dentro do mAIg e só usa os serviços nativos. Instalar
    um app é registrar a parte de fora e implantar o módulo.
+5. **Dados e IA também são nativos.** Entram no núcleo, além do item 3:
+   - as conexões com os dados: o cofre das senhas dos bancos e o acesso só de leitura;
+   - a governança da IA: as chaves dos provedores, os modelos permitidos, os limites e o custo por app;
+   - os servidores MCP do cliente.
+
+   Nenhum app toca uma senha de banco ou uma chave de IA: pede ao mAIg, que confere a permissão e registra no log.
 
 ## Em aberto
 
-- Se também entram no núcleo nativo as conexões com os dados (o cofre das senhas dos bancos, só leitura), a
-  governança da IA (as chaves dos provedores, os modelos permitidos, os limites e o custo por app) e os servidores
-  MCP do cliente.
 - A direção da conexão: se o mAIg liga para fora (o cliente não abre porta de entrada) ou se os apps ligam para ele.
 - A marca Maind visível dentro de um app white label, como o Horus vendido com a marca de quem o contrata.
