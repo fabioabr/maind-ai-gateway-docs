@@ -2,6 +2,8 @@
 
 Documentação pública do **Maind AI Gateway (mAIg)**. O código fica num repositório privado, à parte.
 
+Comece pela [visão e pelos objetivos](visao.md).
+
 ## O que é
 
 Com a IA, os dados viraram o combustível dos projetos. Mas a maioria das empresas não deixa um banco de dados
