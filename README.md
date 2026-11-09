@@ -55,3 +55,7 @@ um novo app não precisa passar de novo pela aprovação de segurança: basta li
     instância** o instala na instância, uma vez só, e o **owner de cada organização** o libera e configura para a dele.
 11. **A contratação é por organização.** Cada organização contrata os próprios apps, e o handshake contratual libera o
     app só para ela. Um contrato comercial pode listar várias organizações da mesma empresa.
+12. **O registro é do owner e de um auditor.** Dentro da organização, consultam o registro (log e auditoria) o
+    **owner da organização** e um **auditor** que ele nomeia, que só lê o registro e não muda nenhuma configuração. O
+    administrador da instância vê só o que é da instância (as instalações, o estado e as versões), nunca o registro das
+    organizações.

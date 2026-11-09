@@ -61,6 +61,9 @@ próximo.
 - **Várias organizações:** cada instalação física do mAIg, chamada instância, atende uma ou mais organizações, e cada
   organização tem o seu próprio conjunto de apps e de regras de governança. O mAIg roda na infraestrutura do cliente ou
   na da Maind, e uma mesma infraestrutura física pode ter mais de uma instância, para organizações diferentes.
+- **Os papéis:** o **administrador da instância** cuida da instalação física (instala os apps e vê o estado e as
+  versões, nunca o que é das organizações); o **owner da organização** libera e configura os apps, os bancos, a IA e as
+  pessoas da organização dele; e um **auditor**, nomeado pelo owner, só lê o registro da organização.
 - **A contratação de um app:** fechado o contrato, a Maind entrega um kit de instalação com um certificado digital
   emitido por ela, abaixo de uma autoridade certificadora pública e confiável. Instalado o kit, o mAIg confirma a
   contratação com um servidor da Maind Tech (o handshake contratual), e o app é liberado para a organização que o
@@ -81,8 +84,8 @@ próximo.
 
 - **Como medir cada objetivo:** que sinal mostra que cada um foi atingido. Falta o dono da Maind decidir.
 - **O tamanho da primeira versão:** o que do mAIg fica pronto antes da versão 2.0 do Horus. Falta o dono da Maind decidir.
-- **Os papéis:** quem consulta o registro (log e auditoria). Já decidido: o administrador da instância instala os apps,
-  e o owner de cada organização os libera e configura. Falta o dono da Maind decidir o resto.
+- **O fim de um contrato:** o que acontece com o app quando o contrato da organização acaba. Falta o dono da Maind
+  decidir.
 - **O preço:** se o mAIg é cobrado à parte ou junto com os apps. Falta o dono da Maind decidir.
 
 ## De onde vem este documento
