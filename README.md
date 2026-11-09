@@ -67,3 +67,8 @@ um novo app não precisa passar de novo pela aprovação de segurança: basta li
 15. **O registro fica guardado enquanto o app estiver instalado.** Não há prazo de guarda: o registro de um app só é
     excluído quando o app é **desinstalado** do mAIg, e aí os dados dele são excluídos. Abre-se mão de: o volume do
     registro só cresce, e guardar dados de pessoas sem prazo pede cuidado com a lei de proteção de dados.
+16. **A primeira versão é o núcleo que a v2.0 do Horus usa, no mesmo planejamento do middleware.** Entram a segurança,
+    o login por usuário e senha e por Google, as permissões, o registro com o auditor, os certificados com o handshake
+    contratual, a gestão dos apps, o cofre dos bancos, a governança da IA (chaves, modelos, limites e custo), várias
+    organizações por instância e a conexão de dentro para fora. Os servidores MCP e o login da empresa ficam para a
+    segunda versão, junto com a v2.1 do Horus. O planejamento que o Horus tinha para o middleware se mantém para o mAIg.

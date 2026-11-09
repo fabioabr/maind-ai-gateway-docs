@@ -77,6 +77,16 @@ próximo.
 - **A conexão:** o mAIg liga para fora, abre a conexão com a Maind e a mantém aberta. A TI só libera a saída para o
   endereço da Maind. Se a conexão cai, o mAIg religa sozinho e guarda o que estava em andamento.
 
+## A primeira versão
+
+A primeira versão do mAIg sai junto com a versão 2.0 do Horus, o primeiro app, no mesmo planejamento que o Horus tinha
+para o middleware. Ela traz o núcleo que o Horus usa nessa versão: a segurança, o login por usuário e senha e por Google,
+as permissões, o registro com o auditor, os certificados com o handshake contratual, a gestão dos apps, o cofre dos
+bancos, a governança da IA, várias organizações por instância e a conexão de dentro para fora.
+
+Os servidores de ferramentas da empresa (MCP) e o login com o sistema de identidade da própria empresa ficam para a
+segunda versão do mAIg, junto com a versão 2.1 do Horus, que é quando o Horus passa a usá-los.
+
 ## O que fica de fora
 
 - O mAIg não é parte do Horus: é um produto à parte, com código, documentação, versões e decisões próprios.
@@ -88,7 +98,6 @@ próximo.
 ## O que ainda está em aberto
 
 - **Como medir cada objetivo:** que sinal mostra que cada um foi atingido. Falta o dono da Maind decidir.
-- **O tamanho da primeira versão:** o que do mAIg fica pronto antes da versão 2.0 do Horus. Falta o dono da Maind decidir.
 - **O preço:** se o mAIg é cobrado à parte ou junto com os apps. Falta o dono da Maind decidir.
 
 ## De onde vem este documento
