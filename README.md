@@ -2,7 +2,7 @@
 
 Documentação pública do **Maind AI Gateway (mAIg)**. O código fica num repositório privado, à parte.
 
-Comece pela [visão e pelos objetivos](visao.md).
+Comece pela [visão e pelos objetivos](visao.md). As macro funcionalidades estão em [produto/](produto/00-mapa-das-macro-funcionalidades.md) (rascunho do PO).
 
 ## O que é
 
