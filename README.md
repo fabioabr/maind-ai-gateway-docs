@@ -64,3 +64,6 @@ um novo app não precisa passar de novo pela aprovação de segurança: basta li
     renovado**. Até lá, o app continua funcionando, o que dá à organização uma carência para renovar.
 14. **Depois que um app para, a configuração dele fica guardada.** As permissões, os bancos e as IAs que o app usa e
     os ajustes do owner ficam guardados até a organização renovar, e o app volta como estava, ou até o owner apagar.
+15. **O registro fica guardado enquanto o app estiver instalado.** Não há prazo de guarda: o registro de um app só é
+    excluído quando o app é **desinstalado** do mAIg, e aí os dados dele são excluídos. Abre-se mão de: o volume do
+    registro só cresce, e guardar dados de pessoas sem prazo pede cuidado com a lei de proteção de dados.
