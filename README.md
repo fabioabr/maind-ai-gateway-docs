@@ -8,7 +8,8 @@ Comece pela [visão e pelos objetivos](visao.md).
 
 Com a IA, os dados viraram o combustível dos projetos. Mas a maioria das empresas não deixa um banco de dados
 visível de fora, nem atrás de firewall ou VPN. O mAIg resolve isso: é uma plataforma da Maind instalada **na casa
-do cliente**. Quem acessa os dados é o mAIg, e a TI do cliente controla o que cada produto pode ver e fazer.
+do cliente** (ou hospedada pela Maind, para quem não quer instalar). Quem acessa os dados é o mAIg, e a TI do cliente
+controla o que cada produto pode ver e fazer.
 
 Os produtos da Maind entram no mAIg como **apps**. O **Maind Horus** é o primeiro; o **Maind Doc** (assistente
 para gerar documentos de projetos corporativos com IA) e outros podem vir depois. Com o mAIg instalado e aprovado,
