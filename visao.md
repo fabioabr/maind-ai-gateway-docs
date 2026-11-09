@@ -98,7 +98,8 @@ segunda versão do mAIg, junto com a versão 2.1 do Horus, que é quando o Horus
 
 ## O que ainda está em aberto
 
-- **Como medir cada objetivo:** que sinal mostra que cada um foi atingido. Falta o dono da Maind decidir.
+- **Como medir cada objetivo:** que sinal mostra que cada um foi atingido. Fica para depois do primeiro cliente, a
+  partir de um caso real.
 
 ## De onde vem este documento
 

@@ -75,3 +75,5 @@ um novo app não precisa passar de novo pela aprovação de segurança: basta li
 17. **O mAIg vem embutido no preço dos apps.** O cliente paga pelos apps, e o mAIg vem junto, sem linha própria na
     conta. Abre-se mão de: o preço de cada app precisa cobrir o custo do mAIg, e o primeiro app o carrega sozinho até
     chegar o segundo.
+18. **Os sinais de cada objetivo vêm depois do primeiro cliente.** Como medir se cada objetivo foi atingido se define
+    a partir de um caso real. Abre-se mão de: a primeira venda acontece sem um sinal combinado para observar nela.
