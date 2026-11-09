@@ -48,7 +48,8 @@ próximo.
    dados e à IA) vem pronto no mAIg, e cada app traz só o que é dele. O Horus é o primeiro app, e não um caso especial.
 5. **Ser a porta de entrada da Maind nos clientes.** A venda difícil acontece uma vez, e cada produto seguinte fica mais
    fácil de vender, porque entra por uma porta já aberta e aprovada. É o jeito de crescer num cliente chamado "entrar e
-   expandir". Por isso o mAIg leva a marca Maind.
+   expandir". Por isso o mAIg leva a marca Maind, e por isso ele vem embutido no preço dos apps, sem custo a mais na
+   primeira venda.
 
 ## Como funciona, em poucas linhas
 
@@ -98,7 +99,6 @@ segunda versão do mAIg, junto com a versão 2.1 do Horus, que é quando o Horus
 ## O que ainda está em aberto
 
 - **Como medir cada objetivo:** que sinal mostra que cada um foi atingido. Falta o dono da Maind decidir.
-- **O preço:** se o mAIg é cobrado à parte ou junto com os apps. Falta o dono da Maind decidir.
 
 ## De onde vem este documento
 

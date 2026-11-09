@@ -72,3 +72,6 @@ um novo app não precisa passar de novo pela aprovação de segurança: basta li
     contratual, a gestão dos apps, o cofre dos bancos, a governança da IA (chaves, modelos, limites e custo), várias
     organizações por instância e a conexão de dentro para fora. Os servidores MCP e o login da empresa ficam para a
     segunda versão, junto com a v2.1 do Horus. O planejamento que o Horus tinha para o middleware se mantém para o mAIg.
+17. **O mAIg vem embutido no preço dos apps.** O cliente paga pelos apps, e o mAIg vem junto, sem linha própria na
+    conta. Abre-se mão de: o preço de cada app precisa cobrir o custo do mAIg, e o primeiro app o carrega sozinho até
+    chegar o segundo.
