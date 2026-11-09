@@ -37,7 +37,9 @@ próximo.
 ## Os objetivos
 
 1. **Usar os dados e a IA do cliente sem expor o banco.** Os dados ficam na rede do cliente, o mAIg só lê e nunca altera
-   nada, e para fora vai só o resultado que cada app precisa. A empresa não abre nenhuma porta de entrada na rede.
+   nada, e para fora vai só o resultado que cada app precisa. A empresa não abre nenhuma porta de entrada na rede. Isso
+   vale por inteiro quando o mAIg roda na infraestrutura do cliente; na da Maind, o banco precisa ser alcançável por
+   ela, em troca de a empresa não instalar nada.
 2. **Aprovar a segurança uma vez só.** Depois que o mAIg está instalado e aprovado, um novo app da Maind entra sem uma
    nova rodada de aprovação do zero. A TI só libera o app e diz o que ele pode ler.
 3. **Dar à TI do cliente o controle num lugar só.** Quais bancos cada app lê, quais IAs usa, quanto gasta, quem pediu o
