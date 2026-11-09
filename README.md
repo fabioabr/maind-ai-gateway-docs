@@ -44,3 +44,7 @@ um novo app não precisa passar de novo pela aprovação de segurança: basta li
 8. **Só apps da Maind, por enquanto.** O mAIg não recebe sistemas do próprio cliente nem apps de outras empresas, e
    não se vende sozinho: entra junto com um app da Maind. Reabrir quando um cliente pedir para ligar um sistema
    próprio ao mAIg.
+9. **Várias organizações por instância, em qualquer infraestrutura.** O mAIg atende várias organizações
+   (multi-tenant): uma instância, que é cada instalação física do mAIg, atende uma ou mais organizações, e cada
+   organização tem o seu próprio conjunto de apps e de regras de governança. O mAIg roda na infraestrutura do cliente
+   ou na da Maind. Numa mesma infraestrutura física pode haver mais de uma instância, para organizações diferentes.

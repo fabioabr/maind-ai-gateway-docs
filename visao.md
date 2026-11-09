@@ -56,6 +56,9 @@ próximo.
   toca uma senha de banco ou uma chave de IA: pede ao mAIg, que confere a permissão e anota no registro.
 - **O app:** tem uma parte fora do mAIg, registrada com certificado e permissões (no Horus, a nuvem da Maind, com as telas),
   e um módulo que roda isolado dentro do mAIg (no Horus, onde a pergunta vira resposta).
+- **Várias organizações:** cada instalação física do mAIg, chamada instância, atende uma ou mais organizações, e cada
+  organização tem o seu próprio conjunto de apps e de regras de governança. O mAIg roda na infraestrutura do cliente ou
+  na da Maind, e uma mesma infraestrutura física pode ter mais de uma instância, para organizações diferentes.
 - **A conexão:** o mAIg liga para fora, abre a conexão com a Maind e a mantém aberta. A TI só libera a saída para o
   endereço da Maind. Se a conexão cai, o mAIg religa sozinho e guarda o que estava em andamento.
 
@@ -73,8 +76,6 @@ próximo.
 - **O tamanho da primeira versão:** o que do mAIg fica pronto antes da versão 2.0 do Horus. Falta o dono da Maind decidir.
 - **Os papéis:** quem instala, quem configura, quem libera os apps e quem consulta o registro. Falta o dono da Maind
   decidir.
-- **Onde o mAIg pode rodar:** se a Maind também o hospeda para quem não quer instalar, como o middleware do Horus permitia.
-  Falta o dono da Maind decidir.
 - **O preço:** se o mAIg é cobrado à parte ou junto com os apps. Falta o dono da Maind decidir.
 
 ## De onde vem este documento
