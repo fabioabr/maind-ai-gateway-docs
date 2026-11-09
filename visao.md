@@ -63,7 +63,8 @@ próximo.
   na da Maind, e uma mesma infraestrutura física pode ter mais de uma instância, para organizações diferentes.
 - **A contratação de um app:** fechado o contrato, a Maind entrega um kit de instalação com um certificado digital
   emitido por ela, abaixo de uma autoridade certificadora pública e confiável. Instalado o kit, o mAIg confirma a
-  contratação com um servidor da Maind Tech (o handshake contratual), e o app é liberado. Depois, o administrador da
+  contratação com um servidor da Maind Tech (o handshake contratual), e o app é liberado para a organização que o
+  contratou: a contratação é por organização. Depois, o administrador da
   instância o instala na instância, e o owner de cada organização o libera e configura para a dele.
 - **A conexão:** o mAIg liga para fora, abre a conexão com a Maind e a mantém aberta. A TI só libera a saída para o
   endereço da Maind. Se a conexão cai, o mAIg religa sozinho e guarda o que estava em andamento.

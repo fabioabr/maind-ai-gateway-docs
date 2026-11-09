@@ -53,3 +53,5 @@ um novo app não precisa passar de novo pela aprovação de segurança: basta li
     confiável. Instalado o kit, o mAIg conversa com um **servidor da Maind Tech** para o **handshake contratual**, que
     confere a contratação e libera o app. Liberado pela Maind, o app segue em dois passos: o **administrador da
     instância** o instala na instância, uma vez só, e o **owner de cada organização** o libera e configura para a dele.
+11. **A contratação é por organização.** Cada organização contrata os próprios apps, e o handshake contratual libera o
+    app só para ela. Um contrato comercial pode listar várias organizações da mesma empresa.
