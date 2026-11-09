@@ -503,7 +503,7 @@
           "label": "O portão na rede do cliente"
         },
         "database": {
-          "label": "Bancos da empresa"
+          "label": "Recursos da empresa"
         },
         "security": {
           "label": "Conferência da contratação"
@@ -629,9 +629,9 @@
     {
       "id": "bancos",
       "type": "database",
-      "label": "Bancos da empresa",
-      "sublabel": "só leitura",
-      "tag": "o mAIg não altera · decisão 5",
+      "label": "Recursos da empresa",
+      "sublabel": "bancos, IA, IDP, governança, etc.",
+      "tag": "o mAIg só lê os bancos · decisão 5",
       "pos": [
         620,
         520
@@ -679,7 +679,7 @@
       "id": "maig-bancos",
       "from": "maig",
       "to": "bancos",
-      "label": "só leitura"
+      "label": "usa · só lê os bancos"
     },
     {
       "id": "maig-provedores",
