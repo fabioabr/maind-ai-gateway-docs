@@ -48,3 +48,8 @@ um novo app não precisa passar de novo pela aprovação de segurança: basta li
    (multi-tenant): uma instância, que é cada instalação física do mAIg, atende uma ou mais organizações, e cada
    organização tem o seu próprio conjunto de apps e de regras de governança. O mAIg roda na infraestrutura do cliente
    ou na da Maind. Numa mesma infraestrutura física pode haver mais de uma instância, para organizações diferentes.
+10. **A Maind libera cada app por certificado; depois, dois passos.** Fechada a contratação, a Maind entrega um **kit de
+    instalação** com um **certificado digital emitido pela Maind**, abaixo de uma autoridade certificadora pública e
+    confiável. Instalado o kit, o mAIg conversa com um **servidor da Maind Tech** para o **handshake contratual**, que
+    confere a contratação e libera o app. Liberado pela Maind, o app segue em dois passos: o **administrador da
+    instância** o instala na instância, uma vez só, e o **owner de cada organização** o libera e configura para a dele.
