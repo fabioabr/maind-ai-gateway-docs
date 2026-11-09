@@ -1,0 +1,23 @@
+{
+  "generator": "docx",
+  "version": 1,
+  "files": {
+    "assets/brand.css": "dc0b508af26bd3892fd2bd931e25718d5b88fd1c899991eeb50e196661be0475",
+    "assets/busca.js": "7d2d4a13e659639ad01190a1413385804325f86247a1b42e0cbd50125cfd6707",
+    "assets/docs.css": "7849aafb18333367b02128e7c3f91276f6883c9661a7d49e50c695d033b3c527",
+    "assets/docs.js": "b28f5da7c85772fca2b7dc0d17b5f57c882fdaa1c39e19c3b5d176e11c9821ad",
+    "assets/docx-kbr.css": "f56dc4999f9a7f164e7c7ca22a789b2f5e5c132a3a20a6134c75df2b814a5fd5",
+    "assets/docx-kbr.js": "10eef6dd7ac2da2badd69913e27a1e5fb89010fa6f457aee9f7fa09370f8bb4f",
+    "assets/logo-claro.svg": "86a1828bd44f7e37c55f34f354376440f9d5a92ce4003509ca0faf9d5981128e",
+    "assets/logo-escuro.svg": "0f4c74fe1ed360280263a1e6d5df80a4a0d245ecfcfd9269a212694d33097689",
+    "decisoes.html": "69725de93b49e3b52e14286a00a3fb610ec0dbde26edb057c2f858edb2225e31",
+    "index.html": "2e6ca7745bd93a7a3c859b09f410cff46cbdb8f990f6b6e74dba57a35478c9ea",
+    "media/diagramas/maig-contratacao.html": "44c97c5ca03f84d062ed094898c0aadf87ed140640eb6f6b66a54a0b9add7995",
+    "media/diagramas/maig-instancia-organizacoes.html": "b929f68a9bba2e42a1fd935591ad104d544bdec829ec0e788cbed4f638465b81",
+    "media/diagramas/maig-por-dentro.html": "93b21d569e421b4477176e6b1a2d6fa20a78f0aeb9c8c61c0579740f49a26ec4",
+    "media/diagramas/maig-visao-geral.html": "596b43cd0764d816a48a21913e7e3beb596e06fd041ae2334081a321f9e12a4e",
+    "nucleo-e-apps.html": "79539ec2b363ca13aa9f6604e4de51d446be2d9aaf9aa9271398a84caac9cb78",
+    "organizacoes-e-contratacao.html": "52a23b614654dc0f6c0c739bd0d23f8eebc23e5ba9db7fe6396d975dd784f8e0",
+    "visao.html": "7eeea5adc5c628a34fc03a90fec08e9bccc444cde741190dad79127eaf73219f"
+  }
+}

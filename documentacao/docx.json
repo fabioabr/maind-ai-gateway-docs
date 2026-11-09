@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "language": "pt-BR",
+  "layout": "portal",
+  "design": "kbr",
+  "project": {
+    "name": "Maind AI Gateway (mAIg)",
+    "description": "O que é o Maind AI Gateway, por que ele existe e como funciona, explicado sem jargão: quatro desenhos, as 18 decisões e o que falta decidir.",
+    "version": "1 em desenho, sem versão publicada",
+    "owner": "Maind Tech",
+    "updated": "2026-11-08",
+    "eyebrow": "Maind AI Gateway · Visão do produto",
+    "hero_title": "Visão do Maind AI Gateway (mAIg)"
+  },
+  "diagrams": [
+    {
+      "id": "maig-visao-geral",
+      "title": "O mAIg na casa do cliente",
+      "description": "A nuvem da Maind e a rede do cliente, e quem liga para quem: o mAIg liga para fora.",
+      "source": "diagramas/maig-visao-geral.html"
+    },
+    {
+      "id": "maig-por-dentro",
+      "title": "Por dentro do mAIg: o núcleo e os apps",
+      "description": "O núcleo que o mAIg traz pronto, o módulo do app e a parte de fora do app.",
+      "source": "diagramas/maig-por-dentro.html"
+    },
+    {
+      "id": "maig-instancia-organizacoes",
+      "title": "Uma instância, várias organizações",
+      "description": "As instâncias na Maind e no cliente, as organizações de cada uma e quem cuida de quê.",
+      "source": "diagramas/maig-instancia-organizacoes.html"
+    },
+    {
+      "id": "maig-contratacao",
+      "title": "Da contratação ao uso",
+      "description": "O kit, o certificado, o handshake contratual e os dois passos de liberação de um app.",
+      "source": "diagramas/maig-contratacao.html"
+    }
+  ],
+  "sections": [
+    {
+      "id": "visao",
+      "title": "O que é o mAIg e por que ele existe",
+      "summary": "O problema que o mAIg resolve, a ideia, os cinco objetivos e o que o mercado já faz.",
+      "category": "Comece por aqui",
+      "source": "content/visao.html"
+    },
+    {
+      "id": "nucleo-e-apps",
+      "title": "O núcleo do mAIg e os apps",
+      "summary": "O que o mAIg traz pronto, como um app se divide em duas partes e por que o mAIg liga para fora.",
+      "category": "Como funciona",
+      "source": "content/nucleo-e-apps.html"
+    },
+    {
+      "id": "organizacoes-e-contratacao",
+      "title": "Organizações, papéis e contratação",
+      "summary": "Instâncias e organizações, os papéis, como um app é contratado e liberado e o que acontece quando o contrato acaba.",
+      "category": "Como funciona",
+      "source": "content/organizacoes-e-contratacao.html"
+    },
+    {
+      "id": "decisoes",
+      "title": "As decisões e o que falta decidir",
+      "summary": "As 18 decisões, com os motivos, e o que ainda falta decidir, por papel.",
+      "category": "Decisões e acompanhamento",
+      "source": "content/decisoes.html"
+    }
+  ],
+  "portal": {
+    "macros": {
+      "title": "Visão do produto",
+      "groups": [
+        {
+          "label": "Comece por aqui",
+          "text": "O problema, a ideia e os objetivos do mAIg.",
+          "items": [
+            {
+              "title": "O que é o mAIg e por que ele existe",
+              "summary": "O problema que o mAIg resolve, a ideia, os cinco objetivos e o que o mercado já faz.",
+              "href": "visao.html",
+              "links": [
+                {
+                  "label": "Ver o desenho",
+                  "href": "#visao-desenho"
+                },
+                {
+                  "label": "O que falta decidir aqui",
+                  "href": "#visao-falta-decidir"
+                }
+              ],
+              "badge": "2 a decidir"
+            }
+          ]
+        },
+        {
+          "label": "Como funciona",
+          "text": "O que o mAIg traz pronto, quem faz o quê e como um app é contratado.",
+          "items": [
+            {
+              "title": "O núcleo do mAIg e os apps",
+              "summary": "O que o mAIg traz pronto, como um app se divide em duas partes e por que o mAIg liga para fora.",
+              "href": "nucleo-e-apps.html",
+              "links": [
+                {
+                  "label": "Ver o desenho",
+                  "href": "#nucleo-e-apps-desenho"
+                },
+                {
+                  "label": "O que falta decidir aqui",
+                  "href": "#nucleo-e-apps-falta-decidir"
+                }
+              ],
+              "badge": "2 a decidir"
+            },
+            {
+              "title": "Organizações, papéis e contratação",
+              "summary": "Instâncias e organizações, os papéis, como um app é contratado e liberado e o que acontece quando o contrato acaba.",
+              "href": "organizacoes-e-contratacao.html",
+              "links": [
+                {
+                  "label": "Ver o desenho",
+                  "href": "#organizacoes-e-contratacao-desenho"
+                },
+                {
+                  "label": "O que falta decidir aqui",
+                  "href": "#organizacoes-e-contratacao-falta-decidir"
+                }
+              ],
+              "badge": "5 a decidir"
+            }
+          ]
+        },
+        {
+          "label": "Decisões e acompanhamento",
+          "text": "O que já foi decidido e o que ainda falta.",
+          "items": [
+            {
+              "title": "As decisões e o que falta decidir",
+              "summary": "As 18 decisões, com os motivos, e o que ainda falta decidir, por papel.",
+              "href": "decisoes.html",
+              "links": [
+                {
+                  "label": "As 18 decisões",
+                  "href": "#decisoes-decisao-1-o-nome"
+                },
+                {
+                  "label": "O que falta decidir aqui",
+                  "href": "#decisoes-falta-decidir"
+                }
+              ],
+              "badge": "9 a decidir"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

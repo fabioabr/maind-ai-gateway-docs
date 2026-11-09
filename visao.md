@@ -42,7 +42,7 @@ próximo.
    ela, em troca de a empresa não instalar nada.
 2. **Aprovar a segurança uma vez só.** Depois que o mAIg está instalado e aprovado, um novo app da Maind entra sem uma
    nova rodada de aprovação do zero. A TI só libera o app e diz o que ele pode ler.
-3. **Dar à TI do cliente o controle num lugar só.** Quais bancos cada app lê, quais IAs usa, quanto gasta, quem pediu o
+3. **Dar à empresa cliente o controle num lugar só.** Quais bancos cada app lê, quais IAs usa, quanto gasta, quem pediu o
    quê e quando: tudo se configura e se consulta no mAIg, para todos os apps.
 4. **Servir a qualquer produto da Maind do mesmo jeito.** O que é comum a todo app (segurança, login, registro, acesso aos
    dados e à IA) vem pronto no mAIg, e cada app traz só o que é dele. O Horus é o primeiro app, e não um caso especial.

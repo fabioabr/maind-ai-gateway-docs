@@ -1,0 +1,9 @@
+# Saída gerada para teste local; o site publicado fica em ../docs (gerar --saida ../docs)
+site/
+
+# Artefatos e recibos das verificações do Archify (ficam fora da publicação; trazem caminhos da máquina)
+diagramas/fontes/*.archify.html
+diagramas/fontes/*.archify.*.json
+diagramas/fontes/*-review-*/
+diagramas/fontes/review-*/
+diagramas/fontes/*-review-*.stdout.json

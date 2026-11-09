@@ -1,0 +1,223 @@
+<h3 id="nucleo-e-apps-frase">Em uma frase</h3>
+<p>O mAIg, o Maind AI Gateway, é uma plataforma de apps: um núcleo que vem de fábrica cuida da segurança, do registro, da identificação dos apps, dos dados e da inteligência artificial (IA), e cada produto da Maind entra nele como um app, que traz só o que é dele e pede ao núcleo todo o resto. (<code>decisões 3 e 5</code>)</p>
+<p>"Gateway", em inglês, quer dizer portão. O mAIg é o portão por onde os produtos da Maind chegam aos dados e à IA de uma empresa cliente. A empresa o instala na própria rede, o conjunto de computadores dela, protegido de quem está fora; ou usa um mAIg hospedado pela Maind, para não instalar nada. (<code>decisões 1 e 9</code>)</p>
+<h3 id="nucleo-e-apps-desenho">O desenho</h3>
+<dx-diagrama ref="maig-por-dentro"></dx-diagrama>
+<p>O desenho, "Por dentro do mAIg: o núcleo e os apps", mostra o que existe dentro de uma instalação do mAIg e por onde passa cada pedido do Horus, o primeiro app. Cada bloco traz um nome e uma frase curta; cada seta traz um rótulo que diz o que ela faz.</p>
+<ul>
+  <li><strong>A moldura grande é a "Instância do mAIg".</strong> Instância é cada instalação física do mAIg, um mAIg instalado num lugar e funcionando. Tudo o que está dentro dela roda nessa instalação.</li>
+  <li><strong>A moldura de dentro é o "Núcleo nativo".</strong> Nativo quer dizer que vem no próprio mAIg, e não num app. Os sete blocos dela são os serviços prontos para todos os apps, cada um com o seu tópico mais abaixo:<ul><li><strong>"Segurança e permissões"</strong> confere quem é quem e o que cada um pode fazer.</li><li><strong>"Registro"</strong> guarda o log, o registro de tudo o que acontece, para a auditoria, a conferência desse registro depois.</li><li><strong>"Certificados e handshake"</strong> confere a identidade de cada app. O certificado é uma espécie de carteira de identidade digital; o handshake ("aperto de mão", em inglês) é a troca inicial em que dois lados conferem a identidade um do outro antes de conversar.</li><li><strong>"Gestão dos apps"</strong> instala, acompanha e desinstala os apps.</li><li><strong>"Conexões com os dados"</strong> guarda as senhas dos bancos no cofre, o lugar trancado de onde nenhum app as tira, e lê os bancos só para consulta.</li><li><strong>"Governança da IA"</strong> guarda as chaves dos provedores de IA, as senhas que dão acesso a eles, e aplica as regras de uso: modelos, limites e custo de cada app. Governança é o conjunto de regras sobre quem pode usar o quê, até onde e com que registro.</li><li><strong>"Servidores MCP"</strong> vai cuidar das ferramentas extras que a empresa oferece à IA. MCP é um padrão que dá à IA ferramentas extras, como consultar um sistema interno, e um servidor MCP é o programa da empresa que oferece essas ferramentas. O bloco vem marcado "segunda versão".</li></ul></li>
+  <li><strong>Dentro da instância, fora do núcleo, fica o "Módulo do app Horus", marcado como isolado.</strong> O módulo é a parte do app que roda dentro do mAIg; no Horus, é onde a pergunta vira resposta.</li>
+  <li><strong>Fora da instância ficam três blocos.</strong> A "Parte de fora do app Horus" roda na nuvem da Maind, os computadores da Maind na internet, e tem as telas. Os "Bancos da empresa" guardam as informações da empresa cliente. Os "Provedores de IA" são as empresas que vendem, pela internet, o acesso aos modelos de IA.</li>
+</ul>
+<p>As setas, uma a uma:</p>
+<ol>
+  <li><strong>Certificados e handshake para Parte de fora do app Horus, "confere o certificado":</strong> o núcleo confere o certificado da parte de fora do Horus dentro da conexão que o próprio mAIg abriu com a Maind; sem o certificado, ela não é aceita.</li>
+  <li><strong>Parte de fora para Gestão dos apps, "registrada, com permissões":</strong> a parte de fora fica registrada no mAIg, com a lista do que o app pode pedir.</li>
+  <li><strong>Módulo para Segurança e permissões, "confere a permissão":</strong> o núcleo confere se o que o módulo quer fazer está permitido.</li>
+  <li><strong>Módulo para Conexões com os dados, "pede os dados":</strong> o módulo não vai ao banco; pede ao núcleo.</li>
+  <li><strong>Conexões com os dados para Bancos da empresa, "só leitura":</strong> quem vai ao banco é o núcleo, e só para ler.</li>
+  <li><strong>Módulo para Governança da IA, "pede a IA":</strong> a IA também se pede ao núcleo.</li>
+  <li><strong>Governança da IA para Provedores de IA, "com a chave do cliente":</strong> quem fala com o provedor é o núcleo, com a chave que pertence à empresa cliente.</li>
+  <li><strong>Módulo para Registro, "anota tudo":</strong> tudo o que o módulo pede fica anotado.</li>
+</ol>
+<p><strong>O que o desenho mostra pelo que não tem.</strong> Nenhuma seta liga o módulo direto aos bancos ou aos provedores de IA: entre o módulo e o que é sensível há sempre um serviço do núcleo. "Servidores MCP" não tem setas, porque nenhum app o usa na primeira versão. E as setas mostram quem pede ou confere o quê, não quem abre a conexão: a ligação entre a nuvem da Maind e o mAIg é sempre aberta pelo mAIg, de dentro para fora, como mostra o desenho da página <a href="#visao">O que é o mAIg e por que ele existe</a>. (<code>decisão 6</code>)</p>
+<h3 id="nucleo-e-apps-como-funciona">Como funciona</h3>
+<h4 id="nucleo-e-apps-o-que-e-uma-plataforma-de-apps">O que é uma plataforma de apps</h4>
+<p><strong>Em resumo:</strong> uma plataforma de apps é uma base que já traz pronto o que todos os apps precisam, para que cada app traga só o que é dele. No mAIg, essa base é o núcleo nativo.</p>
+<p><strong>Quem é quem.</strong></p>
+<ul>
+  <li><strong>Um app</strong> é cada produto da Maind que entra no mAIg. O primeiro é o Maind Horus, onde as pessoas da empresa fazem perguntas sobre os dados dela e recebem a resposta pronta. O Maind Doc, assistente que gera documentos de projetos corporativos com IA, aparece aqui só como exemplo de um segundo app possível: ele não está definido nem planejado.</li>
+  <li><strong>A pessoa que usa o app</strong> é quem trabalha com ele no dia a dia; no Horus, a pessoa que pergunta.</li>
+  <li><strong>A instância</strong> é cada instalação física do mAIg. Ela roda na infraestrutura do cliente, isto é, nos computadores dele, ou na da Maind; numa mesma infraestrutura física pode haver mais de uma instância, para organizações diferentes. (<code>decisão 9</code>)</li>
+  <li><strong>A organização</strong> é quem usa os apps dentro de uma instância. Uma instância atende uma ou mais organizações, cada uma com o seu conjunto de apps e as suas regras de governança, sem se misturar com as outras. (<code>decisão 9</code>)</li>
+  <li><strong>A empresa</strong> é a cliente da Maind, quem assina o contrato. Uma empresa pode ter várias organizações, e um contrato comercial pode listar várias delas. (<code>decisão 11</code>)</li>
+</ul>
+<p><strong>O que o núcleo traz pronto.</strong> Sete serviços: segurança e permissões; registro; certificados e handshake; gestão dos apps; conexões com os dados; governança da IA; e servidores MCP, na segunda versão. Os quatro primeiros são a base comum a qualquer app. Os três últimos cuidam dos dados e da IA e dão ao mAIg o "AI" do nome: governança de IA e de dados num lugar só. (<code>decisão 1</code>, <code>decisões 3 e 5</code>)</p>
+<p><strong>Por que é assim.</strong> O mAIg nasceu do middleware do Horus, a peça que, no desenho do Horus, guardaria as senhas dos bancos e da IA e faria as consultas aos dados da empresa. O mesmo componente serve a vários produtos da Maind, e por isso virou um produto à parte, com código, documentação, versões e decisões próprios. (<code>decisão 2</code>)</p>
+<p>Se cada app trouxesse a própria segurança, o próprio login (a entrada no sistema) e o próprio registro, a TI do cliente teria de aprovar cada um do zero, e o controle ficaria espalhado. Com o núcleo, a aprovação de segurança acontece uma vez, para o mAIg, e tudo se configura e se consulta num lugar só. O Horus é o primeiro app, e não um caso especial. (<code>decisão 3</code>)</p>
+<p>Os dados e a IA entram no núcleo porque são o que há de mais sensível. Ficaram de fora pôr no núcleo só os dados, ou não pôr nem os dados, nem a IA, nem os servidores MCP. Abre-se mão de: o núcleo fica maior antes de o primeiro app sair, e a v2.0 do Horus, a versão que sai junto com o mAIg, passa a depender de um produto à parte. (<code>decisões 2 e 5</code>)</p>
+<div class="callout callout--info"><span class="ico">i</span><div><b>Analogia</b><p>O mAIg é como um prédio comercial, com portaria, crachás, câmeras, livro de visitas e um cofre com as chaves. As empresas que alugam salas, os apps, não montam portaria própria: usam a do prédio.</p><p><strong>Onde a analogia para:</strong> quem define as regras da portaria do mAIg é a empresa cliente, e não a Maind, que fabricou o prédio.</p></div></div>
+<p><strong>Só apps da Maind, por enquanto.</strong> O mAIg não recebe sistemas do próprio cliente nem apps de outras empresas, e não se vende sozinho: entra junto com um app da Maind. O motivo é o foco na estratégia de entrar e expandir: a primeira versão serve só ao que o Horus precisa. O assunto volta quando um cliente pedir para ligar um sistema próprio ao mAIg. (<code>decisão 8</code>)</p>
+<h4 id="nucleo-e-apps-seguranca-e-permissoes-autenticacao-e-autorizacao">Segurança e permissões: autenticação e autorização</h4>
+<p><strong>Em resumo:</strong> o núcleo confere quem está entrando e o que cada um pode fazer, do mesmo jeito para todos os apps.</p>
+<p><strong>Quem é quem.</strong></p>
+<ul>
+  <li><strong>Autenticação</strong> é conferir que alguém é quem diz ser. Para uma pessoa, é o login, com usuário e senha ou com a conta Google dela. Para um app, é o certificado.</li>
+  <li><strong>Autorização</strong> vem depois: sabendo quem é, conferir o que pode fazer, como qual banco um app lê e qual IA usa.</li>
+  <li><strong>As permissões</strong> são essa lista do que cada um pode fazer. A parte de fora de cada app fica registrada no mAIg com as permissões dela. (<code>decisão 4</code>)</li>
+  <li><strong>As configurações de segurança</strong> são as regras gerais de segurança, que ficam no núcleo, e não em cada app. (<code>decisão 3</code>)</li>
+</ul>
+<p><strong>Os jeitos de entrar.</strong> Na primeira versão, o login é por usuário e senha e pelo Google. O login da empresa, a entrada com o sistema de identidade que a empresa já usa nos sistemas internos dela, fica para a segunda versão. (<code>decisão 16</code>)</p>
+<p>No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: os jeitos de entrar são configuração da organização, e o owner da organização liga ou desliga cada um. O owner da organização e o administrador da instância entram sempre por usuário e senha. (<code>D-291 do Horus</code>)</p>
+<p><strong>Por que é assim.</strong> Feitas no núcleo, a autenticação e a autorização são configuradas uma vez e valem para todos os apps. (<code>decisão 3</code>)</p>
+<div class="callout callout--info"><span class="ico">i</span><div><b>Analogia</b><p>Na portaria de um prédio, mostrar o documento ao porteiro é a autenticação, e a lista de andares que o crachá abre é a autorização.</p><p><strong>Onde a analogia para:</strong> no mAIg, os apps também passam pela portaria, e o documento deles é o certificado.</p></div></div>
+<p><strong>O que ainda está em aberto.</strong> Onde ficam e quem cadastra as pessoas que usam os apps, e se um login único vale para todos eles, ainda não está decidido; ver <a href="#organizacoes-e-contratacao">Organizações, papéis e contratação</a>.</p>
+<h4 id="nucleo-e-apps-o-registro-log-e-auditoria">O registro: log e auditoria</h4>
+<p><strong>Em resumo:</strong> o núcleo anota tudo o que os apps pedem, num registro só, que o owner da organização e um auditor nomeado por ele consultam, enquanto o app estiver instalado.</p>
+<p><strong>Quem é quem.</strong></p>
+<ul>
+  <li><strong>O log</strong> anota cada acontecimento: quem pediu o quê e quando. Todo pedido de um app ao núcleo entra nele. (<code>decisão 5</code>)</li>
+  <li><strong>A auditoria</strong> é a conferência desse registro, feita depois, por quem não executa a operação.</li>
+  <li><strong>O owner da organização</strong> cuida da organização no mAIg: libera e configura os apps, os bancos e a IA dela. Ele consulta o registro.</li>
+  <li><strong>O auditor</strong>, nomeado pelo owner da organização, consulta o registro, mas só lê: não muda nenhuma configuração.</li>
+  <li><strong>O administrador da instância</strong> cuida da instalação física e vê só o que é da instância (as instalações, o estado e as versões), nunca o registro das organizações. (<code>decisão 12</code>)</li>
+</ul>
+<p><strong>Por que é assim.</strong> É a separação de funções: quem movimenta o dinheiro não é quem audita as contas. A área de segurança do cliente confere tudo sem poder alterar nada. E o administrador da instância fica de fora porque, na instância da Maind, a equipe da Maind veria o registro de todos os clientes, e o isolamento entre as organizações se quebraria. Os papéis e as alternativas estão em <a href="#organizacoes-e-contratacao">Organizações, papéis e contratação</a>. (<code>decisão 12</code>)</p>
+<p><strong>Quanto tempo fica guardado.</strong> Não há prazo: o registro de um app fica guardado enquanto o app estiver instalado, e quando o app é desinstalado do mAIg, os dados dele são excluídos. Nada se perde enquanto o app existe. Abre-se mão de: o volume só cresce, e guardar dados de pessoas sem prazo pede cuidado com a lei de proteção de dados. Ficaram de fora um prazo definido pelo owner da organização e um prazo fixo da Maind. (<code>decisão 15</code>)</p>
+<p><strong>Exemplo.</strong> A Farma Vida, rede de 40 farmácias, usa o Horus. Paulo, diretor de operações, é o owner da organização.</p>
+<ol>
+  <li>Paulo nomeia Renata, da área de segurança, auditora da organização.</li>
+  <li>Renata abre o registro e vê o que o Horus pediu ao núcleo: quais dados leu, qual IA usou e quando. Se quiser mudar um ajuste, não consegue: o auditor só lê.</li>
+  <li>Marta, da TI da Farma Vida, no papel de administrador da instância, vê que o Horus está instalado, em que estado e em que versão, mas nada do registro da organização.</li>
+</ol>
+<h4 id="nucleo-e-apps-certificados-e-handshake">Certificados e handshake</h4>
+<p><strong>Em resumo:</strong> um app só é liberado depois que o mAIg, com um certificado digital emitido pela Maind, confere a contratação num "aperto de mão" com um servidor da Maind.</p>
+<p><strong>Quem é quem.</strong></p>
+<ul>
+  <li><strong>O certificado digital</strong> é um arquivo que diz quem é o portador e traz a assinatura digital de quem o emitiu, uma marca que só o emissor consegue produzir. Quem o recebe confere essa assinatura.</li>
+  <li><strong>A autoridade certificadora</strong> é a entidade que emite certificados e responde por eles, como um cartório que reconhece firma. "Pública e confiável" quer dizer que os sistemas em geral já a reconhecem.</li>
+  <li><strong>"Emitido pela Maind, abaixo de uma autoridade certificadora pública e confiável"</strong> quer dizer que a Maind assina os certificados dos apps, e a capacidade da Maind de assinar é garantida por essa autoridade. A corrente de confiança termina numa autoridade que não é a própria Maind.</li>
+  <li><strong>O kit de instalação</strong> é o pacote, com o certificado, que a Maind entrega depois de fechada a contratação, o trâmite comercial.</li>
+  <li><strong>O servidor da Maind Tech</strong> é o computador da Maind que confere as contratações. Servidor é um computador que fica ligado o tempo todo, prestando um serviço.</li>
+  <li><strong>O handshake contratual</strong> é o aperto de mão em que o mAIg conversa com esse servidor, que confere a contratação e libera o app.</li>
+</ul>
+<p><strong>Como funciona.</strong> Instalado o kit, o mAIg faz o handshake contratual. O servidor da Maind Tech confere a contratação e libera o app só para a organização que o contratou, porque a contratação é por organização. Depois, o núcleo confere o certificado da parte de fora do app, dentro da conexão que o próprio mAIg abriu com a Maind. (<code>decisão 6</code>, <code>decisões 10 e 11</code>)</p>
+<p><strong>Por que é assim.</strong> O certificado amarra a liberação ao contrato: um app só funciona numa organização depois de a Maind conferir que ela o contratou. Cada organização recebe a sua liberação, e uma organização que sai não afeta as outras. (<code>decisões 10 e 11</code>)</p>
+<p><strong>O certificado e o fim do contrato.</strong> O fim do contrato não para o app sozinho: o serviço só se encerra por uma ação manual da Maind ou quando o certificado vence sem ser renovado, o que dá à organização uma carência para renovar. (<code>decisão 13</code>)</p>
+<p><strong>O que ainda está em aberto.</strong> A validade do certificado, a antecedência do aviso, o formato do handshake contratual e a política do certificado (a troca periódica e o cancelamento de um certificado vazado) ainda não estão decididos; ver <a href="#organizacoes-e-contratacao">Organizações, papéis e contratação</a>.</p>
+<h4 id="nucleo-e-apps-gestao-dos-apps">Gestão dos apps</h4>
+<p><strong>Em resumo:</strong> o núcleo instala, acompanha e desinstala os apps. O administrador da instância instala cada app uma vez só, e o owner da organização o libera e configura para a dele.</p>
+<p><strong>Quem é quem.</strong></p>
+<ul>
+  <li><strong>Instalar um app</strong> é registrar a parte de fora e implantar o módulo, isto é, pô-lo para rodar dentro do mAIg. (<code>decisão 4</code>)</li>
+  <li><strong>O administrador da instância</strong> cria as organizações e o usuário do primeiro owner da organização, instala os apps e acompanha as instalações, o estado e as versões. Na infraestrutura da Maind, é a equipe da Maind; na do cliente, a TI do cliente.</li>
+  <li><strong>O owner da organização</strong> libera o app para a organização e o configura: permissões, bancos, IAs e ajustes. A Maind só dá suporte.</li>
+</ul>
+<p><strong>Os dois passos.</strong> Liberado no handshake contratual, o app segue em dois passos: o administrador da instância o instala na instância, uma vez só; depois, o owner da organização, em cada organização que o contratou, o libera e configura. Quem cuida da instalação física controla o que roda nela, e cada organização escolhe o que usa. Abre-se mão de: dois atos para começar a usar um app. As alternativas e o caminho da contratação ao uso estão em <a href="#organizacoes-e-contratacao">Organizações, papéis e contratação</a>. (<code>decisão 10</code>)</p>
+<p><strong>Parar não é desinstalar.</strong> Um app parado continua instalado, e a configuração dele (permissões, bancos, IAs e ajustes do owner da organização) fica guardada até a organização renovar, quando o app volta como estava, ou até o owner da organização apagar. Um app desinstalado sai do mAIg, e os dados dele são excluídos. Ficaram de fora apagar a configuração depois de um prazo e apagá-la na hora. (<code>decisões 14 e 15</code>)</p>
+<p><strong>Exemplo.</strong> A Farma Vida instalou o mAIg na própria infraestrutura e contratou o Horus.</p>
+<ol>
+  <li>Marta, no papel de administrador da instância, instala o kit, e o handshake contratual libera o Horus para a organização da Farma Vida.</li>
+  <li>Marta instala o Horus na instância, uma vez só, e passa a acompanhar o estado e a versão dele.</li>
+  <li>Paulo, owner da organização, libera o Horus e escolhe qual banco ele lê e qual IA usa.</li>
+  <li>Ana, gerente comercial, já pode perguntar ao Horus.</li>
+</ol>
+<p><strong>O que ainda está em aberto.</strong> Quantas versões do mAIg e dos apps podem conviver ainda não está decidido; o ponto está no fim desta página.</p>
+<h4 id="nucleo-e-apps-conexoes-com-os-dados-e-o-cofre-das-senhas">Conexões com os dados e o cofre das senhas</h4>
+<p><strong>Em resumo:</strong> quem conversa com os bancos de dados da empresa é sempre o núcleo, que guarda as senhas num cofre e só lê, sem nunca alterar nada.</p>
+<p><strong>Quem é quem.</strong></p>
+<ul>
+  <li><strong>Um banco de dados</strong> é onde a empresa guarda as informações dela, como as vendas de cada loja; <strong>a senha do banco</strong> é o que dá acesso a ele.</li>
+  <li><strong>O cofre</strong> é a parte do núcleo onde as senhas ficam trancadas. Nenhum app as vê.</li>
+  <li><strong>"Só leitura"</strong> quer dizer que o mAIg lê os dados e nunca altera, apaga ou grava nada nos bancos da empresa.</li>
+  <li><strong>O owner da organização</strong> configura os bancos da organização e diz quais apps leem cada um. A Maind só dá suporte.</li>
+</ul>
+<p><strong>Como funciona.</strong> O módulo pede os dados ao núcleo. O núcleo confere a permissão, tira a senha do cofre, lê o banco e entrega os dados ao módulo, dentro do mAIg, e anota o pedido no registro. O módulo recebe os dados, nunca a senha. (<code>decisão 5</code>)</p>
+<p><strong>Por que é assim.</strong> A senha do banco é o que há de mais sensível na casa do cliente. Guardada num lugar só, sob o controle dele, ela não precisa estar em app nenhum. E, como o módulo trabalha os dados dentro do mAIg, eles nunca saem crus da casa do cliente: para fora vai só o resultado. (<code>decisões 4 e 5</code>)</p>
+<div class="callout callout--info"><span class="ico">i</span><div><b>Analogia</b><p>É como o porteiro que guarda as chaves das salas e, quando alguém autorizado precisa de um documento, vai buscá-lo, em vez de entregar a chave.</p><p><strong>Onde a analogia para:</strong> o porteiro poderia mexer na sala; o mAIg só lê e entrega uma cópia do que foi pedido.</p></div></div>
+<p><strong>As duas hospedagens.</strong> Com o mAIg na infraestrutura do cliente, "o banco não fica exposto" vale por inteiro. Com o mAIg na da Maind, o banco precisa ser alcançável pela Maind, e as senhas desses clientes ficam no cofre da Maind, em troca de a empresa não instalar nada. Como a Maind alcança esse banco ainda está em aberto; ver <a href="#organizacoes-e-contratacao">Organizações, papéis e contratação</a>. (<code>decisão 9</code>)</p>
+<h4 id="nucleo-e-apps-governanca-da-ia-chaves-modelos-limites-e-custo">Governança da IA: chaves, modelos, limites e custo</h4>
+<p><strong>Em resumo:</strong> o núcleo guarda as chaves de IA da empresa e controla, app por app, quais modelos se usam, até onde e quanto custam.</p>
+<p><strong>Quem é quem.</strong></p>
+<ul>
+  <li><strong>Um provedor de IA</strong> é uma empresa que vende, pela internet, o acesso a modelos de IA. <strong>Um modelo</strong> é cada IA que ele oferece; um provedor costuma ter vários.</li>
+  <li><strong>A chave do provedor</strong> é a senha que dá acesso a ele, e o provedor cobra o uso da empresa a quem a chave pertence. A chave é do cliente e fica no mAIg.</li>
+  <li><strong>Os modelos permitidos</strong> são os que cada app pode usar; <strong>os limites</strong> dizem até onde cada app usa a IA; <strong>o custo por app</strong> é quanto o uso de cada app custou.</li>
+  <li><strong>O owner da organização</strong> configura a IA da organização. A Maind só dá suporte.</li>
+</ul>
+<p><strong>Como funciona.</strong> O módulo pede a IA ao núcleo. O núcleo confere se o app pode usar aquele modelo e se está dentro dos limites, pede ao provedor com a chave da empresa, conta o custo na conta do app e anota o pedido no registro. O módulo recebe a resposta da IA, nunca a chave. (<code>decisão 5</code>)</p>
+<p><strong>Por que é assim.</strong> Com a chave em cada app, o cliente teria de procurar app por app quanto se gastou e com qual modelo. No núcleo, o owner da organização controla isso num lugar só, para todos os apps, e é o que justifica o "AI" no nome do mAIg. (<code>decisões 1 e 5</code>)</p>
+<div class="callout callout--info"><span class="ico">i</span><div><b>Analogia</b><p>É como o cartão corporativo de uma empresa: o financeiro define em que lojas cada departamento compra e com que limite, e a fatura sai separada por departamento.</p><p><strong>Onde a analogia para:</strong> no mAIg, o cartão nunca sai do cofre; o app pede a compra, e é o núcleo quem passa o cartão.</p></div></div>
+<h4 id="nucleo-e-apps-servidores-mcp-na-segunda-versao">Servidores MCP, na segunda versão</h4>
+<p><strong>Em resumo:</strong> na segunda versão, o núcleo passa a cuidar também dos servidores MCP da empresa, que dão à IA ferramentas extras.</p>
+<p><strong>Quem é quem.</strong> Um padrão é uma regra combinada entre fabricantes, para que as peças de um se encaixem nas do outro, como o formato de uma tomada. O MCP é um padrão desse tipo, feito para dar à IA ferramentas extras. Um servidor MCP é um programa da própria empresa que oferece essas ferramentas; na Farma Vida, poderia ser um programa que deixa a IA consultar o estoque das farmácias.</p>
+<p><strong>Por que no núcleo, e por que depois.</strong> Pela mesma regra dos dados e da IA: uma ferramenta que consulta um sistema interno dá acesso às informações da empresa, e por isso fica num lugar só, sob o controle do cliente. Ela fica para a segunda versão porque o Horus só passa a usá-la na versão seguinte à v2.0, a v2.1. Abre-se mão de: o mAIg fica incompleto até lá. (<code>decisões 5 e 16</code>)</p>
+<h4 id="nucleo-e-apps-a-regra-que-une-tudo-nenhum-app-toca-uma-senha-ou">A regra que une tudo: nenhum app toca uma senha ou uma chave</h4>
+<p><strong>Em resumo:</strong> nenhum app toca uma senha de banco nem uma chave de IA. O app pede ao mAIg, que confere a permissão, faz o pedido por ele e anota tudo no registro.</p>
+<p><strong>O que a regra garante.</strong> Para todos os apps ao mesmo tempo: a senha e a chave nunca saem do núcleo; todo pedido passa pelas permissões que o owner da organização deu; e todo pedido fica no registro, à vista do owner da organização e do auditor. Um app novo não traz senhas novas para guardar nem um caminho novo até os dados. (<code>decisão 5</code>)</p>
+<p><strong>Exemplo.</strong> A Farma Vida instalou o mAIg na própria rede e usa o Horus. Ana, gerente comercial, pergunta: "quanto vendemos em outubro, por farmácia?".</p>
+<ol>
+  <li>Ana, já dentro do Horus, digita a pergunta nas telas, que são a parte de fora do app, na nuvem da Maind.</li>
+  <li>A parte de fora, identificada pelo certificado, envia a pergunta ao módulo do Horus, dentro do mAIg da Farma Vida, pela conexão que o próprio mAIg abriu para a Maind.</li>
+  <li>O módulo pede ao núcleo que confira a permissão: o Horus, nesta organização, pode ler o banco de vendas? Pode, porque Paulo, o owner da organização, deu essa permissão.</li>
+  <li>O módulo pede os dados de vendas. O núcleo tira a senha do cofre, lê o banco, só para consulta, e entrega os dados ao módulo. A senha não sai do núcleo.</li>
+  <li>O módulo pede a IA. O núcleo confere se o modelo é permitido ao Horus e se ele está dentro dos limites, pede ao provedor com a chave da Farma Vida e conta o custo na conta do Horus. A chave não sai do núcleo.</li>
+  <li>Cada pedido fica no registro: o quê, por quem e quando.</li>
+  <li>O módulo monta a tabela de vendas por farmácia e devolve à parte de fora só a resposta pronta, pela mesma conexão. Ana vê a tabela.</li>
+  <li>Mais tarde, Renata, a auditora, vê no registro os pedidos dessa pergunta, e Paulo vê quanto o Horus gastou de IA.</li>
+</ol>
+<p>O Horus não viu a senha do banco nem a chave da IA. E os dados crus de vendas não saíram da rede da Farma Vida: entre a nuvem da Maind e o mAIg passaram só a pergunta, de ida, e a resposta pronta, de volta. (<code>decisões 4 e 5</code>)</p>
+<h4 id="nucleo-e-apps-o-app-em-duas-partes">O app em duas partes</h4>
+<p><strong>Em resumo:</strong> todo app tem uma parte fora do mAIg, registrada com certificado e permissões, e um módulo que roda isolado dentro do mAIg e só usa os serviços do núcleo.</p>
+<p><strong>Quem é quem.</strong></p>
+<ul>
+  <li><strong>A parte de fora</strong> roda fora do mAIg e fica registrada nele com certificado e permissões. No Horus, é a que roda na nuvem da Maind, com as telas.</li>
+  <li><strong>O módulo</strong> é a parte interna do app, que roda dentro do mAIg e só usa os serviços do núcleo. No Horus, é onde a pergunta vira resposta: o trabalho com o modelo de IA e as consultas acontece ali, e à nuvem chegam só a pergunta e a resposta pronta.</li>
+  <li><strong>Isolado</strong> quer dizer separado dos outros módulos e do resto do mAIg, para que um módulo não prejudique os outros nem leia o que não deve. (<code>decisão 4</code>)</li>
+</ul>
+<p><strong>Por que é assim.</strong> As duas partes comportam o Horus como ele já foi desenhado, com as telas na nuvem e o trabalho perto dos dados, e os dados nunca saem crus da casa do cliente. Abre-se mão de: o mAIg precisa saber rodar e isolar módulos de apps, o maior custo do núcleo. (<code>decisão 4</code>)</p>
+<p><strong>As alternativas que ficaram de fora.</strong></p>
+<ul>
+  <li><strong>Só registrar o app, que rodaria inteiro fora do mAIg:</strong> o ciclo da IA sairia da casa do cliente, e a governança enfraqueceria. (<code>decisão 4</code>)</li>
+  <li><strong>O app inteiro dentro do mAIg:</strong> contradiz o Horus estar sempre na nuvem da Maind, e cada cliente viraria uma instalação completa do app. (<code>decisão 4</code>)</li>
+</ul>
+<div class="callout callout--info"><span class="ico">i</span><div><b>Analogia</b><p>É como um escritório de contabilidade que atende na própria sede, mas põe um contador para trabalhar numa sala da empresa cliente, com os papéis que ela entrega ali dentro; à sede vai só o relatório pronto.</p><p><strong>Onde a analogia para:</strong> um contador poderia abrir uma gaveta por conta própria; o módulo não alcança nada sozinho e pede cada dado e cada uso da IA ao núcleo, que confere e anota.</p></div></div>
+<p><strong>Um segundo app, do mesmo jeito.</strong> Um segundo app, como poderia ser o Maind Doc, também viria em duas partes e usaria os mesmos serviços do núcleo, com as permissões que o owner da organização desse a ele. O Maind Doc é só um exemplo: não está definido nem planejado.</p>
+<p><strong>O que ainda está em aberto.</strong> Como os módulos ficam isolados dentro do mAIg ainda não está decidido; o ponto está no fim desta página.</p>
+<h4 id="nucleo-e-apps-a-conexao-de-dentro-para-fora">A conexão de dentro para fora</h4>
+<p><strong>Em resumo:</strong> é o mAIg quem liga para a Maind e mantém a ligação aberta. A TI do cliente não abre porta de entrada nenhuma; só libera a saída para o endereço da Maind.</p>
+<p><strong>Quem é quem.</strong></p>
+<ul>
+  <li><strong>O firewall</strong> é o muro de proteção da rede: decide o que pode entrar e o que pode sair.</li>
+  <li><strong>Uma porta de entrada</strong> é uma abertura nesse muro que deixa alguém de fora começar uma conexão com um computador de dentro.</li>
+  <li><strong>Liberar a saída</strong> é deixar um computador de dentro começar uma conexão com um endereço de fora; no mAIg, só o da Maind.</li>
+  <li><strong>O ponto de conexão da Maind</strong> é onde os mAIg de todos os clientes se conectam. A Maind o mantém sempre de pé.</li>
+</ul>
+<p><strong>Como funciona.</strong> O mAIg abre a conexão com a Maind e a mantém aberta, e as partes de fora dos apps mandam os pedidos e recebem as respostas por ela. O certificado do handshake vale dentro dessa conexão. Se ela cair, o mAIg reconecta sozinho e guarda o que estava em andamento. (<code>decisão 6</code>)</p>
+<p><strong>Por que é assim.</strong> Quase toda TI aprova liberar uma saída; abrir uma porta de entrada é um pedido grande, que muitas recusam. A conexão de dentro para fora também funciona sem IP fixo, o endereço permanente na internet, e atrás de qualquer rede. (<code>decisão 6</code>)</p>
+<p><strong>O que se abre mão.</strong> A Maind mantém sempre de pé o ponto onde os mAIg se conectam, e o mAIg precisa reconectar sozinho e guardar o que estava em andamento. Ficaram de fora os apps ligarem para o mAIg, que obrigaria o cliente a abrir uma porta de entrada, e os dois modos, que dobrariam o trabalho de construir, testar e dar suporte. (<code>decisão 6</code>)</p>
+<div class="callout callout--info"><span class="ico">i</span><div><b>Analogia</b><p>É como um ramal de telefone que só faz ligações para a central e nunca recebe ligação de fora: liga uma vez e deixa a linha aberta, e a central fala por ela sempre que precisa.</p><p><strong>Onde a analogia para:</strong> no telefone, quando a ligação cai, a conversa se perde; o mAIg religa sozinho e guarda o que estava em andamento.</p></div></div>
+<p><strong>Um desenho que o mercado já aceita.</strong> O gateway de dados local da Microsoft (on-premises data gateway) funciona assim: a empresa o instala na própria rede, e ele abre só conexões de saída para a nuvem, sem nenhuma porta de entrada aberta. Ele serve a vários produtos da Microsoft, como o Power BI, o Power Apps, o Power Automate e o Azure Logic Apps. É a prova de que o desenho "o componente liga para fora" já é aceito pelas TIs de muitas empresas.</p>
+<p><strong>Exemplo.</strong> Marta, da TI da Farma Vida, prepara a rede para o mAIg.</p>
+<ol>
+  <li>Marta instala o mAIg num servidor da Farma Vida, sem abrir nenhuma porta de entrada no firewall.</li>
+  <li>Ela libera, no firewall, só a saída para o endereço da Maind.</li>
+  <li>O mAIg liga para a Maind e mantém a conexão aberta. Quando Ana pergunta algo ao Horus, a pergunta chega por essa conexão; nada se abre de fora para dentro.</li>
+  <li>Numa noite, a internet da Farma Vida cai por alguns minutos, e a conexão cai junto. Quando a internet volta, o mAIg religa sozinho, sem Marta fazer nada, e o que estava em andamento não se perde.</li>
+</ol>
+<h4 id="nucleo-e-apps-a-primeira-e-a-segunda-versao">A primeira e a segunda versão</h4>
+<p><strong>Em resumo:</strong> a primeira versão do mAIg traz o núcleo que a v2.0 do Horus usa; os servidores MCP e o login da empresa ficam para a segunda, junto com a v2.1 do Horus.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Serviço</th><th>Primeira versão (com a v2.0 do Horus)</th><th>Segunda versão (com a v2.1 do Horus)</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td>Segurança e permissões</td><td>sim</td><td>sim</td></tr>
+      <tr class="zebra"><td>Login por usuário e senha e pelo Google</td><td>sim</td><td>sim</td></tr>
+      <tr class="zebra"><td>Login da empresa</td><td>não</td><td>sim</td></tr>
+      <tr class="zebra"><td>Registro, com o auditor</td><td>sim</td><td>sim</td></tr>
+      <tr class="zebra"><td>Certificados, com o handshake contratual</td><td>sim</td><td>sim</td></tr>
+      <tr class="zebra"><td>Gestão dos apps</td><td>sim</td><td>sim</td></tr>
+      <tr class="zebra"><td>Cofre dos bancos</td><td>sim</td><td>sim</td></tr>
+      <tr class="zebra"><td>Governança da IA: chaves, modelos, limites e custo</td><td>sim</td><td>sim</td></tr>
+      <tr class="zebra"><td>Várias organizações por instância</td><td>sim</td><td>sim</td></tr>
+      <tr class="zebra"><td>Conexão de dentro para fora</td><td>sim</td><td>sim</td></tr>
+      <tr class="zebra"><td>Servidores MCP</td><td>não</td><td>sim</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>O mAIg mantém o planejamento que o Horus tinha para o middleware, a peça que deu origem a ele. (<code>decisão 16</code>)</p>
+<p><strong>Por que é assim.</strong> A primeira versão entrega já na primeira venda o motivo de o mAIg existir, a governança, e deixa para depois só o que nenhum app usa ainda. Ficaram de fora o núcleo completo já, que atrasaria a v2.0 do Horus por partes que ele só usa na v2.1, e o mínimo, que faria a primeira venda chegar sem a governança. Abre-se mão de: o mAIg fica incompleto até a segunda versão. (<code>decisão 16</code>)</p>
+<h4 id="nucleo-e-apps-quando-algo-da-errado">Quando algo dá errado</h4>
+<p><strong>Em resumo:</strong> um pedido sem permissão não é atendido e fica no registro; um app sem certificado válido não é liberado; uma conexão que cai é refeita pelo próprio mAIg.</p>
+<p><strong>Um app pede o que não pode.</strong> O módulo do Horus pede para ler um banco que Paulo, o owner da organização, não liberou. O núcleo confere a permissão e, sem ela, não entrega os dados; o pedido fica no registro, e Paulo e Renata podem vê-lo depois. O módulo não tem como dar a volta: só usa os serviços do núcleo e nunca tem a senha nem a chave. Como esse isolamento é garantido ainda está em aberto, no fim desta página. (<code>decisões 4 e 5</code>)</p>
+<p><strong>Um app sem certificado válido.</strong> Sem certificado válido não há handshake, e sem handshake o app não é liberado. Se o certificado de um app em uso vence sem ser renovado, o serviço se encerra; a configuração fica guardada até a organização renovar ou o owner da organização apagar, e o registro fica enquanto o app estiver instalado. (<code>decisão 10</code>, <code>decisão 13</code>, <code>decisões 14 e 15</code>)</p>
+<p><strong>A conexão cai.</strong> O mAIg reconecta sozinho e guarda o que estava em andamento, sem ninguém da TI do cliente fazer nada. (<code>decisão 6</code>)</p>
+<p>No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: com a ligação da organização fora do ar, a pessoa que pergunta vê um aviso próprio, e não um erro. O aviso diz desde quando a ligação está fora, que o resto do Horus segue no ar e que a pessoa deve procurar o owner da organização, e traz um botão para tentar de novo. (<code>D-283 do Horus</code>)</p>
+<p>Ainda no Horus, como ponto de partida que o mAIg ainda confirma: cada organização tem uma página de status no endereço dela, que abre sem login, e a tela de entrada mostra uma luz de estado, sempre com texto: verde, "No ar"; amarela, "Instável"; vermelha, "Fora do ar". (<code>D-283 do Horus</code>, <code>D-284 do Horus</code>)</p>
+<h3 id="nucleo-e-apps-falta-decidir">O que falta decidir nesta parte</h3>
+<ul>
+  <li><strong>Falta o arquiteto do mAIg definir como os módulos dos apps ficam isolados dentro do mAIg.</strong> <em>O que está em jogo:</em> o isolamento impede que um módulo prejudique os outros ou leia o que não deve, e é o maior custo do núcleo, o preço de cada app ter uma parte dentro do mAIg (<code>decisão 4</code>).</li>
+  <li><strong>Falta o arquiteto do mAIg definir quantas versões do mAIg e dos apps podem conviver.</strong> <em>O que está em jogo:</em> o cliente precisa de tempo para atualizar sem surpresa, e a Maind não pode carregar todas as versões antigas. No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: a parte do Horus na nuvem da Maind funciona com a versão atual e com a anterior do middleware, e uma mais velha é recusada, com aviso (<code>D-292 do Horus</code>).</li>
+  <li><strong>Também depende, e está explicado em outras páginas:</strong> a validade do certificado, a antecedência do aviso de fim de contrato, o formato do handshake contratual e a política do certificado, o cadastro e o login das pessoas que usam os apps, como a Maind alcança o banco do cliente na hospedagem dela, e os papéis e a contratação por inteiro (<a href="#organizacoes-e-contratacao">Organizações, papéis e contratação</a>); quais apps entram depois do Horus e como medir cada objetivo (<a href="#visao">O que é o mAIg e por que ele existe</a>); a lista de todas as decisões e do que falta decidir (<a href="#decisoes">As decisões e o que falta decidir</a>).</li>
+</ul>
