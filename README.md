@@ -62,3 +62,5 @@ um novo app não precisa passar de novo pela aprovação de segurança: basta li
 13. **O fim do contrato não para o app sozinho.** O owner da organização é avisado antes do fim. O serviço só se
     encerra de dois jeitos: por uma **ação manual da Maind** ou quando o **certificado digital vence sem ser
     renovado**. Até lá, o app continua funcionando, o que dá à organização uma carência para renovar.
+14. **Depois que um app para, a configuração dele fica guardada.** As permissões, os bancos e as IAs que o app usa e
+    os ajustes do owner ficam guardados até a organização renovar, e o app volta como estava, ou até o owner apagar.
