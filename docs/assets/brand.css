@@ -1,16 +1,16 @@
 /* Marca do projeto — gerado de .docs-brand.yml. Não editar à mão:
    mexa no YAML e rode a skill de novo. Carregar DEPOIS de docs.css. */
 :root, :root[data-theme="light"] {
-  --brand:       #00708D;
-  --brand-rgb:   0,112,141;
-  --brand-hover: #00708D;
-  --brand-tint:  #EBF4F6;
+  --brand:       #1E5EDF;
+  --brand-rgb:   30,94,223;
+  --brand-hover: #194DB7;
+  --brand-tint:  #EDF2FC;
 }
 :root[data-theme="dark"] {
-  --brand:       #4AB5D0;
-  --brand-rgb:   74,181,208;
-  --brand-hover: #4AB5D0;
-  --brand-tint:  #1A3A44;
+  --brand:       #2A78FF;
+  --brand-rgb:   42,120,255;
+  --brand-hover: #318DFF;
+  --brand-tint:  #121F35;
 }
 
 /* A folha impressa é sempre clara — inclusive quando o leitor está no tema
@@ -19,9 +19,9 @@
    luminoso do tema escuro sairia sobre papel branco, com contraste de nada. */
 @media print {
   :root, :root[data-theme="light"], :root[data-theme="dark"] {
-    --brand:       #00708D;
-    --brand-rgb:   0,112,141;
-    --brand-hover: #00708D;
-    --brand-tint:  #EBF4F6;
+    --brand:       #1E5EDF;
+    --brand-rgb:   30,94,223;
+    --brand-hover: #194DB7;
+    --brand-tint:  #EDF2FC;
   }
 }

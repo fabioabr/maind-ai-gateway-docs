@@ -1,0 +1,53 @@
+# ============================================================================
+# IDENTIDADE DO PROJETO PARA A DOCUMENTAÇÃO HTML — Maind AI Gateway (mAIg)
+# ----------------------------------------------------------------------------
+# Lido pelo DocX (e pela skill `report-creator`) a cada documento gerado.
+# Caminho é sempre relativo à RAIZ do projeto. Depois de editar, gere de novo:
+#   python <plugin docx>/scripts/docx.py gerar --config documentacao/docx.json --saida docs
+#
+# Os logos são os da Maind (decisão 7: o mAIg leva a marca Maind), fornecidos pelo
+# dono da Maind em 08/11/2026. A cor de destaque foi calculada a partir do cérebro
+# do logo, com contraste mínimo de 4,5:1 em cada tema.
+# ============================================================================
+
+projeto:
+  nome: "Maind AI Gateway (mAIg)"
+  subtitulo: "Visão do produto"
+  area: "Produto"
+  classificacao: "Público"
+
+logo:
+  # PNG com fundo transparente, 658 x 616.
+  claro: "documentacao/marca/maind-claro.png"     # usado no tema CLARO (letras escuras, sobre papel)
+  escuro: "documentacao/marca/maind-escuro.png"   # usado no tema ESCURO (letras brancas, sobre fundo escuro)
+  alt: "Maind"
+
+marca:
+  claro:                           # sobre papel — contraste 5,6:1 com o branco
+    brand: "#1E5EDF"   # mediana das cores do cérebro do logo
+    hover: "#194DB7"
+    tint:  "#EDF2FC"
+  escuro:                          # sobre fundo escuro — contraste 4,6:1
+    brand: "#2A78FF"
+    hover: "#318DFF"
+    tint:  "#121F35"
+
+textos:
+  cabecalho: ""
+  rodape: "Maind AI Gateway · Visão do produto · primeira versão em desenho"
+
+autoria:
+  autor: ""
+  cargo: ""
+  avatar: ""
+  revisor: ""
+
+contato:
+  email: ""
+  site: ""
+
+tipografia:
+  fontes_externas: false
+
+saida:
+  pasta: "docs"

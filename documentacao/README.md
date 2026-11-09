@@ -10,6 +10,7 @@ Esta pasta é a fonte do site de documentação do mAIg. O site gerado fica em [
 ```
 documentacao/
 ├── docx.json                          ← a configuração do site (4 páginas, 4 diagramas, índice por macro tema em `portal.macros`)
+├── marca/maind-claro.png, maind-escuro.png  ← os logos da Maind (tema claro e tema escuro)
 ├── content/<página>.html              ← um fragmento por página (ver a lista abaixo)
 ├── diagramas/
 │   ├── maig-<tema>.html               ← a casca de cada diagrama (Archify + casca Maind, abas Diagrama e Explicações)
@@ -62,7 +63,8 @@ A casca de hoje (0.6 em diante) desenha o cartão em todo diagrama de arquitetur
 
 - O dono da Maind não revisou o texto. Os pontos que as 18 decisões não cobrem aparecem em cada página, em "O que falta decidir nesta parte", e na
   página `decisoes`, reunidos por papel. Ainda não são pendências registradas.
-- **O portal não tem logo:** o repositório do mAIg não tem logo nem marca, e o site sai com o logo de reserva do DocX. O logo entra quando o dono da
-  Maind indicar um (arquivo `.docs-brand.yml`, que o DocX lê).
+- **O mAIg ainda não tem logo próprio:** o portal usa o logo da Maind (decisão 7), um PNG para o tema claro e outro para o escuro, em `marca/`. A
+  configuração da marca (nome, logos, cor de destaque, rodapé) está em `../.claude/plugins-data/kbr-docs/docs-brand.yml`; a cor foi calculada a
+  partir do próprio logo, com contraste mínimo de 4,5:1 em cada tema.
 - O GitHub Pages não está ligado; o site publicado em `../docs/` só vai ao ar com a ordem do dono da Maind.
 - Cada diagrama foi conferido só por captura de tela; os cliques e os popups da casca não foram testados um a um.
