@@ -59,3 +59,6 @@ um novo app não precisa passar de novo pela aprovação de segurança: basta li
     **owner da organização** e um **auditor** que ele nomeia, que só lê o registro e não muda nenhuma configuração. O
     administrador da instância vê só o que é da instância (as instalações, o estado e as versões), nunca o registro das
     organizações.
+13. **O fim do contrato não para o app sozinho.** O owner da organização é avisado antes do fim. O serviço só se
+    encerra de dois jeitos: por uma **ação manual da Maind** ou quando o **certificado digital vence sem ser
+    renovado**. Até lá, o app continua funcionando, o que dá à organização uma carência para renovar.

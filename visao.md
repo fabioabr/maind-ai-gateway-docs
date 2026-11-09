@@ -69,6 +69,8 @@ próximo.
   contratação com um servidor da Maind Tech (o handshake contratual), e o app é liberado para a organização que o
   contratou: a contratação é por organização. Depois, o administrador da
   instância o instala na instância, e o owner de cada organização o libera e configura para a dele.
+- **O fim de um contrato:** o owner da organização é avisado antes. O app só para por uma ação manual da Maind ou
+  quando o certificado digital vence sem ser renovado; até lá, a organização tem uma carência para renovar.
 - **A conexão:** o mAIg liga para fora, abre a conexão com a Maind e a mantém aberta. A TI só libera a saída para o
   endereço da Maind. Se a conexão cai, o mAIg religa sozinho e guarda o que estava em andamento.
 
@@ -84,8 +86,7 @@ próximo.
 
 - **Como medir cada objetivo:** que sinal mostra que cada um foi atingido. Falta o dono da Maind decidir.
 - **O tamanho da primeira versão:** o que do mAIg fica pronto antes da versão 2.0 do Horus. Falta o dono da Maind decidir.
-- **O fim de um contrato:** o que acontece com o app quando o contrato da organização acaba. Falta o dono da Maind
-  decidir.
+- **Depois que um app para:** o que acontece com a configuração dele na organização. Falta o dono da Maind decidir.
 - **O preço:** se o mAIg é cobrado à parte ou junto com os apps. Falta o dono da Maind decidir.
 
 ## De onde vem este documento
