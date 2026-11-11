@@ -8,8 +8,9 @@ Comece pela [visão e pelos objetivos](visao.md). As macro funcionalidades estã
 
 Com a IA, os dados viraram o combustível dos projetos. Mas a maioria das empresas não deixa um banco de dados
 visível de fora, nem mesmo por trás de um firewall ou de uma VPN. O mAIg resolve isso: é uma plataforma da Maind instalada **na casa
-do cliente** (ou hospedada pela Maind, para quem não quer instalar). Quem acessa os dados é o mAIg, e a TI do cliente
-controla o que cada produto pode ver e fazer.
+do cliente** (ou hospedada pela Maind, para quem não quer instalar). Quem acessa os dados é o mAIg, e o owner da
+organização, indicado pela empresa, controla o que cada produto pode ver e fazer; a TI do cliente libera as saídas, cria
+os usuários dos bancos e, na casa do cliente, opera a instância.
 
 Os produtos da Maind entram no mAIg como **apps**. O **Maind Horus** é o primeiro; o **Maind Doc** (assistente
 para gerar documentos de projetos corporativos com IA) e outros podem vir depois. Com o mAIg instalado e aprovado,
@@ -63,7 +64,8 @@ mAIg trabalham a partir delas, e o que elas ainda não respondem fica como ponto
 12. **O registro é do owner da organização e de um auditor.** Dentro da organização, consultam o registro (log e auditoria) o
     **owner da organização** e um **auditor** que ele nomeia, que só lê o registro e não muda nenhuma configuração. O
     administrador da instância vê só o que é da instância (as instalações, o estado e as versões), nunca o registro das
-    organizações.
+    organizações. Quantos auditores uma organização pode ter foi decidido depois: até dois, e um deles pode ser de fora
+    da empresa (decisão 79).
 13. **O fim do contrato não para o app sozinho.** O owner da organização é avisado antes do fim. O serviço só se
     encerra de dois jeitos: por uma **ação manual da Maind** ou quando o **certificado digital vence sem ser
     renovado**. Até lá, o app continua funcionando, o que dá à organização uma carência para renovar.
@@ -78,6 +80,10 @@ mAIg trabalham a partir delas, e o que elas ainda não respondem fica como ponto
     contratual, a gestão dos apps, o cofre dos bancos, a governança da IA (chaves, modelos, limites e custo), várias
     organizações por instância e a conexão de dentro para fora. Os servidores MCP e o login da empresa ficam para a
     segunda versão, junto com a v2.1 do Horus. O planejamento que o Horus tinha para o middleware se mantém para o mAIg.
+    Depois, a primeira versão foi dividida em duas ondas, a 1.0 e a 1.1 (decisão 92).
+    No fechamento da primeira versão, os dois jeitos de entrar, usuário e senha e conta Google, e a governança da IA
+    inteira ficaram na onda 1.0 (decisões 98 e 112), e o recorte completo, com a onda de cada capacidade, ficou escrito
+    (decisão 95).
 17. **O mAIg vem embutido no preço dos apps.** O cliente paga pelos apps, e o mAIg vem junto, sem linha própria na
     conta. Abre-se mão de: o preço de cada app precisa cobrir o custo do mAIg, e o primeiro app o carrega sozinho até
     chegar o segundo.
@@ -92,14 +98,17 @@ mAIg trabalham a partir delas, e o que elas ainda não respondem fica como ponto
     organização escolheu, e a promessa passa a ser "poucas saídas, todas conhecidas". O mAIg continua sem nenhuma porta
     de entrada, e só o núcleo faz o pedido: o módulo do app não tem saída própria. Ajusta a decisão 6. Abre-se mão de: a
     promessa deixa de ser "uma saída só", e cada provedor novo é um novo pedido à TI do cliente. O modelo de IA dentro da
-    rede do cliente fica como possível segundo produto, para um cliente de segurança extrema.
+    rede do cliente fica como possível segundo produto, para um cliente de segurança extrema. A lista de saídas foi
+    completada depois (decisão 90).
 20. **O owner da organização escolhe, app por app, o que o pedido ao provedor de IA pode levar.** O pedido tem três camadas:
     a **camada 1** leva só a pergunta e a descrição do banco (nomes de tabelas e colunas), sem dado nenhum; a **camada 2**
     leva também totais já somados, sem linhas de pessoas nem de clientes; a **camada 3** leva também linhas de dados. Cada
     app começa na camada 1, e o owner da organização sobe a camada dele no console. O núcleo confere a camada antes de
     enviar o pedido e anota no registro a camada de cada pedido e uma descrição do que foi enviado; se o registro guarda
     também o texto inteiro fica em aberto. Abre-se mão de: o núcleo precisa reconhecer o que é dado e o que é total, o
-    Horus precisa funcionar bem na camada 1, e o owner da organização ganha mais uma configuração.
+    Horus precisa funcionar bem na camada 1, e o owner da organização ganha mais uma configuração. Se o registro guarda o
+    texto inteiro foi decidido depois: nunca guarda (decisão 58).
+    Foi decidido depois: um total calculado sobre poucas linhas conta como linha de dados (decisão 113).
 21. **Um app só sai da instância quando nenhuma organização o tem mais, e antes cada owner é avisado e pode baixar uma
     cópia do registro.** O administrador da instância só desinstala um app quando todas as organizações da instância já
     o retiraram (ou foram encerradas, como diz a decisão 31). Antes, o owner de cada organização retira o app da dele, é avisado de que o
@@ -108,6 +117,9 @@ mAIg trabalham a partir delas, e o que elas ainda não respondem fica como ponto
     não retira o app segura a desinstalação para todas; baixar o registro é uma função nova, e a cópia sai do controle do
     mAIg; e o registro de um app já retirado fica guardado até a desinstalação. Quem pode baixar a cópia e em que forma
     foi decidido depois (decisão 80).
+    No fechamento da primeira versão, ficou decidido que retirar e desinstalar chegam na onda 1.1, com a cópia assinada
+    do registro (decisão 106), que toda desinstalação começa com um aviso, com prazo, também às organizações que já
+    retiraram o app (decisão 107), e que ninguém retira um app no lugar do owner da organização (decisão 108).
 22. **A chave de IA é sempre do cliente.** Cada organização traz a própria conta em cada provedor de IA e cadastra a chave
     no cofre do mAIg. A Maind não dá chave nem paga a IA de nenhum cliente: a fatura do provedor vai direto à empresa, e a
     Maind não carrega o custo de IA. Reabre-se quando uma venda travar por falta de conta num provedor. Abre-se mão de: o
@@ -133,7 +145,8 @@ mAIg trabalham a partir delas, e o que elas ainda não respondem fica como ponto
     chegar, ele vira mais um jeito de entrar para os três, sem tirar a senha (decisão 24). Abre-se mão de: até três
     pessoas com a chave de tudo e três senhas que podem ser roubadas; o mAIg se afasta do Horus num ponto, porque o
     Horus liga os owners a mais só ao login da empresa; e falta a regra de quem pode retirar quem, que fica para o
-    arquiteto do mAIg. A regra de quem retira um owner foi decidida depois (decisão 52).
+    arquiteto do mAIg. A regra de quem retira um owner foi decidida depois (decisão 52), e depois a gestão dos owners
+    passou ao administrador da instância, sem o limite de três (decisões 83 e 84).
 26. **O console se alcança só de dentro da rede do cliente.** Na instalação na casa do cliente, o owner da organização, o
     auditor e o administrador da instância chegam ao console de dentro da rede da empresa, e quem está fora entra pela VPN
     que a empresa já mantém. O mAIg não abre porta de entrada nem passa a tela do console pela conexão com a Maind, de modo
@@ -165,12 +178,13 @@ mAIg trabalham a partir delas, e o que elas ainda não respondem fica como ponto
     linhas e nunca lê o registro, de modo que a decisão 12 segue valendo. Assim o auditor responde sozinho quando um app
     mudou de versão e quem o mudou, também na hospedagem da Maind, onde quem muda é a equipe da Maind. Abre-se mão de: o
     administrador ganha um caminho de escrita no registro, que precisa ser protegido contra abuso; o mesmo ato vira uma
-    linha em cada organização que usa o app; e os atos que não tocam nenhuma organização seguem sem anotação. Depois,
-    instalar o kit de uma organização passou a entrar no registro dela (decisão 82), e os atos que não tocam organização
-    nenhuma ganharam o registro da instância (decisão 81). A desinstalação, que só acontece quando nenhuma organização tem mais o app e exclui o registro dele, ainda
+    linha em cada organização que usa o app; e os atos que não tocam nenhuma organização seguem sem anotação. A
+    desinstalação, que só acontece quando nenhuma organização tem mais o app e exclui o registro dele, ainda
     não tem onde ser anotada. Reabre-se se o dono da Maind quiser anotar também esses atos num registro próprio da
     instância. Faltam dizer como o administrador da instância escreve no registro sem poder lê-lo nem alterá-lo, ponto do
-    arquiteto do mAIg, e se a desinstalação deixa alguma anotação e onde, ponto do dono da Maind.
+    arquiteto do mAIg, e se a desinstalação deixa alguma anotação e onde, ponto do dono da Maind. Depois, instalar o kit
+    de uma organização passou a entrar no registro dela (decisão 82), e a desinstalação e os outros atos que não tocam
+    organização nenhuma foram decididos: ficam no registro da instância (decisão 81).
 30. **O mAIg se atualiza sozinho, dentro de uma janela de horário que o administrador da instância define.** O mAIg
     busca a versão nova na Maind pela conexão de saída que já mantém (decisão 6) e se instala sozinho, só dentro da
     janela de horário que a TI do cliente escolhe na instância dela. Os apps seguem sendo atualizados pelo administrador
@@ -194,7 +208,10 @@ mAIg trabalham a partir delas, e o que elas ainda não respondem fica como ponto
     "excluir" deixa de valer para organizações, e só as pessoas continuam sendo excluídas (decisão 27). Reabre-se se a lei ou um cliente exigir apagar tudo, e o passo seguinte seria oferecer a
     exclusão de verdade, a pedido do owner da organização. Faltam dizer quem pede e quem confirma o encerramento e se ele
     tem volta, pontos do dono da Maind, e o que sobra de uma organização encerrada para o registro seguir legível, ponto do
-    arquiteto do mAIg.
+    arquiteto do mAIg. Quem pede e quem executa o encerramento, e a volta por 30 dias, foram decididos depois (decisão 78).
+    No fechamento da primeira versão, ficou decidido que a organização encerrada continua sem travar a desinstalação, e
+    que só um pedido de volta à espera de execução a segura, até a volta ser executada (decisão 107); e que o
+    encerramento chega inteiro na onda 1.1 (decisão 114).
 
 ## Decisões da rodada do login pelo mAIg (10/11/2026 e 11/11/2026)
 
@@ -207,10 +224,13 @@ pela VPN dela.
     uma credencial curta assinada com a chave do certificado da organização (decisão 28), que diz quem é a pessoa, de que
     organização e com que papéis. O navegador leva à nuvem só um código de uso único, que a parte de fora do app troca
     pelo passe pela ligação com o mAIg. A senha da pessoa e a resposta do login da empresa ficam no mAIg e nunca chegam à
-    nuvem da Maind, e a nuvem não consegue fabricar um passe, porque não tem a chave da organização. Detalha a decisão
+    nuvem da Maind, e a nuvem não consegue fabricar um passe, porque não tem a chave da organização, que nasce no mAIg e
+    nunca sai dele (decisão 86). Detalha a decisão
     23. Abre-se mão de: a máquina da pessoa precisa alcançar o mAIg para entrar; o certificado da organização passa a
     valer em todo login, e um certificado vencido tranca a organização inteira; e, na hospedagem da Maind, falta dizer
-    se o endereço do mAIg pode ser limitado à rede de cada empresa, ponto do dono da Maind.
+    se o endereço do mAIg pode ser limitado à rede de cada empresa, ponto do dono da Maind. Foi decidido depois que, na
+    primeira versão, esse endereço fica aberto na internet, protegido pelo login, e que fechar essa rede fica para a
+    segunda versão do mAIg ou depois (decisão 48).
 33. **A nuvem dos apps fala com o mAIg só pela ligação que o mAIg abre, a mesma para todas as pessoas.** Cada mAIg
     mantém aberta a ligação com o ponto de conexão da Maind, em duas ou três linhas, para não depender de uma só
     (decisão 6). Todas as pessoas e todas as organizações da instância usam essa ligação. Cada pedido leva um número,
@@ -223,7 +243,8 @@ pela VPN dela.
     cliente, e não muda. A resposta que a pessoa vê passa pela nuvem da Maind para chegar à tela dela. Abre-se mão de: a
     promessa à TI do cliente deixa de ser "nada dos dados sai" e passa a ser "sai só a resposta que a pessoa vê, e ela
     não fica guardada" (decisão 35); e até onde a resposta pode levar dados de pessoas segue em aberto, ponto do dono da
-    Maind.
+    Maind. Foi decidido depois: a resposta tem um teto de 200 linhas por app, com as colunas sensíveis mascaradas
+    (decisão 43), e além dela só sai o que o owner da organização liberar, app por app (decisão 74).
 35. **A nuvem do app guarda a receita, nunca o resultado, e o que se guarda para abrir mais rápido fica no mAIg.** Um
     painel montado num app guarda na nuvem só a receita: que dados buscar, que gráfico, que filtros. Cada vez que alguém
     o abre, a parte de fora do app pede os dados ao mAIg pela ligação. O último resultado de cada painel pode ficar
@@ -271,6 +292,8 @@ pela VPN dela.
     criar uma organização exige a ligação de pé, e não há certificado provisório nem organização criada sem a Maind.
     Abre-se mão de: uma instância sem ligação só serve para o console, e a disponibilidade do ponto de conexão da Maind
     passa a valer pelo produto inteiro, ponto do dono da Maind.
+    Foi decidido depois: a primeira versão não tem modo sem ligação (decisão 122), e, na onda 1.0, o servidor de e-mail
+    é configurado e testado antes de a primeira organização ser criada (decisão 125).
 42. **Uma tarefa marcada roda com um passe de agendamento, guardado só no mAIg.** Quando a pessoa cria num app uma
     tarefa que roda sozinha numa hora marcada, como um relatório das 7h, o mAIg emite um passe só daquela tarefa, em
     nome dela, e o guarda só nele, nunca na nuvem. Na hora marcada, a parte de fora do app só pede "rode a tarefa", e o
@@ -285,6 +308,8 @@ pela VPN dela.
     ligação, para que a promessa não dependa só do app. Assim, um vazamento na nuvem nunca leva a base inteira. Abre-se
     mão de: quem precisa de uma lista grande pede ao owner da organização; e faltam dizer como o núcleo reconhece uma
     coluna sensível e o que a pessoa vê quando a resposta passa do teto, pontos do arquiteto do mAIg com o dono da Maind.
+    Foi decidido depois: o núcleo sugere as colunas sensíveis, e o owner da organização confere (decisão 111); e a
+    resposta que passa do teto é recusada inteira, com mensagem clara (decisão 124).
 44. **O certificado da organização vale 30 dias, se renova sozinho e nunca para sem aviso.** O mAIg o renova sozinho
     pela ligação com a Maind, que já é requisito (decisão 41). Se a renovação falhar, o certificado atual segue valendo
     até o fim, e o owner da organização e a TI do cliente são avisados 7 dias antes de ele vencer. Cancelá-lo antes do
@@ -292,7 +317,8 @@ pela VPN dela.
     login (decisão 32), é a peça que mais precisa de cuidado: ninguém é trancado por esquecimento, e um certificado
     roubado vale pouco tempo. Abre-se mão de: a Maind mantém a emissão de certificados sempre de pé, porque uma falha
     longa dela chega a trancar organizações; e a política do certificado de cada kit segue em aberto, ponto do arquiteto
-    do mAIg.
+    do mAIg. Foi decidido depois, em parte: a identidade de cada app passou a ser um certificado curto, trocado sozinho
+    pela ligação, como o da organização (decisão 56).
 45. **A TI do cliente adia uma versão nova do mAIg por até 30 dias, e uma correção de segurança por até 7.** Passado o
     prazo, o mAIg continua na versão velha, porque nada se instala sem o aval, mas os apps passam a recusar a conversa:
     a pessoa vê o aviso "Atualização necessária", e o painel da instância mostra o motivo e a versão, como no Horus
@@ -300,6 +326,8 @@ pela VPN dela.
     do prazo, que desfaria a decisão 39, e prazos de 60 e 15 dias, que deixariam uma falha de segurança aberta por duas
     semanas. Abre-se mão de: quem adia além do prazo fica com os apps parados até dar o aval. Na hospedagem da Maind,
     os prazos não pesam, porque a instalação segue sozinha, na janela.
+    Foi decidido depois: a mesma regra, por prazo, vale para o módulo de cada app, e a contagem de versões que convivem
+    saiu do texto das mfs (decisão 109).
 46. **O administrador da instância suspende um app na instância inteira, numa emergência.** Com um gesto no painel da
     instância, o app para em todas as organizações dela, e a configuração e o registro ficam guardados, porque o
     registro é a prova do que aconteceu. Cada owner da organização é avisado, e a suspensão fica anotada no registro de
@@ -342,6 +370,8 @@ pela VPN dela.
     hospedagem da Maind. Abre-se mão de: na primeira versão, uma senha roubada abre a chave de tudo, e na hospedagem da
     Maind o console fica aberto na internet protegido só pela senha (decisão 48). O que acontece depois de várias
     tentativas erradas e como se recupera uma senha esquecida seguem com o arquiteto do mAIg.
+    Foi decidido depois: cada pessoa pede o próprio link de troca de senha, e a conta fica bloqueada por um tempo depois
+    de várias tentativas erradas (decisão 99).
 51. **O link de primeiro acesso do owner da organização vai direto do mAIg ao e-mail dele.** Quem cria o usuário, o
     administrador da instância, só digita o e-mail do owner da organização e nunca vê o link. Se o link vence, ele pede
     outro, que também vai direto ao e-mail, e cada envio fica anotado no registro da organização (decisão 29). Assim,
@@ -350,7 +380,8 @@ pela VPN dela.
     criava o usuário recebia o link e o entregava por fora do sistema (D-290 do Horus). Ficaram de fora manter a
     entrega por fora, com a anotação de quando e de onde a senha foi criada, e dividir o link em duas metades.
     Abre-se mão de: o mAIg passa a enviar e-mail, e um e-mail digitado errado manda o link para outra pessoa; e falta
-    dizer como o mAIg envia esse e-mail, ponto do arquiteto do mAIg.
+    dizer como o mAIg envia esse e-mail, ponto do arquiteto do mAIg. O caminho do e-mail e o ajuste desta promessa
+    foram decididos depois (decisão 90).
 52. **Qualquer owner da organização retira outro, sozinho.** O retirado e o auditor são avisados na hora, e a retirada
     fica anotada no registro da organização. Quem sai da empresa perde o acesso no mesmo dia, sem depender de mais
     ninguém, e quem foi afastado sem motivo pode ser recolocado por outro owner da organização. Ficaram de fora exigir a
@@ -358,7 +389,7 @@ pela VPN dela.
     deixar a retirada com o administrador da instância, que lhe daria poder sobre quem manda na organização do cliente
     (decisão 51). Abre-se mão de: um owner da organização pode afastar outro sem motivo, e o freio é o aviso e o
     registro. O que acontece quando a organização fica sem nenhum owner da organização com acesso foi decidido depois
-    (decisão 53).
+    (decisão 53). Substituída pela decisão 83: um owner não retira mais outro.
 53. **Uma organização sem nenhum owner com acesso é destravada pelo administrador da instância, com espera e aviso.**
     O administrador da instância digita o e-mail do novo owner da organização, e o link de primeiro acesso vai direto
     para ele (decisão 51). A troca só vale 48 horas depois. Nesse tempo, os owners da organização antigos e o auditor são
@@ -366,16 +397,18 @@ pela VPN dela.
     e o administrador da instância. Tudo fica no registro da organização (decisão 29). Enquanto isso, os apps seguem
     funcionando; só falta quem configure. Ficaram de fora destravar na hora, que deixaria o administrador da instância
     escolher quem manda na organização, e exigir um pedido formal da empresa à Maind, que seria lento e poria a Maind no
-    meio até na casa do cliente. Abre-se mão de: dois dias sem ninguém que configure.
+    meio até na casa do cliente. Abre-se mão de: dois dias sem ninguém que configure. Passou a seguir a regra da
+    decisão 83: a troca vale na hora, com volta em 48 horas.
 54. **Os atos sensíveis do owner da organização avisam na hora os outros owners e o auditor.** A lista é fixa: mudar o
     que o pedido ao provedor de IA pode levar (decisão 20), cadastrar ou trocar um banco, trocar o auditor, subir o teto
-    da resposta (decisão 43) e baixar a cópia do registro (decisão 21). A retirada de um owner da organização já avisa
-    (decisão 52). O aviso só informa e não pede aprovação, e o ato segue no registro, como todos. Assim, nada importante
+    da resposta (decisão 43) e baixar a cópia do registro (decisão 21). Toda troca de owner da organização feita pelo
+    administrador da instância também avisa (decisão 83). O aviso só informa e não pede aprovação, e o ato segue no registro, como todos. Assim, nada importante
     muda em silêncio, e o auditor fica sabendo no mesmo dia. Ficaram de fora uma trava que a organização ligaria para
     exigir a aprovação de um segundo owner da organização, que não funcionaria numa organização com um owner só, e não
     ter lista, que deixaria um ato grave semanas sem ninguém ver. Abre-se mão de: chegam mais avisos, e um owner da
     organização mal-intencionado ainda age, só não escondido. Liberar o acesso de suporte da Maind entrou na lista depois (decisão
     68).
+    Marcar ou desmarcar uma coluna sensível também entrou na lista depois (decisão 111).
 55. **A senha própria do owner da organização e do administrador da instância abre só o console.** Para usar os
     apps, o owner da organização entra como qualquer pessoa, pelo jeito de entrar que a organização ligou. Assim, quando
     o login da empresa chegar, quem a empresa desliga perde os apps junto, mesmo mantendo a senha do console até alguém
@@ -403,7 +436,7 @@ pela VPN dela.
     deixaria o registro legível. Abre-se mão de: custa mais e é mais complexo; perder a chave é perder o registro, e é
     preciso um jeito seguro de recuperá-la; e fica como risco aceito que quem controla a máquina ligada ainda alcance,
     com muito esforço, o que estiver em uso naquele momento. Onde fica a chave, como se recupera e quanto custa são
-    pontos do arquiteto do mAIg.
+    pontos do arquiteto do mAIg. Quem guarda a cópia de recuperação foi decidido depois (decisão 87).
 58. **O registro guarda o que foi pedido, mas nunca os dados.** De cada leitura de banco, a linha guarda, além do fato,
     a consulta feita e quantas linhas voltaram, e nunca os dados devolvidos. De cada pedido à IA, guarda a camada e a
     descrição do que foi enviado, já decididas (decisão 20), e nunca o texto inteiro do pedido nem a resposta. Assim, o
@@ -412,6 +445,7 @@ pela VPN dela.
     (D-090 do Horus). Ficaram de fora guardar tudo, que faria do registro um alvo tão sensível quanto o próprio banco, e
     guardar só o fato, que deixaria o auditor sem saber o que foi perguntado ao banco. Abre-se mão de: o auditor não
     reconstrói palavra por palavra o que a IA recebeu e respondeu.
+    Foi decidido depois: no registro, o valor de um filtro que toca uma coluna sensível aparece mascarado (decisão 103).
 59. **Os apps podem anotar no registro do mAIg o que acontece só dentro deles, com a linha marcada como "informada
     pelo app".** O que acontece só no app, como baixar uma conversa do Horus em PDF ou alterar um painel, o núcleo não
     vê. O app pode pedir ao núcleo que anote, e a linha fica marcada, separada das que o núcleo viu com os próprios
@@ -419,6 +453,7 @@ pela VPN dela.
     Ficaram de fora cada app manter o próprio registro, que obrigaria o auditor a conferir em dois lugares e deixaria
     esse registro na nuvem da Maind, fora do controle da TI do cliente, e anotar sem marcar a diferença. Abre-se mão
     de: o registro cresce, e uma linha informada pelo app vale menos como prova.
+    Foi decidido depois: a linha informada pelo app só tem campos fixos (decisão 104).
 60. **A visão diz o que o núcleo garante sozinho e o que depende de cada app.** Uma seção da visão, ao lado de "De quem
     o mAIg protege, e de quem não", separa as duas listas. O núcleo garante sozinho: as senhas e as chaves nunca saem
     dele (decisão 5); cada pedido é conferido contra a permissão e é de uma organização só; os bancos são só lidos; o
@@ -437,6 +472,8 @@ pela VPN dela.
     só, e só o usuário que lê, sem limites, que deixaria uma consulta pesada derrubar o banco. Abre-se mão de: a TI do
     cliente cria esse usuário antes de começar, e uma consulta grande demais é cortada. Os valores dos limites e o
     jeito de testar o usuário são pontos do arquiteto do mAIg.
+    No fechamento da primeira versão, "cortada" foi lida assim: a consulta que passa do limite é interrompida, e o
+    pedido falha com mensagem clara, sem resultado parcial (decisão 124).
 62. **Um pedido à IA que leva mais do que a camada do app permite é recusado inteiro.** O núcleo confere a camada antes
     de enviar (decisão 20) e, se o pedido passa dela, não o envia. A pessoa vê uma mensagem clara, que diz que a pergunta
     precisaria mandar à IA mais dados do que a organização permite, e o caso fica no registro, à vista do owner da
@@ -460,7 +497,9 @@ pela VPN dela.
     não é aviso e chega sempre (decisão 51). Ficaram de fora o e-mail com o detalhe completo, que levaria informação
     sensível para fora do mAIg, e os avisos só no console, que ninguém veria a tempo. Abre-se mão de: o mAIg passa a
     enviar e-mail; e uma organização que desliga o e-mail de um papel enfraquece para ele os avisos das decisões 46, 53
-    e 54, que seguem só no console.
+    e 54, que seguem só no console. Depois, os avisos de segurança passaram a chegar sempre (decisão 85).
+    Na onda 1.0, cada aviso tem destinatário fixo, e a lista de configuração e as preferências de aviso chegam na onda
+    1.1 (decisão 126).
 65. **Quem opera a máquina faz a cópia de segurança do cofre e do registro.** Na hospedagem da Maind, a Maind faz a
     cópia; na casa do cliente, a TI do cliente, com uma ferramenta que vem no mAIg. A cópia sai cifrada com a chave de
     cada organização (decisão 57), e cada restauração fica anotada no registro de cada organização (decisão 29).
@@ -468,6 +507,8 @@ pela VPN dela.
     mesmo cifrados, e cada um fazer como quiser, sem ferramenta, que deixaria a cópia sem cifra ou esquecida. Abre-se mão
     de: a TI do cliente ganha mais uma tarefa, e restaurar depende da chave da organização. Como a ferramenta faz e
     restaura a cópia é ponto do arquiteto do mAIg.
+    Foi decidido depois: a cópia leva também o registro da instância e a configuração inteira, e a restauração devolve a
+    instância como estava na data da cópia (decisão 116).
 66. **Uma pessoa que está em duas organizações tem duas contas, uma em cada.** O mesmo e-mail pode aparecer nas duas, e
     cada owner da organização cuida da conta que está na dele. Sair de uma organização não mexe na outra, e, na tela de
     entrada, a pessoa escolhe a organização. O login único vale dentro de cada organização (decisão 40). Mantém as
@@ -492,6 +533,8 @@ pela VPN dela.
     fora dessa janela. Ficaram de fora o suporte nunca ver nada, que deixaria o owner da organização mostrando a tela
     por videochamada, e a equipe da Maind ver sempre a configuração de todas as organizações, que quebraria a decisão
     12. Abre-se mão de: enquanto o acesso dura, a equipe da Maind vê a configuração da organização.
+    Foi decidido depois: na casa do cliente, o suporte da Maind chega ao console pela VPN que a TI do cliente concede,
+    na onda 1.1 (decisão 127).
 69. **Um pedido em andamento quando a ligação cai fica guardado por um tempo curto, como 15 minutos.** Se a ligação
     volta nesse tempo, a resposta chega normalmente; passado o prazo, o mAIg descarta o pedido, e a pessoa vê que a
     ligação caiu e que precisa refazer a pergunta. As tarefas marcadas seguem a regra que já existe: esperam até uma
@@ -508,6 +551,8 @@ pela VPN dela.
     (D-283, D-284 do Horus). Ficaram de fora uma luz por app, que mostraria a mesma queda de jeitos diferentes, e duas
     luzes, uma do mAIg e outra do app, que confundiriam a pessoa. Abre-se mão de: um app que precise mostrar algo só
     dele, como a lentidão de um serviço próprio, faz isso à parte.
+    Foi decidido depois: a luz de estado entra na onda 1.0, e a página de status chega na onda 1.1, com o login do mAIg,
+    só de dentro da rede ou pela VPN (decisão 121).
 71. **Quando algo para e não volta sozinho, o aviso vai para quem resolve.** Se a ligação com a Maind não volta depois
     de alguns minutos, como 5, são avisados quem cuida da instância, a TI do cliente ou a equipe da Maind na hospedagem
     dela, e também a Maind, que vê a queda do outro lado. Se um banco para de responder, ou a IA para por chave recusada
@@ -544,6 +589,9 @@ pela VPN dela.
     sempre, que tiraria a planilha e a origem do número, e todas as saídas pela nuvem do app, que fariam a planilha
     esbarrar no teto e passar pela nuvem da Maind. Abre-se mão de: dá mais configuração, e a planilha baixada sai do
     controle do mAIg, porque fica no computador da pessoa.
+    Foi decidido depois: as duas saídas chegam na onda 1.1 (decisão 95), e, na consulta devolvida à tela, o valor de um
+    filtro que toca uma coluna sensível aparece mascarado (decisão 103). A planilha segue a regra das colunas sensíveis:
+    a coluna marcada sai sempre mascarada (decisões 43 e 111).
 75. **O limite de gasto de IA de cada app avisa antes e trava no teto.** Quando o app chega a 80% do limite, o owner da
     organização é avisado, no console e por e-mail (decisão 64). Ao chegar a 100%, o núcleo recusa os pedidos do app à
     IA, e a pessoa vê uma mensagem clara, até o owner da organização subir o limite, o que ele faz na hora no console,
@@ -551,6 +599,7 @@ pela VPN dela.
     faria do limite uma sugestão, e travar sem aviso antes, que faria o owner da organização descobrir pelo app parado.
     Abre-se mão de: no fim do período, o app pode parar para todos até alguém subir o limite. O que o limite mede e em
     que período vale seguem em aberto.
+    Foi decidido depois: o limite mede dinheiro, vale por app e recomeça a cada mês do calendário (decisão 112).
 76. **Por padrão, o Horus trabalha na camada 1, e a IA não vê os números; só a Análise avançada manda dados à IA.**
     Na pergunta comum, à IA vão só a pergunta e os nomes das tabelas: a IA escreve a consulta, o mAIg a roda no banco e
     monta a resposta, e a IA não vê número nenhum. Quando a pessoa liga, numa pergunta, a Análise avançada do Horus, o
@@ -561,6 +610,8 @@ pela VPN dela.
     depender da camada 2 ou da camada 3 para funcionar, que mandaria dados à IA em toda pergunta. Abre-se mão de: na
     pergunta comum, uma explicação como "por que as vendas caíram" sai mais pobre, e o Horus fica mais difícil de
     construir. Que o Horus responde bem na camada 1 é ponto do arquiteto do mAIg confirmar.
+    No fechamento da primeira versão, a regra foi lida assim, para qualquer app: a camada liberada vale por app e é o
+    teto; cada pedido diz a camada de que precisa, e o pedido acima do teto é recusado inteiro (decisões 20 e 62).
 77. **Só o owner da organização cadastra as pessoas, direto no console; não há convite de dentro dos apps.** Quem usa
     um app e quer chamar um colega pede ao owner da organização por fora, e ele cadastra a pessoa no console. O
     cadastro fica num caminho só, no núcleo (decisão 23), sob a fé pública do owner da organização (decisão 67). Muda o
@@ -568,6 +619,7 @@ pela VPN dela.
     fora o convite pelo app com aprovação do owner da organização, que abriria um segundo caminho para o núcleo cuidar,
     e o convite que vale sem aprovação, que tiraria do owner da organização o controle de quem entra. Abre-se mão de:
     quem quer chamar um colega pede por fora e espera.
+    Foi decidido depois: o cadastro de várias pessoas de uma vez, por uma lista, chega na onda 1.1 (decisão 101).
 78. **O encerramento de uma organização é pedido pelo owner dela ou pela Maind, executado pelo administrador da
     instância e tem volta por 30 dias.** O owner da organização pede no console, ou a Maind pede, quando todos os
     contratos da organização acabaram. O administrador da instância executa, e os owners da organização e o auditor
@@ -576,6 +628,9 @@ pela VPN dela.
     administrador da instância encerrar quando decidisse, que lhe daria uma decisão que é da organização, e encerrar
     sem volta, em que um engano obrigaria a configurar tudo de novo. Abre-se mão de: a configuração fica guardada por
     30 dias, e o ato passa por dois papéis.
+    Foi decidido depois: qualquer owner da organização pede a volta, não importa quem pediu o encerramento, e conta a
+    data do pedido (decisão 115); o encerramento chega inteiro na onda 1.1 (decisão 114); e um pedido de volta à espera
+    de execução segura a desinstalação de um app (decisão 107).
 79. **Uma organização pode ter até dois auditores, e um deles pode ser de fora da empresa.** O auditor de fora, como o
     de uma auditoria externa, recebe um acesso que vence numa data que o owner da organização define, como o fim da
     auditoria. Os dois só leem o registro e não mudam nenhuma configuração (decisão 12). Nomear ou trocar um auditor é
@@ -583,6 +638,8 @@ pela VPN dela.
     auditor só, sempre de dentro, que obrigaria a auditoria externa a pedir ao auditor uma cópia ou uma consulta, e
     auditores sem limite, que deixariam o registro à vista de gente demais. Abre-se mão de: mais uma pessoa lê o
     registro, que tem nomes e o que cada um consultou.
+    Foi decidido depois: na onda 1.0, há um auditor só, de dentro da empresa, e o segundo e o de fora chegam na onda 1.1
+    (decisão 97); o auditor de fora chega ao console pela VPN que a TI do cliente concede (decisão 127).
 80. **O owner da organização e os auditores podem baixar a cópia do registro, num arquivo assinado pelo mAIg.** A
     assinatura prova que a cópia é a original, sem nenhuma alteração. Cada download fica no registro e avisa os outros
     papéis, como todo ato sensível (decisão 54). Fora do mAIg, a cópia fica com quem a baixou, e o registro mostra quem
@@ -595,6 +652,8 @@ pela VPN dela.
     organização nenhuma. Completa a decisão 29, que anota no registro de cada organização o que a toca. Ficaram de fora
     não anotar nada, que deixaria sem prova quem desinstalou e quando, e anotar na Maind, que guardaria lá o histórico
     das instalações de cada cliente. Abre-se mão de: é mais um registro para guardar e proteger.
+    Foi decidido depois: o registro da instância nasce com a instância, com a lista dos atos que anota (decisão 102), e
+    vai na cópia de segurança (decisão 116).
 82. **Instalar o kit de uma organização entra no registro dela.** O kit vale para um app e uma organização, porque a
     contratação é por organização (decisões 10 e 11). Por isso instalá-lo é um ato do administrador da instância que toca
     essa organização e fica anotado no registro dela, como manda a decisão 29, com quem instalou e quando. O registro da
@@ -602,3 +661,345 @@ pela VPN dela.
     inconsistência 14 da avaliação de 10/11/2026. Ficou de fora anotar a instalação do kit no registro da instância, que
     esconderia do auditor da organização quando o kit dela entrou. Abre-se mão de: nada relevante; corrigem-se os
     exemplos que tratavam a instalação do kit como ato sem organização.
+83. **A gestão dos owners da organização passa ao administrador da instância.** É ele quem cadastra, exclui e substitui
+    os owners de cada organização; um owner da organização não cadastra nem retira outro. A troca vale na hora, mas com
+    volta: os owners da organização e os auditores são avisados na hora e, por 48 horas, qualquer um deles pode
+    barrá-la; se alguém barra, ela se desfaz sozinha, e tudo fica no registro da organização (decisão 29). O link de
+    primeiro acesso do owner novo vai direto ao e-mail dele (decisão 51). Substitui a decisão 52 e absorve a 53: a
+    organização sem owner com acesso é só um caso de substituição. Assim, quem rouba a senha de um owner não consegue
+    tirar os outros e ficar sozinho no comando. Ficaram de fora a troca na hora sem volta, que deixaria a organização
+    dependendo da boa-fé de quem administra a instância, e a troca que só vale depois de 48 horas, que manteria por dois
+    dias o acesso de quem sai da empresa. Abre-se mão de: na hospedagem da Maind, quem gere os owners de cada cliente é a
+    equipe da Maind, e o freio é a volta em 48 horas; e um owner retirado com razão pode barrar a própria retirada, se
+    ainda for avisado.
+84. **Na contratação, há por enquanto três tipos de assento: membro, owner da organização e administrador da
+    instância.** Membros e owners da organização são quantos a organização contratar; administradores da instância são
+    no máximo três por instância, sem custo. O limite de três owners por organização da decisão 25 deixa de valer: vale o
+    número de assentos de owner contratados. Os assentos são os do Horus, o primeiro app, e valem por enquanto. Abre-se
+    mão de: quanto mais owners da organização, mais senhas com a chave de tudo, sem a confirmação em dois passos na
+    primeira versão (decisão 50).
+    Foi decidido depois: os administradores da instância também cuidam uns dos outros, até três (decisão 100).
+85. **Os avisos de segurança chegam sempre, e a organização não os desliga.** São eles: a troca de um owner da
+    organização pelo administrador da instância (decisão 83), a suspensão de um app (decisão 46) e os atos sensíveis,
+    que chegam sempre aos auditores (decisão 54). Os outros avisos seguem configuráveis (decisão 64). Além disso, "mudar
+    quem recebe aviso" e "mudar os jeitos de entrar" passam a ser atos sensíveis. Assim, a volta de 48 horas da troca de
+    owner e a conferência do auditor funcionam sempre, e ninguém desliga o auditor para agir escondido. Ficaram de fora
+    só o aviso da troca de owner chegar sempre, que deixaria o owner desligar o e-mail do auditor, e tudo seguir
+    configurável, que faria os freios dependerem de uma configuração. Abre-se mão de: algumas pessoas recebem e-mails
+    que não podem recusar.
+    Foi decidido depois: o aviso de que um app vai ser desinstalado entrou entre os avisos de segurança (decisão 107),
+    e, na onda 1.0, cada aviso tem destinatário fixo (decisão 126).
+86. **A chave privada de todo certificado do mAIg nasce dentro do mAIg e nunca sai dele; a Maind recebe só a chave
+    pública.** A chave privada é o carimbo que assina, por exemplo o passe de cada pessoa (decisão 32); a pública é a
+    parte que qualquer um confere. O mAIg gera o par de chaves, guarda a privada e manda à Maind só a pública, que a
+    Maind importa e atesta, como um cartório que reconhece a firma sem ter a caneta. Vale para o certificado da
+    organização (decisões 28 e 44), o do kit (decisão 56) e o da ligação (decisão 38). Assim, nem a Maind, nem quem a
+    invadir, consegue fabricar o passe de alguém, e a promessa da visão de que a nuvem não fabrica passes passa a ter a
+    decisão por baixo. Ficaram de fora a Maind gerar o carimbo e guardar uma cópia, que permitiria a ela fabricar passes
+    de qualquer cliente, e a Maind gerar e entregar sem cópia, que faria o carimbo passar por ela. Abre-se mão de: se o
+    mAIg perder a chave privada, por exemplo num disco queimado, gera um par novo e pede outro atestado; a Maind não tem
+    como recuperar a chave antiga.
+87. **A cópia de recuperação da chave que cifra o registro e o cofre fica com a própria organização, e nunca com a
+    Maind.** Quando a organização nasce, o owner da organização baixa um código de recuperação e o guarda. Para
+    restaurar a cópia de segurança numa máquina nova (decisão 65), o mAIg pede esse código. A Maind nunca tem cópia, nem
+    na hospedagem dela. A chave é destruída quando nada da organização precisa mais ser lido: com o registro do último
+    app dela, na desinstalação (decisões 15 e 31). Daí em diante, nenhuma cópia de segurança antiga pode ser lida.
+    Assim, a promessa de que a Maind não lê o registro (decisão 57) vale por construção, também na hospedagem dela.
+    Ficaram de fora a Maind guardar a cópia num cofre com duas pessoas, que lhe devolveria a leitura do registro e do
+    cofre, e a cópia dividida entre a organização e a Maind, mais complexa. Abre-se mão de: se a organização perder o
+    código e o disco ao mesmo tempo, perde o registro e as senhas dos bancos, e o cliente sem TI precisa guardar bem esse
+    código.
+88. **Toda versão do módulo de um app é assinada pela Maind, e o mAIg confere a assinatura antes de instalar.** Uma
+    versão sem assinatura, ou alterada no caminho, é recusada. Vale para a primeira instalação e para cada atualização.
+    O administrador da instância continua instalando os apps, como hoje (decisões 10 e 29). Estende ao módulo de cada app
+    a regra que a decisão 39 deu ao próprio mAIg. Assim, ninguém põe um módulo falso dentro da rede do cliente para ler
+    os bancos, e a promessa da visão de que "uma versão sem assinatura é recusada" vale para tudo. Ficaram de fora a
+    assinatura só na primeira instalação, que deixaria entrar uma atualização falsa, e nenhuma assinatura, que faria a
+    segurança do módulo depender do canal de download. Abre-se mão de: a Maind passa a assinar cada versão de cada app.
+89. **Cada organização tem um limite de pedidos, configurado pelo owner da organização, e um painel de alertas no
+    console.** O limite de pedidos diz quantos pedidos uma pessoa ou um app faz num período; acima dele, o núcleo
+    recusa, com mensagem clara. Ele vem com um valor padrão, que o arquiteto do mAIg propõe, e o owner da organização o
+    ajusta no console. Quando uma pessoa ou um app chega perto do limite ou o atinge, o alerta aparece no painel de
+    alertas do console, o cockpit administrativo que reúne os avisos de segurança, e chega também como aviso de segurança
+    (decisão 85). Assim, uma nuvem invadida não leva a base em fatias de 200 linhas sem esbarrar no limite e sem que a
+    organização veja. Completa o teto da resposta (decisão 43), que vale por resposta. Ficaram de fora só reescrever a
+    promessa e um limite fixo da Maind, igual para todos. Abre-se mão de: quem trabalha muito pode esbarrar no limite
+    até o owner da organização ajustá-lo; e o máximo do teto da resposta segue sem número fixo da Maind.
+90. **A lista de saídas do mAIg passa a dizer a verdade, e o e-mail sai pelo servidor de e-mail da própria empresa.**
+    As saídas que a TI do cliente libera são: a do endereço da Maind; a de cada provedor de IA que a organização
+    escolher (decisão 19); a do Google, quando a organização usa a conta Google para entrar, e, na segunda versão, a do
+    provedor de identidade da empresa; e a do servidor de e-mail da própria empresa, que a TI do cliente configura na
+    instalação e por onde saem os links de primeiro acesso e os avisos (decisões 51 e 64). Na hospedagem da Maind, o
+    e-mail sai pelo serviço de e-mail da Maind. A promessa da decisão 51 é ajustada: o link não passa pelas mãos de
+    quem cria o usuário, serve uma vez, e o uso fica no registro; quem opera o servidor de e-mail ainda poderia
+    alcançá-lo, e por isso o sinal de um uso indevido é o owner da organização encontrar o link já usado. Assim, a
+    Maind não fica sabendo quem são os owners e os auditores de cada cliente, e a TI do cliente aprova as saídas reais.
+    Ficaram de fora o e-mail sair pela ligação com a Maind, que mostraria à Maind os papéis e os avisos de cada cliente
+    e calaria o aviso de ligação caída, e a TI escolher entre os dois caminhos. Abre-se mão de: uma saída e uma
+    configuração a mais na casa do cliente, e a promessa deixa de ser "duas saídas".
+    Foi decidido depois: o servidor de e-mail é configurado e testado pelo administrador da instância, na onda 1.0, e
+    sem isso o console não deixa criar organização (decisão 125).
+91. **Na hospedagem da Maind, o banco do cliente aceita conexão só do endereço fixo da Maind.** A TI do cliente, ou o
+    provedor da nuvem dele, libera o banco apenas para esse endereço, com a conversa cifrada e o usuário que só lê
+    (decisão 61). Vale para o banco num serviço de nuvem e para o banco num servidor da empresa. O cliente não instala
+    nada (decisão 9). Ficaram de fora um conector de saída instalado pelo cliente, que tiraria da hospedagem da Maind o
+    "sem instalar nada", e atender só bancos que já estão na nuvem, que limitaria o público dela. Abre-se mão de: o
+    banco fica alcançável pela internet, ainda que por um endereço só, e a promessa de que o banco não fica exposto vale
+    por inteiro só na casa do cliente. Esta decisão responde o que estava com o arquiteto do mAIg na MF-105.
+92. **O mAIg sai em três ondas, para o Horus 2.0 não esperar a governança completa.** A versão 1.0 traz o mínimo para
+    o Horus 2.0 sair: o login pelo mAIg e o passe, a ligação, as permissões, o cofre e o registro cifrados, a camada da IA, o teto e o limite de pedidos, as assinaturas, a gestão dos owners da organização, os avisos de segurança e o painel de alertas, a suspensão de um app e a cópia de segurança. A versão 1.1 traz a governança completa: o cockpit de ativação, os dois auditores, a cópia assinada do registro, o acesso de suporte, a volta do encerramento, a planilha, a página de status, as preferências de aviso e as linhas informadas pelo app. A versão 2.0 sai com o
+    Horus 2.1: os servidores MCP, o login da empresa, a confirmação em dois passos e o fechamento da rede da instância da
+    Maind. Antes de fechar o recorte, o arquiteto do mAIg estima item por item, e o dono da Maind confirma. Detalha a
+    decisão 16. Ficaram de fora pôr tudo o que foi decidido na primeira versão, que atrasaria o Horus 2.0 sem saber
+    quanto, e deixar o arquiteto propor o recorte, que lhe daria uma escolha de produto. Abre-se mão de: os primeiros
+    clientes recebem a governança em duas etapas; e algumas mfs, como a do console, passam a ter partes em duas versões,
+    o que o Horus evitou com a regra de uma mf numa versão só.
+    No fechamento da primeira versão, os nomes foram acertados: a primeira versão sai em duas ondas, a 1.0 e a 1.1, e a
+    segunda versão vem depois; são as três partes que esta decisão chama de versões 1.0, 1.1 e 2.0. O recorte completo,
+    com a onda de cada capacidade, está na decisão 95, e a governança da IA ficou inteira na onda 1.0 (decisão 112).
+93. **O resultado que o mAIg guarda para um painel abrir mais rápido é um cache, e o cache não entra na cópia de
+    segurança.** É uma cópia temporária do resultado de uma consulta, que só serve para não consultar o banco de novo
+    (decisão 35). Ela nunca vai para a cópia de segurança (decisão 65) e só é entregue a quem tem permissão de ver o
+    mesmo dado, como a decisão 35 já previa. Quanto tempo o cache vale e como ele fica protegido enquanto está
+    guardado são pontos do arquiteto do mAIg. Abre-se mão de: depois de uma restauração, o cache recomeça vazio, e os
+    painéis voltam a consultar o banco até ele se refazer.
+94. **A Maind só para um app à mão em três casos, com duas pessoas autorizando.** Os casos são a falta de pagamento
+    depois dos avisos, um incidente de segurança e uma ordem judicial. Duas pessoas da Maind autorizam a ação manual
+    (decisão 13), o motivo fica no registro da organização, e o owner da organização e os auditores recebem na hora um
+    aviso de segurança (decisão 85). Assim, o cliente sabe exatamente quando pode ser parado, e ninguém da Maind para
+    um app sozinho ou por engano. Ficaram de fora parar em qualquer caso, com duas pessoas, que deixaria o cliente sem
+    saber quando pode ser parado, e parar só por incidente de segurança, que deixaria a Maind sem saída para a falta de
+    pagamento e para uma ordem judicial antes de a licença vencer. Abre-se mão de: a Maind não pode parar um app por
+    outro motivo, mesmo que pareça justo.
+
+## Decisões do fechamento da primeira versão (11/11/2026)
+
+Em 11/11/2026, o dono da Maind delegou a um decisor as decisões que faltavam para fechar a documentação da primeira
+versão, na parte que fica na casa do cliente. Elas valem como as outras, e o dono da Maind pode rever qualquer uma.
+
+95. **A primeira versão do mAIg sai em duas ondas, a 1.0 e a 1.1, e a segunda versão vem depois; cada capacidade da casa
+    do cliente tem a onda marcada, inclusive as que a decisão 92 não cita.** A onda 1.0 é o mínimo para o Horus 2.0
+    sair, a onda 1.1 é a governança completa, e a segunda versão do mAIg sai com o Horus 2.1: são as três partes que a
+    decisão 92 chamou de versões 1.0, 1.1 e 2.0. Além do que a decisão 92 cita, entram na onda 1.0: várias organizações
+    na mesma instância, com a criação da organização e do usuário do primeiro owner da organização; a instalação do kit
+    e do app, o handshake contratual, a licença e o app que para no fim do contrato; a ativação automática da
+    organização e de cada app, com a tela do app dizendo o que falta; a consulta ao registro no console, com busca; os
+    atos do administrador da instância anotados no registro da organização; o código de recuperação; a atualização do
+    mAIg e a do módulo de cada app, com a assinatura conferida; o certificado da organização, que se renova sozinho; o
+    passe de agendamento e a espera das tarefas marcadas; o pedido guardado por um tempo curto quando a ligação cai; e o
+    cache dos painéis. Fica para a onda 1.1 a consulta feita ao banco, que volta à tela só com a instrução, junto com a
+    planilha: na onda 1.0, só a resposta pronta sai do mAIg. A onda 1.1 inteira é: o cockpit de ativação; o segundo
+    auditor e o auditor de fora, com acesso que vence; a cópia assinada do registro; retirar um app, apagar a
+    configuração guardada de um app parado e desinstalar, com aviso e prazo; o encerramento de uma organização e a volta
+    em 30 dias; o roteiro de saída do cliente; o acesso de suporte da Maind; a planilha e a consulta devolvida à tela,
+    com a liberação das duas saídas; a página de status; as preferências de aviso e a lista "o que a organização
+    permite"; as linhas "informadas pelo app"; e o cadastro das pessoas em lote. Ficam para a segunda versão os
+    servidores MCP, o login da empresa e a confirmação em dois passos (decisão 92). As capacidades com regra própria
+    levam a onda na decisão delas (decisões 96 a 127), e a marca de cada capacidade está em cada mf, no tópico "O que
+    entra em cada onda". A regra que resume o recorte: a onda 1.0 liga e para; a onda 1.1 desfaz e encerra. Abre-se mão
+    de: a onda 1.0 fica maior do que a lista da decisão 92 deixa ver, e, se a estimativa do arquiteto do mAIg mostrar
+    que um item não cabe, o item volta ao dono da Maind (decisão 92); na onda 1.0, o owner da organização olha app por
+    app para saber o que falta, e a pessoa não vê de onde veio o número.
+96. **Nove regras que as mfs traziam como proposta do PO, ou como ponto de partida a confirmar, passam a valer como
+    decisão.** (1) O owner da organização pausa e retoma um app na organização dele, sem apagar nada. (2) Se o mAIg não
+    consegue anotar a linha no registro, ele recusa o pedido: sem anotar, não atende. (3) O pedido recusado também fica
+    anotado no registro. (4) Os atos do owner da organização e do auditor no console entram no registro: as mudanças de
+    configuração, a nomeação do auditor, as entradas e as consultas ao próprio registro. (5) O owner da organização não
+    nomeia a si mesmo auditor. (6) O mAIg não troca de modelo de IA sozinho quando um provedor falha; o app pode pedir
+    outro modelo da lista dele. (7) Os modelos permitidos e os limites da IA são por app, e não por pessoa. (8) O
+    console é o mesmo programa, com as mesmas telas, na casa do cliente e na hospedagem da Maind. (9) Só o owner da
+    organização configura a organização; o auditor entra no console só para ler o registro e os avisos que recebe e, na
+    onda 1.1, para baixar a cópia assinada. As nove entram na onda 1.0. Abre-se mão de: se o registro tem um problema,
+    os apps param de atender até ele voltar; uma organização pequena precisa de uma segunda pessoa para ser auditora; a
+    empresa não limita no mAIg o gasto de IA de uma pessoa ou de uma área; e nenhuma das duas hospedagens tem tela só
+    dela.
+97. **Na onda 1.0, cada organização tem um auditor só, de dentro da empresa e sem data de vencimento; o segundo auditor
+    e o auditor de fora chegam na onda 1.1.** O auditor de fora é o que tem o acesso que vence numa data (decisão 79).
+    Abre-se mão de: na onda 1.0, uma auditoria externa pede ao auditor da empresa o que precisar ver.
+98. **A primeira versão tem dois jeitos de entrar, usuário e senha e conta Google, os dois na onda 1.0.** Cada
+    organização nasce só com usuário e senha ligados, e o owner da organização liga o Google se quiser. Com o Google
+    fora do ar, quem entra por ele não começa sessão nova, e quem já entrou segue, porque o passe se renova com o mAIg
+    (decisão 37). O login da empresa segue para a segunda versão (decisão 92). Abre-se mão de: o Google é mais um
+    periférico para a TI do cliente liberar e mais um motivo para alguém não conseguir entrar.
+99. **Cada pessoa pede o próprio link de troca de senha na tela de entrada, e a conta fica bloqueada por um tempo depois
+    de várias tentativas erradas.** O link é de uso único e vai direto ao e-mail do cadastro. No bloqueio, a própria
+    pessoa é avisada por e-mail. Vale para todos os papéis. O pedido fica anotado no registro da organização, ou no
+    registro da instância quando quem pede é um administrador da instância (decisão 102). Ninguém vê nem define a senha
+    de outra pessoa. Quem perdeu também o e-mail procura quem cuida do cadastro dele: o owner da organização, para as
+    pessoas (decisão 77); o administrador da instância, para o owner da organização (decisão 83); outro administrador da
+    instância, para o administrador da instância (decisão 100). Entra na onda 1.0. O número de tentativas e o tempo do
+    bloqueio seguem com o arquiteto do mAIg (decisão 50). Abre-se mão de: quem controla a caixa de e-mail de uma pessoa
+    consegue trocar a senha dela, e quem está dentro da rede consegue bloquear por um tempo a conta de outra pessoa.
+100. **Os administradores da instância cuidam uns dos outros: um cadastra e retira outro, até três, e o último não pode
+    ser retirado.** Cada ato fica no registro da instância e avisa os demais (decisão 102). Se nenhum administrador da
+    instância tiver acesso, vale o procedimento da instalação, feito na máquina do mAIg por quem a opera, com o uso
+    anotado no registro da instância. A conta do administrador da instância não tem jeito de entrar nem avisos a
+    configurar na primeira versão: entra sempre por usuário e senha (decisão 24) e recebe os avisos da instância no
+    e-mail dele (decisão 126). Entra na onda 1.0. Como nasce a conta do primeiro administrador da instância e como é o
+    procedimento da instalação são pontos do arquiteto do mAIg. Abre-se mão de: um administrador da instância pode
+    retirar outro sem pedir a ninguém; o freio é o registro e o aviso.
+101. **O cadastro de várias pessoas de uma vez chega na onda 1.1: o owner da organização sobe uma lista no console; na
+    onda 1.0, ele cadastra uma a uma.** O cadastro continua sendo só do owner da organização (decisão 77). Abre-se mão
+    de: quem instalar na onda 1.0 cadastra as pessoas uma a uma.
+102. **O registro da instância nasce com a instância, na onda 1.0, anota os atos que não tocam organização nenhuma e
+    fica guardado enquanto a instância existir.** Os atos: cadastrar e retirar um administrador da instância; o pedido
+    de troca de senha de um administrador da instância; o uso do procedimento da instalação; configurar e testar o
+    servidor de e-mail; instalar ou trocar o certificado do endereço do mAIg; fazer e restaurar a cópia de segurança; e,
+    na onda 1.1, desinstalar um app. Só os administradores da instância o leem (decisão 81), e ele vai na cópia de
+    segurança (decisão 116). Abre-se mão de: é mais um registro para guardar e proteger desde o primeiro dia.
+103. **No registro e na consulta devolvida à tela, o valor de um filtro aparece mascarado quando o filtro toca uma
+    coluna sensível.** Os outros valores, como o período e a cidade, aparecem. Vale no registro desde a onda 1.0 e na
+    consulta devolvida à tela na onda 1.1. Abre-se mão de: quem lê o registro vê que houve um filtro por CPF, mas não
+    qual CPF, e a regra depende de a coluna estar marcada como sensível (decisão 111).
+104. **A linha do registro "informada pelo app" só tem campos fixos: o tipo do ato, o alvo, a hora e a pessoa.** O tipo
+    do ato vem de uma lista que o app declara ao ser instalado; o alvo vem por um código; a pessoa, o núcleo tira do
+    passe; e o núcleo recusa o que foge disso. Chega na onda 1.1 (decisão 92). Como o app declara a lista dos tipos de
+    ato é ponto do arquiteto do mAIg. Abre-se mão de: a linha diz o ato e o código do alvo, como "baixou a conversa
+    4812", e não o assunto.
+105. **A primeira versão não envia o registro para sistemas de fora e não tem alerta automático de comportamento
+    estranho.** A saída do registro é a cópia assinada, na onda 1.1 (decisão 80), e o único alerta automático é o do
+    limite de pedidos (decisão 89). As duas capacidades não entram na primeira versão, e nenhuma versão está marcada
+    para elas. Abre-se mão de: a empresa que tem uma central de segurança própria não recebe as linhas do mAIg nela.
+106. **Retirar um app, apagar a configuração guardada de um app parado e desinstalar chegam juntos na onda 1.1, com a
+    cópia assinada do registro; na onda 1.0, um app só para, e nenhum registro é excluído.** Na onda 1.0, um app para
+    pela pausa do owner da organização, pela suspensão do administrador da instância, pelo fim da licença ou pela ação
+    manual da Maind (decisão 94), e o owner da organização continua podendo apagar, um a um, o cadastro de um banco e a
+    chave de uma IA. Os três gestos esperam a cópia assinada porque a retirada dá ao owner da organização o aviso e o
+    direito à cópia do registro (decisão 21), e a cópia é da onda 1.1 (decisões 80 e 92). Abre-se mão de: na onda 1.0, o
+    app que a organização não quer mais fica pausado, e o instalado por engano continua instalado; a configuração e o
+    registro seguem guardados.
+107. **Toda desinstalação começa com um aviso de segurança, com prazo, a toda organização que tem registro naquele app,
+    e só se conclui no fim do prazo, se nenhuma organização ativa tiver o app.** O aviso vai aos owners da organização e
+    aos auditores, e alcança as organizações que retiraram o app e as encerradas que o tinham; todas podem baixar a
+    cópia assinada dentro do prazo. A organização encerrada não segura a desinstalação, nem dentro dos 30 dias da volta
+    (decisão 31). O que segura é o pedido de volta: enquanto houver um pedido de volta à espera de execução, o console
+    não conclui a desinstalação; a volta é executada primeiro, e a organização que voltou segura a desinstalação como
+    qualquer outra (decisão 21). A organização encerrada que não pede a volta dentro do prazo do aviso ainda pode voltar
+    depois, dentro dos 30 dias, e a volta devolve só o que ainda existir. Chega na onda 1.1. O tamanho do prazo é
+    número, fora do escopo do fechamento. Abre-se mão de: toda desinstalação demora no mínimo o prazo do aviso, e a
+    organização encerrada que deixa passar o prazo pode voltar sem aquele app e sem o registro dele.
+108. **Ninguém retira um app no lugar do owner da organização: o impasse da organização que não responde se resolve pela
+    troca do owner da organização ou pelo encerramento da organização.** A troca é a do owner da organização que não
+    responde (decisão 83), e o encerramento é o que o owner da organização ou a Maind pedem (decisão 78). A retirada à
+    força não entra na primeira versão; os dois caminhos valem na onda 1.1, quando retirar e encerrar existem (decisões
+    106 e 114). Abre-se mão de: os dois caminhos levam dias, e o app fica instalado, sem uso, enquanto isso.
+109. **A regra de versão única é por prazo, para o mAIg e para o módulo de cada app: a TI do cliente adia a versão nova
+    dentro do prazo e, vencido o prazo, o que ficou velho deixa de atender, com o aviso "Atualização necessária".** Com
+    o mAIg vencido, todos os apps recusam a conversa (decisão 45); com o módulo de um app vencido, só aquele app para. A
+    contagem de versões que convivem sai do texto das mfs. Entra na onda 1.0. Os dias do prazo do módulo são número,
+    fora do escopo do fechamento; enquanto a Maind não disser outro, valem os da decisão 45. Como um mAIg novo conversa
+    com um módulo antigo dentro do prazo é ponto do arquiteto do mAIg. Abre-se mão de: o app com o módulo atrasado para
+    até a TI do cliente dar o aval.
+110. **A primeira versão só lê bancos de tabelas consultados por SQL, de uma lista única do mAIg, igual para todos os
+    apps.** A lista é feita dos tipos que os clientes de hoje do primeiro app já usam. O banco de um tipo fora da lista
+    é recusado no cadastro, com mensagem clara, e um tipo novo entra por versão nova do mAIg. Os nomes da lista são fato
+    que o arquiteto do mAIg levanta e escreve na mf dos bancos da empresa. Outros tipos de fonte, como bancos de
+    documentos, arquivos, planilhas e serviços, não entram. Entra na onda 1.0. Abre-se mão de: a empresa cujo dado mora
+    noutro tipo de fonte não usa o mAIg na primeira versão, e o cliente novo com um banco fora da lista espera uma
+    versão.
+111. **O núcleo sugere as colunas sensíveis de cada banco, já marcadas, e o owner da organização confere no cadastro do
+    banco e marca ou desmarca.** Marcar ou desmarcar uma coluna sensível é ato sensível: fica no registro e avisa os
+    outros owners da organização e o auditor (decisão 54). A coluna marcada sai sempre mascarada, para todos os apps
+    (decisão 43). Como o núcleo monta e refaz a sugestão é ponto do arquiteto do mAIg. Entra na onda 1.0. Abre-se mão
+    de: o cadastro do banco ganha um passo de conferência, e a coluna que o núcleo não sugerir e o owner da organização
+    não marcar sai às claras.
+112. **A governança da IA entra inteira na onda 1.0: as chaves dos provedores, a lista de modelos por app, o limite de
+    gasto e o custo por app; o limite mede dinheiro, vale por app e recomeça a cada mês do calendário.** O mAIg avisa
+    aos 80% e recusa aos 100% (decisão 75), e o owner da organização vê no console o consumo e o custo de toda a IA da
+    organização. As chaves, os modelos, os limites e o custo já estavam no núcleo da primeira versão (decisão 16), e a
+    divisão em ondas não os moveu (decisão 92). Como o mAIg calcula o custo é ponto do arquiteto do mAIg. Abre-se mão
+    de: o limite depende de o mAIg calcular bem o custo, e a onda 1.0 fica maior.
+113. **Um total calculado sobre poucas linhas conta como linha de dados e só vai ao provedor de IA com o app na camada
+    3.** Na camada 2, o pedido é recusado inteiro (decisão 62), e a pessoa é avisada do motivo. Quantas linhas são
+    "poucas" é número que o arquiteto do mAIg propõe. Entra na onda 1.0. Abre-se mão de: na camada 2, algumas perguntas
+    ficam sem resposta da IA.
+114. **O encerramento de uma organização chega inteiro na onda 1.1: o pedido, a execução e a volta em 30 dias.** Na onda
+    1.0, a organização que deixa de usar o mAIg fica com os apps pausados ou parados e com a configuração guardada. As
+    regras do encerramento não mudam (decisões 31 e 78). Abre-se mão de: uma organização criada por engano ou abandonada
+    segue ocupando a instância até a onda 1.1.
+115. **Qualquer owner da organização pede a volta do encerramento no console, dentro dos 30 dias, não importa quem pediu
+    o encerramento.** O administrador da instância executa a volta, e os owners da organização e os auditores são
+    avisados. O owner da organização não recusa antes um encerramento pedido pela Maind: a volta é o caminho de quem
+    discorda. Encerrada a organização, os owners da organização e os auditores continuam entrando no console: todos para
+    ler o registro (decisão 31), e os owners da organização também para pedir a volta. As pessoas que usam os apps só
+    voltam a entrar depois da volta. O app cujo contrato acabou volta parado (decisão 56). Conta a data do pedido: o
+    pedido feito dentro dos 30 dias vale mesmo executado depois, e a configuração fica guardada até a volta ser
+    executada. Chega na onda 1.1. Abre-se mão de: a Maind pode pedir um encerramento e ver a organização voltar, com os
+    apps parados, e a configuração pode ficar guardada além dos 30 dias.
+116. **A cópia de segurança leva o cofre, o registro de cada organização, o registro da instância e a configuração
+    inteira; só o cache dos painéis fica de fora.** A configuração inteira são as organizações, os apps, as pessoas, as
+    permissões e as regras da IA. O painel da instância mostra a data da última cópia. A restauração devolve a instância
+    como estava na data da cópia, e a TI do cliente não refaz configuração à mão. Cada organização só volta com o código
+    de recuperação dela (decisão 87): a organização sem o código fica sem restaurar, e as outras voltam. O que mudou
+    depois da data da cópia se perde, inclusive linhas do registro. Cada restauração fica anotada no registro de cada
+    organização (decisões 29 e 65) e no registro da instância (decisão 102). Se a restauração precisar de um atestado
+    novo da Maind para o certificado de uma organização (decisão 86), o mAIg o pede sozinho, pela ligação, e o painel da
+    instância mostra o estado de cada organização até a volta completa. Entra na onda 1.0. Como a ferramenta cifra cada
+    parte e se a chave do certificado entra na cópia são pontos do arquiteto do mAIg. Abre-se mão de: a cópia passa a
+    guardar os nomes e os e-mails das pessoas, cifrados, e fica maior.
+117. **A primeira versão não leva uma organização de uma instância para outra, nem da hospedagem da Maind para a casa do
+    cliente, nem o contrário, e nenhuma versão está marcada para isso.** Quem muda começa uma organização nova e a
+    configura de novo. O registro antigo fica na instância antiga, até a desinstalação do app nela (decisão 15). A
+    capacidade não entra. Abre-se mão de: o cliente que começa num lugar e muda para outro deixa o registro antigo na
+    instância antiga, e, se um cliente pedir a mudança, a ferramenta será uma decisão nova do dono da Maind.
+118. **A saída do cliente não tem gesto próprio: é um roteiro, com os gestos que já existem.** O roteiro: os owners da
+    organização e os auditores baixam a cópia assinada do registro; os apps são retirados, e as organizações,
+    encerradas; por fim, a TI do cliente apaga a máquina e as cópias de segurança. O mAIg não atesta que tudo foi
+    apagado. O roteiro vale na onda 1.1, quando existem a cópia assinada, a retirada e o encerramento. Na onda 1.0, não
+    há saída com prova: os apps param com o fim da licença, e a máquina é do cliente; se a TI do cliente a apaga, o
+    registro vai junto, sem cópia assinada. Quem quer levar a prova espera a onda 1.1, ou guarda a máquina ou a cópia de
+    segurança, que só abre com o código de recuperação (decisão 87). Abre-se mão de: a saída não tem comprovante.
+119. **O painel da instância mostra o estado, as versões e as pendências da instalação e, de cada organização, só
+    contagens, sem nomes.** Os únicos nomes que o administrador da instância vê são os dos owners da organização, porque
+    é ele quem os gere (decisão 83). O painel mostra também a data da última cópia de segurança e o estado da
+    restauração (decisão 116), a data do vencimento do certificado do endereço (decisão 120), a lista do que a instância
+    manda à Maind (decisão 123) e a falha de envio de e-mail (decisão 125). Entra na onda 1.0. Abre-se mão de: a TI do
+    cliente não consegue, pelo painel, dizer quem são as pessoas de uma organização.
+120. **A TI do cliente escolhe o nome do endereço do mAIg na rede dela e instala o certificado desse endereço, na
+    instalação.** O mAIg avisa os administradores da instância antes de o certificado vencer, e o painel da instância
+    mostra a data. É outro certificado, diferente do certificado da organização, que a Maind atesta (decisões 28 e 44).
+    O tipo do certificado do endereço e onde nasce a chave dele são pontos do arquiteto do mAIg, que confere a regra da
+    chave privada (decisão 86). Entra na onda 1.0. Abre-se mão de: a instalação ganha um passo que exige alguém da TI do
+    cliente, e, se o certificado vence sem ser trocado, os navegadores recusam o endereço e ninguém entra.
+121. **A luz de estado, igual em todos os apps, entra na onda 1.0, com três cores e sempre com texto; a página de status
+    chega na onda 1.1, com o login do mAIg.** A luz diz "no ar", "instável" ou "fora do ar" e aparece também na tela de
+    entrada, antes do login. Com a ligação fora ou a versão vencida, a pessoa vê um aviso próprio, e não um erro; o
+    aviso "Atualização necessária" faz parte (decisão 109). A página de status só abre de dentro da rede ou pela VPN, e
+    mostra a cada pessoa o estado da ligação e dos apps da organização dela (decisão 70) e as quedas passadas, sem nome
+    de pessoa nem de banco. Abre-se mão de: na onda 1.0, quem quer o detalhe de uma queda pergunta a quem cuida da
+    instância; na onda 1.1, quem não tem conta ou não consegue entrar vê só a luz.
+122. **A primeira versão não tem modo sem ligação: a empresa que não libera a saída da rede até a Maind não usa o mAIg
+    na própria rede.** A ligação parte sempre do mAIg (decisão 6), e sem ela não há login, licença nem atualização. O
+    modo sem ligação não entra, e nenhuma versão está marcada para ele. Abre-se mão de: esse cliente fica sem caminho na
+    casa dele.
+123. **Além do que os apps precisam para funcionar, a instância manda à Maind só o mínimo de operação: a versão do mAIg
+    e a dos módulos, o estado da ligação e o estado da licença de cada app.** Nunca vai dado, nome de pessoa, consulta
+    nem mensagem de erro com valores. A lista fica escrita na documentação e à vista da TI do cliente no painel da
+    instância. O que os apps precisam para funcionar são os pedidos e as respostas dos apps, a troca do código pelo
+    passe, o download das versões novas, a renovação do certificado da organização e a conferência da licença. Entra na
+    onda 1.0. Abre-se mão de: a Maind sabe menos quando algo falha, e o suporte depende de alguém do cliente mostrar a
+    tela, na onda 1.0, ou do acesso de suporte, na onda 1.1.
+124. **Quando a resposta passa do teto, o núcleo recusa a resposta inteira, com mensagem clara, e nunca entrega um
+    resultado parcial como se fosse inteiro.** A mensagem diz o tamanho da resposta e o teto. A pessoa refaz o pedido
+    com um filtro ou pede um total, ou o owner da organização sobe o teto (decisão 43). A recusa fica no registro, com a
+    contagem (decisões 12 e 58). A consulta que passa do limite de tempo ou de linhas (decisão 61) é interrompida, e o
+    pedido falha com mensagem clara. Entra na onda 1.0. Abre-se mão de: a pessoa não recebe nem as primeiras linhas.
+125. **Na onda 1.0, o administrador da instância configura o servidor de e-mail da empresa e faz um envio de teste; sem
+    isso, o console não deixa criar organização.** O painel da instância mostra quando um envio falha. O link de
+    primeiro acesso (decisão 51), o link de troca de senha (decisão 99) e os avisos (decisão 126) saem por esse
+    servidor. Abre-se mão de: a instalação ganha um passo obrigatório, e a empresa sem servidor de e-mail próprio
+    precisa de um.
+126. **Na onda 1.0, cada aviso tem destinatário fixo, aparece sempre no console e vai por e-mail, sem dado nenhum; a
+    lista "o que a organização permite" e as preferências de aviso chegam na onda 1.1.** Os destinatários: os avisos de
+    segurança vão aos owners da organização e ao auditor; a queda de um banco e de uma IA, o limite de gasto, a tarefa
+    marcada que parou e o fim do contrato vão aos owners da organização; o certificado da organização perto de vencer
+    vai aos owners da organização e aos administradores da instância; e os avisos da instância vão a todos os
+    administradores da instância. Os avisos da instância são a ligação fora, a versão nova à espera de aval, o prazo de
+    adiamento perto do fim, a falha de envio de e-mail e o certificado do endereço perto de vencer. Abre-se mão de: na
+    onda 1.0, ninguém desliga nem redireciona um aviso.
+127. **Na onda 1.0, a equipe da Maind não entra no console da casa do cliente; na onda 1.1, o suporte da Maind e o
+    auditor de fora chegam pela VPN que a TI do cliente concede.** Na onda 1.0, quem mostra a tela à Maind é o owner da
+    organização ou a TI do cliente. Na onda 1.1, ao ligar o acesso de suporte (decisão 68) ou cadastrar um auditor de
+    fora (decisão 79), o console avisa o owner da organização de que a pessoa precisa da VPN. Abre-se mão de: a TI do
+    cliente precisa dar VPN a uma pessoa de fora, e quem não quiser fica sem auditor de fora e sem suporte com tela; na
+    onda 1.0, o suporte é mais lento.

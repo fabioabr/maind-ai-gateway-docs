@@ -2,7 +2,7 @@
 
 > O mAIg tem 12 macro funcionalidades (mf): 10 na primeira versão e 2 na segunda. Este mapa diz quais são, para quem cada uma entrega valor, em que versão entra e do que depende, e liga cada uma às decisões do dono da Maind.
 
-Situação: rascunho do PO para o dono da Maind revisar · Data: 08/11/2026 · Revisado em 10/11/2026
+Situação: rascunho do PO para o dono da Maind revisar · Data: 08/11/2026 · Revisado em 11/11/2026
 
 ## O que é uma macro funcionalidade
 
@@ -39,7 +39,8 @@ A classe diz o peso da mf para a versão: **essencial** é a que, sem ela, a ver
 - **Público.** O cliente do Horus cuja TI exige segurança rígida, e a própria Maind, que hospeda o mAIg para os clientes que preferem não instalar nada.
 - **Quando sai.** Junto com a versão 2.0 do Horus, no mesmo planejamento que o Horus tinha para o middleware (decisão 16).
 - **Prova de valor (proposta do PO; o dono da Maind ainda não a confirmou).** Uma demonstração: a TI de um cliente de segurança rígida instala o mAIg, libera só as saídas combinadas (a da Maind e a do provedor de IA da organização), e uma pessoa pergunta ao Horus sobre um banco interno e recebe a resposta, com o pedido anotado no registro, sem que nenhuma porta de entrada tenha sido aberta e sem que nenhum app tenha visto a senha do banco. Não há meta em número: o dono da Maind decidiu que os sinais dos objetivos vêm depois do primeiro cliente (decisão 18).
-- **Fica de fora.** Os servidores MCP e o login da empresa (segunda versão); apps de outras empresas e sistemas do próprio cliente (decisão 8); a venda com a marca de outra empresa (decisão 7); o preço em reais.
+- **Em duas ondas (decisões 92 e 95).** A primeira versão sai em duas ondas, a 1.0 e a 1.1, e a segunda versão vem depois. A onda 1.0 traz o mínimo para o Horus 2.0 sair: o login pelo mAIg, por usuário e senha e pela conta Google, e o passe; a ligação, com o pedido guardado por um tempo curto quando ela cai; as permissões; o cofre e o registro cifrados, com a consulta ao registro no console, o registro da instância e um auditor por organização, de dentro da empresa; a governança da IA inteira, com as chaves, os modelos, as camadas, o limite de gasto e o custo; o teto e o limite de pedidos; as assinaturas; várias organizações na mesma instância; a instalação do kit e do app, o handshake contratual e a licença; a ativação automática da organização e de cada app; a gestão dos owners da organização; os avisos de segurança, com destinatário fixo, e o painel de alertas; pausar, suspender e atualizar um app; a atualização do mAIg; a luz de estado; o cache dos painéis; e a cópia de segurança, com a restauração. A onda 1.1 traz a governança completa: o cockpit de ativação; o segundo auditor e o auditor de fora da empresa, com acesso que vence numa data; a cópia assinada do registro; retirar um app, apagar a configuração guardada de um app parado e desinstalar um app, com o aviso e o prazo; o encerramento de uma organização e a volta em 30 dias; o roteiro de saída do cliente; o acesso de suporte da Maind; a planilha e a consulta devolvida à tela, com a liberação das duas saídas; a página de status; as preferências de aviso e a lista "o que a organização permite"; as linhas "informadas pelo app"; e o cadastro das pessoas em lote. A regra que resume o recorte: a onda 1.0 liga e para; a onda 1.1 desfaz e encerra. Na onda 1.0, nenhum app é retirado nem desinstalado, nenhuma organização é encerrada e nenhum registro é excluído. A onda de cada capacidade está em cada mf, no tópico "O que entra em cada onda". A estimativa item por item do arquiteto do mAIg continua depois do fechamento da documentação, e o item que não couber na onda 1.0 volta ao dono da Maind.
+- **Fica de fora.** Para a segunda versão: os servidores MCP, o login da empresa e a confirmação em dois passos; o fechamento da rede da instância da Maind fica para a segunda versão ou depois (decisão 92). Não entram na primeira versão, e não têm versão marcada: enviar o registro para sistemas de fora e os alertas automáticos de comportamento estranho (decisão 105); a retirada de um app no lugar do owner da organização (decisão 108); a leitura de fontes que não sejam bancos de tabelas consultados por SQL, e a gravação nos bancos (decisões 5 e 110); limites e modelos de IA diferentes por pessoa (decisão 96); a mudança de uma organização para outra instância ou hospedagem (decisão 117); o funcionamento sem a ligação com a Maind (decisão 122); e a regra de quem vê o quê dentro de um banco, pessoa a pessoa, que é de cada app (decisões 60 e 73). Também ficam de fora: apps de outras empresas e sistemas do próprio cliente (decisão 8); a venda com a marca de outra empresa (decisão 7); o preço em reais.
 
 As dez mfs são essenciais, porque cada uma sustenta um pedaço da promessa: sem a segurança (`MF-101`) e o registro (`MF-102`) não há controle; sem a contratação (`MF-103`) e a gestão dos apps (`MF-104`) o Horus não entra; sem os bancos (`MF-105`) e a IA (`MF-106`) não há o que governar; sem as organizações (`MF-107`) o mAIg não atende a hospedagem da Maind; sem a conexão para fora (`MF-108`) a TI recusa; sem a execução isolada (`MF-109`) o ciclo da IA do Horus não roda dentro da casa do cliente; e sem o console (`MF-110`) ninguém configura nada.
 
@@ -159,6 +160,53 @@ Quase toda mf tem uma tela no console (`MF-110`). A dependência do console só 
 | 80: o owner da organização e os auditores podem baixar a cópia do registro, num arquivo assinado pelo mAIg | `MF-102`, `MF-104` |
 | 81: a instância tem um registro próprio, onde só se acrescenta, para os atos que não tocam organização nenhuma, como desinstalar um app | `MF-102`, `MF-104`, `MF-107` |
 | 82: instalar o kit de uma organização entra no registro dela | `MF-102`, `MF-103`, `MF-110` |
+| 83: a gestão dos owners da organização passa ao administrador da instância, e a troca vale na hora, com volta em 48 horas | `MF-101`, `MF-102`, `MF-103`, `MF-107`, `MF-110` |
+| 84: há por enquanto três tipos de assento: membro e owner da organização, quantos a organização contratar, e administrador da instância, até três, sem custo | `MF-101`, `MF-107`, `MF-110`, `MF-112` |
+| 85: os avisos de segurança (troca de owner, suspensão de app e atos sensíveis aos auditores) chegam sempre, e a organização não os desliga | `MF-102`, `MF-110`, `MF-104`, `MF-101` |
+| 86: a chave privada de todo certificado do mAIg nasce nele e nunca sai; a Maind recebe e atesta só a chave pública | `MF-101`, `MF-103`, `MF-107`, `MF-108`, `MF-110` |
+| 87: a cópia de recuperação da chave que cifra o registro e o cofre fica com a organização, nunca com a Maind | `MF-102`, `MF-105`, `MF-107`, `MF-101` |
+| 88: toda versão do módulo de um app é assinada pela Maind e conferida pelo mAIg antes de instalar | `MF-104`, `MF-109`, `MF-110` |
+| 89: cada organização tem um limite de pedidos, configurado pelo owner da organização, e um painel de alertas no console | `MF-109`, `MF-110`, `MF-102` |
+| 90: a lista de saídas inclui o Google e o servidor de e-mail da empresa, por onde sai o e-mail; na hospedagem da Maind, o serviço de e-mail da Maind | `MF-108`, `MF-101`, `MF-110` |
+| 91: na hospedagem da Maind, o banco do cliente aceita conexão só do endereço fixo da Maind, cifrada e com o usuário que só lê | `MF-105`, `MF-107`, `MF-108` |
+| 92: a primeira versão do mAIg sai em duas ondas: a 1.0, o mínimo para o Horus 2.0, e a 1.1, a governança completa; a segunda versão vem depois, com o Horus 2.1 | as versões deste mapa, `MF-110` |
+| 93: o resultado guardado para um painel abrir mais rápido é um cache, que não entra na cópia de segurança | `MF-109`, `MF-107` |
+| 94: a Maind só para um app à mão por falta de pagamento depois dos avisos, incidente de segurança ou ordem judicial, com duas pessoas autorizando | `MF-103`, `MF-104`, `MF-102` |
+| 95: o recorte completo da primeira versão: duas ondas, a 1.0 e a 1.1, e a segunda versão depois | `MF-101`, `MF-102`, `MF-103`, `MF-104`, `MF-105`, `MF-106`, `MF-107`, `MF-108`, `MF-109`, `MF-110` |
+| 96: nove regras que as mfs traziam como proposta passam a valer como decisão | `MF-101`, `MF-102`, `MF-104`, `MF-106`, `MF-110` |
+| 97: na onda 1.0, um auditor só, de dentro da empresa; o segundo e o de fora na onda 1.1 | `MF-101`, `MF-102`, `MF-110` |
+| 98: dois jeitos de entrar na onda 1.0: usuário e senha e conta Google | `MF-101`, `MF-108`, `MF-110` |
+| 99: senha esquecida: cada pessoa pede o próprio link; bloqueio depois de várias tentativas erradas | `MF-101`, `MF-102`, `MF-110` |
+| 100: os administradores da instância cuidam uns dos outros, até três | `MF-101`, `MF-102`, `MF-110` |
+| 101: o cadastro das pessoas em lote chega na onda 1.1 | `MF-101`, `MF-110` |
+| 102: o registro da instância nasce com a instância, na onda 1.0 | `MF-102`, `MF-107`, `MF-110` |
+| 103: o valor de um filtro aparece mascarado quando o filtro toca uma coluna sensível | `MF-102`, `MF-108`, `MF-109` |
+| 104: a linha do registro "informada pelo app" só tem campos fixos | `MF-102`, `MF-103`, `MF-110` |
+| 105: o registro não vai para sistemas de fora e não tem alerta de comportamento estranho | `MF-102` |
+| 106: retirar, apagar a configuração guardada e desinstalar chegam juntos na onda 1.1 | `MF-102`, `MF-104`, `MF-110` |
+| 107: toda desinstalação começa com um aviso de segurança, com prazo | `MF-102`, `MF-104`, `MF-107` |
+| 108: ninguém retira um app no lugar do owner da organização | `MF-104` |
+| 109: a regra de versão única é por prazo, para o mAIg e para o módulo de cada app | `MF-103`, `MF-104`, `MF-107`, `MF-108` |
+| 110: a primeira versão só lê bancos de tabelas consultados por SQL, de uma lista única | `MF-105` |
+| 111: o núcleo sugere as colunas sensíveis, e o owner da organização confere | `MF-101`, `MF-105`, `MF-109`, `MF-110` |
+| 112: a governança da IA entra inteira na onda 1.0; o limite mede dinheiro, por app e por mês | `MF-106`, `MF-110` |
+| 113: um total sobre poucas linhas conta como linha de dados | `MF-106` |
+| 114: o encerramento de uma organização chega inteiro na onda 1.1 | `MF-107`, `MF-110` |
+| 115: qualquer owner da organização pede a volta do encerramento, dentro dos 30 dias | `MF-101`, `MF-107`, `MF-110` |
+| 116: a cópia de segurança leva a configuração inteira; a restauração devolve a instância como estava | `MF-102`, `MF-107`, `MF-110` |
+| 117: a primeira versão não muda uma organização de instância nem de hospedagem | `MF-107` |
+| 118: a saída do cliente é um roteiro, com os gestos que já existem | `MF-107`, `MF-110` |
+| 119: o painel da instância mostra a instalação e, de cada organização, só contagens | `MF-101`, `MF-102`, `MF-107`, `MF-110` |
+| 120: a TI do cliente escolhe o nome do endereço do mAIg e instala o certificado dele | `MF-101`, `MF-107`, `MF-110` |
+| 121: a luz de estado entra na onda 1.0; a página de status, com login, na onda 1.1 | `MF-108`, `MF-109`, `MF-110` |
+| 122: a primeira versão não tem modo sem ligação | `MF-107`, `MF-108` |
+| 123: o que a instância manda à Maind: só o mínimo de operação | `MF-107`, `MF-108`, `MF-110` |
+| 124: a resposta acima do teto é recusada inteira; a consulta acima do limite é interrompida | `MF-105`, `MF-109` |
+| 125: o servidor de e-mail da empresa é configurado e testado na onda 1.0 | `MF-101`, `MF-107`, `MF-110` |
+| 126: na onda 1.0, cada aviso tem destinatário fixo; as preferências chegam na onda 1.1 | `MF-102`, `MF-103`, `MF-105`, `MF-106`, `MF-108`, `MF-110` |
+| 127: a Maind e o auditor de fora chegam ao console pela VPN, na onda 1.1 | `MF-101`, `MF-110` |
+
+As decisões 95 a 127 foram tomadas em 11/11/2026 por um decisor, por delegação do dono da Maind, no fechamento da primeira versão. Elas valem como as outras, e o dono da Maind pode rever qualquer uma.
 
 ## O que não virou mf, e por quê
 
@@ -167,7 +215,7 @@ São partes de uma mf, e não valor com vida própria:
 - o **estado e as versões** de cada instância, que o administrador da instância vê: parte da `MF-107`;
 - a **compatibilidade entre versões** do mAIg e dos apps: parte da `MF-104`;
 - o **aviso de fim de contrato**: parte da `MF-103`;
-- a **luz de estado e a página de status** que o Horus mostra: são do app, e não do mAIg;
+- a **luz de estado e a página de status** que cada app mostra: são do mAIg, iguais para todos os apps, e parte da `MF-108` (decisão 70); a luz entra na onda 1.0, e a página, na onda 1.1 (decisão 121);
 - a **atualização do próprio mAIg**: parte da `MF-107`.
 
 ## O que ainda está em aberto
@@ -175,6 +223,7 @@ São partes de uma mf, e não valor com vida própria:
 - Como medir cada objetivo: fica para depois do primeiro cliente (decisão 18). O dono da Maind decide.
 - Quais apps entram depois do Horus e em que ordem. O Maind Doc é só um exemplo. O dono da Maind decide.
 - O preço em reais e como a Maind reparte o custo do mAIg entre os apps (decisão 17). O dono da Maind, com o comercial, decide.
+- A estimativa, item por item, do que cabe na onda 1.0 e na onda 1.1 (decisão 92). O recorte está fechado na documentação (decisão 95). A estimativa do arquiteto do mAIg continua depois desse fechamento, sem segurá-lo, e o item que não couber na onda 1.0 volta ao dono da Maind.
 
 Os pontos que pertencem a uma mf ficam descritos por inteiro nela, na seção "O que ainda falta decidir". Os 51 pontos das 12 mfs estão listados, com as decisões que o PO tomou ao escrevê-las, em [`decisoes-do-po-para-discutir.md`](decisoes-do-po-para-discutir.md).
 

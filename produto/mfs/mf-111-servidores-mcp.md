@@ -12,6 +12,8 @@ O owner da organização cadastra no mAIg os servidores MCP da empresa, libera u
 
 **Por que existe.** O banco de dados não guarda tudo o que a empresa sabe. Parte está em sistemas internos, como o de estoque ou o de chamados, e em consultas e regras que a TI do cliente já montou em volta deles. Uma ferramenta que consulta esses sistemas dá acesso às informações da empresa. Por isso ela fica no núcleo do mAIg, num lugar só e sob o controle do cliente, pela mesma regra dos bancos e da IA (decisão 5).
 
+**Em que onda.** Esta mf fica inteira para a segunda versão do mAIg. A primeira versão sai em duas ondas, a 1.0 e a 1.1, e a segunda versão vem depois: nada desta mf entra na onda 1.0 nem na onda 1.1 (decisões 16 e 95). As regras que o texto traz como ponto de partida do Horus, com a marca de que o mAIg ainda confirma, ficam para o fechamento da segunda versão, e não seguram o fechamento da primeira.
+
 ## Quem ganha
 
 - **Owner da organização.** É quem mais ganha. Amplia o que os apps sabem responder sem pedir à Maind uma ligação nova com cada sistema: cadastra o servidor, libera as ferramentas de leitura e escolhe os apps que as usam. Em troca, responde pela escolha, porque é ele quem declara o que é leitura.
@@ -50,7 +52,7 @@ O owner da organização cadastra no mAIg os servidores MCP da empresa, libera u
 
 **Quem é quem.** A **empresa**, a companhia cliente, constrói o servidor e decide o que ele oferece. A **organização**, o espaço do cliente dentro da instância do mAIg, é onde o servidor é cadastrado. Como nada se herda da organização vizinha, ele é cadastrado em cada organização que vai usá-lo (decisão 9).
 
-**Por que é assim.** É a regra do núcleo: nenhum app toca uma senha de banco nem uma chave de IA, e todo pedido passa pelo mAIg, que confere a permissão e anota no registro (decisão 5). O resultado fica dentro de casa: o módulo do app, a parte dele que roda isolada dentro do mAIg, usa o que a ferramenta devolveu, e para fora vai a resposta pronta. No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma (D-281 do Horus, D-286 do Horus). Se o que a ferramenta devolveu pode ir também ao provedor de IA está em "O que ainda falta decidir".
+**Por que é assim.** É a regra do núcleo: nenhum app toca uma senha de banco nem uma chave de IA, e todo pedido passa pelo mAIg, que confere a permissão e anota no registro (decisão 5). O resultado fica dentro de casa: o módulo do app, a parte dele que roda isolada dentro do mAIg, usa o que a ferramenta devolveu, e para fora vai a resposta pronta. No Horus, isso já foi decidido assim, e vale no mAIg, onde à nuvem volta a resposta pronta, dentro do teto da resposta (decisões 34 e 43, D-281 do Horus, D-286 do Horus). Se o que a ferramenta devolveu pode ir também ao provedor de IA está em "O que ainda falta decidir".
 
 **As duas hospedagens.** Com o mAIg na infraestrutura do cliente, o mAIg chama o servidor de dentro da mesma rede, sem abrir porta de entrada nenhuma (MF-108). Com o mAIg na infraestrutura da Maind, o servidor precisa ser alcançável pela Maind, como o banco (decisão 9); como, ainda está em aberto.
 
@@ -154,11 +156,11 @@ O owner da organização cadastra no mAIg os servidores MCP da empresa, libera u
 
 **Em resumo:** os servidores MCP ficam para a segunda versão porque nenhum app os usa na primeira. A primeira versão já deixa prontos os serviços em que esta mf se apoia.
 
-**Por que depois.** A primeira versão do mAIg é o núcleo que a versão 2.0 do Horus usa. Ela entrega já na primeira venda o motivo de o mAIg existir, a governança, e deixa para depois só o que nenhum app usa ainda. Os servidores MCP chegam com a versão 2.1 do Horus, quando ele passa a usá-los (decisão 16). No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: o cadastro de servidores MCP é uma mf da versão 2.1, que nasce depois de o middleware, a peça do Horus que deu origem ao mAIg, estar de pé e provado (D-282 do Horus).
+**Por que depois.** A primeira versão do mAIg é o núcleo que a versão 2.0 do Horus usa. Ela entrega já na primeira venda o motivo de o mAIg existir, a governança, e deixa para depois só o que nenhum app usa ainda. Os servidores MCP chegam com a versão 2.1 do Horus, quando ele passa a usá-los (decisão 16). No Horus, isso já foi decidido assim, e vale no mAIg, onde os servidores MCP entram na segunda versão do mAIg, junto com a versão 2.1 do Horus: o cadastro de servidores MCP é uma mf da versão 2.1, que nasce depois de o middleware, a peça do Horus que deu origem ao mAIg, estar de pé e provado (decisões 16 e 92, D-282 do Horus).
 
 **Do que se abre mão.** O mAIg fica incompleto até a segunda versão, e uma organização só leva os sistemas internos para dentro dos apps a partir dela. Fazer o núcleo completo já atrasaria a versão 2.0 do Horus por partes que ele só usa na 2.1 (decisão 16).
 
-**O que a primeira versão já deixa pronto.**
+**O que a primeira versão já deixa pronto.** Os seis itens abaixo já existem desde a onda 1.0 (decisão 95).
 
 - **O owner da organização e as permissões** (MF-101): o papel que cadastra e libera já existe.
 - **O registro e o auditor** (MF-102): as chamadas entram no mesmo registro, lido pelas mesmas pessoas.
@@ -177,6 +179,16 @@ O owner da organização cadastra no mAIg os servidores MCP da empresa, libera u
 - **Uma ferramenta que age foi liberada por engano, ou uma "só leitura" escreve.** A credencial de leitura da empresa é a barreira; a chamada fica no registro; e a ferramenta pode ser bloqueada de novo no console.
 - **O app para por fim de contrato.** A liberação dos servidores para aquele app é uma das permissões dele, que ficam guardadas até a organização renovar ou o owner da organização apagar (decisão 14).
 - **O app é desinstalado.** O registro das chamadas dele é excluído com os outros dados do app (decisão 15).
+
+### O que entra em cada onda
+
+A primeira versão do mAIg sai em duas ondas, a 1.0 e a 1.1, e a segunda versão vem depois (decisões 92 e 95). A tabela diz em que onda chega cada capacidade desta mf, com as decisões que a sustentam. "Não entra" quer dizer que a capacidade não faz parte da primeira versão e não tem versão marcada. Esta mf fica inteira para a segunda versão: nada dela entra na onda 1.0 nem na onda 1.1.
+
+| Capacidade | Onda | Decisões | Por quê |
+| --- | --- | --- | --- |
+| Cadastrar os servidores MCP da empresa, os programas que oferecem ferramentas à IA | segunda versão | 16, 92 | A mf inteira fica para a segunda versão. |
+| Liberar, uma a uma, as ferramentas de leitura de cada servidor | segunda versão | 16, 92 | A mf inteira fica para a segunda versão. |
+| A IA usa as ferramentas liberadas, com cada chamada no registro | segunda versão | 16, 92 | A mf inteira fica para a segunda versão. |
 
 ## Prova de valor
 
@@ -214,8 +226,8 @@ Prova de valor proposta pelo PO; o dono da Maind ainda não a confirmou.
 
 ## Ponto de partida no Horus
 
-- No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: a organização poderá cadastrar os próprios servidores MCP, que ficam na infraestrutura dela, para customizar a extração de informação e agregar o conhecimento e o processo dela; o cadastro é feito no middleware, e o servidor MCP não é uma peça da conexão entre a nuvem do Horus e o middleware (D-281 do Horus).
-- No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: o cadastro de servidores MCP é uma mf da versão 2.1, de classe expande, e ficam de fora os servidores MCP da Maind ou na nuvem dela (D-282 do Horus).
+- No Horus, isso já foi decidido assim, e vale no mAIg, onde os servidores MCP do cliente são parte do núcleo: a organização poderá cadastrar os próprios servidores MCP, que ficam na infraestrutura dela, para customizar a extração de informação e agregar o conhecimento e o processo dela; o cadastro é feito no middleware, e o servidor MCP não é uma peça da conexão entre a nuvem do Horus e o middleware (decisão 5, D-281 do Horus).
+- No Horus, o cadastro de servidores MCP é uma mf da versão 2.1, de classe expande, e ficam de fora os servidores MCP da Maind ou na nuvem dela (D-282 do Horus). Que o cadastro chega junto com a versão 2.1 do Horus vale no mAIg (decisões 16 e 92). O resto vale como ponto de partida, e o mAIg ainda confirma.
 - No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: os servidores MCP só entregam informação, sem ação sobre os sistemas da organização, e o que devolvem sai só como parte da resposta pronta; a promessa foi substituída em parte pela lista liberada (D-286 do Horus).
 - No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: só o owner da organização cadastra e gere os servidores MCP, na mesma tela dos bancos e da IA (D-287 do Horus).
 - No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: um servidor recém-cadastrado nasce desligado para todas as pessoas, o owner da organização escolhe por servidor as roles que podem usá-lo, e as regras mais finas ficam com a organização (D-288 do Horus).
@@ -232,7 +244,7 @@ Prova de valor proposta pelo PO; o dono da Maind ainda não a confirmou.
 - **Falta o arquiteto do mAIg definir o que o uso das ferramentas muda no custo da IA e no tempo da resposta.** *O que está em jogo:* cada chamada faz o modelo trabalhar mais, e o custo da IA é contado por app; o owner da organização precisa saber quanto um servidor pesa antes de liberá-lo (MF-106).
 - **Falta o dono da Maind decidir o que fazer quando um cliente exigir prova, e não só declaração, de que uma ferramenta só lê.** *O que está em jogo:* o mAIg sozinho não consegue provar o que a ferramenta faz por dentro, e um cliente de segurança rígida pode não aceitar a promessa por lista.
 - **Falta o dono da Maind decidir se o que uma ferramenta MCP devolve pode ir ao provedor de IA, e em que camada (decisão 20).** *O que está em jogo:* quem pede a ferramenta é o modelo de IA, que roda no provedor, fora da rede, e para usar o que ela devolve o modelo costuma precisar ver o resultado. As camadas da decisão 20 dizem o que vai ao provedor num pedido comum, mas não falam do resultado de uma ferramenta.
-- **Também depende, e está explicado em outras mfs:** como a Maind alcança o banco na hospedagem dela (MF-105).
+- **Também depende, e está explicado em outras mfs:** o caminho até o banco na hospedagem da Maind, que é a liberação só para o endereço fixo da Maind (decisão 91, MF-105); o servidor MCP pode seguir a mesma regra, no ponto acima.
 
 ## Decisões do PO para discutir
 
@@ -246,3 +258,4 @@ Prova de valor proposta pelo PO; o dono da Maind ainda não a confirmou.
 - **Decisão:** manter as dependências da lista combinada, acrescentar a governança da IA e não acrescentar a conexão de dentro para fora (MF-106, MF-108). *Por que:* é no pedido à IA que se decide quais ferramentas o modelo vê, e por isso a governança da IA entrou em "Depende de"; a conexão se relaciona com esta mf, mas já está na primeira versão. *Alternativa:* acrescentar também a conexão a "Depende de". *Reabrir se:* o mapa das dependências for revisto.
 - **Decisão:** manter a classe expande, a mesma que o Horus deu à mf dele (D-282 do Horus). *Por que:* a primeira versão do mAIg entrega a promessa sem ela. *Alternativa:* acelera. *Reabrir se:* um cliente condicionar a compra a usar os próprios servidores MCP.
 - **Decisão:** usar como prova de valor as duas demonstrações do Horus, com a conferência da TI do cliente e do auditor. *Por que:* são cenários que alguém de fora confere sem números. *Alternativa:* uma prova só. *Reabrir se:* o dono da Maind preferir outra demonstração.
+- **Decidido por delegação do dono da Maind em 11/11/2026:** a primeira versão sai em duas ondas, a 1.0 e a 1.1, e a segunda versão vem depois; esta mf fica inteira para a segunda versão, e nada dela entra na onda 1.0 nem na onda 1.1 (decisão 95).
