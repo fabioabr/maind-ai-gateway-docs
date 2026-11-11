@@ -46,7 +46,7 @@ O mAIg, ou Maind AI Gateway, é a plataforma da Maind que fica entre os produtos
 
 **Um lugar, e não as regras.** Cada assunto tem a sua mf, que diz a regra. O console é o lugar onde ela se exerce. Por isso este documento aponta, em cada assunto, para a mf dona dele, e não descreve telas: como o console se apresenta é do desenho.
 
-**O que ainda está em aberto.** Por onde cada papel chega ao console é um ponto novo de "O que ainda falta decidir".
+**Por onde se chega.** Na instalação na casa do cliente, o console se abre de dentro da rede da empresa, e quem está fora entra pela VPN, o túnel protegido que liga quem está fora à rede da empresa e que a TI do cliente já mantém. O mAIg não abre porta de entrada nem passa a tela pela Maind (decisões 6 e 26). Na hospedagem da Maind, o console fica nos servidores da Maind e se abre de qualquer lugar, com login.
 
 ### Cada papel vê só a sua parte
 
@@ -71,31 +71,34 @@ O mAIg, ou Maind AI Gateway, é a plataforma da Maind que fica entre os produtos
 
 ### A parte da instância: o administrador da instância
 
-**Em resumo:** na parte da instância, o administrador da instância abre as organizações, cria o usuário do primeiro owner da organização, instala os kits e os apps e acompanha o estado e as versões. Nunca vê o registro das organizações.
+**Em resumo:** na parte da instância, o administrador da instância abre as organizações, cria o usuário do primeiro owner da organização, instala os kits e os apps e acompanha o estado e as versões. Nunca vê o registro das organizações, mas os atos dele que tocam uma organização ficam anotados no registro dela (decisão 29).
 
 **Quem ocupa o papel.** Na infraestrutura do cliente, é a TI do cliente. Na infraestrutura da Maind, é a equipe da Maind. No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: na hospedagem da Maind, é a Maind quem cria o usuário com que o owner da organização entra na tela de configuração (D-271 do Horus).
 
 **O que faz no console, assunto por assunto.**
 
-- **Cria as organizações da instância e, quando for o caso, as exclui.** As regras de criar, excluir e manter as organizações separadas são das organizações e instâncias (MF-107).
-- **Cria o usuário do primeiro owner da organização.** Como esse owner da organização recebe o primeiro acesso e define a própria senha é da segurança e permissões (MF-101).
-- **Instala o kit de instalação.** É o pacote, com um certificado digital, que a Maind entrega depois de fechada a contratação de um app. O certificado é uma espécie de carteira de identidade digital, que o mAIg usa para conferir a contratação com a Maind (MF-103).
+- **Cria as organizações da instância e, quando for o caso, as encerra.** As regras de criar, encerrar e manter as organizações separadas são das organizações e instâncias (MF-107). Ao criar uma organização, a Maind emite o certificado próprio dela (decisão 28).
+- **Cria o usuário do primeiro owner da organização.** Digita só o e-mail dele, e o mAIg manda o link de primeiro acesso direto para lá, sem que o administrador da instância o veja (decisão 51). Como esse owner da organização define a própria senha é da segurança e permissões (MF-101).
+- **Instala o kit de instalação.** É o pacote, com um certificado digital, que a Maind entrega depois de fechada a contratação de um app. O certificado é uma espécie de carteira de identidade digital, que o mAIg usa para conferir a contratação com a Maind (MF-103). Como o kit é de uma organização, a instalação fica anotada no registro dela (decisão 82).
 - **Instala cada app na instância, uma vez só,** mesmo que várias organizações o usem (MF-104).
-- **Acompanha as instalações, o estado e as versões** dos apps e da própria instância (decisão 12). O que esse acompanhamento mostra é das organizações e instâncias (MF-107).
+- **Faz a cópia de segurança do cofre e do registro e a restaura,** com a ferramenta do mAIg. A cópia sai cifrada, e cada restauração fica no registro de cada organização (decisão 65, MF-107).
+- **Destrava uma organização que ficou sem nenhum owner da organização com acesso.** Digita o e-mail do novo owner da organização, e a troca só vale 48 horas depois, com aviso aos antigos owners da organização e ao auditor, que podem barrá-la (decisão 53, MF-101).
+- **Acompanha as instalações, o estado e as versões** dos apps e da própria instância (decisão 12). O que esse acompanhamento mostra é das organizações e instâncias (MF-107). É nele também que o administrador da instância dá o aval às versões novas do mAIg e define a janela de horário em que elas se instalam (decisão 39, MF-107). O aval tem prazo: 30 dias para uma versão comum e 7 para uma correção de segurança (decisão 45).
+- **Suspende um app na instância inteira, numa emergência,** e o retoma depois. A configuração e o registro ficam guardados, e cada owner da organização é avisado; na hospedagem da Maind, a suspensão pede a autorização de duas pessoas da equipe da Maind (decisão 46, MF-104).
 
-**O que não faz nem vê.** Não vê o registro das organizações: nem quem pediu o quê, nem quando, nem por qual app (decisão 12). Também não configura os bancos e a IA das organizações, que ficam com o owner da organização (D-273 do Horus). No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: o painel de quem administra a instalação só enxerga contagens das pessoas das organizações, e não os dados delas (D-261 do Horus).
+**O que não faz nem vê.** Não vê o registro das organizações: nem quem pediu o quê, nem quando, nem por qual app (decisão 12). Os atos dele que tocam uma organização, como criá-la e instalar ou atualizar um app, ficam anotados no registro dela, e ele só os escreve, sem poder lê-los (decisão 29). Também não configura os bancos e a IA das organizações, que ficam com o owner da organização (D-273 do Horus). No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: o painel de quem administra a instalação só enxerga contagens das pessoas das organizações, e não os dados delas (D-261 do Horus).
 
 **Por que é assim.** Nenhum app novo passa a rodar na instância sem passar pelo administrador da instância (decisão 10). Mas o que cada organização faz é dela: se o administrador da instância visse o registro, a equipe da Maind veria, nas instâncias da Maind, o registro de todos os clientes, e o isolamento entre as organizações se quebraria (decisão 12).
 
 **Exemplo.** Marta prepara a organização da Farma Vida.
 
 1. Marta entra no console da instância que ela instalou na rede da Farma Vida.
-2. Cria a organização Farma Vida e o usuário de Paulo como owner da organização.
+2. Cria a organização Farma Vida e o usuário de Paulo como owner da organização. A Maind emite o certificado próprio da Farma Vida (decisão 28).
 3. Recebe da equipe da Maind o kit do Horus e o instala. O mAIg faz o handshake contratual, o aperto de mão digital em que ele se apresenta com o certificado a um servidor da Maind, que confere a contratação e libera o Horus para a organização (decisão 10).
 4. Instala o Horus na instância, uma vez só.
 5. Daqui em diante, Marta acompanha o estado e a versão do Horus. O que a Farma Vida configura e pergunta não aparece para ela.
 
-**Quando dá errado.** Marta exclui por engano a organização errada. No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: excluir uma organização apaga tudo o que há dela, e só dela, inclusive a configuração, sem volta (D-278 do Horus). O detalhe é das organizações e instâncias (MF-107).
+**Quando dá errado.** Marta executa por engano o encerramento da organização errada. Os apps, os bancos e a IA dela saem, mas o registro segue legível (decisão 31), e, dentro de 30 dias, o encerramento é desfeito e a organização volta como estava (decisão 78). O detalhe é das organizações e instâncias (MF-107).
 
 ### A parte da organização: o owner da organização
 
@@ -105,10 +108,14 @@ O mAIg, ou Maind AI Gateway, é a plataforma da Maind que fica entre os produtos
 
 - **Os apps.** Libera e configura cada app que a organização contratou e que o administrador da instância instalou: as permissões, os bancos e as IAs que ele usa e os ajustes. Quando um app para, a configuração dele fica guardada, e é o owner da organização quem decide se a apaga (decisões 10 e 14). As regras são da gestão dos apps (MF-104).
 - **Os bancos.** Cadastra a ligação só de leitura com cada banco de dados da organização, o lugar onde ela guarda as informações do dia a dia. A senha do banco vai para o cofre, o lugar trancado do mAIg de onde nenhum app a tira. Diz também quais apps leem cada banco (MF-105).
-- **A IA.** Cadastra as chaves dos provedores de IA. O provedor é a empresa que oferece os modelos de IA, os programas que entendem uma pergunta e escrevem a resposta; a chave é a senha de acesso a ele, e é do cliente. Escolhe os modelos que cada app pode usar, põe os limites e acompanha o consumo e o custo por app (MF-106).
-- **As pessoas.** Dá acesso às pessoas que usam os apps. Onde fica o cadastro delas, no núcleo do mAIg ou em cada app, ainda está em aberto (MF-101).
-- **Os jeitos de entrar.** Na primeira versão, as pessoas entram por usuário e senha ou pela conta Google (decisão 16). No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: o owner da organização liga ou desliga cada jeito de entrar (D-291 do Horus). As regras do login são da segurança e permissões (MF-101).
-- **O auditor.** Nomeia o auditor da organização (decisão 12).
+- **A IA.** Cadastra as chaves dos provedores de IA. O provedor é a empresa que oferece os modelos de IA, os programas que entendem uma pergunta e escrevem a resposta; a chave é a senha de acesso a ele, e é do cliente. Escolhe os modelos que cada app pode usar, escolhe até que camada de dados o pedido de cada app ao provedor pode levar, põe os limites e acompanha o consumo e o custo por app (MF-106).
+- **O teto da resposta.** Sobe, app por app, o teto de linhas da resposta que volta à nuvem, que começa em 200, com as colunas sensíveis mascaradas (decisão 43, MF-109).
+- **As saídas além da resposta.** Libera, app por app, a consulta feita ao banco, para a pessoa ver a origem do número, e a planilha, que vai direto do mAIg ao navegador. Liberar é ato sensível (decisão 74, MF-109).
+- **As pessoas.** Cadastra as pessoas que usam os apps e dá acesso a elas. O cadastro e o login ficam no núcleo do mAIg, para todos os apps (decisão 23, MF-101). O owner da organização cadastra também até mais dois owners da organização, e os três entram por usuário e senha (decisão 25). Ao excluir uma pessoa, o owner da organização tira o acesso dela, e as linhas do registro em nome dela seguem, com o nome, até a desinstalação do app (decisão 27).
+- **Os jeitos de entrar.** Na primeira versão, as pessoas entram por usuário e senha ou pela conta Google (decisão 16). No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: o owner da organização liga ou desliga cada jeito de entrar (D-291 do Horus). O owner da organização e o administrador da instância entram no console sempre por usuário e senha, mesmo com o login da empresa ligado (decisão 24). As regras do login são da segurança e permissões (MF-101).
+- **O cockpit de ativação.** Vê, numa olhada só, as pendências de ativação da organização e de cada app, como "falta um banco" ou "falta a IA", com o passo que resolve cada uma. O mAIg marca a organização e os apps como prontos sozinho (decisão 72, MF-107).
+- **Os auditores.** Nomeia até dois auditores da organização, e um pode ser de fora da empresa, com um acesso que vence na data que ele define (decisões 12 e 79).
+- **O que a organização permite.** Diz, numa lista de configurações, quais funcionalidades a organização permite e para quais papéis. Um exemplo: quais papéis podem receber avisos por e-mail. Quem é de um papel permitido escolhe, nas próprias preferências, se quer ou não receber; quem é de um papel não permitido nem vê a opção e não recebe (decisão 64).
 - **O registro.** Consulta o registro da organização, o log: a anotação de cada pedido dos apps, com o que leram, em nome de quem e quando (MF-102).
 - **O fim de um contrato.** É ele quem é avisado de que um contrato está para acabar (decisão 13). Como o aviso chega é da contratação dos apps (MF-103).
 
@@ -118,7 +125,7 @@ O mAIg, ou Maind AI Gateway, é a plataforma da Maind que fica entre os produtos
 
 **Exemplo.** O primeiro dia de Paulo no console.
 
-1. Paulo entra pelo primeiro acesso que Marta lhe entregou e define a própria senha (MF-101).
+1. Paulo abre o link de primeiro acesso, que chegou direto ao e-mail dele, e define a própria senha (decisão 51, MF-101).
 2. Cadastra a ligação só de leitura com o banco de vendas da Farma Vida. A senha vai para o cofre.
 3. Cadastra a chave do provedor de IA da Farma Vida, escolhe os modelos permitidos ao Horus e põe um limite de gasto.
 4. Libera o Horus para a organização e permite que ele leia o banco de vendas.
@@ -130,7 +137,7 @@ O mAIg, ou Maind AI Gateway, é a plataforma da Maind que fica entre os produtos
 
 - **Paulo apaga a configuração de um app parado.** Uma renovação depois disso não traz o app de volta como estava: a configuração precisa ser refeita (decisão 14).
 - **Paulo tira do Horus, sem querer, a permissão de ler o banco de vendas.** O núcleo passa a recusar os pedidos do Horus a esse banco, e cada recusa fica no registro (decisão 5). Paulo devolve a permissão no console.
-- **A organização não fica pronta.** No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: a organização só passa a ativa com a conexão confirmada, ao menos um banco e a IA configurados (D-277 do Horus). O detalhe é das organizações e instâncias (MF-107).
+- **A organização ou um app não fica pronto.** O cockpit de ativação mostra o que falta, com o passo que resolve cada pendência. A organização fica ativa com o certificado e um owner da organização com acesso, e cada app tem as condições dele (decisão 72, MF-107).
 
 ### O auditor no console
 
@@ -172,7 +179,7 @@ O mAIg, ou Maind AI Gateway, é a plataforma da Maind que fica entre os produtos
 2. O limite de gasto de IA que vale para esse relatório é o que Paulo pôs no console para o Horus.
 3. Para mudar o limite, Paulo vai ao console; para mudar o dia do relatório, Ana vai ao Horus.
 
-**O que ainda está em aberto.** Onde se cadastram as pessoas que usam os apps define se elas aparecem no console ou em cada app (MF-101). No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: o convite de uma pessoa nasce dentro do Horus, e o owner da organização o aprova na tela de configuração (D-262 do Horus).
+**O que ainda está em aberto.** As pessoas que usam os apps são cadastradas no console, porque o cadastro delas é do núcleo (decisão 23, MF-101). Só o owner da organização cadastra as pessoas, direto no console; não há convite de dentro dos apps. Quem quer chamar um colega pede ao owner da organização por fora (decisão 77).
 
 ### O mesmo console nas duas hospedagens
 
@@ -191,13 +198,13 @@ O mAIg, ou Maind AI Gateway, é a plataforma da Maind que fica entre os produtos
 3. Paulo entra no mesmo console e configura o banco e a IA como faria na própria rede. O banco precisa ser alcançável pela Maind.
 4. Renata lê o registro da Farma Vida no console. A equipe da Maind vê o estado e a versão do Horus, mas não o registro (decisão 12).
 
-**O que ainda está em aberto.** Por onde o owner da organização, o auditor e o administrador da instância chegam ao console, sobretudo quando a instância está dentro da rede do cliente, é um ponto novo de "O que ainda falta decidir".
+**Por onde se chega.** Na hospedagem da Maind, o console fica nos servidores da Maind, e Paulo, Renata e a equipe da Maind o abrem de qualquer lugar, com login (decisão 26). Quem tem o mAIg na própria rede o abre de dentro dela, ou pela VPN da empresa.
 
 ### O suporte da equipe da Maind
 
 **Em resumo:** a equipe da Maind ajuda o owner da organização a configurar, antes e depois da venda, mas não configura no lugar dele.
 
-**Como funciona.** O owner da organização faz cada configuração no console. A equipe da Maind explica, orienta e tira dúvidas. No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: a equipe da Maind dá suporte técnico, antes e depois da venda, mas não configura pelo owner da organização, e a chave de IA que a Maind der a uma organização também é cadastrada pelo owner da organização (D-273 do Horus).
+**Como funciona.** O owner da organização faz cada configuração no console. A equipe da Maind explica, orienta e tira dúvidas. No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: a equipe da Maind dá suporte técnico, antes e depois da venda, mas não configura pelo owner da organização (D-273 do Horus).
 
 **Por que é assim.** No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: a responsabilidade é a mesma nas duas hospedagens, e a equipe da Maind deixa de conhecer, por rotina, as senhas dos bancos de cada cliente (D-273 do Horus).
 
@@ -208,13 +215,16 @@ O mAIg, ou Maind AI Gateway, é a plataforma da Maind que fica entre os produtos
 3. Paulo escolhe e grava a escolha no console.
 4. Ninguém da Maind mexeu na parte da organização.
 
-**Quando dá errado.** Um cadastro de banco não funciona, e a equipe da Maind precisaria ver o que Paulo vê para achar o erro. Como o suporte enxerga o bastante para ajudar, sem ver o que é da organização, é um ponto novo de "O que ainda falta decidir".
+**O acesso de suporte.** Quando a explicação não basta, o owner da organização liga no console um acesso para a equipe da Maind. Ele vale por um tempo curto, como até o fim do dia, e mostra só a configuração da organização, nunca o registro nem as senhas. Liberar o acesso é um ato sensível: fica no registro e avisa o auditor (decisões 54 e 68). É o owner da organização quem decide quando a Maind olha, pela fé pública que ele tem dentro da organização (decisão 67). Abre-se mão de: enquanto o acesso dura, a equipe da Maind vê a configuração da organização.
+
+**Quando dá errado.** Um cadastro de banco não funciona, e a equipe da Maind precisaria ver o que Paulo vê para achar o erro. Paulo liga o acesso de suporte até o fim do dia. Rafael, da equipe da Maind, vê a configuração do banco, sem a senha, e aponta o endereço errado. Renata recebe o aviso de que o acesso foi liberado, e à noite ele se fecha sozinho (decisão 68).
 
 ### Quando dá errado
 
 **Em resumo:** os casos mais prováveis desta parte, com o que a pessoa vê e o que o mAIg faz; os casos de cada papel estão nos tópicos acima.
 
-- **O owner da organização sai da empresa ou fica fora por um tempo.** Só ele configura a parte da organização, e ninguém mais libera um app ou troca uma chave. Quem assume, e quantos owners da organização uma organização pode ter, está em aberto na segurança e permissões (MF-101).
+- **Um owner da organização sai da empresa ou fica fora por um tempo.** Os outros owners da organização, até três por organização, seguem configurando a parte dela (decisão 25). Se a organização só cadastrou um, ninguém mais libera um app ou troca uma chave, e o que acontece então, inclusive se o administrador da instância pode destravá-la, está em aberto na segurança e permissões (MF-101).
+- **Quem está fora do escritório não tem a VPN da empresa.** Não chega ao console de uma instalação na casa do cliente, e a TI do cliente precisa lhe dar a VPN (decisão 26).
 - **A instância fica fora do ar.** O console, que é a tela da instância, fica fora junto, e ninguém configura nada até ela voltar. No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: cada organização tem uma página de status, que abre sem login e diz desde quando a ligação está fora (D-283 do Horus). O detalhe é da conexão de dentro para fora (MF-108).
 - **Alguém tenta fazer o que o papel não permite.** O console não deixa: o auditor não muda configuração, o administrador da instância não vê o registro, e o owner da organização não vê outra organização (decisões 9 e 12).
 
@@ -259,32 +269,34 @@ Prova de valor proposta pelo PO; o dono da Maind ainda não a confirmou.
 
 ## Ponto de partida no Horus
 
-- No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: o middleware tem uma base de configuração, com as pessoas e os detalhes da organização, e uma tela de configuração; as configurações de autenticação ficam nele, e o owner da organização e o administrador da instância entram sempre por usuário e senha (D-258 do Horus).
-- No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: com esse usuário, o owner da organização cadastra outros owners da organização, no máximo mais dois, ligados ao login da empresa (D-258 do Horus).
+- No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: o middleware tem uma base de configuração, com as pessoas e os detalhes da organização, e uma tela de configuração; as configurações de autenticação ficam nele (D-258 do Horus). Que o owner da organização e o administrador da instância entrem sempre por usuário e senha o dono da Maind confirmou em 09/11/2026 (decisão 24).
+- No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: com esse usuário, o owner da organização cadastra outros owners da organização, no máximo mais dois, ligados ao login da empresa (D-258 do Horus). O dono da Maind confirmou o limite de três owners da organização em 09/11/2026, mas com os três entrando por usuário e senha (decisão 25).
 - No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: em qualquer hospedagem, os bancos e a IA são configurados na tela de configuração do middleware, e não no Horus (D-265 do Horus).
-- No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: em qualquer hospedagem, quem configura os bancos e a IA é o owner da organização, a equipe da Maind dá suporte sem configurar por ele, e a chave de IA que a Maind der também é cadastrada pelo owner da organização (D-273 do Horus).
+- No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: em qualquer hospedagem, quem configura os bancos e a IA é o owner da organização, a equipe da Maind dá suporte sem configurar por ele (D-273 do Horus).
 - No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: a tela de configuração é a mesma nas duas hospedagens, o owner da organização a acessa nas duas, e na hospedagem da Maind é a Maind quem cria o usuário dele (D-271 do Horus).
 - No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: o owner da organização cadastra e gere as pessoas pela tela de configuração, os dados delas ficam no middleware, fora da nuvem da Maind, e o painel da instância só enxerga contagens (D-261 do Horus).
-- No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: entre os papéis da organização, só o owner da organização usa a tela de configuração; o convite de uma pessoa nasce no Horus e é aprovado por ele ali (D-262 do Horus).
+- No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: entre os papéis da organização, só o owner da organização usa a tela de configuração; o convite de uma pessoa nascia no Horus e era aprovado por ele ali (D-262 do Horus). O mAIg decidiu diferente: não há convite de dentro dos apps, e o owner da organização cadastra as pessoas direto no console (decisão 77).
 - No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: só o owner da organização cadastra e gere os servidores MCP, na tela de configuração, como os bancos e a IA, na versão 2.1 (D-287 do Horus).
 - No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: a tela de configuração inclui definir como as pessoas da organização entram; na versão 2.0, usuário e senha e Google, que o owner da organização liga ou desliga, e na 2.1 o login da empresa, como mais um jeito no mesmo lugar (D-291 do Horus).
 
 ## O que ainda falta decidir
 
-- **Falta o arquiteto do mAIg definir, com o dono da Maind, por onde o owner da organização, o auditor e o administrador da instância chegam ao console.** *O que está em jogo:* com a instância dentro da rede do cliente e nenhuma porta de entrada aberta (decisão 6), o console se alcança com facilidade só de dentro dessa rede. Alcançá-lo de fora pediria passar pela conexão com a Maind, o que muda o que passa pela Maind; a mesma pergunta vale para o login das pessoas que usam os apps (MF-101).
-- **Falta o dono da Maind decidir como a equipe da Maind dá suporte ao owner da organização no console sem ver o que é da organização.** *O que está em jogo:* um suporte que não vê nada ajuda pouco num cadastro que falha; um suporte que vê a parte da organização, nas instâncias da Maind, reabre o isolamento que a decisão 12 protege.
-- **Também depende, e está explicado em outras mfs:** onde ficam e quem cadastra as pessoas que usam os apps (MF-101); quantos owners da organização uma organização pode ter e quem assume a parte dela no console quando o owner da organização sai (MF-101); o que o acompanhamento da instância mostra e quem atualiza o mAIg (MF-107); como chega o aviso do fim do contrato (MF-103); quantas versões dos apps podem conviver (MF-104).
+- **Também depende, e está explicado em outras mfs:** o que o acompanhamento da instância mostra (MF-107); como chega o aviso do fim do contrato (MF-103); quantas versões dos apps podem conviver (MF-104).
 
 ## Decisões do PO para discutir
 
 - **Decisão:** o auditor entra no console e lê ali o registro da organização, só para leitura. *Por que:* o objetivo do controle num lugar só pede que o que o núcleo guarda se consulte no mesmo lugar, e a decisão 12 só diz que o auditor lê. *Alternativa:* uma consulta do registro à parte, fora do console. *Reabrir se:* a área de segurança dos clientes preferir receber o registro nas ferramentas dela.
 - **Decisão:** o console tem duas partes, a da instância e a de cada organização, e o administrador da instância usa o mesmo console. *Por que:* o mapa das mfs põe nesta mf a criação das organizações e o estado da instância. *Alternativa:* um painel da instância separado, como no Horus, em que só o owner da organização usava a tela de configuração (D-262 do Horus). *Reabrir se:* o arquiteto do mAIg mostrar que separar os dois reduz o risco de um papel ver o que não deve.
-- **Decisão:** a pessoa que usa o app não entra no console. *Por que:* ela não configura nada do núcleo, e no Horus só o owner da organização usava a tela de configuração (D-262 do Horus). *Alternativa:* dar a ela uma parte pequena, como ver o próprio uso. *Reabrir se:* o ponto de onde ficam as pessoas pôr o cadastro e o login delas no núcleo.
+- **Decisão:** a pessoa que usa o app não entra no console. *Por que:* ela não configura nada do núcleo, e no Horus só o owner da organização usava a tela de configuração (D-262 do Horus). *Alternativa:* dar a ela uma parte pequena, como ver o próprio uso. *Reabrir se:* o dono da Maind quiser dar à pessoa uma parte pequena do console, já que o cadastro e o login dela são do núcleo (decisão 23).
 - **Decisão:** tratar o console como o lugar, e não como a regra: cada assunto aponta para a mf dona, e o console não tem regras próprias além da divisão por papel. *Por que:* evita que esta mf repita ou contradiga as outras. *Alternativa:* concentrar no console as regras de configuração de todos os assuntos. *Reabrir se:* o dono da Maind achar a mf fina demais para ser essencial, e preferir distribuí-la pelas outras.
 - **Decisão:** a configuração própria de cada app fica no app, e não no console. *Por que:* o console reúne só o que é do núcleo, e assim a fronteira entre o mAIg e os apps fica clara. *Alternativa:* deixar cada app pôr as suas telas de configuração dentro do console, para o owner da organização ter mesmo um lugar só. *Reabrir se:* cada owner da organização reclamar de trabalhar em dois lugares, como já se previa no Horus (D-261 do Horus).
-- **Decisão:** ler que o console faz parte de cada instância e cai junto com ela. *Por que:* no Horus, a tela de configuração fazia parte do middleware e era a mesma nas duas hospedagens (D-258 do Horus, D-271 do Horus). *Alternativa:* um console fora da instância, por exemplo na nuvem da Maind. *Reabrir se:* o ponto de por onde se chega ao console levar o console para fora da instância.
+- **Decisão:** ler que o console faz parte de cada instância e cai junto com ela. *Por que:* no Horus, a tela de configuração fazia parte do middleware e era a mesma nas duas hospedagens (D-258 do Horus, D-271 do Horus). *Alternativa:* um console fora da instância, por exemplo na nuvem da Maind. *Reabrir se:* uma venda travar por falta de acesso de fora e o console precisar sair da instância; por ora, o console fica dentro dela e se alcança só de dentro da rede do cliente (decisão 26).
 - **Decisão:** propor, para discutir, que o console mostre ao owner da organização o que ainda falta para a organização ficar pronta, como o banco e a IA. *Por que:* no Horus, a organização só fica ativa com a conexão, um banco e a IA configurados (D-277 do Horus), e o owner da organização precisa saber o que falta. *Alternativa:* deixar só a regra de ativação e não dizer nada sobre o que o console mostra. *Reabrir se:* a mf das organizações e instâncias já tratar disso (MF-107).
 - **Decisão:** manter as dependências do mapa e anotar uma lacuna nele: a gestão dos apps não depende do console, mas a liberação de um app pelo owner da organização acontece no console (MF-104). *Por que:* os bancos e a governança da IA dependem do console no mapa, e a gestão dos apps faz o mesmo tipo de configuração. *Alternativa:* deixar o mapa como está. *Reabrir se:* o dono da Maind preferir que o console dependa dos assuntos, e não o contrário.
 - **Decisão:** a prova de valor usa a ativação de uma organização nova sem chamado e a divisão por papel, sem metas. *Por que:* são os dois resultados que a TI do cliente e o auditor conferem de fora. *Alternativa:* provar com a chegada de um segundo app configurado no mesmo console. *Reabrir se:* houver um segundo app antes da prova.
 - **Decisão:** seguir o registro e auditoria, que põe no registro os atos de quem configura no console, e só apontar para ele, sem abrir aqui um ponto próprio (MF-102). *Por que:* o tema vive numa mf só, e sem esses atos o auditor não confere o que o owner da organização permitiu ou mudou (decisão 12). *Alternativa:* deixar o ponto em aberto também nesta mf. *Reabrir se:* o dono da Maind recusar essa decisão do PO no registro e auditoria.
-- **Decisão:** deixar quantos owners da organização uma organização pode ter, e quem assume quando o owner da organização sai, na segurança e permissões, e só apontar para ela (MF-101). *Por que:* o ponto já está descrito ali por inteiro. *Alternativa:* descrevê-lo também aqui, pelo lado do console. *Reabrir se:* a decisão desse ponto pedir algo próprio do console, como uma parte da organização dividida entre owners da organização.
+- **Decisão:** deixar quem pode retirar um owner da organização, e o que acontece quando a organização fica sem nenhum com acesso, na segurança e permissões, e só apontar para ela (MF-101). *Por que:* o ponto já está descrito ali por inteiro. *Alternativa:* descrevê-lo também aqui, pelo lado do console. *Reabrir se:* a decisão desse ponto pedir algo próprio do console, como uma parte da organização dividida entre owners da organização.
+- **Decidido pelo dono da Maind em 11/11/2026:** os avisos chegam também por e-mail, só com o tipo do aviso e um link para o console, sem dado nenhum; a organização diz, numa lista de configurações, o que permite e para quais papéis, e cada pessoa escolhe nas próprias preferências dentro do permitido (decisão 64). A parte do owner da organização ganhou o item do que a organização permite.
+- **Decidido pelo dono da Maind em 11/11/2026:** o owner da organização libera um acesso de suporte por tempo limitado, só à configuração, nunca ao registro nem às senhas; liberar é ato sensível, anotado e com aviso ao auditor (decisão 68). O ponto em aberto saiu desta mf.
+- **Decidido pelo dono da Maind em 11/11/2026:** o console ganha um cockpit de ativação, que mostra o que falta para a organização ficar ativa e para cada app entrar em uso (decisão 72). Confirma a proposta do PO acima de mostrar ao owner da organização o que falta.
+- **Decidido pelo dono da Maind em 11/11/2026:** só o owner da organização cadastra as pessoas, direto no console; não há convite de dentro dos apps (decisão 77). O ponto em aberto saiu desta mf.

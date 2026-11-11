@@ -71,7 +71,7 @@ Governança é o conjunto de regras sobre quem usa o quê, quanto e com que cont
 
 **Quando dá errado.** A chave vaza por outro caminho. Paulo cadastra uma chave nova no console, e Marta cancela a antiga na conta do provedor. Como nenhum app tem a chave, há um lugar só para trocá-la.
 
-**O que ainda está em aberto.** No Horus, a Maind podia dar à organização uma chave paga por ela. Se isso vale no mAIg ainda não está decidido; o ponto está em "O que ainda falta decidir".
+**Só a chave do cliente.** A chave é sempre da organização: ela traz a própria conta em cada provedor, e a Maind não dá chave nem paga a IA de nenhum cliente. No Horus, a Maind podia dar uma chave paga por ela; isso não vale no mAIg (decisão 22). Quem ainda não tem conta num provedor precisa criar uma antes de começar, e a equipe da Maind pode orientá-lo, sem cadastrar a chave por ele.
 
 ### Os modelos permitidos, app por app
 
@@ -116,7 +116,7 @@ Governança é o conjunto de regras sobre quem usa o quê, quanto e com que cont
 3. Numa semana de fechamento, as perguntas crescem, e o Horus se aproxima do teto.
 4. Paulo decide se aumenta o limite ou se o deixa como está.
 
-**Quando dá errado.** O app chega ao limite. Pela regra do núcleo, o mAIg confere o limite antes de pedir ao provedor, e um pedido que passaria do teto não segue como um pedido comum. Se ele é recusado ou segue com um aviso ao owner da organização ainda não está decidido. Também não está decidido se há um aviso antes de o teto chegar.
+**Quando dá errado.** O app chega ao limite. Pela regra do núcleo, o mAIg confere o limite antes de pedir ao provedor, e um pedido que passaria do teto não segue como um pedido comum. Aos 80% do limite, o owner da organização é avisado, no console e por e-mail; aos 100%, o núcleo recusa os pedidos do app à IA, e a pessoa vê uma mensagem clara, até o owner da organização subir o limite, na hora, ou até o período virar (decisões 64 e 75). Os outros apps seguem com a IA. Abre-se mão de: no fim do período, o app pode parar para todos até alguém subir o limite.
 
 **O que ainda está em aberto.** Falta decidir ainda o que o limite mede, se dinheiro ou quantidade de uso, e em que período ele vale. Os pontos estão em "O que ainda falta decidir".
 
@@ -142,7 +142,7 @@ Governança é o conjunto de regras sobre quem usa o quê, quanto e com que cont
 
 **Quando dá errado.** A soma do mAIg e a fatura não batem. Pode ser que a mesma chave esteja sendo usada fora do mAIg, que só enxerga o que passa por ele. Pode ser também diferença no jeito de calcular. Como o mAIg calcula o custo de cada pedido, e com que precisão ele acompanha a fatura, ainda não está definido.
 
-**Um ponto de partida que vem do Horus.** No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: o owner da organização vê o consumo e o custo de toda a IA da organização, tanto da chave que a organização paga quanto da chave que a Maind dá (D-267 do Horus).
+**Um ponto de partida que vem do Horus.** No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: o owner da organização vê o consumo e o custo de toda a IA da organização (D-267 do Horus). A parte em que a Maind dá a chave não vale no mAIg (decisão 22).
 
 ### Um pedido de IA, passo a passo
 
@@ -166,26 +166,65 @@ Governança é o conjunto de regras sobre quem usa o quê, quanto e com que cont
 
 ### Para onde vai o pedido ao provedor
 
-**Em resumo:** o pedido ao modelo sai do mAIg rumo ao provedor de IA, que fica fora da rede da empresa. O que vai dentro desse pedido, e por qual saída da rede ele passa, ainda está em aberto.
+**Em resumo:** o pedido ao modelo sai do mAIg direto rumo ao provedor de IA, que fica fora da rede da empresa, por uma saída que a TI do cliente libera para ele, sem passar pela Maind (decisão 19). O quanto desse pedido pode levar de dados da empresa é escolha do owner da organização, em três camadas, explicadas no tópico seguinte (decisão 20).
 
 **Quem é quem.**
 
 - **O pedido ao provedor** é o que o núcleo manda ao modelo em nome do app. Quem monta o conteúdo é o app; no Horus, o módulo.
-- **A nuvem da Maind** é para onde volta a resposta pronta. À nuvem da Maind só voltam a pergunta e a resposta pronta (decisão 4).
-- **A saída da rede** é a permissão, no firewall, o muro de proteção da rede, para um computador de dentro abrir uma conversa com um endereço de fora. A TI do cliente libera a saída para o endereço da Maind (decisão 6).
+- **A nuvem da Maind** é para onde volta a resposta pronta, que pode conter dados da empresa. O que ela pode levar ainda está em aberto (MF-109).
+- **A saída da rede** é a permissão, no firewall, o muro de proteção da rede, para um computador de dentro abrir uma conversa com um endereço de fora. A TI do cliente libera a saída para o endereço da Maind (decisão 6) e uma saída para o endereço de cada provedor de IA que a organização escolheu (decisão 19).
 
-**Por que isto importa.** A promessa do mAIg é que os dados não saem crus da casa do cliente (decisão 4). O pedido ao provedor também sai da casa do cliente, e as decisões não dizem o que pode ir nele. Escolher os provedores e os modelos de cada app é, hoje, o jeito de a organização decidir para quem vai esse pedido.
+**Por que isto importa.** A promessa do mAIg é que os dados não saem crus da casa do cliente, uma regra que vem do Horus e que o mAIg ainda confirma (D-189 do Horus). O pedido ao provedor também sai da casa do cliente, e por isso a decisão 20 põe o que pode ir nele sob o controle do owner da organização. Escolher os provedores e os modelos de cada app decide para quem vai o pedido; a camada decide o que vai nele.
 
-**Quando dá errado.** Um app manda ao provedor mais dados do que a organização gostaria. Pelas decisões de hoje, o mAIg confere o modelo, o limite e anota o uso, mas não diz nada sobre o conteúdo do pedido.
+**Quando dá errado.** Um app tenta mandar ao provedor mais do que a camada dele permite. A conferência por camada, no tópico seguinte, existe para esse caso: o pedido é recusado inteiro (decisão 62).
 
-**O que ainda está em aberto.** Dois pontos: o que cada app pode mandar ao provedor, e se a organização vê ou restringe isso; e se a TI do cliente precisa liberar, além da saída para o endereço da Maind, a saída para o endereço de cada provedor. Os dois estão em "O que ainda falta decidir".
+**O que ainda está em aberto.** Por onde o pedido sai e o que ele pode levar já estão decididos (decisões 19 e 20). O que sobra em aberto está no tópico seguinte.
+
+### O que o pedido ao provedor pode levar: as três camadas
+
+**Em resumo:** o owner da organização escolhe, app por app, até que camada de dados o pedido ao provedor de IA pode levar. O app começa na camada mais restrita, e o núcleo confere a camada antes de enviar o pedido. (decisão 20) Mudar a camada avisa na hora os outros owners da organização e o auditor (decisão 54, MF-102).
+
+**Quem é quem.**
+
+- **Uma camada** é um nível do que o pedido ao provedor pode levar. São três, da mais restrita à mais aberta.
+- **A camada 1** leva só a pergunta e a descrição do banco: os nomes das tabelas e das colunas, sem nenhum dado.
+- **A camada 2** leva também totais já somados, como "vendas por mês", sem linhas de pessoas nem de clientes.
+- **A camada 3** leva também linhas de dados, isto é, registros um a um, como "venda 8231, cliente Fulano, R$ 480".
+- **O owner da organização** escolhe a camada de cada app, no console (MF-110).
+- **O auditor** confere no registro a camada de cada pedido (MF-102).
+
+**Como funciona.** O owner da organização escolhe, para cada app, a camada mais alta que o pedido ao provedor pode levar. Enquanto ele não escolhe, o app fica na camada 1. A cada pedido, o núcleo confere se o conteúdo cabe na camada do app antes de enviá-lo ao provedor e anota no registro a camada do pedido e uma descrição do que foi enviado, como quais tabelas e quantas linhas. Se o registro guarda também o texto inteiro do pedido, é um ponto em aberto do registro (MF-102). (decisão 20)
+
+**Por que é assim.** Sem esta regra, a promessa de que os dados não saem crus da casa do cliente valeria só para a Maind, e a organização não teria como controlar o que vai ao provedor. Com a escolha por app, cada organização decide conforme o risco dela, inclusive o da lei de proteção de dados, e o auditor consegue provar o que saiu. Ficaram de fora uma regra única da Maind para todas as organizações, que tiraria do Horus o que depende de o modelo ler linhas, e não ter regra de conteúdo, que deixaria cada app mandar o que quisesse. (decisão 20)
+
+**O que se abre mão.** O núcleo precisa reconhecer o que é dado e o que é total, o que dá trabalho e pode falhar. O Horus precisa funcionar bem na camada 1. E o owner da organização ganha mais uma configuração para entender. (decisão 20)
+
+> **Analogia:** é o que se entrega a um consultor externo. A empresa já escolheu quem é o consultor (a decisão 19); a camada diz o que se entrega a ele: só a pergunta e a planta dos arquivos, também os totais, ou também os documentos inteiros. **Onde a analogia para:** o consultor é um terceiro, e o que ele recebe sai do controle da empresa; por isso o mAIg confere a camada antes de entregar, e não depois.
+
+**Exemplo.**
+
+1. Paulo, owner da organização da Farma Vida, não escolheu camada para o Horus, e o app ficou na camada 1.
+2. Ana pergunta ao Horus por que as vendas de Campinas caíram em outubro.
+3. O módulo do Horus pede a IA ao núcleo, com a pergunta e a descrição do banco de vendas.
+4. O núcleo vê que o pedido cabe na camada 1, faz o pedido ao provedor com a chave da Farma Vida e anota no registro: o Horus, em nome de Ana, camada 1, com a descrição do que foi enviado.
+5. Um mês depois, Paulo decide que o Horus pode explicar os resultados com totais por mês e sobe o app para a camada 2. Os pedidos seguintes podem levar totais; as linhas de clientes continuam sem sair.
+6. Renata, a auditora, confere no registro a camada de cada pedido e não muda nenhuma configuração.
+
+**Quando dá errado.**
+
+- **Um app tenta mandar mais do que a camada permite**, por exemplo linhas de clientes na camada 2. O núcleo recusa o pedido inteiro, sem cortar só o excedente. A pessoa vê uma mensagem clara, que diz que a pergunta precisaria mandar à IA mais dados do que a organização permite, e o caso fica no registro, à vista do owner da organização e do auditor (decisão 62). Abre-se mão de: a pessoa fica sem a resposta e precisa reformular a pergunta; cortar só o excedente daria uma resposta pior ou errada sem que ela soubesse.
+- **Um total identifica uma pessoa.** Um total de vendas de um cliente que comprou uma vez só é, na prática, uma linha de dados. Como o núcleo reconhece esse caso ainda está em aberto.
+
+**O Horus na camada 1.** Por padrão, o Horus trabalha na camada 1: à IA vão só a pergunta e os nomes das tabelas, a IA escreve a consulta, o mAIg a roda no banco e monta a resposta, e a IA não vê número nenhum. Quando a pessoa liga, numa pergunta, a Análise avançada do Horus, o "ultra thinking", os dados voltam à IA para ela raciocinar sobre eles, mas só se o owner da organização tiver liberado ao Horus a camada que essa análise pede; se não tiver, o pedido é recusado inteiro, com mensagem clara (decisão 62, decisão 76). Assim, a promessa de que nenhum dado vai à IA vale por padrão. Abre-se mão de: na pergunta comum, uma explicação como "por que as vendas caíram" sai mais pobre.
+
+**O que ainda está em aberto.** Como o núcleo reconhece o que é dado e o que é total, e a confirmação de que o Horus responde bem na camada 1, estão em "O que ainda falta decidir".
 
 ### Quem faz e quem vê o quê com a IA
 
 **Em resumo:** quem configura a IA é o owner da organização; quem confere o uso é o auditor. O administrador da instância e a equipe da Maind não configuram a IA das organizações, e a pessoa que usa o app não vê nada disso.
 
-- **Owner da organização.** Cadastra e troca as chaves, escolhe os modelos de cada app, põe os limites e vê o consumo e o custo de todos os apps da organização. Não vê a chave depois de guardada.
-- **Auditor.** Lê no registro o uso de IA de cada pedido: qual app, qual modelo, em nome de quem, quanto e quando. Não muda nenhuma configuração (decisão 12).
+- **Owner da organização.** Cadastra e troca as chaves, escolhe os modelos de cada app, escolhe até que camada o pedido de cada app ao provedor pode levar dados, põe os limites e vê o consumo e o custo de todos os apps da organização. Não vê a chave depois de guardada.
+- **Auditor.** Lê no registro o uso de IA de cada pedido: qual app, qual modelo, em que camada, em nome de quem, quanto e quando. Não muda nenhuma configuração (decisão 12).
 - **Administrador da instância.** Cuida da instalação física do mAIg, a instância, e vê só o que é da instância: as instalações, o estado e as versões. Não configura a IA das organizações e não vê o consumo nem o registro delas (decisão 12).
 - **TI do cliente.** Cuida das contas da empresa nos provedores, gera as chaves e as cancela no provedor quando é preciso. Na infraestrutura do cliente, faz também o papel de administrador da instância.
 - **Equipe da Maind.** Dá suporte ao owner da organização, antes e depois da venda, sem configurar no lugar dele. Na infraestrutura da Maind, faz o papel de administrador da instância, sem ver pelo mAIg a IA das organizações.
@@ -212,8 +251,8 @@ Governança é o conjunto de regras sobre quem usa o quê, quanto e com que cont
 
 **Em resumo:** quando a IA não pode ou não consegue atender, o pedido não segue e fica no registro. Nenhuma falha faz o mAIg entregar uma chave a um app.
 
-- **O provedor recusa a chave, ou o crédito acaba.** A IA para para os apps que usam essa chave. Os pedidos não são atendidos e ficam no registro, como todo pedido. No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: o owner da organização é sempre avisado, e, se a chave é da Maind, a equipe da Maind também, para repor o crédito (D-268 do Horus).
-- **O app chega ao limite.** O pedido não segue como um pedido comum. O que exatamente acontece ainda está em aberto.
+- **O provedor recusa a chave, ou o crédito acaba.** A IA para para os apps que usam essa chave. Os pedidos não são atendidos e ficam no registro, como todo pedido. No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: o owner da organização é sempre avisado (D-268 do Horus). O aviso à equipe da Maind, que valia para a chave dada por ela, não vale no mAIg (decisão 22).
+- **O app chega ao limite.** O owner da organização já foi avisado aos 80%. Aos 100%, o núcleo recusa os pedidos do app à IA, com uma mensagem clara, até o owner da organização subir o limite ou o período virar (decisão 75).
 - **O app pede um modelo que não está na lista.** O núcleo não faz o pedido, e o pedido recusado fica no registro, à vista do owner da organização e do auditor (decisão 5).
 - **O provedor fica fora do ar.** O pedido não é atendido e fica no registro. O app pode pedir outro modelo da lista dele; o mAIg não troca de modelo por conta própria.
 - **A chave vaza.** O owner da organização cadastra uma chave nova, e a TI do cliente cancela a antiga no provedor. Há um lugar só para trocar.
@@ -247,7 +286,7 @@ O que as duas mostram a quem é de fora: a chave está num lugar só, a escolha 
 - **Entrar.** Hipótese: o gasto com IA sem controle é uma das objeções de quem aprova um produto com IA, e o owner da organização diz sim mais depressa quando vê, antes de começar, que pode escolher os modelos, pôr um limite e acompanhar o custo de cada app.
 - **Expandir.** Um segundo app chega com a sua própria lista de modelos e o seu próprio limite, e o gasto dele aparece separado do Horus. Hipótese: ver o custo de cada app à parte facilita aprovar o segundo app, o que apoia a estratégia de entrar e expandir.
 - **Reter.** Hipótese: a fatura explicada app por app evita a surpresa que leva um cliente a cortar o uso de IA ou a cancelar.
-- **Custo de atender.** Com a chave da empresa, a IA é cobrada pelo provedor direto da empresa, e a Maind não carrega esse custo. A equipe da Maind também não precisa responder quanto cada app gastou: o owner da organização vê sozinho. Hipótese: menos chamados ao suporte sobre consumo.
+- **Custo de atender.** Com a chave da empresa, a IA é cobrada pelo provedor direto da empresa, e a Maind não carrega esse custo (decisão 22). A equipe da Maind também não precisa responder quanto cada app gastou: o owner da organização vê sozinho. Hipótese: menos chamados ao suporte sobre consumo.
 - **Coerência com o preço.** O mAIg vem embutido no preço dos apps (decisão 17). A governança da IA não cria uma conta nova da Maind para o cliente: mostra o que o cliente já paga ao provedor.
 
 ## O que não inclui
@@ -257,7 +296,7 @@ O que as duas mostram a quem é de fora: a chave está num lugar só, a escolha 
 - **A tela onde se cadastram as chaves, os modelos e os limites.** É do console de configuração (MF-110).
 - **A consulta ao registro e a guarda dele.** São do registro e auditoria (MF-102).
 - **Os papéis e a conferência das permissões.** São da segurança e permissões (MF-101).
-- **Qual modelo o app pede em cada tarefa e o que vai dentro do pedido.** É do app, no módulo dele (MF-109).
+- **Qual modelo o app pede em cada tarefa e como ele monta o pedido.** É do app, no módulo dele (MF-109). O que o pedido pode levar, no máximo, é a camada desta mf (decisão 20).
 - **As ferramentas extras que a empresa dá à IA.** São os servidores MCP, os programas da empresa que seguem um padrão para dar à IA ferramentas como consultar um sistema interno; ficam para a segunda versão (MF-111).
 - **Limites e modelos por pessoa que usa o app.** As regras desta mf são por app; o que cada pessoa pode fazer dentro do app é do próprio app.
 - **Pausar, retirar e desinstalar um app.** É da gestão dos apps (MF-104).
@@ -271,24 +310,21 @@ O que as duas mostram a quem é de fora: a chave está num lugar só, a escolha 
 
 ## Ponto de partida no Horus
 
-- **A organização configura a IA dela, e a Maind pode dar uma chave.** No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: com a peça na casa do cliente, a organização configura a IA dela, e a Maind pode lhe dar uma chave de algum provedor de IA. Essa peça é o middleware, a peça entre as telas do Horus e os dados da empresa, que deu origem ao mAIg. O preço registrado: uma chave que a Maind dá fica na casa do cliente, e a TI dele consegue lê-la e reaproveitá-la (D-264 do Horus).
+- **A organização configura a IA dela.** No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: com a peça na casa do cliente, a organização configura a IA dela. Essa peça é o middleware, a peça entre as telas do Horus e os dados da empresa, que deu origem ao mAIg. O Horus permitia também que a Maind desse uma chave de algum provedor de IA, paga por ela, com o preço registrado de a TI do cliente poder lê-la e reaproveitá-la (D-264 do Horus); isso não vale no mAIg, onde a chave é sempre do cliente (decisão 22).
 - **A IA é configurada fora das telas do app.** No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: a IA, como os bancos, é configurada sempre na tela de configuração do middleware, e não nas telas do Horus, e assim as chaves ficam fora da parte do Horus na nuvem. A parte sobre quem configura foi substituída pela entrada do último item desta lista (D-265 do Horus).
 - **Não há IA da instância.** No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: não há configuração de IA no nível da instância, e cada organização tem a sua. Abriu-se mão do controle central de qual modelo cada organização usa e de quanto gasta (D-266 do Horus).
-- **A chave dada pela Maind é paga pela Maind, e o owner da organização vê tudo.** No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: quando a Maind dá a chave, quem paga é a Maind. O owner da organização vê o consumo e o custo de toda a IA da organização, da chave que ela paga e da que a Maind dá. Onde essa tela mora ficou para o arquiteto do Horus (D-267 do Horus).
-- **Quem é avisado quando a IA para.** No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: quando a IA da organização para, por chave recusada ou falta de crédito, o owner da organização é sempre avisado. Se a chave é a que a Maind dá, a equipe da Maind também é avisada, para repor o crédito (D-268 do Horus).
-- **Quem configura é o owner da organização.** No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: em qualquer hospedagem, quem configura a IA é o owner da organização, que cadastra também a chave que a Maind dá. A equipe da Maind só dá suporte. Quem opera a instalação da Maind segue podendo, tecnicamente, alcançar as chaves (D-273 do Horus).
+- **O owner da organização vê tudo.** No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: o owner da organização vê o consumo e o custo de toda a IA da organização. Onde essa tela mora ficou para o arquiteto do Horus (D-267 do Horus). A parte em que a Maind dá a chave e a paga não vale no mAIg (decisão 22).
+- **Quem é avisado quando a IA para.** No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: quando a IA da organização para, por chave recusada ou falta de crédito, o owner da organização é sempre avisado (D-268 do Horus). O aviso à equipe da Maind, que valia para a chave dada por ela, não vale no mAIg (decisão 22). O mAIg confirmou: o aviso vai ao owner da organização, no console e por e-mail (decisão 71).
+- **Quem configura é o owner da organização.** No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: em qualquer hospedagem, quem configura a IA é o owner da organização. A equipe da Maind só dá suporte. Quem opera a instalação da Maind segue podendo, tecnicamente, alcançar as chaves (D-273 do Horus).
 
 ## O que ainda falta decidir
 
-- **Falta o dono da Maind decidir se a Maind pode dar à organização uma chave de IA paga por ela.** *O que está em jogo:* a chave dada pela Maind facilita começar, mas a Maind passa a pagar a IA do cliente, e esse custo precisa caber no preço dos apps. Na casa do cliente, a TI dele consegue ler essa chave e reaproveitá-la (D-264, D-267 do Horus).
 - **Falta o dono da Maind decidir o que o limite de cada app mede e em que período vale.** *O que está em jogo:* um limite em dinheiro é o que o owner da organização entende, mas depende do cálculo do custo; um limite em quantidade de uso é mais simples de contar, mas mais difícil de ler. O período, como o mês, define quando o limite recomeça.
-- **Falta o dono da Maind decidir o que acontece quando um app chega ao limite.** *O que está em jogo:* recusar o pedido protege o orçamento, mas para o app no meio do trabalho, e no Horus a pergunta fica sem resposta. Só avisar mantém o app de pé, mas deixa o gasto passar do teto. Um aviso antes do teto daria tempo ao owner da organização para decidir.
 - **Falta o arquiteto do mAIg definir como o mAIg calcula o custo de cada pedido e com que precisão ele acompanha a fatura do provedor.** *O que está em jogo:* se a soma do mAIg e a fatura não baterem, o owner da organização deixa de confiar na visão do consumo, e o limite em dinheiro perde o sentido.
-- **Falta o dono da Maind confirmar quem é avisado quando a IA de um app para, por chave recusada ou falta de crédito.** *O que está em jogo:* sem aviso, quem descobre é a pessoa que usa o app, pela resposta que não vem. O ponto de partida do Horus avisa sempre o owner da organização e, se a chave é da Maind, também a equipe da Maind (D-268 do Horus).
-- **Falta o dono da Maind decidir o que cada app pode mandar ao provedor de IA e se a organização vê ou restringe isso.** *O que está em jogo:* à nuvem da Maind só voltam a pergunta e a resposta pronta, mas o pedido ao provedor também sai da casa do cliente, e as decisões não dizem o que pode ir nele. É a diferença entre controlar só para quem vai o pedido e controlar também o que vai nele.
-- **Falta o arquiteto do mAIg definir por onde sai o pedido ao provedor de IA.** *O que está em jogo:* se o mAIg fala direto com o provedor, a TI do cliente precisa liberar também a saída para o endereço de cada provedor, e não só a do endereço da Maind (decisão 6). Se o pedido passa pela Maind, a regra de que à nuvem da Maind só voltam a pergunta e a resposta pronta precisa ser revista.
+- **Falta o arquiteto do mAIg confirmar que o Horus responde bem na camada 1 e definir como a Análise avançada pede ao núcleo a camada maior, pergunta por pergunta.** *O que está em jogo:* a promessa de que nenhum dado vai à IA vale por padrão só se a pergunta comum do Horus funcionar bem sem que a IA veja os números (decisão 76); e a Análise avançada precisa passar pela mesma conferência de camada, sem um caminho à parte (decisões 20 e 62).
+- **Falta o arquiteto do mAIg definir como o núcleo reconhece o que é dado e o que é total, e o que fazer com um total que identifica uma só pessoa.** *O que está em jogo:* se o núcleo errar, uma linha de dados passa por total e a camada deixa de proteger o que promete. (decisão 20)
 - **Falta o arquiteto do mAIg definir como o owner da organização sabe quais modelos cada app consegue usar.** *O que está em jogo:* sem essa informação, o owner da organização pode montar uma lista com que o app não funciona, e só descobre pela falta de resposta.
-- **Também depende, e está explicado em outras mfs:** se o registro guarda o conteúdo do que foi pedido e respondido (MF-102); como os módulos dos apps ficam isolados, e se algum módulo pode sair para a internet por conta própria, como numa pesquisa na web, que passaria pela governança da IA (MF-109); o preço em reais dos apps e como a Maind reparte o custo do mAIg entre eles, que é ponto do mapa geral.
+- **Também depende, e está explicado em outras mfs:** como os módulos dos apps ficam isolados (MF-109); o preço em reais dos apps e como a Maind reparte o custo do mAIg entre eles, que é ponto do mapa geral.
 
 ## Decisões do PO para discutir
 
@@ -296,12 +332,17 @@ O que as duas mostram a quem é de fora: a chave está num lugar só, a escolha 
 - **Decisão:** a visão do consumo fica no console do mAIg, e não nas telas de cada app. *Por que:* o objetivo de controlar num lugar só pede o gasto de todos os apps na mesma tela; no Horus, o lugar dessa tela tinha ficado para o arquiteto. *Alternativa:* cada app mostrar o próprio gasto. *Reabrir se:* o owner da organização quiser ver o gasto dentro do app que usa.
 - **Decisão:** o auditor vê o uso de IA pedido a pedido, no registro; a visão somada do consumo e do custo é do owner da organização. *Por que:* o auditor só lê o registro, e o registro já anota quanto de IA cada pedido usou. *Alternativa:* dar ao auditor também a visão do consumo. *Reabrir se:* a área de segurança do cliente pedir a visão somada.
 - **Decisão:** a chave, depois de guardada, não aparece de volta para ninguém, nem para o owner da organização; e uma organização pode cadastrar chaves de mais de um provedor. *Por que:* cumpre "nenhum app toca uma chave" sem exceção para pessoas, e a decisão fala em chaves dos provedores, no plural. *Alternativa:* um provedor só por organização. *Reabrir se:* a TI do cliente precisar conferir qual chave está cadastrada.
-- **Decisão:** a chave dada e paga pela Maind, que vem do Horus, entrou como ponto de partida e ponto em aberto, e não como regra do mAIg. *Por que:* o briefing diz que a chave é do cliente e fica no mAIg, e o Horus diz que a Maind pode dar uma; as duas coisas só convivem se o dono da Maind confirmar. *Alternativa:* adotar a regra do Horus direto. *Reabrir se:* o dono da Maind confirmar a chave da Maind para a primeira venda.
+- **Decisão:** a chave dada e paga pela Maind, que vinha do Horus, foi recusada pelo dono da Maind em 09/11/2026 (decisão 22); no mAIg, a chave é sempre do cliente. *Por que:* mantém a promessa de que a chave é do cliente e fica no mAIg, e a Maind não carrega custo de IA. *Alternativa:* a Maind dar uma chave paga por ela, ou emprestá-la só como teste. *Reabrir se:* uma venda travar por falta de conta num provedor de IA.
 - **Decisão:** o mAIg não troca de modelo por conta própria quando um provedor falha; quem escolhe é o app, dentro da lista. *Por que:* trocar de modelo muda a resposta e o custo, e a regra do núcleo é só conferir e fazer o pedido. *Alternativa:* abrir um ponto para o mAIg passar o pedido a outro modelo da lista. *Reabrir se:* um app precisar de troca automática.
 - **Decisão:** no exemplo, Marta gera uma chave só para o mAIg, e o texto explica o porquê, sem fazer disso uma regra. *Por que:* sem isso, a fatura do provedor e a soma do mAIg não batem. *Alternativa:* exigir uma chave exclusiva no cadastro. *Reabrir se:* o arquiteto do mAIg tiver como conferir se a chave é usada fora.
 - **Decisão:** o histórico de consumo de um app desinstalado sai junto com o registro dele. *Por que:* é a consequência da regra de que, desinstalado o app, os dados dele são excluídos. *Alternativa:* guardar só as somas do consumo depois da desinstalação. *Reabrir se:* o owner da organização precisar do custo de um app antigo para prestar contas.
-- **Decisão:** três pontos novos sobre o pedido ao provedor entraram aqui: o que vai nele, por onde ele sai e como o owner da organização sabe quais modelos servem ao app. *Por que:* o pedido ao provedor é a única saída da casa do cliente que não vai para a Maind, e nenhuma decisão a descreve. *Alternativa:* levar o primeiro para a mf do registro e o segundo para a mf da conexão. *Reabrir se:* essas mfs já os tratarem.
+- **Decisão:** três pontos novos sobre o pedido ao provedor entraram aqui: o que vai nele, por onde ele sai e como o owner da organização sabe quais modelos servem ao app; o primeiro e o segundo foram decididos pelo dono da Maind em 09/11/2026 (decisões 20 e 19), e a decisão 20 abriu três pontos novos. *Por que:* o pedido ao provedor é a única saída da casa do cliente que não vai para a Maind, e nenhuma decisão a descreve. *Alternativa:* levar o primeiro para a mf do registro e o segundo para a mf da conexão. *Reabrir se:* essas mfs já os tratarem.
 - **Decisão:** a prova de valor tem duas demonstrações: o owner da organização controla o Horus pela IA, e a fatura do provedor é explicada app por app. *Por que:* são coisas que alguém de fora confere, com a fatura do próprio provedor na mão. *Alternativa:* uma demonstração com o limite atingido, que depende do ponto em aberto sobre o limite. *Reabrir se:* o dono da Maind decidir o que acontece no limite.
 - **Decisão:** em "Quem ganha", além do owner da organização, entraram a TI do cliente, o auditor e a equipe da Maind, como ganhos menores. *Por que:* cada um muda de fato com esta mf: a TI não entrega chaves a cada produto, o auditor confere o uso de IA no registro, e a equipe da Maind não guarda as chaves dos clientes. *Alternativa:* só o owner da organização, como na lista das mfs. *Reabrir se:* o dono da Maind preferir a lista curta.
 - **Decisão:** a chave é cadastrada por organização e serve a todos os apps dela; os modelos permitidos e o limite são de cada app. Parar ou desinstalar um app tira só as escolhas de IA daquele app, e a chave continua na organização. *Por que:* uma chave por provedor evita repetir a mesma chave em cada app, e a decisão fala em modelos, limites e custo por app. *Alternativa:* uma chave por app, cadastrada com a configuração dele. *Reabrir se:* um cliente quiser uma conta de provedor diferente para cada app.
+- **Decisão:** ler "anota no registro o que foi enviado" como a camada do pedido mais uma descrição do que foi enviado (por exemplo, quais tabelas e quantas linhas), e não o texto inteiro. *Por que:* guardar o texto inteiro faria do registro uma cópia dos dados e pesaria na guarda sem prazo (decisão 15); o ponto segue aberto na MF-102. *Alternativa:* guardar o texto inteiro de cada pedido. *Reabrir se:* o auditor precisar reconstruir um pedido palavra por palavra.
 - **Decisão:** além dos três pontos sobre o pedido ao provedor, quatro pontos novos foram abertos aqui: o que o limite mede e em que período vale, o que acontece quando um app chega ao limite e quem é avisado quando a IA para, com o dono da Maind; e como se calcula o custo de cada pedido, com o arquiteto do mAIg. *Por que:* nenhuma decisão os responde, e os três primeiros mudam o que o owner da organização vê e decide. *Alternativa:* deixá-los todos para o arquiteto do mAIg. *Reabrir se:* o arquiteto do mAIg mostrar que algum deles é só técnico.
+- **Decidido pelo dono da Maind em 11/11/2026:** um pedido à IA que leva mais do que a camada do app permite é recusado inteiro, com uma mensagem clara à pessoa e uma linha no registro (decisão 62). O ponto em aberto saiu desta mf.
+- **Decidido pelo dono da Maind em 11/11/2026:** quando a IA de um app para, por chave recusada ou falta de crédito, é avisado o owner da organização, no console e por e-mail (decisão 71). O ponto em aberto saiu desta mf.
+- **Decidido pelo dono da Maind em 11/11/2026:** o limite de gasto de IA de cada app avisa o owner da organização aos 80% e trava aos 100%, até ele subir o limite ou o período virar (decisão 75). O ponto em aberto saiu desta mf; o que o limite mede e em que período vale seguem abertos.
+- **Decidido pelo dono da Maind em 11/11/2026:** por padrão, o Horus trabalha na camada 1, e a IA não vê os números; só a Análise avançada, ligada pela pessoa numa pergunta, manda dados à IA, e só se a camada do app permitir (decisão 76). O ponto do dono da Maind saiu, e ficou um ponto do arquiteto do mAIg para confirmar a camada 1 e o caminho da Análise avançada.

@@ -1,6 +1,6 @@
 # MF-112:Entrar com o login que a empresa já usa
 
-> A pessoa que usa o app entra com a mesma conta que usa nos sistemas da empresa, conferida pelo provedor de identidade dela, o sistema onde a TI do cliente cadastra os funcionários. A TI do cliente passa a controlar num lugar só quem entra, e quem a empresa desliga não consegue mais entrar nos apps.
+> A pessoa que usa o app entra com a mesma conta que usa nos sistemas da empresa, conferida pelo provedor de identidade dela, o sistema onde a TI do cliente cadastra os funcionários. A TI do cliente passa a controlar num lugar só quem entra, e quem a empresa desliga não consegue mais entrar nos apps pelo login da empresa. O owner da organização e o administrador da instância, que também entram por usuário e senha, mantêm essa senha até alguém retirá-los (decisão 24).
 
 **Também chamada de:** Login da empresa · **Versão do mAIg:** 2ª · **Classe:** acelera · **Situação:** rascunho do PO
 
@@ -10,7 +10,7 @@ O mAIg passa a aceitar o login da empresa: a pessoa entra nos apps com a conta q
 
 **Os termos, pelo que fazem.** Login é a entrada da pessoa no sistema. Autenticar é conferir que alguém é quem diz ser. O provedor de identidade, ou IDP, na sigla em inglês, é o sistema em que a empresa cadastra os funcionários e pelo qual eles entram nos sistemas internos; é a TI do cliente quem o controla. O OpenID Connect é um padrão, uma regra combinada entre fabricantes, que permite a um sistema pedir ao provedor de identidade da empresa que confirme quem é a pessoa.
 
-**Por que existe.** Muitas empresas exigem que todo sistema novo use o login delas. Para a pessoa, é uma senha a menos para lembrar. Para a TI do cliente, é um lugar só para dar e tirar acesso: quem sai da empresa é desligado uma vez e perde a entrada em tudo. Sem o login da empresa, a TI do cliente pode exigi-lo para aprovar a compra. A primeira versão do mAIg funciona sem ele; esta mf tira esse atrito da venda e do uso.
+**Por que existe.** Muitas empresas exigem que todo sistema novo use o login delas. Para a pessoa, é uma senha a menos para lembrar. Para a TI do cliente, é um lugar só para dar e tirar acesso: quem sai da empresa é desligado uma vez e perde a entrada em tudo o que usa pelo login da empresa. Sem o login da empresa, a TI do cliente pode exigi-lo para aprovar a compra. A primeira versão do mAIg funciona sem ele; esta mf tira esse atrito da venda e do uso.
 
 ## Quem ganha
 
@@ -22,9 +22,9 @@ O mAIg passa a aceitar o login da empresa: a pessoa entra nos apps com a conta q
 
 **A TI do cliente passa a poder aprovar o mAIg** mesmo quando a regra da empresa é "nenhum sistema com senha própria", porque a entrada nos apps passa pelo provedor de identidade que ela já controla.
 
-**A TI do cliente passa a poder desligar uma pessoa num lugar só** e saber que ela perde a entrada nos apps da Maind sem pedir nada ao owner da organização nem à Maind; pelo ponto de partida do Horus, na mesma jornada de trabalho.
+**A TI do cliente passa a poder desligar uma pessoa num lugar só** e saber que ela perde a entrada nos apps da Maind pelo login da empresa, sem pedir nada ao owner da organização nem à Maind; pelo ponto de partida do Horus, na mesma jornada de trabalho.
 
-**A dor que some.** Sem esta mf, cada pessoa tem uma senha a mais, e quem sai da empresa continua com uma porta aberta até alguém lembrar de tirá-la no mAIg.
+**A dor que some.** Sem esta mf, cada pessoa tem uma senha a mais, e quem sai da empresa continua com uma porta aberta até alguém lembrar de tirá-la no mAIg. Isso só não vale para o owner da organização e o administrador da instância, que mantêm a senha local até alguém retirá-los (decisão 24). Mas essa senha abre só o console, e não os apps (decisão 55).
 
 ## Como funciona
 
@@ -35,12 +35,14 @@ O mAIg passa a aceitar o login da empresa: a pessoa entra nos apps com a conta q
 **Quem é quem.**
 
 - **O provedor de identidade da empresa** guarda as contas dos funcionários e confere a senha de cada um. Só a TI do cliente cria, muda e desliga essas contas.
-- **O mAIg** recebe a confirmação de quem é a pessoa e decide se ela entra, pelas regras da organização. A autenticação é do núcleo do mAIg (decisão 3). Se o login das pessoas que usam os apps fica no núcleo, igual para todos os apps, ou em cada app ainda está em aberto (MF-101).
+- **O mAIg** recebe a confirmação de quem é a pessoa e decide se ela entra, pelas regras da organização. A autenticação é do núcleo do mAIg (decisão 3). O cadastro e o login das pessoas ficam no núcleo, iguais para todos os apps (decisão 23).
 - **A pessoa que usa o app** escolhe "entrar com o login da empresa" e digita a senha na tela da própria empresa. O mAIg nunca vê essa senha.
 
 **Como acontece, em geral.** É assim que o OpenID Connect funciona em qualquer sistema: a pessoa pede para entrar, o sistema a leva à tela de login da empresa, ela entra ali com a conta de sempre, e o provedor de identidade devolve ao sistema uma confirmação assinada, que diz quem ela é e não se falsifica sem que se perceba.
 
 **Por que é assim.** A senha da pessoa fica num lugar só, o da empresa, e quem decide se a conta vale é a TI do cliente.
+
+**Onde fica a confirmação.** O login começa no endereço do mAIg, e a confirmação assinada do provedor de identidade chega ao mAIg e fica nele: nunca vai à nuvem da Maind. A nuvem dos apps recebe só o passe que o mAIg assina, que vale 15 minutos e se renova pelo mAIg (decisões 32 e 37, MF-101).
 
 > **Analogia:** é como mostrar na portaria do prédio o crachá que a empresa já deu ao funcionário, em vez de pedir um crachá novo ao prédio. **Onde a analogia para:** o porteiro do mAIg não confere o crachá a olho; pergunta ao próprio sistema da empresa, e o crachá só vale enquanto a empresa o mantiver ativo.
 
@@ -59,11 +61,11 @@ O mAIg passa a aceitar o login da empresa: a pessoa entra nos apps com a conta q
 
 **Por que é assim.** No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: a mecânica de login é configuração da organização, o owner da organização liga ou desliga cada uma, e o login da empresa entra como mais uma, sem refazer o login (D-291 do Horus). Ainda pelo ponto de partida do Horus, só o OpenID Connect é aceito, porque cobre os provedores de identidade mais comuns sem uma peça nova; o SAML só entra por decisão nova, quando um cliente importante o exigir (D-184 do Horus).
 
-**Em cada organização.** O mAIg não tem um nível de empresa acima da organização, e cada uma tem as próprias regras (decisões 9 e 11). Por isso uma empresa com duas organizações, como a matriz e uma subsidiária, liga o login nas duas, mesmo com o mesmo provedor de identidade.
+**Em cada organização.** O mAIg não tem um nível de empresa acima da organização, e cada uma tem as próprias regras (decisões 9 e 11). Por isso uma empresa com duas organizações, como a matriz e uma subsidiária, liga o login nas duas, mesmo com o mesmo provedor de identidade. E uma pessoa que está nas duas tem uma conta em cada uma (decisão 66, MF-101).
 
-**O owner da organização e o administrador da instância.** No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: os dois entram sempre por usuário e senha, mesmo com o login da empresa ligado (D-291 do Horus). Hipótese: assim, quem configura a organização nunca fica trancado do lado de fora se o login da empresa falhar ou for mal configurado.
+**O owner da organização e o administrador da instância.** Os dois entram sempre por usuário e senha, mesmo com o login da empresa ligado (decisão 24, D-291 do Horus). Assim, quem configura a organização nunca fica trancado do lado de fora se o login da empresa falhar ou for mal configurado. Os owners da organização a mais, até dois, também entram por usuário e senha, e o login da empresa vira mais um jeito de entrar para os três, sem tirar a senha (decisão 25). Essa senha local abre só o console: para usar os apps, o owner da organização entra como qualquer pessoa, pelo jeito de entrar da organização, e quem a empresa desliga perde os apps junto (decisão 55).
 
-**Do que se abre mão.** Uma empresa que só tem SAML fica sem o login da empresa até uma decisão nova. E uma empresa com várias organizações repete a ligação em cada uma.
+**Do que se abre mão.** Uma empresa que só tem SAML fica sem o login da empresa até uma decisão nova. E uma empresa com várias organizações repete a ligação em cada uma. E a TI do cliente não impõe a política da empresa à entrada do owner da organização e do administrador da instância, que seguem por usuário e senha (decisão 24).
 
 **Exemplo.** A Farma Vida, rede de 40 farmácias, usa o mAIg com o Horus e quer que os funcionários entrem com a conta da empresa.
 
@@ -92,11 +94,11 @@ O mAIg passa a aceitar o login da empresa: a pessoa entra nos apps com a conta q
 3. O provedor de identidade confirma que é o João. O mAIg confere que João não está cadastrado na organização, e ele não entra.
 4. Se João precisar do Horus, Paulo o cadastra, e a próxima entrada dele pelo login da empresa funciona.
 
-**O que ainda está em aberto.** O texto que João lê quando não entra é desenho de tela. E onde ficam e quem cadastra as pessoas que usam os apps, no núcleo do mAIg ou em cada app, ainda não está decidido (MF-101).
+**O que ainda está em aberto.** O texto que João lê quando não entra é desenho de tela. Onde ficam as pessoas que usam os apps já foi decidido: no núcleo, para todos os apps (decisão 23).
 
 ### O papel que o login da empresa traz
 
-**Em resumo:** pelo ponto de partida do Horus, o login da empresa também diz qual é o papel da pessoa, e, quando ele discorda do cadastro, vale o que o login da empresa diz.
+**Em resumo:** pelo ponto de partida do Horus, o login da empresa também diz qual é o papel da pessoa, e, quando ele discorda do cadastro, vale o que o login da empresa diz. No mAIg, esse papel vale dentro de cada app, e não no núcleo para todos: o passe de cada app leva o papel da pessoa naquele app (decisão 40).
 
 **Quem é quem.** O papel, que no Horus se chama role, é o conjunto de funcionalidades que a pessoa pode usar no app. O provedor de identidade da empresa costuma guardar o setor ou a função de cada funcionário, e o login da empresa pode trazer essa informação junto com a confirmação de quem a pessoa é.
 
@@ -128,6 +130,8 @@ O mAIg passa a aceitar o login da empresa: a pessoa entra nos apps com a conta q
 4. Às 16h, o mAIg confirma a sessão com o provedor de identidade, que diz que a conta não vale mais. Jorge precisa entrar de novo e não consegue.
 5. Ninguém precisou avisar Paulo nem a Maind: a TI do cliente desligou Jorge num lugar só.
 
+Se Marta também tira Jorge da VPN, ele perde os apps bem antes, em até 15 minutos, porque o passe só se renova pelo mAIg, e a máquina dele deixa de alcançá-lo (decisão 37).
+
 **O que ainda está em aberto.** O que acontece quando o provedor de identidade da empresa não responde à confirmação, e se o intervalo pode ser ajustado; os pontos estão no fim desta mf.
 
 ### O login da empresa e as regras dos bancos
@@ -152,10 +156,10 @@ No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda
 
 **O que a primeira versão já deixa pronto.**
 
-- **A autenticação no núcleo** (MF-101). A autenticação já é do núcleo, e o login da empresa é mais um jeito de autenticar no mesmo lugar (decisão 3). Se ele vale do mesmo jeito para todos os apps depende de onde ficam as pessoas que usam os apps, ainda em aberto (MF-101).
+- **A autenticação no núcleo** (MF-101). A autenticação já é do núcleo, e o login da empresa é mais um jeito de autenticar no mesmo lugar (decisão 3). Como as pessoas ficam no núcleo, ele vale do mesmo jeito para todos os apps (decisão 23, MF-101).
 - **Os jeitos de entrar como configuração da organização** (MF-101). Pelo ponto de partida do Horus, o owner da organização já liga e desliga o usuário e senha e o Google; o login da empresa entra ao lado deles, sem refazer o login (D-291 do Horus).
 - **O cadastro das pessoas da organização** (MF-101). É com ele que o login da empresa confere se quem chegou pode entrar.
-- **O owner da organização e o administrador da instância por usuário e senha** (MF-101). Os dois continuam entrando como na primeira versão.
+- **O owner da organização e o administrador da instância por usuário e senha** (MF-101). Os dois continuam entrando como na primeira versão (decisão 24).
 - **O console** (MF-110). A tela onde o owner da organização vai ligar o login da empresa.
 
 ### Quando dá errado
@@ -163,7 +167,7 @@ No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda
 **Em resumo:** o login da empresa só deixa entrar quem a organização cadastrou e enquanto a empresa mantiver a conta ativa; quando a ligação falha, os outros jeitos de entrar que estiverem ligados continuam valendo.
 
 - **Uma pessoa sem cadastro na organização tenta entrar.** O provedor de identidade confirma quem ela é, mas ela não entra (D-253 do Horus).
-- **A empresa desliga uma pessoa.** Ela perde a entrada na próxima confirmação da sessão, em até 8 horas pelo ponto de partida do Horus (D-255 do Horus).
+- **A empresa desliga uma pessoa.** Ela perde a entrada na próxima confirmação da sessão, em até 8 horas pelo ponto de partida do Horus (D-255 do Horus). Se a pessoa é um owner da organização, ela mantém a senha local até alguém retirá-la (decisão 24), mas essa senha abre só o console, e os apps ela perde junto (decisão 55).
 - **O papel do login e o do cadastro discordam.** Vale o do login da empresa; sem valor correspondente, a pessoa recebe o papel padrão da organização (D-254 do Horus).
 - **Os dados da ligação estão errados.** O login da empresa não funciona; o owner da organização, que entra por usuário e senha, corrige a ligação no console.
 - **A empresa só tem SAML.** O login da empresa não pode ser ligado até uma decisão nova (D-184 do Horus).
@@ -187,10 +191,10 @@ Prova de valor proposta pelo PO; o dono da Maind ainda não a confirmou.
 ## O que não inclui
 
 - **O login por usuário e senha e pelo Google, as permissões e os papéis do mAIg, e o primeiro acesso do owner da organização.** São da MF-101.
-- **O cadastro das pessoas que usam os apps.** Fica com a segurança e as permissões, e onde as pessoas ficam ainda está em aberto (MF-101).
+- **O cadastro das pessoas que usam os apps.** Fica com a segurança e as permissões, e as pessoas ficam no núcleo (decisão 23, MF-101).
 - **O provedor de identidade da empresa.** É da empresa: o mAIg não cria nem muda contas nele, e a TI do cliente o mantém.
 - **O SAML e outros padrões de login.** Só com uma decisão nova (D-184 do Horus).
-- **A entrada do owner da organização e do administrador da instância pelo login da empresa.** Pelo ponto de partida do Horus, os dois entram sempre por usuário e senha (D-291 do Horus).
+- **Tirar a senha do owner da organização e do administrador da instância.** Os dois entram sempre também por usuário e senha, mesmo com o login da empresa ligado, por decisão do dono da Maind (decisão 24, D-291 do Horus); para os owners da organização, o login da empresa é mais um jeito de entrar, sem tirar a senha (decisão 25).
 - **Quem vê o quê dentro do banco, pessoa por pessoa.** É de cada app; no Horus, de uma mf do próprio Horus.
 - **A tela onde o login da empresa se liga.** O console é da MF-110.
 
@@ -208,24 +212,24 @@ Prova de valor proposta pelo PO; o dono da Maind ainda não a confirmou.
 - No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: a sessão nascida pelo login da empresa se confirma com ele a cada 8 horas, e o intervalo é uma hipótese técnica a validar (D-255 do Horus).
 - No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: com o login da empresa ligado, o aviso de resposta limitada diz qual regra do Horus limitou a resposta e que os controles da empresa também valem (D-256 do Horus).
 - No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: a fonte cuja tecnologia não aceita a identidade da pessoa continua disponível só com a regra do Horus, e o owner da organização é avisado ao ligar o login da empresa (D-257 do Horus).
-- No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: a mecânica de login é configuração da organização; o owner da organização liga ou desliga cada uma, o login da empresa entra como mais uma, e o owner da organização e o administrador da instância entram sempre por usuário e senha (D-291 do Horus).
+- No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: a mecânica de login é configuração da organização; o owner da organização liga ou desliga cada uma, o login da empresa entra como mais uma (D-291 do Horus). Que o owner da organização e o administrador da instância entrem sempre por usuário e senha o dono da Maind confirmou em 09/11/2026 (decisão 24).
 
 ## O que ainda falta decidir
 
-- **Falta o dono da Maind decidir se o owner da organização pode entrar pelo login da empresa.** *O que está em jogo:* entrar sempre por usuário e senha garante que quem configura não fica trancado do lado de fora, mas deixa a conta mais poderosa da organização fora do controle da TI do cliente. No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: o owner da organização e o administrador da instância entram sempre por usuário e senha, e, com esse usuário, o owner da organização cadastra até mais dois owners da organização, ligados ao login da empresa (D-258 do Horus, D-291 do Horus). As duas regras convivem se o primeiro owner da organização entra por usuário e senha e os outros pelo login da empresa, mas o Horus não o diz com todas as letras.
 - **Falta o dono da Maind decidir o que acontece quando o provedor de identidade da empresa não responde.** *O que está em jogo:* se ninguém entra, uma queda do sistema da empresa para os apps da Maind; se as sessões abertas seguem valendo, uma pessoa desligada nesse intervalo continua dentro. No Horus, o que a pessoa lê quando a confirmação falha ficou para o desenho (D-255 do Horus).
-- **Falta o dono da Maind decidir se o papel trazido pelo login da empresa vale no núcleo do mAIg, para todos os apps, ou só dentro de cada app.** *O que está em jogo:* no núcleo, a TI do cliente governa os papéis de todos os apps num lugar só; em cada app, cada um traduz o papel do seu jeito. Depende de onde ficam as pessoas que usam os apps (MF-101).
 - **Falta o arquiteto do mAIg definir, com o dono da Maind, se o núcleo leva ao banco a identidade da pessoa que entrou pelo login da empresa.** *O que está em jogo:* sem isso, as regras de acesso do próprio banco da empresa não valem por pessoa, e o ponto de partida do Horus, em que elas valem junto com as do app, não se sustenta no mAIg (MF-105).
 - **Falta o arquiteto do mAIg confirmar que o login da empresa permite confirmar a sessão a cada 8 horas, e o dono da Maind decidir se o owner da organização ajusta esse intervalo.** *O que está em jogo:* o intervalo é o tempo máximo em que uma pessoa desligada ainda usa os apps; no Horus, ele é uma hipótese técnica (D-255 do Horus).
-- **Também depende, e está explicado em outras mfs:** onde ficam e quem cadastra as pessoas que usam os apps (MF-101).
 
 ## Decisões do PO para discutir
 
 - **Decisão:** ligar o login da empresa em cada organização, e não uma vez por empresa. *Por que:* o mAIg não tem um nível de empresa acima da organização, e o Horus já decidiu assim (decisões 9 e 11). *Alternativa:* uma ligação por empresa, valendo para todas as organizações dela. *Reabrir se:* uma empresa com muitas organizações reclamar de repetir a ligação.
 - **Decisão:** aceitar só o OpenID Connect na segunda versão, como o Horus (D-184 do Horus). *Por que:* cobre os provedores de identidade mais comuns sem uma peça nova. *Alternativa:* aceitar também o SAML. *Reabrir se:* um cliente importante só tiver SAML.
-- **Decisão:** manter o owner da organização e o administrador da instância sempre por usuário e senha, e registrar como ponto em aberto a entrada dos owners da organização a mais, que o Horus liga ao login da empresa. *Por que:* é o que o Horus diz do owner da organização e do administrador da instância, e protege contra ficar trancado do lado de fora (D-258 do Horus, D-291 do Horus). *Alternativa:* deixar o owner da organização, ou só os owners da organização a mais, entrar também pelo login da empresa. *Reabrir se:* o dono da Maind decidir o ponto em aberto.
-- **Decisão:** traduzir o convite do Horus por "estar cadastrado na organização". *Por que:* convite é um mecanismo do Horus, e no mAIg onde ficam as pessoas ainda não está decidido. *Alternativa:* usar "convite" também no mAIg. *Reabrir se:* for decidido onde ficam as pessoas que usam os apps (MF-101).
-- **Decisão:** tratar o papel trazido pelo login e as regras dos bancos por pessoa como ponto de partida do Horus e pontos em aberto, e não como regras do mAIg (D-254 do Horus, D-256 do Horus, D-257 do Horus). *Por que:* os dois dependem de decisões que o mAIg ainda não tomou: onde ficam as pessoas e se o núcleo leva a identidade ao banco. *Alternativa:* adotá-los já como regras do núcleo. *Reabrir se:* esses pontos forem decididos.
-- **Decisão:** manter em "Depende de" só a segurança e as permissões (MF-101). *Por que:* é a dependência combinada; o console é só a tela onde se liga, e os bancos só entram se o núcleo levar a identidade da pessoa até eles (MF-110, MF-105). *Alternativa:* acrescentar o console e os bancos às dependências. *Reabrir se:* o núcleo passar a levar a identidade ao banco.
+- **Decisão:** o owner da organização e o administrador da instância entram sempre por usuário e senha, como o PO recomendou, e o dono da Maind confirmou em 09/11/2026 (decisão 24); os owners da organização a mais também entram por usuário e senha, e o dono da Maind o confirmou em 09/11/2026 (decisão 25). *Por que:* protege contra ficar trancado do lado de fora, e é o que o Horus diz dos dois (D-258 do Horus, D-291 do Horus). *Alternativa:* deixar o owner da organização, ou só os owners da organização a mais, entrar só pelo login da empresa, com uma conta de reserva; o dono da Maind decidiu que o login da empresa é mais um jeito de entrar para os três, sem tirar a senha (decisão 25). *Reabrir se:* a TI de um cliente exigir que toda conta, inclusive a do owner da organização, entre pelo login da empresa.
+- **Decisão:** traduzir o convite do Horus por "estar cadastrado na organização". *Por que:* convite é um mecanismo do Horus, e no mAIg o cadastro das pessoas é do núcleo (decisão 23). *Alternativa:* usar "convite" também no mAIg. *Reabrir se:* o dono da Maind quiser o convite também no mAIg.
+- **Decisão:** tratar o papel trazido pelo login e as regras dos bancos por pessoa como ponto de partida do Horus e pontos em aberto, e não como regras do mAIg (D-254 do Horus, D-256 do Horus, D-257 do Horus). *Por que:* os dois dependem de uma decisão que o mAIg ainda não tomou: se o núcleo leva a identidade ao banco; onde ficam as pessoas já foi decidido (decisão 23). *Alternativa:* adotá-los já como regras do núcleo. *Reabrir se:* esses pontos forem decididos.
+- **Decisão:** manter em "Depende de" a segurança e as permissões e o console, sem os bancos (MF-101, MF-110). *Por que:* a segurança e as permissões são a dependência combinada, e é no console que o owner da organização liga o login da empresa, como manda a regra do mapa; os bancos só entram se o núcleo levar a identidade da pessoa até eles (MF-105). *Alternativa:* ficar só com a segurança e as permissões, ou acrescentar os bancos. *Reabrir se:* o núcleo passar a levar a identidade ao banco.
 - **Decisão:** manter as 8 horas como número do Horus, e não como número do mAIg (D-255 do Horus). *Por que:* no próprio Horus é uma hipótese técnica a validar. *Alternativa:* adotar as 8 horas como regra. *Reabrir se:* o arquiteto do mAIg confirmar o intervalo.
 - **Decisão:** classe acelera, e as duas provas de valor vindas do Horus, a da pessoa desligada e a da pessoa sem cadastro (D-253 do Horus, D-255 do Horus). *Por que:* a primeira versão entrega a promessa sem o login da empresa, que aumenta a adoção e tira um atrito da aprovação; e as duas provas a TI do cliente confere sozinha. *Alternativa:* essencial, se a exigência do login da empresa travar vendas da primeira versão. *Reabrir se:* um cliente condicionar a compra ao login da empresa antes da segunda versão.
+- **Decidido pelo dono da Maind em 10/11/2026:** o login começa no endereço do mAIg, a confirmação do provedor de identidade fica no mAIg, e a nuvem dos apps recebe só o passe que o mAIg assina, que vale 15 minutos e se renova pelo mAIg (decisões 32 e 37). Esta mf ganhou o parágrafo de onde fica a confirmação e o caso de quem é tirado da VPN.
+- **Decidido pelo dono da Maind em 10/11/2026:** o login começa pelo app e usa o jeito de entrar configurado no mAIg, e o papel trazido pelo login da empresa vale dentro de cada app, e não no núcleo para todos (decisão 40). O ponto em aberto sobre onde vale o papel saiu desta mf.
+- **Decidido pelo dono da Maind em 11/11/2026:** a senha local do owner da organização e do administrador da instância abre só o console; para usar os apps, o owner da organização entra como qualquer pessoa, e quem a empresa desliga perde os apps junto (decisão 55). O ponto em aberto de onde vale essa senha saiu desta mf.

@@ -54,6 +54,8 @@ Esta parte do mAIg desfaz esse nó. A senha do banco fica num lugar só, sob o c
 
 **Ninguém vê a senha de volta.** Depois de guardada, a senha não aparece em tela nenhuma. Não a vê a pessoa que usa o app, nem o auditor, nem o administrador da instância, nem quem a cadastrou. Se a senha do banco mudar, o owner da organização digita a nova, que toma o lugar da antiga.
 
+**O cofre é cifrado.** O cofre de cada organização fica embaralhado com uma chave da própria organização, que quem opera a máquina não alcança: nem a equipe da Maind, na hospedagem dela, nem a TI do cliente, na casa do cliente. Quem copia o disco ou a cópia de segurança não lê senha nenhuma (decisão 57, MF-102). A cópia de segurança do cofre é feita por quem opera a máquina (decisão 65, MF-107).
+
 **Quem cadastra.** O owner da organização cadastra os bancos, em qualquer hospedagem. A equipe da Maind dá suporte, sem cadastrar no lugar dele. Assim, a Maind não precisa conhecer, por rotina, a senha do banco de cada cliente.
 
 > **Analogia:** é como o cofre da recepção de um hotel. O hóspede pede o que deixou guardado, o recepcionista abre o cofre e entrega o objeto, e o hóspede nunca recebe a combinação. **Onde a analogia para:** no hotel, o hóspede leva o objeto original; no mAIg, o app recebe só uma cópia do que foi lido, e o banco continua intacto, onde sempre esteve.
@@ -68,7 +70,7 @@ Esta parte do mAIg desfaz esse nó. A senha do banco fica num lugar só, sob o c
 
 **Quando dá errado.** Paulo digita a senha errada. O mAIg não consegue ler o banco, e os pedidos do Horus a esse banco não são atendidos até a senha certa entrar no cadastro. O mesmo acontece se Marta trocar a senha no banco e ninguém atualizar o cadastro.
 
-**O que ainda está em aberto.** Quem conhece a senha é a TI do cliente, e quem cadastra é o owner da organização: no exemplo, a senha passou pelas mãos de Paulo. Se a TI do cliente pode cadastrá-la direto, sem ser owner da organização, ainda não está decidido; o ponto está em "O que ainda falta decidir".
+**Quem conhece e quem cadastra.** Quem conhece a senha é a TI do cliente, e quem cadastra é o owner da organização: no exemplo, a senha passou pelas mãos de Paulo. A TI do cliente não ganha um papel próprio para cadastrá-la direto; ela passa a senha ao owner da organização, que a cadastra. Não há problema em a senha passar por ele, porque o owner da organização tem uma espécie de fé pública dentro da organização: é quem a empresa indicou para responder por ela no mAIg (decisão 67). Abre-se mão de: a senha passa pelas mãos de quem muitas vezes não é da área técnica.
 
 ### O acesso só de leitura
 
@@ -80,11 +82,16 @@ Esta parte do mAIg desfaz esse nó. A senha do banco fica num lugar só, sob o c
 
 > **Analogia:** é como a sala de consulta de um arquivo histórico. O pesquisador pede o documento, lê na mesa e devolve, sem levá-lo para casa e sem escrever nele. **Onde a analogia para:** no arquivo, o pesquisador manuseia o documento original; no mAIg, o app nem chega perto do banco, porque quem lê é o núcleo, que entrega ao app uma cópia do que foi pedido.
 
-**As duas travas possíveis.** O "só leitura" pode ser garantido em dois lugares. O primeiro é o próprio mAIg, que só faz pedidos de leitura ao banco. O segundo é o banco: se o usuário cadastrado só tiver permissão para ler, o próprio banco recusa qualquer gravação, mesmo que algo falhe no mAIg. Foi o que Marta fez, por cautela, no exemplo do tópico anterior.
+**As duas travas.** O "só leitura" é garantido em dois lugares ao mesmo tempo. O primeiro é o próprio mAIg, que só faz pedidos de leitura ao banco. O segundo é o banco: o usuário cadastrado precisa ser um que só tem permissão para ler, e assim o próprio banco recusa qualquer gravação, mesmo que algo falhe no mAIg. No cadastro, o mAIg testa esse usuário e o recusa se ele conseguir gravar (decisão 61). Foi o que Marta fez no exemplo do tópico anterior.
 
-**Quando dá errado.** O módulo de um app pede algo que alteraria um banco. O mAIg não faz a alteração, e o pedido fica no registro, à vista do owner da organização e do auditor (decisões 5 e 12).
+**O limite de cada consulta.** Mesmo só lendo, uma consulta pesada pode deixar lento ou derrubar o banco de produção, como o do caixa das farmácias. Por isso cada consulta tem um limite de tempo e de linhas; passado o limite, ela é cortada, e o app recebe o aviso de que a consulta foi grande demais. Esse limite protege o banco e é outro, maior, que o teto da resposta, que protege o que sai do mAIg (decisões 43 e 61). Abre-se mão de: a TI do cliente cria o usuário que só lê antes de começar, e uma consulta grande demais é cortada.
 
-**O que ainda está em aberto.** Qual das duas travas vale, ou se valem as duas, ainda não está definido. Também não está definido se o usuário que só lê vira uma exigência do cadastro. Os dois pontos são do arquiteto do mAIg e estão em "O que ainda falta decidir".
+**Quando dá errado.**
+
+- **O módulo de um app pede algo que alteraria um banco.** O mAIg não faz a alteração, e o pedido fica no registro, à vista do owner da organização e do auditor (decisões 5 e 12).
+- **Paulo cadastra um usuário que consegue gravar.** O mAIg testa o usuário, recusa o cadastro e diz o motivo; Paulo pede a Marta um usuário que só lê (decisão 61).
+
+**O que ainda está em aberto.** Os valores do limite de tempo e de linhas e o jeito de testar o usuário no cadastro são do arquiteto do mAIg e estão em "O que ainda falta decidir".
 
 ### Quais apps leem cada banco
 
@@ -110,7 +117,7 @@ Esta parte do mAIg desfaz esse nó. A senha do banco fica num lugar só, sob o c
 
 **Quando dá errado.** O que Ana vê na tela, quando o Horus não consegue ler um banco, é decidido pelo Horus, e não pelo mAIg. O que o mAIg garante é que não lê sem permissão e que anota o pedido (decisão 5).
 
-**O que ainda está em aberto.** Se a permissão pode ser menor que o banco inteiro ainda não está decidido. Um exemplo: liberar só a parte das vendas de um banco que guarda também a folha de pagamento.
+**A permissão vale pelo banco inteiro.** O app lê tudo o que o usuário cadastrado do banco alcança. Para que ele não veja uma parte, como a folha de pagamento guardada no mesmo banco das vendas, a TI do cliente cria no banco um usuário mais restrito, que só enxerga as vendas, e o owner da organização o cadastra como um banco à parte (decisão 73). Abre-se mão de: cada recorte pede um usuário novo no banco, e o owner da organização não ajusta o recorte sozinho.
 
 ### O caminho de um pedido de dados, passo a passo
 
@@ -127,7 +134,7 @@ Esta parte do mAIg desfaz esse nó. A senha do banco fica num lugar só, sob o c
 5. O núcleo usa a senha guardada no cofre e lê no banco de vendas o que foi pedido, sem alterar nada. Entrega os dados ao módulo, dentro do mAIg. A senha não sai do núcleo.
 6. O núcleo anota no registro que o Horus leu o banco de vendas, em nome de Ana, e quando.
 7. O módulo monta a resposta. Se precisar da IA para isso, pede ao núcleo, pelo caminho da governança da IA (MF-106).
-8. Só a resposta pronta volta à nuvem da Maind, pela mesma conexão. Os números crus de vendas não vão para a Maind (decisão 4).
+8. Só a resposta pronta volta à nuvem da Maind, pela mesma conexão. Os números crus de vendas não vão para a Maind, mas a resposta pronta pode conter números da empresa; o que ela pode levar ainda está em aberto (MF-109).
 9. Ana vê a lista das farmácias na tela. Mais tarde, Renata, da área de segurança, nomeada auditora por Paulo, encontra no registro a leitura feita para essa pergunta.
 
 **O que não aconteceu.** O Horus não viu a senha. Ninguém abriu porta de entrada na rede da Farma Vida. A Maind não recebeu os dados crus. E o banco de vendas não mudou em nada. Entre o módulo e o banco houve sempre um serviço do núcleo, e por isso o pedido passou pela conferência e ficou no registro (decisões 4 e 5).
@@ -136,7 +143,7 @@ Esta parte do mAIg desfaz esse nó. A senha do banco fica num lugar só, sob o c
 
 **Em resumo:** quem cadastra e libera os bancos é o owner da organização; quem confere as leituras é o auditor. O administrador da instância e a equipe da Maind não configuram os bancos das organizações, e a pessoa que usa o app não vê nada disso.
 
-- **Owner da organização.** Cadastra os bancos, dá e retira as permissões, troca a senha quando ela muda e apaga o cadastro que não serve mais. Vê a lista dos bancos da organização e quais apps leem cada um. Não vê a senha depois de guardada.
+- **Owner da organização.** Cadastra os bancos, dá e retira as permissões, troca a senha quando ela muda e apaga o cadastro que não serve mais. Cadastrar ou trocar um banco avisa na hora os outros owners da organização e o auditor (decisão 54, MF-102). Vê a lista dos bancos da organização e quais apps leem cada um. Não vê a senha depois de guardada.
 - **Auditor.** Lê no registro cada leitura: qual app leu qual banco, em nome de quem e quando. Não muda nenhuma configuração (decisão 12).
 - **Administrador da instância.** Cuida da instalação física do mAIg: instala os apps e acompanha o estado e as versões. Não configura os bancos das organizações e não vê o registro delas (decisão 12).
 - **TI do cliente.** Cuida dos bancos fora do mAIg: cria o usuário que o mAIg vai usar e troca a senha quando a política da empresa pede. Na infraestrutura do cliente, faz também o papel de administrador da instância, sem por isso ver o registro.
@@ -151,7 +158,7 @@ Esta parte do mAIg desfaz esse nó. A senha do banco fica num lugar só, sob o c
 
 **A senha muda.** A TI do cliente troca a senha no banco, e o owner da organização digita a nova no cadastro. Como a senha mora num lugar só, há um lugar só para atualizar, e a troca vale para todos os apps que leem aquele banco.
 
-**O app para.** Quando um app para, pelo fim do contrato, as permissões dele sobre os bancos ficam guardadas com o resto da configuração dele. Elas ficam até a organização renovar, e o app volta como estava, ou até o owner da organização apagar (decisão 14). O cadastro do banco não depende do app: continua na organização, servindo aos outros apps.
+**O app para.** Quando um app para, depois do fim do contrato, as permissões dele sobre os bancos ficam guardadas com o resto da configuração dele. Elas ficam até a organização renovar, e o app volta como estava, ou até o owner da organização apagar (decisão 14). O cadastro do banco não depende do app: continua na organização, servindo aos outros apps.
 
 **O app é desinstalado.** Os dados do app são excluídos, e as permissões dele sobre os bancos saem junto (decisão 15). O cadastro do banco continua na organização, porque pertence a ela, e não ao app. Pausar, retirar e desinstalar um app estão explicados por inteiro na gestão dos apps (MF-104).
 
@@ -170,7 +177,7 @@ Esta parte do mAIg desfaz esse nó. A senha do banco fica num lugar só, sob o c
 
 **O que muda para os bancos.**
 
-- **Na infraestrutura do cliente.** O mAIg fica dentro da rede da empresa e lê o banco por dentro. O banco não fica visível de fora, e a TI do cliente libera só a saída para o endereço da Maind (decisão 6). As senhas ficam no cofre do mAIg, dentro da casa do cliente.
+- **Na infraestrutura do cliente.** O mAIg fica dentro da rede da empresa e lê o banco por dentro. O banco não fica visível de fora, e a TI do cliente libera a saída para o endereço da Maind e as dos provedores de IA que a organização escolher (decisões 6 e 19). As senhas ficam no cofre do mAIg, dentro da casa do cliente.
 - **Na infraestrutura da Maind.** O mAIg fica fora da rede da empresa. Para ler o banco, ele precisa chegar até lá de fora. Ou o banco já está num lugar que a Maind alcança, ou a empresa abre um caminho até ele. As senhas desses clientes ficam no cofre da Maind (decisão 9).
 
 **Por que existem as duas.** Um cliente pequeno, sem equipe de TI, usa o mAIg sem instalar nada. Quem exige ter tudo dentro de casa instala o mAIg na própria rede. O que se abre mão: na hospedagem da Maind, a promessa de não expor o banco fica menor, em troca de a empresa não instalar nada (decisão 9).
@@ -204,7 +211,7 @@ Esta parte do mAIg desfaz esse nó. A senha do banco fica num lugar só, sob o c
 - **Uma organização vizinha, na mesma instância.** Não enxerga os bancos, as senhas nem as permissões da outra (decisão 9).
 - **Uma instalação da Maind é invadida.** No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: numa instalação que atende muitas organizações, uma invasão expõe as senhas e as regras de todas elas, e quem não aceita esse risco instala na própria rede (D-272 do Horus).
 
-**O que ainda está em aberto.** Quem é avisado quando um banco para de responder, para que alguém conserte antes de as pessoas reclamarem, ainda não está decidido.
+**Quem é avisado.** Quando um banco para de responder, é avisado o owner da organização, que cuida dele, no console e por e-mail, sem dado nenhum, para que alguém conserte antes de as pessoas reclamarem (decisões 64 e 71). Confirma o ponto de partida do Horus (D-240 do Horus).
 
 ## Prova de valor
 
@@ -266,12 +273,9 @@ O que as duas mostram a quem é de fora: o banco continua onde estava, a senha e
 ## O que ainda falta decidir
 
 - **Falta o arquiteto do mAIg definir como a Maind alcança o banco do cliente, na hospedagem da Maind, sem enfraquecer a promessa de governança.** *O que está em jogo:* é a diferença entre as duas hospedagens. Com o mAIg na infraestrutura do cliente, o banco não fica exposto; na da Maind, ele precisa ser alcançável por ela, e o caminho até ele é o que o mAIg veio evitar (decisão 9).
-- **Falta o arquiteto do mAIg definir como o "só leitura" é garantido: pelo próprio mAIg, pelo usuário do banco que só lê, ou pelos dois.** *O que está em jogo:* com uma trava só, uma falha nela basta para gravar no banco. Exigir o usuário que só lê dá mais segurança, mas pede um passo a mais à TI do cliente em cada cadastro.
+- **Falta o arquiteto do mAIg definir os limites de tempo e de linhas de cada consulta e como o mAIg testa, no cadastro, se o usuário do banco consegue gravar.** *O que está em jogo:* as duas travas e o limite estão decididos (decisão 61); um limite apertado demais corta perguntas comuns, um folgado demais deixa uma consulta pesada derrubar o banco, e um teste mal feito aceita um usuário que grava.
 - **Falta o dono da Maind decidir, com o arquiteto do mAIg, quais tipos de banco a primeira versão do mAIg lê.** *O que está em jogo:* um cliente cujo banco fique fora da lista não consegue usar o Horus pelo mAIg. Cada tipo a mais é mais trabalho no núcleo antes da primeira venda.
-- **Falta o dono da Maind decidir se a permissão de um app pode ser menor que o banco inteiro.** *O que está em jogo:* com a permissão pelo banco inteiro, o app lê tudo o que o usuário cadastrado alcança, e limitar exige que a TI do cliente crie no banco um usuário mais restrito. Com uma permissão mais fina, o controle fica no mAIg, mas o cadastro fica mais trabalhoso.
-- **Falta o dono da Maind decidir se a TI do cliente pode cadastrar a senha de um banco sem ser owner da organização.** *O que está em jogo:* quem conhece a senha costuma ser a TI do cliente, e, se só o owner da organização cadastra, a senha passa pelas mãos dele. O ponto encosta em onde ficam e quem cadastra as pessoas, que é da segurança e permissões (MF-101).
-- **Falta o dono da Maind decidir quem é avisado quando um banco para de responder.** *O que está em jogo:* sem aviso, quem descobre é a pessoa que usa o app, pela resposta que não vem. No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: quando uma fonte de dados deixa de conectar, é avisado o owner da organização (D-240 do Horus).
-- **Também depende, e está explicado em outras mfs:** como os módulos dos apps ficam isolados, e o que o módulo pode devolver à nuvem da Maind além da resposta pronta, como o comando da consulta ou os dados lidos (MF-109); onde ficam e quem cadastra as pessoas que usam os apps (MF-101); se o registro guarda o conteúdo do que foi pedido e respondido (MF-102).
+- **Também depende, e está explicado em outras mfs:** como os módulos dos apps ficam isolados, e o que o módulo pode devolver à nuvem da Maind além da resposta pronta, como o comando da consulta ou os dados lidos (MF-109).
 
 ## Decisões do PO para discutir
 
@@ -284,3 +288,8 @@ O que as duas mostram a quem é de fora: o banco continua onde estava, a senha e
 - **Decisão:** em "Quem ganha", além da TI do cliente e do owner da organização, entraram o auditor, a equipe da Maind e a pessoa que usa o app, como ganhos menores. *Por que:* cada um muda de fato com esta mf. *Alternativa:* só os dois papéis da lista das mfs. *Reabrir se:* o dono da Maind preferir a lista curta.
 - **Decisão:** a prova de valor tem duas demonstrações: a TI do cliente confere que a senha não saiu e que o banco não mudou; o auditor vê a permissão retirada no registro. *Por que:* são coisas que alguém de fora confere sem depender da palavra da Maind. *Alternativa:* uma demonstração só, com a pergunta respondida. *Reabrir se:* o dono da Maind quiser também uma demonstração na hospedagem da Maind, o que depende do ponto em aberto sobre o caminho até o banco.
 - **Decisão:** usar duas entradas do Horus fora da lista indicada para esta mf: o risco de uma invasão da instalação compartilhada (D-272 do Horus) e quem é avisado quando uma fonte de dados para (D-240 do Horus). *Por que:* a primeira mostra o preço da hospedagem na Maind para as senhas, e a segunda é o ponto de partida do aviso quando um banco para de responder. *Alternativa:* ficar só nas entradas da lista. *Reabrir se:* o dono da Maind preferir o ponto de partida só com as entradas da lista.
+- **Decidido pelo dono da Maind em 11/11/2026:** o cofre e o registro de cada organização ficam cifrados com uma chave da organização, que quem opera a máquina não alcança (decisão 57). O tópico do cofre ganhou esse parágrafo.
+- **Decidido pelo dono da Maind em 11/11/2026:** o "só leitura" tem duas travas, o mAIg e o usuário do banco que só lê, testado no cadastro e recusado se conseguir gravar, e cada consulta tem limite de tempo e de linhas (decisão 61). O ponto do arquiteto passou a ser os valores dos limites e o jeito de testar o usuário.
+- **Decidido pelo dono da Maind em 11/11/2026:** só o owner da organização cadastra a senha de um banco; a TI do cliente a passa a ele e não ganha um papel próprio (decisão 67). O ponto em aberto saiu desta mf.
+- **Decidido pelo dono da Maind em 11/11/2026:** quando um banco para de responder, é avisado o owner da organização, no console e por e-mail (decisão 71). O ponto em aberto saiu desta mf.
+- **Decidido pelo dono da Maind em 11/11/2026:** a permissão de um app vale pelo banco inteiro, e o recorte se faz com um usuário mais restrito no próprio banco, criado pela TI do cliente (decisão 73). O ponto em aberto saiu desta mf.

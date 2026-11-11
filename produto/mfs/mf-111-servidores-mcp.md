@@ -50,7 +50,7 @@ O owner da organização cadastra no mAIg os servidores MCP da empresa, libera u
 
 **Quem é quem.** A **empresa**, a companhia cliente, constrói o servidor e decide o que ele oferece. A **organização**, o espaço do cliente dentro da instância do mAIg, é onde o servidor é cadastrado. Como nada se herda da organização vizinha, ele é cadastrado em cada organização que vai usá-lo (decisão 9).
 
-**Por que é assim.** É a regra do núcleo: nenhum app toca uma senha de banco nem uma chave de IA, e todo pedido passa pelo mAIg, que confere a permissão e anota no registro (decisão 5). O resultado fica dentro de casa: o módulo do app, a parte dele que roda isolada dentro do mAIg, usa o que a ferramenta devolveu, e para fora vai só a resposta pronta (decisão 4). No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma (D-281 do Horus, D-286 do Horus).
+**Por que é assim.** É a regra do núcleo: nenhum app toca uma senha de banco nem uma chave de IA, e todo pedido passa pelo mAIg, que confere a permissão e anota no registro (decisão 5). O resultado fica dentro de casa: o módulo do app, a parte dele que roda isolada dentro do mAIg, usa o que a ferramenta devolveu, e para fora vai a resposta pronta. No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma (D-281 do Horus, D-286 do Horus). Se o que a ferramenta devolveu pode ir também ao provedor de IA está em "O que ainda falta decidir".
 
 **As duas hospedagens.** Com o mAIg na infraestrutura do cliente, o mAIg chama o servidor de dentro da mesma rede, sem abrir porta de entrada nenhuma (MF-108). Com o mAIg na infraestrutura da Maind, o servidor precisa ser alcançável pela Maind, como o banco (decisão 9); como, ainda está em aberto.
 
@@ -129,11 +129,11 @@ O owner da organização cadastra no mAIg os servidores MCP da empresa, libera u
 2. Dentro do Horus, pelo ponto de partida do Horus, libera a role da área comercial, de que Ana faz parte.
 3. Ana passa a receber respostas que usam o estoque; um colega de outra área, não.
 
-**O que ainda está em aberto.** Se a liberação para as pessoas fica no núcleo, valendo para todos os apps, ou dentro de cada app, depende de onde ficam as pessoas que usam os apps (MF-101).
+**O que ainda está em aberto.** Se a liberação para as pessoas fica no núcleo, valendo para todos os apps, ou dentro de cada app, ainda não está decidido. As pessoas ficam no núcleo (decisão 23), o que favorece a liberação no núcleo, mas não a decide (MF-101).
 
 ### Uma pergunta que usa o servidor MCP, passo a passo
 
-**Em resumo:** a pergunta de Ana junta o banco de vendas e o servidor de estoque. O mAIg confere cada pedido, faz cada chamada e anota tudo, e para fora vai só a resposta pronta.
+**Em resumo:** a pergunta de Ana junta o banco de vendas e o servidor de estoque. O mAIg confere cada pedido, faz cada chamada e anota tudo.
 
 **Exemplo.** Ana, gerente comercial da Farma Vida, pergunta ao Horus: "quais farmácias vão ficar sem o antialérgico mais vendido nesta semana?".
 
@@ -143,10 +143,10 @@ O owner da organização cadastra no mAIg os servidores MCP da empresa, libera u
 4. O módulo pede a IA ao núcleo, que confere o modelo e os limites do Horus (MF-106). O modelo enxerga só as ferramentas que Paulo liberou para o Horus: "pedir reposição" não aparece.
 5. O modelo pede "consultar estoque". O núcleo confere que a ferramenta está liberada para o Horus e para Ana, chama o servidor da Farma Vida, dentro da rede da empresa, e anota a chamada no registro.
 6. O servidor devolve o estoque de cada farmácia, e o núcleo o entrega ao módulo, dentro do mAIg.
-7. O módulo monta a lista das farmácias que vão ficar sem o produto. À nuvem da Maind volta só essa resposta pronta, e Ana a vê na tela (decisão 4).
+7. O módulo monta a lista das farmácias que vão ficar sem o produto. À nuvem da Maind volta essa resposta pronta, e Ana a vê na tela.
 8. Mais tarde, Renata, da área de segurança e auditora da organização, encontra no registro a leitura do banco e a chamada da ferramenta, com o app, a pessoa e a hora.
 
-**O que não aconteceu.** O módulo do Horus não falou com o servidor: pediu ao núcleo. "Pedir reposição" não foi oferecida ao modelo. A lista crua do estoque não saiu da rede da Farma Vida, e nada mudou no sistema de estoque.
+**O que não aconteceu.** O módulo do Horus não falou com o servidor: pediu ao núcleo. "Pedir reposição" não foi oferecida ao modelo. Nada mudou no sistema de estoque. O que o servidor devolveu foi ao módulo, e se uma parte disso pode ir ao provedor de IA, que roda fora da rede, ainda está em aberto.
 
 **Por que a chamada fica no registro.** Todo pedido de um app ao núcleo passa pela permissão e pelo registro, e o servidor MCP é um serviço do núcleo (decisão 5). O owner da organização e o auditor consultam o registro, o administrador da instância não (decisão 12), e ele fica guardado enquanto o app estiver instalado (decisão 15). Se o registro guarda também o conteúdo do que a ferramenta devolveu é a mesma pergunta que existe para todo pedido de um app (MF-102).
 
@@ -166,7 +166,6 @@ O owner da organização cadastra no mAIg os servidores MCP da empresa, libera u
 - **O jeito de usar um recurso da empresa** (MF-105): o banco já é cadastrado pelo owner da organização, usado só pelo núcleo e liberado app por app; o servidor MCP segue o mesmo caminho.
 - **O pedido à IA pelo núcleo** (MF-106): como o modelo já é pedido pelo núcleo, é ali que se decide quais ferramentas ele enxerga.
 - **O console** (MF-110): a tela onde o owner da organização vai cadastrar os servidores.
-- **O lugar no desenho.** "Por dentro do mAIg" já mostra o bloco "Servidores MCP" no núcleo, marcado "segunda versão" e sem setas.
 
 ### Quando dá errado
 
@@ -184,7 +183,7 @@ O owner da organização cadastra no mAIg os servidores MCP da empresa, libera u
 Prova de valor proposta pelo PO; o dono da Maind ainda não a confirmou.
 
 1. **A ferramenta que age não é chamada.** O owner da organização cadastra um servidor com ferramentas de leitura e de ação e libera só as de leitura. No app, alguém faz uma pergunta que levaria a IA a usar uma ferramenta de ação. A TI do cliente confere, no sistema da empresa, que nada mudou, e o auditor confere no registro que só as ferramentas liberadas foram chamadas.
-2. **A resposta que só o servidor sabe dar.** Uma pergunta é respondida com uma informação que está só no sistema interno, e não no banco. A TI do cliente confere que da rede da empresa saiu só a resposta pronta, e o auditor encontra a chamada no registro.
+2. **A resposta que só o servidor sabe dar.** Uma pergunta é respondida com uma informação que está só no sistema interno, e não no banco. A TI do cliente confere que o servidor só foi chamado pelo mAIg, de dentro da rede, e o auditor encontra a chamada no registro.
 
 ## Retorno para o negócio
 
@@ -226,23 +225,24 @@ Prova de valor proposta pelo PO; o dono da Maind ainda não a confirmou.
 ## O que ainda falta decidir
 
 - **Falta o arquiteto do mAIg definir como o mAIg aplica a lista de ferramentas liberadas.** *O que está em jogo:* mostrar ao modelo só as liberadas, recusar as outras, perceber e bloquear a ferramenta nova, registrar cada chamada e fazer o resultado entrar na resposta com a origem; é o que faz a promessa por lista funcionar (P-050 do Horus).
-- **Falta o dono da Maind decidir se a liberação dos servidores para as pessoas fica no núcleo do mAIg ou dentro de cada app.** *O que está em jogo:* no núcleo, uma regra só vale para todos os apps; em cada app, cada um repete a liberação do seu jeito. Depende de onde ficam as pessoas que usam os apps (MF-101).
+- **Falta o dono da Maind decidir se a liberação dos servidores para as pessoas fica no núcleo do mAIg ou dentro de cada app.** *O que está em jogo:* no núcleo, uma regra só vale para todos os apps; em cada app, cada um repete a liberação do seu jeito. As pessoas ficam no núcleo (decisão 23), o que favorece o núcleo, mas não decide o ponto (MF-101).
 - **Falta o dono da Maind confirmar que a ferramenta nova nasce bloqueada e decidir se o owner da organização é avisado quando ela surge.** *O que está em jogo:* sem o bloqueio, uma atualização do servidor daria à IA uma ação nova sem ninguém decidir; sem o aviso, a ferramenta nova fica esquecida.
 - **Falta o arquiteto do mAIg definir onde fica guardado o acesso a cada servidor MCP.** *O que está em jogo:* a credencial dá acesso a um sistema da empresa; no cofre do mAIg, como as senhas dos bancos, nenhum app a toca, e noutro lugar a regra precisa de outra garantia.
 - **Falta o arquiteto do mAIg definir como a Maind alcança um servidor MCP da empresa quando a instância roda na infraestrutura da Maind.** *O que está em jogo:* é a mesma diferença entre as duas hospedagens que existe para os bancos, sem enfraquecer a promessa de governança (MF-105).
 - **Falta o arquiteto do mAIg definir o que o uso das ferramentas muda no custo da IA e no tempo da resposta.** *O que está em jogo:* cada chamada faz o modelo trabalhar mais, e o custo da IA é contado por app; o owner da organização precisa saber quanto um servidor pesa antes de liberá-lo (MF-106).
 - **Falta o dono da Maind decidir o que fazer quando um cliente exigir prova, e não só declaração, de que uma ferramenta só lê.** *O que está em jogo:* o mAIg sozinho não consegue provar o que a ferramenta faz por dentro, e um cliente de segurança rígida pode não aceitar a promessa por lista.
-- **Também depende, e está explicado em outras mfs:** onde ficam e quem cadastra as pessoas que usam os apps (MF-101); se o registro guarda o conteúdo do que foi pedido e respondido (MF-102); como a Maind alcança o banco na hospedagem dela (MF-105).
+- **Falta o dono da Maind decidir se o que uma ferramenta MCP devolve pode ir ao provedor de IA, e em que camada (decisão 20).** *O que está em jogo:* quem pede a ferramenta é o modelo de IA, que roda no provedor, fora da rede, e para usar o que ela devolve o modelo costuma precisar ver o resultado. As camadas da decisão 20 dizem o que vai ao provedor num pedido comum, mas não falam do resultado de uma ferramenta.
+- **Também depende, e está explicado em outras mfs:** como a Maind alcança o banco na hospedagem dela (MF-105).
 
 ## Decisões do PO para discutir
 
 - **Decisão:** acrescentar a liberação do servidor app por app, além da liberação ferramenta por ferramenta e por pessoas que vem do Horus. *Por que:* no mAIg, os bancos e a IA já são liberados app por app, e o Horus era um app só. *Alternativa:* liberar o servidor para a organização inteira. *Reabrir se:* a liberação por app pesar demais para o owner da organização.
-- **Decisão:** deixar em aberto onde mora a liberação por pessoas, em vez de pô-la no núcleo. *Por que:* o Horus libera por role, que é um conceito dele, e onde ficam as pessoas no mAIg ainda não está decidido (D-288 do Horus). *Alternativa:* um grupo de pessoas por servidor, no núcleo, valendo para todos os apps. *Reabrir se:* for decidido onde ficam as pessoas que usam os apps (MF-101).
+- **Decisão:** deixar em aberto onde mora a liberação por pessoas, em vez de pô-la no núcleo. *Por que:* o Horus libera por role, que é um conceito dele, e a liberação por pessoas ainda não foi decidida no mAIg, embora as pessoas fiquem no núcleo (decisão 23; D-288 do Horus). *Alternativa:* um grupo de pessoas por servidor, no núcleo, valendo para todos os apps. *Reabrir se:* o dono da Maind decidir que a liberação mora no núcleo.
 - **Decisão:** apoiar o registro de cada chamada de ferramenta na decisão 5, e não só no Horus, onde ele é leitura a confirmar (D-289 do Horus). *Por que:* a decisão 5 põe os servidores MCP no núcleo, e todo pedido ao núcleo passa pela permissão e pelo registro. *Alternativa:* tratar o registro das chamadas como ponto em aberto. *Reabrir se:* o dono da Maind entender que a decisão 5 não cobre as chamadas de ferramenta.
 - **Decisão:** tratar a ferramenta nova bloqueada como ponto de partida a confirmar, e não como regra do mAIg, porque no Horus ela é leitura do PO (D-289 do Horus). *Por que:* não há decisão do dono da Maind sobre ela. *Alternativa:* escrevê-la como regra. *Reabrir se:* o dono da Maind a confirmar.
 - **Decisão:** deixar em aberto onde fica a credencial do servidor, em vez de afirmar o cofre. *Por que:* a decisão 5 fala das senhas dos bancos e das chaves de IA, e nenhuma fonte diz onde fica o acesso a um servidor MCP. *Alternativa:* afirmar o cofre, pela mesma regra dos bancos. *Reabrir se:* o arquiteto do mAIg definir o cofre.
 - **Decisão:** cadastrar o servidor em cada organização que vai usá-lo, sem compartilhá-lo entre organizações da mesma empresa. *Por que:* nada se herda da organização vizinha, e o mAIg não tem um nível de empresa acima da organização (decisões 9 e 11). *Alternativa:* um cadastro por empresa. *Reabrir se:* uma empresa com muitas organizações reclamar de repetir o cadastro.
 - **Decisão:** considerar a liberação dos servidores uma das permissões que ficam guardadas quando o app para. *Por que:* a decisão 14 guarda as permissões do app, e a liberação de um servidor é uma permissão. *Alternativa:* apagar as liberações quando o app para. *Reabrir se:* o dono da Maind entender que a decisão 14 não alcança os servidores MCP.
-- **Decisão:** manter as dependências da lista combinada e não acrescentar a governança da IA nem a conexão de dentro para fora (MF-106, MF-108). *Por que:* as duas se relacionam com esta mf, mas já estão na primeira versão. *Alternativa:* acrescentá-las a "Depende de". *Reabrir se:* o mapa das dependências for revisto.
+- **Decisão:** manter as dependências da lista combinada, acrescentar a governança da IA e não acrescentar a conexão de dentro para fora (MF-106, MF-108). *Por que:* é no pedido à IA que se decide quais ferramentas o modelo vê, e por isso a governança da IA entrou em "Depende de"; a conexão se relaciona com esta mf, mas já está na primeira versão. *Alternativa:* acrescentar também a conexão a "Depende de". *Reabrir se:* o mapa das dependências for revisto.
 - **Decisão:** manter a classe expande, a mesma que o Horus deu à mf dele (D-282 do Horus). *Por que:* a primeira versão do mAIg entrega a promessa sem ela. *Alternativa:* acelera. *Reabrir se:* um cliente condicionar a compra a usar os próprios servidores MCP.
 - **Decisão:** usar como prova de valor as duas demonstrações do Horus, com a conferência da TI do cliente e do auditor. *Por que:* são cenários que alguém de fora confere sem números. *Alternativa:* uma prova só. *Reabrir se:* o dono da Maind preferir outra demonstração.

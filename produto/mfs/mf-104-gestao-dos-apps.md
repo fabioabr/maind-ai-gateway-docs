@@ -6,7 +6,7 @@
 
 ## Em uma frase
 
-A gestão dos apps é tudo o que acontece com um app depois de contratado: o administrador da instância o instala, o owner da organização o libera e configura, e a partir daí o app pode ser pausado, retomado, parado pelo fim do contrato, atualizado, retirado de uma organização e, por fim, desinstalado.
+A gestão dos apps é tudo o que acontece com um app depois de contratado: o administrador da instância o instala, o owner da organização o libera e configura, e a partir daí o app pode ser pausado, retomado, parado depois do fim do contrato, atualizado, retirado de uma organização e, por fim, desinstalado.
 
 O mAIg, o Maind AI Gateway, é a plataforma da Maind que fica na rede da empresa cliente, ou na infraestrutura da Maind, e pela qual os produtos da Maind chegam aos dados e à inteligência artificial (IA) da empresa. "Gateway" quer dizer portão. Cada produto entra no mAIg como um app, e o primeiro é o Horus (decisão 3).
 
@@ -17,7 +17,7 @@ Ao longo da vida, um app muda de situação muitas vezes: uma pausa para conferi
 ## Quem ganha
 
 - **Administrador da instância** (quem cuida da instalação física do mAIg: a TI do cliente, quando o mAIg roda na rede da empresa, ou a equipe da Maind, quando roda na infraestrutura da Maind). Instala cada app uma vez, para todas as organizações da instância, e controla o que roda nela. Atualiza o app num lugar só. E sabe quando pode desinstalar um app e o que a desinstalação apaga.
-- **Owner da organização** (a pessoa que responde pela organização no mAIg). Decide se a organização usa o app e com que regras. Pausa e retoma sem refazer nada. Encontra a configuração guardada quando o app para pelo fim do contrato, e decide se a apaga.
+- **Owner da organização** (a pessoa que responde pela organização no mAIg). Decide se a organização usa o app e com que regras. Pausa e retoma sem refazer nada. Encontra a configuração guardada quando o app para depois do fim do contrato, e decide se a apaga.
 - **De forma indireta, a pessoa que usa o app e o auditor.** A pessoa que usa o app reencontra o app como estava depois de uma pausa ou de uma renovação. O auditor, a pessoa nomeada pelo owner da organização que só lê o registro, encontra o registro inteiro enquanto o app estiver instalado. O registro é a anotação de tudo o que os apps pedem ao mAIg em nome de cada organização (decisão 15).
 
 ## A decisão que passa a ser possível
@@ -37,9 +37,9 @@ Ao longo da vida, um app muda de situação muitas vezes: uma pausa para conferi
 
 - **A instância** é cada instalação física do mAIg. **A organização** é o espaço de um cliente dentro da instância, com os seus próprios apps e as suas próprias regras. Uma instância atende uma ou mais organizações, sem misturá-las (decisão 9).
 - **O administrador da instância** age na instância inteira. **O owner da organização** age só na organização dele.
-- **A equipe da Maind** entra pelo contrato. Um app para no fim do contrato por uma ação manual dela ou pelo vencimento do certificado digital, a carteira de identidade digital com que a Maind libera o app. As duas formas de parar são da contratação dos apps (MF-103).
+- **A equipe da Maind** entra pelo contrato. Um app para no fim do contrato por uma ação manual dela ou pelo vencimento da licença, o documento assinado pela Maind que diz até quando vale o contrato, com a carência (decisão 56). As duas formas de parar são da contratação dos apps (MF-103).
 
-**Os estados e os atos.** "Instalado" e "desinstalado" valem para a instância inteira; os outros estados valem para cada organização.
+**Os estados e os atos.** "Instalado", "suspenso" e "desinstalado" valem para a instância inteira; os outros estados valem para cada organização.
 
 | Estado | O que quer dizer | Quem leva a ele |
 |---|---|---|
@@ -47,11 +47,12 @@ Ao longo da vida, um app muda de situação muitas vezes: uma pausa para conferi
 | Em configuração | O app foi liberado para a organização, mas ainda falta o mínimo para funcionar. | O owner da organização, ao começar a configurar. |
 | Em uso | O app funciona para a organização, com a configuração dela. | O owner da organização, ao completar a configuração. |
 | Pausado | O app não atende a organização, mas tudo fica guardado. | O owner da organização, ao pausar; ele mesmo retoma. |
-| Parado | O contrato acabou e o app parou; a configuração fica guardada. | A ação manual da Maind ou o certificado vencido; só a renovação o traz de volta. |
+| Suspenso | O app não atende nenhuma organização da instância, mas tudo fica guardado. | O administrador da instância, numa emergência; ele mesmo retoma. |
+| Parado | O contrato acabou e o app parou; a configuração fica guardada. | A ação manual da Maind ou a licença vencida; só a renovação o traz de volta. |
 | Retirado | A organização deixou de ter o app, e a configuração dela foi apagada. | O owner da organização, ao retirar. |
 | Desinstalado | O app saiu da instância, e os dados dele foram excluídos. | O administrador da instância, ao desinstalar. |
 
-**Por que é assim.** "Sem refazer nada" quer dizer que pausar, parar, renovar e atualizar não apagam a configuração. Apagar é sempre o ato de alguém que sabe o que está apagando (decisões 14 e 15).
+**Por que é assim.** "Sem refazer nada" quer dizer que pausar, suspender, parar, renovar e atualizar não apagam a configuração. Apagar é sempre o ato de alguém que sabe o que está apagando (decisões 14 e 15).
 
 ### Instalar: o administrador da instância, uma vez por instância
 
@@ -67,7 +68,7 @@ Ao longo da vida, um app muda de situação muitas vezes: uma pausa para conferi
 
 **Uma instalação, uma versão.** Como o app é instalado uma vez por instância, todas as organizações dela usam a mesma versão dele. Uma organização não escolhe, sozinha, ficar numa versão mais velha.
 
-**O que o administrador da instância vê.** As instalações, o estado e as versões de cada app. Vê também se alguma organização ainda tem o app, sem ver a configuração dela. Não vê o registro das organizações (decisão 12).
+**O que o administrador da instância vê.** As instalações, o estado e as versões de cada app. Vê também se alguma organização ainda tem o app, sem ver a configuração dela. Não vê o registro das organizações (decisão 12). Os atos dele que tocam uma organização, como instalar e atualizar um app, ficam anotados no registro dela, e ele só escreve a linha, sem lê-la (decisão 29, MF-102).
 
 **Quando dá errado.** O administrador da instância tenta instalar um app que a Maind não liberou para nenhuma organização da instância. O mAIg não deixa: o app ainda não foi contratado ali (decisão 10).
 
@@ -84,7 +85,7 @@ Ao longo da vida, um app muda de situação muitas vezes: uma pausa para conferi
 - **As IAs que o app usa:** quais modelos de IA ele pode usar e com que limites. Um modelo é cada programa de IA que entende uma pergunta e escreve a resposta. Como funcionam as chaves dos provedores, os limites e o custo é da governança da IA (MF-106).
 - **Os ajustes:** o que mais o app permite ajustar para a organização.
 
-**O mínimo para entrar em uso.** Cada app declara, ao ser instalado, o mínimo de que precisa para funcionar. O Horus, por exemplo, precisa de ao menos um banco e de uma IA. Enquanto falta algo, o app fica "em configuração", e o console mostra ao owner da organização o que falta. O console é a tela do mAIg onde o owner da organização configura tudo (MF-110).
+**O mínimo para entrar em uso.** Cada app declara, ao ser instalado, o mínimo de que precisa para funcionar. O Horus, por exemplo, precisa de ao menos um banco e de uma IA. Enquanto falta algo, o app fica "em configuração", e o cockpit de ativação, no console, mostra ao owner da organização o que falta (decisão 72). O console é a tela do mAIg onde o owner da organização configura tudo (MF-110).
 
 **Quem usa o app.** Dar acesso às pessoas da organização é da segurança e permissões (MF-101).
 
@@ -113,9 +114,37 @@ Ao longo da vida, um app muda de situação muitas vezes: uma pausa para conferi
 
 **Quando dá errado.** O owner da organização esquece o app pausado. As pessoas da organização ficam sem ele até alguém retomá-lo; o console mostra o app como "pausado", com a data da pausa.
 
-### Quando o app para pelo fim do contrato
+### A suspensão de emergência: o administrador da instância, na instância inteira
 
-**Em resumo:** quando o contrato acaba e o app para, por ação manual da Maind ou pelo certificado vencido, a configuração dele fica guardada até a organização renovar ou até o owner da organização apagá-la (decisões 13 e 14).
+**Em resumo:** quando um app faz o que não devia, o administrador da instância o suspende de uma vez, em todas as organizações da instância, sem apagar a configuração nem o registro (decisão 46).
+
+**Quem é quem.**
+
+- **Suspender** é o administrador da instância fazer o app deixar de atender todas as organizações da instância. Na casa do cliente, quem suspende é a TI do cliente; na hospedagem da Maind, a equipe da Maind, com a autorização de duas pessoas.
+- **Retomar** é desfazer a suspensão, e é do mesmo papel. O app volta com a configuração de cada organização.
+
+**O que acontece na suspensão.** O mAIg deixa de atender os pedidos do app em todas as organizações. A configuração de cada uma fica guardada, e o registro também, porque é a prova do que aconteceu. Cada owner da organização é avisado, e a suspensão fica anotada no registro de cada organização que usa o app (decisão 29, MF-102). Os outros apps da instância seguem funcionando.
+
+**Suspender não é pausar.** A pausa é do owner da organização, só na organização dele, e serve ao dia a dia. A suspensão é da instância e serve à emergência.
+
+**Por que é assim.** Responder a um problema pede duas coisas: parar o app suspeito e guardar a prova. Sem a suspensão, restava à TI do cliente desligar o mAIg inteiro, com todos os apps, ou desinstalar o app, o que exclui o registro (decisão 15). E a TI do cliente não fica dependendo da Maind, que pode ser a origem do problema. Ficaram de fora só a Maind suspender o app, em todas as instâncias, e os dois freios juntos, que dariam à Maind o poder de parar apps na casa do cliente (decisão 46).
+
+**O que se perde.** Um gesto errado para o app em todas as organizações da instância de uma vez.
+
+> **Analogia:** é como o registro geral de água de um prédio: o zelador fecha a água de todos os apartamentos de uma vez quando um cano estoura, e a obra começa sem molhar ninguém. **Onde a analogia para:** fechar o registro não apaga nada; suspender o app também não, e a configuração de cada organização volta intacta.
+
+**Exemplo.**
+
+1. Marta, da TI do cliente, percebe que o Horus está lendo do banco de vendas muito mais do que o normal.
+2. Ela suspende o Horus no painel da instância. As duas organizações da instância, a Farma Vida e a Farma Vida Manipulação, deixam de usar o Horus na mesma hora, e o owner da organização de cada uma, como Paulo na Farma Vida, é avisado.
+3. Renata, a auditora da Farma Vida, consulta no registro o que o Horus leu, porque nada foi apagado.
+4. A Maind corrige o Horus, Marta instala a versão nova e retoma o app. Ana, gerente comercial, volta a perguntar ao Horus, e nada foi refeito.
+
+**Quando dá errado.** Marta suspende o app errado. As pessoas das organizações ficam sem ele até ela retomá-lo, e o registro mostra quem suspendeu e quando.
+
+### Quando o app para depois do fim do contrato
+
+**Em resumo:** quando o contrato acaba e o app para, por ação manual da Maind ou pela licença vencida, a configuração dele fica guardada até a organização renovar ou até o owner da organização apagá-la (decisões 13 e 14).
 
 **Parado não é pausado.** O app pausado volta quando o owner da organização quiser. O app parado só volta com a renovação do contrato, que é da contratação dos apps (MF-103). Nos dois casos, a configuração e o registro ficam guardados.
 
@@ -147,13 +176,15 @@ Ao longo da vida, um app muda de situação muitas vezes: uma pausa para conferi
 
 **O que se apaga e o que fica.** Apaga-se a configuração do app nesta organização. Fica o registro do que o app pediu em nome dela, que o owner da organização e o auditor continuam consultando. O registro só é excluído quando o app é desinstalado da instância (decisão 15).
 
+**O aviso e a cópia.** Ao retirar, o console avisa o owner da organização de que o registro do app, nesta organização, só será excluído quando o app for desinstalado da instância, e de que ele pode baixar uma cópia do registro até lá. Os auditores também podem baixá-la, e a cópia sai num arquivo assinado pelo mAIg (decisão 21, decisão 80).
+
 **O que a retirada não muda.** O contrato comercial: retirar o app não o cancela, e o contrato segue as regras da contratação dos apps (MF-103). Se a organização quiser usar o app de novo, com o contrato ainda valendo, o owner da organização o libera e configura do zero.
 
 **Por que é assim.** A retirada é o "apagar" que a decisão 14 deixa nas mãos do owner da organização, com um nome próprio para que ninguém a confunda com a pausa. É o único ato do owner da organização que obriga a refazer algo. Por isso, o console pede que ele confirme sabendo disso.
 
 **Quando dá errado.** O owner da organização retira o app pensando que o pausava: a configuração se perde e precisa ser refeita. Para evitar isso, a confirmação diz com todas as letras que a configuração será apagada e lembra que a pausa existe para o caso contrário.
 
-**O que ainda está em aberto.** O que acontece com o registro de uma organização que retirou um app que segue instalado para outras está em "O que ainda falta decidir".
+**O que ainda está em aberto.** Se as organizações que já retiraram o app são avisadas de novo, na hora da desinstalação, está em "O que ainda falta decidir".
 
 ### Desinstalar: o app sai da instância, e os dados dele são excluídos
 
@@ -161,17 +192,17 @@ Ao longo da vida, um app muda de situação muitas vezes: uma pausa para conferi
 
 **Quem é quem.** Quem desinstala é o administrador da instância, porque foi quem instalou e é quem controla o que roda na instância (decisão 10). A desinstalação vale para a instância inteira, e não para uma organização.
 
-**O que se exclui.** O módulo sai da instância, e a parte de fora deixa de estar registrada nela. O registro do app é excluído, e com ele a história do que o app pediu em cada organização. A exclusão não tem volta.
+**O que se exclui.** O módulo sai da instância, e a parte de fora deixa de estar registrada nela. O registro do app é excluído, e com ele a história do que o app pediu em cada organização. A exclusão não tem volta. Quem desinstalou e quando ficam no registro da instância, onde só se acrescenta e que o administrador da instância lê, porque não sobra organização com o app para receber a linha (decisão 81, MF-102).
 
-**A trava.** O administrador da instância só desinstala um app quando nenhuma organização da instância o tem em configuração, em uso, pausado ou parado com a configuração guardada. Em outras palavras: todas as organizações que o tinham já o retiraram, ou foram excluídas. O console do administrador da instância mostra se alguma organização ainda tem o app, sem mostrar a configuração dela.
+**A trava.** O administrador da instância só desinstala um app quando nenhuma organização da instância o tem em configuração, em uso, pausado ou parado com a configuração guardada. Em outras palavras: todas as organizações que o tinham já o retiraram, ou foram encerradas (decisão 31). O console do administrador da instância mostra se alguma organização ainda tem o app, sem mostrar a configuração dela. A trava é decisão do dono da Maind (decisão 21).
 
-**Por que a trava.** Sem ela, um ato do administrador da instância apagaria o registro de organizações que não pediram isso. Na infraestrutura da Maind, esse administrador é a equipe da Maind, que nem vê o registro das organizações (decisão 12). A trava devolve a decisão a cada owner da organização, que retira o app quando quiser.
+**Por que a trava.** Sem ela, um ato do administrador da instância apagaria o registro de organizações que não pediram isso. Na infraestrutura da Maind, esse administrador é a equipe da Maind, que nem vê o registro das organizações (decisão 12). A trava devolve a decisão a cada owner da organização, que retira o app quando quiser e, ao retirar, é avisado e pode baixar uma cópia do registro (decisão 21).
 
 **Por que a exclusão é assim.** Nada se perde enquanto o app existe, e não há prazo de guarda. Abre-se mão de: o volume do registro só cresce, e guardar dados de pessoas sem prazo pede cuidado com a lei de proteção de dados pessoais. Ficaram descartados um prazo definido pelo owner da organização e um prazo fixo da Maind (decisão 15).
 
-**Quando dá errado.** Uma organização guarda a configuração de um app parado e não responde. A trava impede a desinstalação, e o app fica instalado, sem uso. Como sair desse impasse está em "O que ainda falta decidir".
+**Quando dá errado.** Uma organização guarda a configuração de um app parado e não responde. A trava impede a desinstalação, e o app fica instalado, sem uso. O dono da Maind aceitou esse custo da trava (decisão 21); como sair do impasse está em "O que ainda falta decidir".
 
-**E se a organização for excluída.** No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: excluir uma organização apaga tudo o que há dela, e só dela, sem tocar nas outras da mesma instalação (D-278 do Horus). Criar e excluir organizações é das organizações e instâncias (MF-107).
+**E se a organização for encerrada.** O mAIg não exclui uma organização: encerra. Encerrar retira todos os apps dela, com o aviso e a cópia do registro (decisão 21), e o registro segue legível até o app ser desinstalado (decisão 31). No Horus, excluir uma organização apaga tudo o que há dela, e só dela, sem tocar nas outras da mesma instalação (D-278 do Horus); o mAIg decidiu diferente. Criar e encerrar organizações é das organizações e instâncias (MF-107).
 
 ### Atualizar um app e as versões que convivem
 
@@ -181,13 +212,13 @@ Ao longo da vida, um app muda de situação muitas vezes: uma pausa para conferi
 
 - **Três peças têm versão:** o próprio mAIg, o módulo de cada app, dentro da instância, e a parte de fora de cada app, fora do mAIg. No Horus, a parte de fora roda na nuvem da Maind e é atualizada pela Maind; o módulo roda na instância e é atualizado por quem cuida dela.
 - **Conviver** quer dizer funcionar juntas, mesmo em versões diferentes: a parte de fora nova com o módulo de antes, ou o módulo novo com um mAIg de antes.
-- **Quem atualiza o app** na instância é o administrador da instância, como quem o instalou. A atualização do próprio mAIg é das organizações e instâncias (MF-107).
+- **Quem atualiza o app** na instância é o administrador da instância, como quem o instalou, e o ato fica anotado no registro de cada organização que usa o app (decisão 29, MF-102). O próprio mAIg segue outro caminho: baixa a versão nova sozinho e, na casa do cliente, só a instala com o aval da TI do cliente, dentro de uma janela de horário que o administrador da instância define (decisão 39, MF-107).
 
 **Atualizar não é reinstalar.** A atualização mantém a configuração de cada organização e o registro. Se a versão nova pede uma permissão que a anterior não pedia, essa permissão chega desligada. O app segue funcionando com as permissões de antes até o owner da organização decidir liberá-la.
 
-**Por que é assim.** Na infraestrutura do cliente, a TI do cliente, a equipe de tecnologia da empresa, atualiza no tempo dela. A parte de fora, na nuvem da Maind, muda com frequência. Sem uma janela de convivência, cada versão nova da Maind deixaria parados os clientes que ainda não atualizaram.
+**Por que é assim.** Na infraestrutura do cliente, a TI do cliente, a equipe de tecnologia da empresa, atualiza no tempo dela. A parte de fora, na nuvem da Maind, muda com frequência. Sem uma janela de convivência, cada versão nova da Maind deixaria parados os clientes que ainda não atualizaram. Como o mAIg pode ser atualizado antes dos apps instalados (decisão 39), ele pode ficar à frente deles, e a convivência entre um mAIg novo e o módulo de antes passa a pesar mais; com o aval da TI do cliente, ele também pode ficar para trás, e a convivência pesa nos dois sentidos.
 
-**Quando dá errado.** No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: com uma versão mais velha que a anterior, a organização não funciona, e a pessoa vê um aviso próprio de que a versão precisa ser atualizada. A luz de estado fica vermelha, com o texto "Atualização necessária". A página de status mostra o motivo, sem a versão, e o painel da instância mostra o motivo e a versão. Quem atualiza é quem hospeda (D-292 do Horus).
+**Quando dá errado.** No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: com uma versão duas versões atrás da atual, ou mais, a organização não funciona, e a pessoa vê um aviso próprio de que a versão precisa ser atualizada. A luz de estado fica vermelha, com o texto "Atualização necessária". A página de status mostra o motivo, sem a versão, e o painel da instância mostra o motivo e a versão. Essa regra é o ponto de partida do Horus (D-292 do Horus); quem atualiza o app é o administrador da instância, e o mAIg se instala na janela, com o aval da TI do cliente na casa do cliente (decisão 39). No mAIg, a recusa também tem prazo: passados 30 dias de adiamento de uma versão nova do mAIg, ou 7 para uma correção de segurança, os apps recusam a conversa do mesmo jeito (decisão 45, MF-107).
 
 **O que ainda está em aberto.** Quantas versões do mAIg e dos apps podem conviver está em "O que ainda falta decidir".
 
@@ -207,7 +238,7 @@ Ao longo da vida, um app muda de situação muitas vezes: uma pausa para conferi
 
 ### Exemplo completo: a Farma Vida, do Horus ao segundo app
 
-**Em resumo:** a Farma Vida instala o Horus, pausa, para pelo fim do contrato, renova, atualiza, recebe um segundo app e, um dia, retira e desinstala esse segundo app; o exemplo mostra o que fica guardado em cada passo.
+**Em resumo:** a Farma Vida instala o Horus, pausa, para depois do fim do contrato, renova, atualiza, recebe um segundo app e, um dia, retira e desinstala esse segundo app; o exemplo mostra o que fica guardado em cada passo.
 
 **Quem é quem no exemplo.** A Farma Vida é uma rede de 40 farmácias, com o mAIg na própria rede. Marta, da TI do cliente, faz o papel de administrador da instância. Paulo, diretor de operações, é o owner da organização. Renata, da área de segurança, é a auditora. Ana, gerente comercial, é a pessoa que usa o app: no Horus, a pessoa que pergunta.
 
@@ -217,7 +248,7 @@ Ao longo da vida, um app muda de situação muitas vezes: uma pausa para conferi
 2. **Liberar e configurar.** Paulo, no console, dá ao Horus a permissão de ler o banco de vendas e escolhe a IA, os modelos e um limite de gasto. Com o mínimo configurado, o Horus passa a "em uso", e Paulo dá acesso a Ana (MF-101).
 3. **Pausar.** Meses depois, a TI troca o servidor do banco de vendas. Paulo pausa o Horus por um dia. Ana não consegue perguntar ao Horus nesse dia; o que a tela mostra é do Horus.
 4. **Retomar.** Terminada a troca, Paulo retoma o Horus. Ana pergunta de novo, e nada foi refeito. Se o endereço do banco mudou, Paulo o corrige no cadastro do banco, e não na configuração do Horus (MF-105).
-5. **Parar e renovar.** Um ano depois, a renovação atrasa, e o certificado vence: o Horus para (MF-103). A configuração fica guardada. A Farma Vida renova, e o Horus volta como estava.
+5. **Parar e renovar.** Um ano depois, a renovação atrasa, e a licença vence: o Horus para (MF-103). A configuração fica guardada. A Farma Vida renova, e o Horus volta como estava.
 6. **Atualizar.** A Maind lança uma versão nova do Horus, e Marta a instala. A configuração de Paulo continua, e Renata encontra no registro a história de antes e de depois.
 7. **O segundo app.** A Farma Vida contrata um segundo app, e Marta o instala. Para o exemplo, é o Maind Doc, um assistente que gera documentos de projetos corporativos com IA; ele é só um exemplo de segundo app possível e não está definido nem planejado. Paulo o configura à parte, com os bancos e as IAs dele.
 8. **Retirar.** Tempos depois, a Farma Vida deixa de usar o segundo app, e Paulo o retira. A configuração dele se apaga, e o Horus não é afetado. O registro do segundo app fica guardado enquanto ele estiver instalado.
@@ -230,10 +261,10 @@ Ao longo da vida, um app muda de situação muitas vezes: uma pausa para conferi
 - **O administrador da instância tenta instalar um app não contratado.** O mAIg não deixa (decisão 10).
 - **O owner da organização confunde retirar com pausar.** A configuração se perde e precisa ser refeita; a confirmação avisa antes (decisão 14).
 - **A configuração foi apagada e a organização renova.** O app volta sem configuração, e o owner da organização a refaz (decisão 14).
-- **Uma versão velha demais.** A organização não funciona até a versão ser atualizada, como no ponto de partida do Horus (D-292 do Horus).
+- **Uma versão velha demais.** A organização não funciona até a versão ser atualizada, como no ponto de partida do Horus (D-292 do Horus). O mesmo vale quando a TI do cliente adia o mAIg além do prazo (decisão 45).
 - **O administrador da instância quer desinstalar um app que alguma organização ainda tem.** A trava impede; o impasse está em aberto.
-- **Um módulo com defeito atrapalha a instância.** Impedir que um módulo prejudique os outros é da execução isolada dos apps (MF-109). A gestão dos apps não tem uma pausa da instância inteira.
-- **Uma organização é excluída.** Ela leva tudo o que é dela, inclusive as configurações dos apps (MF-107).
+- **Um módulo com defeito atrapalha a instância.** Impedir que um módulo prejudique os outros é da execução isolada dos apps (MF-109). Se o problema é o que o próprio app faz, como ler dados demais, o administrador da instância o suspende na instância inteira, sem apagar a prova (decisão 46).
+- **Uma organização é encerrada.** Os apps dela são retirados, com o aviso e a cópia do registro, e o registro segue legível até o app ser desinstalado (decisão 31, MF-107).
 
 ## Prova de valor
 
@@ -259,7 +290,7 @@ Prova de valor proposta pelo PO; o dono da Maind ainda não a confirmou.
 - **Quem são as pessoas que usam o app, como recebem acesso e as regras das permissões:** segurança e permissões (MF-101).
 - **O registro em si e a consulta pelo owner da organização e pelo auditor:** registro e auditoria (MF-102).
 - **A tela onde tudo isto se faz:** console de configuração (MF-110).
-- **Criar e excluir organizações e atualizar o próprio mAIg:** organizações e instâncias (MF-107).
+- **Criar e encerrar organizações e atualizar o próprio mAIg:** organizações e instâncias (MF-107).
 - **O que a tela do app mostra à pessoa que usa o app quando ele está pausado ou parado:** é da parte de fora do app; no Horus, das telas do Horus.
 
 ## Depende de
@@ -276,24 +307,24 @@ O mAIg nasceu do middleware do Horus, a peça que ficava entre as telas do Horus
 
 - **A versão atual e a anterior.** No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: a parte do Horus na nuvem funciona com o middleware na versão atual e na anterior. Com uma mais velha, a organização não funciona, e a pessoa vê o aviso de que a versão precisa ser atualizada, com a luz vermelha e o texto "Atualização necessária". Quem atualiza é quem hospeda: a Maind no middleware dela, o cliente no dele. Quantas versões a janela cobre, e uma janela diferente por contrato, ficaram de fora (D-292 do Horus).
 - **Só ativa com o mínimo configurado.** No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: uma organização nasce em configuração e só passa a ativa com o handshake confirmado, ao menos um banco configurado e a IA configurada pelo owner da organização (D-277 do Horus). Esta mf usa a mesma ideia para o app: ele fica "em configuração" até ter o mínimo de que precisa.
-- **Excluir apaga só o que é de quem sai.** No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: excluir uma organização apaga, no middleware, as pessoas, os bancos, a IA e a configuração dela, e só o que é dela. Uma exclusão por engano leva junto a configuração, sem volta (D-278 do Horus). Esta mf usa a mesma ideia na retirada e na desinstalação.
+- **Excluir apaga só o que é de quem sai.** No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: excluir uma organização apaga, no middleware, as pessoas, os bancos, a IA e a configuração dela, e só o que é dela. Uma exclusão por engano leva junto a configuração, sem volta (D-278 do Horus). Esta mf usa a mesma ideia na retirada e na desinstalação. A organização, no mAIg, não é excluída, e sim encerrada (decisão 31, MF-107).
 - **Pausar e retirar um app.** O Horus não tem decisão sobre isto: no Horus, o middleware servia a um app só, o próprio Horus.
 
 ## O que ainda falta decidir
 
-- **Falta o arquiteto do mAIg definir quantas versões do mAIg e dos apps podem conviver.** *O que está em jogo:* o cliente precisa de tempo para atualizar sem surpresa, e a Maind não pode carregar todas as versões antigas. Como o app é instalado uma vez por instância, todas as organizações dela andam juntas na mesma versão. No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: valem a versão atual e a anterior, e uma mais velha é recusada, com aviso (D-292 do Horus).
-- **Falta o dono da Maind decidir se o administrador da instância pode desinstalar um app que alguma organização ainda tem, e com que aviso.** *O que está em jogo:* desinstalar exclui o registro e as configurações de todas as organizações da instância (decisão 15), e, na infraestrutura da Maind, quem desinstala é a equipe da Maind, que não vê esse registro (decisão 12). A trava protege as organizações, mas pode deixar um app instalado para sempre se uma delas não responder; a alternativa é um aviso com prazo.
-- **Falta o dono da Maind decidir o que acontece com o registro de uma organização que retirou um app que segue instalado para outras.** *O que está em jogo:* pela decisão 15, esse registro fica enquanto o app estiver instalado, o que, numa instância da Maind, pode durar anos por causa de outras organizações. A organização que saiu fica com dados de pessoas guardados sem uso, o que pede cuidado com a lei de proteção de dados pessoais.
-- **Também depende, e está tratado em outros lugares:** o que o registro anota dos atos de quem gere os apps, como liberar, configurar, pausar e retirar (MF-102); como os módulos dos apps ficam isolados dentro do mAIg (MF-109); de onde vem o módulo do app e o que mais vem no kit de instalação (MF-103); onde ficam e quem cadastra as pessoas que usam os apps (MF-101); quem atualiza o próprio mAIg (MF-107).
+- **Falta o arquiteto do mAIg definir quantas versões do mAIg e dos apps podem conviver.** *O que está em jogo:* o cliente precisa de tempo para atualizar sem surpresa, e a Maind não pode carregar todas as versões antigas. Como o app é instalado uma vez por instância, todas as organizações dela andam juntas na mesma versão. No Horus, isso já foi decidido assim e vale como ponto de partida; o mAIg ainda confirma: valem a versão atual e a anterior, e uma mais velha é recusada, com aviso (D-292 do Horus). Com o mAIg atualizado por um caminho próprio (decisão 39), vale perguntar também se um mAIg novo ainda conversa com o módulo de um app que o administrador da instância ainda não atualizou, e o contrário.
+- **Falta o dono da Maind decidir como sair do impasse quando uma organização guarda o app e não responde, e a trava impede a desinstalação.** *O que está em jogo:* o app fica instalado, sem uso, para todas as organizações da instância, e a equipe da Maind, quando cuida da instalação da Maind, não pode retirá-lo por elas, porque retirar é ato do owner da organização. A trava já está decidida (decisão 21); falta o caminho para quando uma organização não age.
+- **Falta o dono da Maind decidir se as organizações que já retiraram o app são avisadas de novo, e com que prazo, quando o administrador da instância for desinstalá-lo.** *O que está em jogo:* o aviso é dado na retirada (decisão 21), e pode ter passado muito tempo até a desinstalação; um aviso na hora evita que o registro seja excluído sem que o owner da organização se lembre, mas segura a desinstalação até o prazo acabar.
+- **Também depende, e está tratado em outros lugares:** o que o registro anota dos atos de quem gere os apps, como liberar, configurar, pausar e retirar (MF-102); como os módulos dos apps ficam isolados dentro do mAIg (MF-109); de onde vem o módulo do app e o que mais vem no kit de instalação (MF-103); quem atualiza o próprio mAIg (MF-107).
 
 ## Decisões do PO para discutir
 
-Os trechos do texto que vão além das 18 decisões, sem código de decisão nem do Horus, estão aqui.
+Os trechos do texto que vão além das decisões do dono da Maind, sem código de decisão nem do Horus, estão aqui.
 
 - **Decisão:** a mf separa três atos: pausar (o owner da organização, reversível, guarda tudo), retirar (o owner da organização, apaga a configuração da organização e mantém o registro) e desinstalar (o administrador da instância, exclui os dados do app na instância). *Por que:* o nome aprovado da mf fala em pausar e retirar, e as regras de guarda pedem que apagar seja um ato claro (decisões 14 e 15). *Alternativa:* um ato só, "remover", com o efeito decidido caso a caso. *Reabrir se:* os owners da organização confundirem os três na prática.
 - **Decisão:** só o owner da organização pausa, e só na organização dele; o administrador da instância não tem uma pausa da instância inteira. *Por que:* cada organização escolhe o que usa (decisão 10), e um módulo com defeito se contém pelo isolamento (MF-109). *Alternativa:* uma pausa da instância inteira, para conter um problema antes de uma correção. *Reabrir se:* um módulo com defeito precisar ser parado em todas as organizações de uma vez.
 - **Decisão:** a pausa não muda o contrato: as datas seguem correndo, e a pausa não estende o prazo. *Por que:* pausar é um ato de operação, e o contrato é da contratação dos apps. *Alternativa:* a pausa suspender a contagem do contrato. *Reabrir se:* a área comercial da Maind quiser oferecer suspensão de contrato.
-- **Decisão:** a trava da desinstalação: o administrador da instância só desinstala quando nenhuma organização da instância tem o app em configuração, em uso, pausado ou parado com a configuração guardada. *Por que:* sem ela, um ato do administrador da instância apagaria o registro de organizações que não pediram isso. *Alternativa:* desinstalar com aviso e prazo às organizações; ou desinstalar livremente. *Reabrir se:* um app ficar instalado sem uso por causa de uma organização que não responde.
+- **Decisão:** a trava da desinstalação: o administrador da instância só desinstala quando nenhuma organização da instância tem o app em configuração, em uso, pausado ou parado com a configuração guardada. *Por que:* sem ela, um ato do administrador da instância apagaria o registro de organizações que não pediram isso. *Alternativa:* desinstalar com aviso e prazo às organizações; ou desinstalar livremente. *Reabrir se:* um app ficar instalado sem uso por causa de uma organização que não responde. Confirmada pelo dono da Maind em 09/11/2026 (decisão 21).
 - **Decisão:** "os dados dele", na decisão 15, são o registro do app e as configurações dele em todas as organizações da instância. *Por que:* desinstalado o app, a configuração não tem mais a que servir. *Alternativa:* guardar a configuração mesmo depois de desinstalar, para uma reinstalação. *Reabrir se:* um cliente reinstalar um app e pedir a configuração de volta.
 - **Decisão:** cada app declara o mínimo de que precisa para funcionar, e fica "em configuração" até tê-lo; o estado "em configuração" foi criado para isso. *Por que:* é a mesma ideia que o Horus adotou para a organização, que só fica ativa com o mínimo configurado (D-277 do Horus). *Alternativa:* o owner da organização liberar o app a qualquer momento, mesmo incompleto. *Reabrir se:* um app não tiver um mínimo claro.
 - **Decisão:** a configuração do app guarda as ligações com os bancos e as IAs, e não os bancos e as chaves em si, que são da organização. *Por que:* um banco pode servir a vários apps, e retirar um app não pode apagar o banco que outro usa. *Alternativa:* cada app ter os seus próprios bancos e chaves. *Reabrir se:* a governança da IA ou os bancos da empresa definirem outro desenho (MF-106, MF-105).
@@ -302,6 +333,8 @@ Os trechos do texto que vão além das 18 decisões, sem código de decisão nem
 - **Decisão:** a renovação devolve o app ao estado de antes, inclusive pausado. *Por que:* "volta como estava" (decisão 14) vale também para a pausa. *Alternativa:* a renovação sempre devolver o app em uso. *Reabrir se:* owners da organização estranharem o app voltar pausado.
 - **Decisão:** retirar o app não cancela o contrato; se a organização quiser o app de novo, com o contrato ainda valendo, o owner da organização o libera e configura do zero. *Por que:* retirar é um ato de operação, e o contrato é da contratação dos apps (MF-103). *Alternativa:* a retirada encerrar também o contrato daquele app para a organização. *Reabrir se:* organizações retirarem apps esperando parar de pagar por eles.
 - **Decisão:** a retirada pede uma confirmação que diz que a configuração será apagada e lembra a pausa; o console mostra o app pausado com a data da pausa. *Por que:* retirar é o único ato do owner da organização que obriga a refazer algo. *Alternativa:* retirar sem confirmação, como qualquer ajuste. *Reabrir se:* a confirmação virar um incômodo sem efeito.
+- **Decisão:** o aviso e a cópia da decisão 21 são dados na retirada, e não na desinstalação: o owner da organização é avisado quando retira o app e pode baixar a cópia até a desinstalação. *Por que:* o administrador da instância só desinstala quando nenhuma organização tem o app, e é na retirada que o owner da organização age. *Alternativa:* avisar também na desinstalação, com prazo. *Reabrir se:* passar muito tempo entre a retirada e a desinstalação (ponto em aberto nesta mf).
 - **Decisão:** o administrador da instância vê se alguma organização ainda tem o app, sem ver a configuração dela. *Por que:* ele precisa disso para saber se a trava deixa desinstalar, e a configuração é da organização (decisão 12). *Alternativa:* não ver nada das organizações e só tentar desinstalar. *Reabrir se:* isso for visto como quebra do isolamento entre organizações.
-- **Decisão:** o "Depende de" ficou com a contratação, a segurança e as organizações, como no mapa das dependências (MF-103, MF-101, MF-107). *Por que:* sem as três, não há app liberado, papéis nem lugar onde instalar. *Alternativa:* acrescentar o registro, que a desinstalação apaga, e o console, onde tudo se faz (MF-102, MF-110). *Reabrir se:* o mapa das dependências for revisto.
+- **Decisão:** o "Depende de" ficou com a contratação, a segurança, as organizações, o console e o registro, como no mapa das dependências (MF-103, MF-101, MF-107, MF-110, MF-102). *Por que:* sem as três primeiras, não há app liberado, papéis nem lugar onde instalar; o console é onde tudo se faz, e a desinstalação apaga o registro. *Alternativa:* ficar só com as três primeiras. *Reabrir se:* o mapa das dependências for revisto.
 - **Decisão:** a prova de valor tem duas demonstrações: pausar e voltar sem refazer nada, e uma instalação com várias organizações, cada uma no seu passo, até a desinstalação. *Por que:* são as duas promessas do nome da mf que alguém de fora confere sem metas numéricas (decisão 18). *Alternativa:* uma prova só, da pausa. *Reabrir se:* o dono da Maind preferir uma prova mais curta.
+- **Decidido pelo dono da Maind em 11/11/2026:** o administrador da instância suspende um app na instância inteira, numa emergência, sem apagar a configuração nem o registro; cada owner da organização é avisado, a suspensão fica anotada no registro de cada organização, e na hospedagem da Maind a equipe da Maind suspende com a autorização de duas pessoas (decisão 46). A pausa segue só do owner da organização, como a decisão do PO registrou; a suspensão é outro ato, da instância, e ganhou um tópico e um estado nesta mf.
