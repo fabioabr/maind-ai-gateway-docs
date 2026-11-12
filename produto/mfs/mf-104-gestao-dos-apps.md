@@ -1,12 +1,12 @@
 # MF-104:Instalar, pausar e retirar apps sem refazer nada
 
-> O administrador da instância instala cada app uma vez, e o owner da organização o libera e configura para a dele. Depois, o app pode ser pausado, parar no fim do contrato, ser atualizado e voltar como estava; só retirar e desinstalar apagam alguma coisa.
+> Os apps contratados no dia do setup entram sozinhos; o contratado depois chega como "app autorizado", e o administrador da instância clica em instalar, uma vez por instância. Instalado não é liberado: o owner da organização libera e configura o app para a organização dele. Depois, o app pode ser pausado, parar no fim do contrato, ser atualizado e voltar como estava; só retirar e desinstalar apagam alguma coisa.
 
 **Também chamada de:** Gestão dos apps · **Versão do mAIg:** 1ª · **Classe:** essencial · **Situação:** rascunho do PO
 
 ## Em uma frase
 
-A gestão dos apps é tudo o que acontece com um app depois de contratado: o administrador da instância o instala, o owner da organização o libera e configura, e a partir daí o app pode ser pausado, retomado, suspenso numa emergência, parado depois do fim do contrato, atualizado, retirado de uma organização e, por fim, desinstalado (decisão 46).
+A gestão dos apps é tudo o que acontece com um app depois de contratado: ele chega à instância pela ligação, o owner da organização o libera e configura, e a partir daí o app pode ser pausado, retomado, suspenso numa emergência, parado depois do fim do contrato, atualizado, retirado de uma organização e, por fim, desinstalado (decisão 46). Os apps contratados no dia do setup, a configuração inicial do mAIg feita pela TI do cliente, entram sozinhos; o contratado depois aparece no console como "app autorizado" e espera o clique do administrador da instância (decisões 134 e 137). Instalado não quer dizer liberado (decisão 135).
 
 O mAIg, o Maind AI Gateway, é a plataforma da Maind que fica na rede da empresa cliente, ou na infraestrutura da Maind, e pela qual os produtos da Maind chegam aos dados e à inteligência artificial (IA) da empresa. "Gateway" quer dizer portão. Cada produto entra no mAIg como um app, e o primeiro é o Horus (decisão 3).
 
@@ -16,7 +16,7 @@ Ao longo da vida, um app muda de situação muitas vezes: uma pausa para conferi
 
 ## Quem ganha
 
-- **Administrador da instância** (quem cuida da instalação física do mAIg: a TI do cliente, quando o mAIg roda na rede da empresa, ou a equipe da Maind, quando roda na infraestrutura da Maind). Instala cada app uma vez, para todas as organizações da instância, e controla o que roda nela. Atualiza o app num lugar só. E sabe quando pode desinstalar um app e o que a desinstalação apaga.
+- **Administrador da instância** (quem cuida da instalação física do mAIg: a TI do cliente, quando o mAIg roda na rede da empresa, ou a equipe da Maind, quando roda na infraestrutura da Maind). Controla o que roda na instância: os apps contratados no dia do setup entram sozinhos, no setup que ele executa, e o app autorizado depois só roda quando ele clica em instalar, uma vez para todas as organizações da instância (decisões 134 e 137). Atualiza o app num lugar só. E sabe quando pode desinstalar um app e o que a desinstalação apaga.
 - **Owner da organização** (a pessoa que responde pela organização no mAIg). Decide se a organização usa o app e com que regras. Pausa e retoma sem refazer nada. Encontra a configuração guardada quando o app para depois do fim do contrato, e decide se a apaga.
 - **De forma indireta, a pessoa que usa o app e o auditor.** A pessoa que usa o app reencontra o app como estava depois de uma pausa ou de uma renovação. O auditor, a pessoa nomeada pelo owner da organização que só lê o registro, encontra o registro inteiro enquanto o app estiver instalado. O registro é a anotação de tudo o que os apps pedem ao mAIg em nome de cada organização (decisão 15).
 
@@ -43,7 +43,7 @@ Ao longo da vida, um app muda de situação muitas vezes: uma pausa para conferi
 
 | Estado | O que quer dizer | Quem leva a ele |
 |---|---|---|
-| Instalado | O app está na instância, mas ainda não serve a uma organização. | O administrador da instância, ao instalar. |
+| Instalado | O app está na instância, mas ainda não serve a uma organização. | O setup, para os apps contratados no dia; o administrador da instância, ao clicar em instalar o app autorizado depois. |
 | Em configuração | O app foi liberado para a organização, mas ainda falta o mínimo para funcionar. | O owner da organização, ao começar a configurar. |
 | Em uso | O app funciona para a organização, com a configuração dela. | O owner da organização, ao completar a configuração. |
 | Pausado | O app não atende a organização, mas tudo fica guardado. | O owner da organização, ao pausar; ele mesmo retoma. |
@@ -56,29 +56,32 @@ Ao longo da vida, um app muda de situação muitas vezes: uma pausa para conferi
 
 **Em que onda.** Na onda 1.0, um app é instalado, liberado, configurado, pausado, suspenso, parado pelo fim do contrato e atualizado. Retirar, apagar a configuração guardada de um app parado e desinstalar chegam juntos na onda 1.1, com a cópia assinada do registro, porque a retirada dá ao owner da organização o aviso e o direito à cópia. Abre-se mão de: na onda 1.0, o app que a organização não quer mais fica pausado, e o instalado por engano continua instalado; a configuração e o registro seguem guardados (decisão 106).
 
-### Instalar: o administrador da instância, uma vez por instância
+### Instalar: no setup, sozinho; depois, com o clique do administrador da instância
 
-**Em resumo:** liberado o app pela Maind, o administrador da instância o instala na instância, uma vez só, mesmo que várias organizações dela o usem (decisão 10).
+**Em resumo:** o app chega à instância pela ligação, no manifesto assinado pela Maind do que a organização pode ter. Os apps contratados no dia do setup entram sozinhos; o autorizado depois aparece no console como "app autorizado", e o administrador da instância clica em instalar. Nos dois casos, o módulo entra uma vez só, mesmo que várias organizações da instância o usem, e com a assinatura da Maind conferida (decisões 10 e 88; decisões 134 e 137).
 
 **Quem é quem.**
 
 - **Um app tem duas partes.** A parte de fora roda fora do mAIg; no Horus, é a que roda na nuvem da Maind, os computadores da Maind acessados pela internet, com as telas. O módulo é a parte interna do app, que roda isolada dentro do mAIg e só usa os serviços do núcleo, o conjunto de serviços que vem pronto no mAIg para todo app (decisão 4).
-- **Instalar um app** é registrar a parte de fora e pôr o módulo para rodar. Registrar a parte de fora é anotar no mAIg o certificado dela, uma espécie de carteira de identidade digital, e a lista do que o app pode pedir (decisão 4).
-- **Quando se instala.** Só depois de a Maind liberar o app para ao menos uma organização da instância, no handshake contratual, a conferência da contratação entre o mAIg e a Maind (MF-103).
+- **Instalar um app** é registrar a parte de fora e pôr o módulo para rodar. Registrar a parte de fora é anotar no mAIg a identidade dela, um certificado atestado pela Maind, uma espécie de carteira de identidade digital, e a lista do que o app pode pedir (decisões 4 e 139).
+- **O setup** é a configuração inicial do mAIg na infraestrutura do cliente, feita pela TI do cliente com uma chave temporária que a Maind manda num PDF com senha (MF-107).
+- **Quando se instala.** Só o que a Maind autorizou para ao menos uma organização da instância chega ao mAIg: o manifesto é assinado pela Maind e chega pela ligação, e nada viaja por arquivo (MF-103). No setup, o mAIg baixa e instala sozinho os apps já contratados, no estilo de um gerenciador de pacotes; o aval da TI do cliente está no próprio setup, que ela executa (decisão 134). Depois do setup, um app novo chega como "app autorizado", e só roda quando o administrador da instância clica em instalar (decisão 137).
 
-**Por que é assim.** Quem cuida da instalação física controla o que roda nela: nenhum módulo novo passa a rodar sem passar pelo administrador da instância. Se o owner da organização instalasse, cada organização poderia pôr um módulo novo para rodar na instalação de todas (decisão 10).
+**Por que é assim.** Quem cuida da instalação física controla o que roda nela: nenhum módulo novo passa a rodar sem um gesto do administrador da instância. No setup, o gesto é executar o setup; depois, é o clique, e ele escolhe o momento, como faz com as versões (decisão 39). Se o owner da organização instalasse, cada organização poderia pôr um módulo novo para rodar na instalação de todas (decisão 10). Abre-se mão de: um clique a mais, e um app pode ficar dias "autorizado" sem ser instalado (decisão 137).
 
 **Uma instalação, uma versão.** Como o app é instalado uma vez por instância, todas as organizações dela usam a mesma versão dele. Uma organização não escolhe, sozinha, ficar numa versão mais velha.
 
-**O que o administrador da instância vê.** As instalações, o estado e as versões de cada app. Vê também se alguma organização ainda tem o app, sem ver a configuração dela. Não vê o registro das organizações (decisão 12). Os atos dele que tocam uma organização, como instalar e atualizar um app, ficam anotados no registro dela, e ele só escreve a linha, sem lê-la (decisão 29, MF-102).
+**O que o administrador da instância vê.** As instalações, o estado e as versões de cada app, e os apps autorizados à espera do clique. Vê também se alguma organização ainda tem o app, sem ver a configuração dela. Não vê o registro das organizações (decisão 12). Os atos dele que tocam uma organização, como instalar e atualizar um app, ficam anotados no registro dela, e ele só escreve a linha, sem lê-la (decisão 29, MF-102).
 
-**Quando dá errado.** O administrador da instância tenta instalar um app que a Maind não liberou para nenhuma organização da instância. O mAIg não deixa: o app ainda não foi contratado ali (decisão 10). E, se o módulo não traz a assinatura da Maind, ou foi alterado no caminho, o mAIg o recusa (decisão 88).
+**Quando dá errado.** Um app que a Maind não autorizou para nenhuma organização da instância não aparece: ele não está no manifesto, e não há como instalá-lo (decisão 10). E, se o módulo não traz a assinatura da Maind, ou foi alterado no caminho, o mAIg o recusa (decisão 88).
 
-**O que ainda está em aberto.** De onde vem o módulo, se dentro do kit de instalação ou por outro caminho, é um ponto da contratação dos apps (MF-103).
+**Num cluster sem a regra de rede.** O mAIg pode rodar num Kubernetes, o sistema que orquestra contêineres num cluster, um conjunto de máquinas. Ali, "o módulo não tem saída para a internet" é uma regra do cluster, e não um fato físico. Se o cluster não aplica essa regra, o mAIg instala só o núcleo e recusa instalar qualquer módulo até a regra valer, com a mensagem dizendo o que falta. O próprio núcleo faz o teste na instalação, de novo sempre que a TI do cliente pedir pelo console, e confere de tempos em tempos que a regra continua valendo. Assim, a promessa de que o módulo nunca sai para a internet por conta própria vale em todo cluster em que o mAIg roda (decisões 63 e 145). Abre-se mão de: um cliente com cluster sem a regra fica sem app até ajustar a rede do cluster, e pode preferir o formato só com contêineres, sem cluster.
+
+**O que ainda está em aberto.** O que um app declara ao núcleo para ser instalado, o contrato de app, é um ponto da contratação dos apps (MF-103).
 
 ### Liberar e configurar: o owner da organização, para a organização dele
 
-**Em resumo:** instalado na instância, o app ainda não funciona para a organização. O owner da organização o libera e o configura, e só então as pessoas da organização passam a usá-lo (decisão 10).
+**Em resumo:** instalado não quer dizer liberado: na instância, o app ainda não funciona para a organização. O owner da organização o libera e o configura, e só então as pessoas da organização passam a usá-lo (decisões 10 e 135).
 
 **O que o owner da organização configura.** A configuração de um app numa organização tem quatro partes (decisão 14):
 
@@ -192,7 +195,7 @@ Ao longo da vida, um app muda de situação muitas vezes: uma pausa para conferi
 
 **Em resumo:** desinstalar é o administrador da instância tirar o app da instância. Desinstalar chega na onda 1.1 da primeira versão, e toda desinstalação começa com um aviso, com prazo (decisões 106 e 107). Desinstalado o app, os dados dele são excluídos: o registro do que ele pediu e as configurações dele em todas as organizações da instância (decisão 15).
 
-**Quem é quem.** Quem desinstala é o administrador da instância, porque foi quem instalou e é quem controla o que roda na instância (decisão 10). A desinstalação vale para a instância inteira, e não para uma organização.
+**Quem é quem.** Quem desinstala é o administrador da instância, porque é quem executou o setup ou clicou em instalar e é quem controla o que roda na instância (decisão 10). A desinstalação vale para a instância inteira, e não para uma organização.
 
 **O que se exclui.** O módulo sai da instância, e a parte de fora deixa de estar registrada nela. O registro do app é excluído, e com ele a história do que o app pediu em cada organização. A exclusão não tem volta. Quem desinstalou e quando ficam no registro da instância, onde só se acrescenta e que o administrador da instância lê, porque não sobra organização com o app para receber a linha (decisão 81, MF-102).
 
@@ -218,6 +221,8 @@ Ao longo da vida, um app muda de situação muitas vezes: uma pausa para conferi
 - **Conviver** quer dizer funcionar juntas, mesmo em versões diferentes: a parte de fora nova com o módulo de antes, ou o módulo novo com um mAIg de antes.
 - **Quem atualiza o app** na instância é o administrador da instância, como quem o instalou, e o ato fica anotado no registro de cada organização que usa o app (decisão 29, MF-102). O próprio mAIg segue outro caminho: baixa a versão nova sozinho e, na casa do cliente, só a instala com o aval da TI do cliente, dentro de uma janela de horário que o administrador da instância define (decisão 39, MF-107).
 
+**Atualizar é trocar a caixa.** O mAIg e cada módulo vêm em contêineres, caixas fechadas com o programa e tudo de que ele precisa; atualizar é trocar a caixa por uma nova, assinada pela Maind (decisão 142). Quando o mAIg roda num Kubernetes, quem troca a caixa é o próprio cluster, a mando do núcleo do mAIg, depois do aval da TI do cliente e dentro da janela; a permissão do núcleo vale só no espaço do mAIg dentro do cluster e só para as versões assinadas pela Maind, e fica escrita no material da TI do cliente (decisão 144). Abre-se mão de: o núcleo ganha uma permissão no cluster, presa a esse espaço, que uma TI muito rígida pode querer negar.
+
 **Atualizar não é reinstalar.** A atualização mantém a configuração de cada organização e o registro. Se a versão nova pede uma permissão que a anterior não pedia, essa permissão chega desligada. O app segue funcionando com as permissões de antes até o owner da organização decidir liberá-la.
 
 **Por que é assim.** Na infraestrutura do cliente, a TI do cliente, a equipe de tecnologia da empresa, atualiza no tempo dela. A parte de fora, na nuvem da Maind, muda com frequência. Sem uma janela de convivência, cada versão nova da Maind deixaria parados os clientes que ainda não atualizaram. Como o mAIg pode ser atualizado antes dos apps instalados (decisão 39), ele pode ficar à frente deles, e a convivência entre um mAIg novo e o módulo de antes passa a pesar mais; com o aval da TI do cliente, ele também pode ficar para trás, e a convivência pesa nos dois sentidos.
@@ -234,7 +239,7 @@ Ao longo da vida, um app muda de situação muitas vezes: uma pausa para conferi
 
 **Exemplo.** Numa instância da Maind, a Organização A, da empresa X, e a Organização B, da empresa Y, usam o Horus.
 
-1. A equipe da Maind instala o Horus uma vez. O owner da Organização A e o owner da Organização B o liberam e configuram, cada um com os seus bancos e as suas IAs.
+1. O Horus entra na instância uma vez, no setup ou com o clique da equipe da Maind no app autorizado. O owner da Organização A e o owner da Organização B o liberam e configuram, cada um com os seus bancos e as suas IAs.
 2. O owner da Organização A pausa o Horus para trocar o banco de vendas. Na Organização B, ninguém percebe nada.
 3. A equipe da Maind atualiza o Horus. As duas organizações passam à versão nova, cada uma com a sua configuração intacta, e a A continua pausada.
 4. A empresa X decide não usar mais o Horus, e o owner da Organização A o retira. A configuração da A é apagada. O registro dela fica, porque o Horus segue instalado.
@@ -248,13 +253,13 @@ Ao longo da vida, um app muda de situação muitas vezes: uma pausa para conferi
 
 **Exemplo.**
 
-1. **Instalar.** O handshake contratual já liberou o Horus para a organização Farma Vida (MF-103). Marta instala o Horus na instância, uma vez só.
-2. **Liberar e configurar.** Paulo, no console, dá ao Horus a permissão de ler o banco de vendas e escolhe a IA, os modelos e um limite de gasto. Com o mínimo configurado, o Horus passa a "em uso", e Paulo dá acesso a Ana (MF-101).
+1. **Instalar.** A Farma Vida contratou o Horus antes do setup. Por isso, quando Marta executou o setup, o Horus entrou sozinho, uma vez só, e o handshake contratual o liberou para a organização Farma Vida (decisão 134, MF-103).
+2. **Liberar e configurar.** Instalado não quer dizer liberado. Paulo, no console, dá ao Horus a permissão de ler o banco de vendas e escolhe a IA, os modelos e um limite de gasto. Com o mínimo configurado, o Horus passa a "em uso", e Paulo dá acesso a Ana (MF-101).
 3. **Pausar.** Meses depois, a TI troca o servidor do banco de vendas. Paulo pausa o Horus por um dia. Ana não consegue perguntar ao Horus nesse dia; o que a tela mostra é do Horus, e a luz de estado e a página de status do mAIg mostram o Horus pausado (decisão 70).
 4. **Retomar.** Terminada a troca, Paulo retoma o Horus. Ana pergunta de novo, e nada foi refeito. Se o endereço do banco mudou, Paulo o corrige no cadastro do banco, e não na configuração do Horus (MF-105).
 5. **Parar e renovar.** Um ano depois, a renovação atrasa, e a licença vence: o Horus para (MF-103). A configuração fica guardada. A Farma Vida renova, e o Horus volta como estava.
 6. **Atualizar.** A Maind lança uma versão nova do Horus, e Marta a instala. A configuração de Paulo continua, e Renata encontra no registro a história de antes e de depois.
-7. **O segundo app.** A Farma Vida contrata um segundo app, e Marta o instala. Para o exemplo, é o Maind Doc, um assistente que gera documentos de projetos corporativos com IA; ele é só um exemplo de segundo app possível e não está definido nem planejado. Paulo o configura à parte, com os bancos e as IAs dele.
+7. **O segundo app.** A Farma Vida contrata um segundo app. Ele chega pela ligação como "app autorizado", e Marta clica em instalar (decisão 137). Para o exemplo, é o Maind Doc, um assistente que gera documentos de projetos corporativos com IA; ele é só um exemplo de segundo app possível e não está definido nem planejado. Paulo o configura à parte, com os bancos e as IAs dele.
 8. **Retirar.** Tempos depois, já na onda 1.1, a Farma Vida deixa de usar o segundo app, e Paulo o retira. A configuração dele se apaga, e o Horus não é afetado. O registro do segundo app fica guardado enquanto ele estiver instalado.
 9. **Desinstalar.** Nenhuma outra organização da instância tem o segundo app. Marta pede a desinstalação, e Paulo e Renata recebem o aviso de segurança, com o prazo para baixar a cópia assinada do registro. No fim do prazo, o app é desinstalado: o registro dele é excluído, e Paulo e Renata deixam de consultá-lo. O registro do Horus continua inteiro.
 
@@ -262,7 +267,9 @@ Ao longo da vida, um app muda de situação muitas vezes: uma pausa para conferi
 
 **Em resumo:** os casos mais prováveis desta mf e o que acontece em cada um.
 
-- **O administrador da instância tenta instalar um app não contratado.** O mAIg não deixa (decisão 10).
+- **O administrador da instância procura um app não contratado.** Ele não aparece: só o que está no manifesto da organização chega à instância (decisão 10).
+- **Um app autorizado fica dias sem o clique.** Ele aparece no console como "app autorizado", sem rodar, até o administrador da instância clicar em instalar; a TI do cliente escolhe o momento (decisão 137).
+- **O cluster não aplica a regra de rede.** O mAIg instala só o núcleo e recusa instalar qualquer módulo até a regra valer, com a mensagem dizendo o que falta; o núcleo refaz o teste quando a TI do cliente pedir pelo console (decisão 145).
 - **O owner da organização confunde retirar com pausar.** A configuração se perde e precisa ser refeita; a confirmação avisa antes (decisão 14).
 - **A configuração foi apagada e a organização renova.** O app volta sem configuração, e o owner da organização a refaz (decisão 14).
 - **Uma versão adiada além do prazo.** Com o mAIg vencido, todos os apps recusam a conversa até ele ser atualizado (decisão 45); com o módulo de um app vencido, só aquele app para (decisão 109).
@@ -276,7 +283,10 @@ A primeira versão do mAIg sai em duas ondas, a 1.0 e a 1.1, e a segunda versão
 
 | Capacidade | Onda | Decisões | Por quê |
 | --- | --- | --- | --- |
-| Instalar um app na instância, uma vez, com a assinatura do módulo conferida | onda 1.0 | 10, 88, 92 | Sem instalar, não há app; sem a assinatura, não se sabe o que foi instalado. |
+| Os apps contratados no dia entram no setup, sem gesto por app, com a assinatura de cada módulo conferida | onda 1.0 | 88, 134 | Sem instalar, não há app; sem a assinatura, não se sabe o que foi instalado. |
+| App autorizado depois do setup: o console mostra "app autorizado", e o administrador da instância clica em instalar | onda 1.0 | 10, 137 | Nenhum módulo novo entra na casa do cliente sem um gesto da TI do cliente. |
+| Num cluster sem política de rede, o núcleo é instalado e nenhum módulo entra até a política valer; o diagnóstico é do núcleo | onda 1.0 | 63, 145 | A promessa de que o módulo não sai para a internet vale por construção em todo cluster. |
+| Atualizar o módulo é trocar a caixa; no Kubernetes, o cluster troca a caixa a mando do núcleo, depois do aval | onda 1.0 | 39, 142, 144 | A regra da atualização com aval vale igual nos dois formatos do pacote. |
 | Liberar e configurar o app por organização: permissões, bancos, IAs e ajustes | onda 1.0 | 10, 14 | É o segundo passo, o do owner da organização, sem o qual o app não atende. |
 | Estado "em configuração" e o que falta para o app entrar em uso, na tela do próprio app | onda 1.0 | 72, 95 | O owner da organização precisa saber por que o app ainda não atende. |
 | Pausar e retomar um app, pelo owner da organização, só na organização dele, sem apagar nada | onda 1.0 | 14, 46, 96 | É o freio do owner da organização na onda 1.0, enquanto retirar não chega. |
@@ -308,7 +318,7 @@ Prova de valor proposta pelo PO; o dono da Maind ainda não a confirmou.
 
 ## O que não inclui
 
-- **A contratação, o kit, o certificado, o handshake, o fim do contrato e a renovação:** contratação dos apps (MF-103).
+- **A contratação, o manifesto do que a organização pode ter, as identidades do app, o handshake, o fim do contrato e a renovação:** contratação dos apps (MF-103).
 - **Rodar o módulo isolado e o que ele faz por dentro:** execução isolada dos apps (MF-109).
 - **O cadastro dos bancos, o cofre das senhas e o acesso só de leitura:** bancos da empresa (MF-105).
 - **As chaves dos provedores de IA, as regras dos modelos permitidos, dos limites e do custo:** governança da IA (MF-106).
@@ -320,7 +330,7 @@ Prova de valor proposta pelo PO; o dono da Maind ainda não a confirmou.
 
 ## Depende de
 
-- `MF-103:Contratação dos apps`. Um app só é instalado e liberado depois de contratado e liberado pela Maind no handshake contratual.
+- `MF-103:Contratação dos apps`. Um app só chega à instância depois de contratado: ele entra no manifesto que a Maind assina, e o handshake contratual o libera.
 - `MF-101:Segurança e permissões`. Quem instala e quem libera são papéis definidos ali, e as permissões que o owner da organização dá ao app são parte da autorização, a conferência do que cada um pode fazer.
 - `MF-107:Organizações e instâncias`. Instalar é por instância, e liberar, pausar e retirar são por organização. Sem as duas, não há onde instalar nem para quem liberar.
 - `MF-110:Console de configuração`. O owner da organização libera e configura os apps pelo console, e o administrador da instância instala por ele. Sem o console, não há onde fazer os dois passos.
@@ -339,7 +349,7 @@ O mAIg nasceu do middleware do Horus, a peça que ficava entre as telas do Horus
 
 - **Falta o arquiteto do mAIg definir como um mAIg novo conversa com um módulo antigo dentro do prazo de adiamento, e o contrário.** *O que está em jogo:* o cliente precisa de tempo para atualizar sem surpresa, e a Maind não pode carregar todas as versões antigas. Como o app é instalado uma vez por instância, todas as organizações dela andam juntas na mesma versão. A regra já está decidida: é por prazo, para o mAIg e para o módulo de cada app, sem contagem de versões (decisão 109). Com o mAIg atualizado por um caminho próprio (decisão 39), falta o desenho que garante a conversa entre as duas peças enquanto o prazo corre.
 - **Falta o dono da Maind decidir o tamanho do prazo do aviso que abre toda desinstalação.** *O que está em jogo:* um prazo curto não dá tempo de baixar a cópia assinada, e um prazo longo segura um app instalado e sem uso. É só um número, da onda 1.1: quem recebe o aviso e o que segura a desinstalação já estão decididos (decisão 107).
-- **Também depende, e está tratado em outros lugares:** o que o registro anota dos atos de quem gere os apps, como liberar, configurar, pausar e retirar (MF-102); como os módulos dos apps ficam isolados dentro do mAIg (MF-109); de onde vem o módulo do app e o que mais vem no kit de instalação (MF-103); quem atualiza o próprio mAIg (MF-107).
+- **Também depende, e está tratado em outros lugares:** o que o registro anota dos atos de quem gere os apps, como liberar, configurar, pausar e retirar (MF-102); como os módulos dos apps ficam isolados dentro do mAIg (MF-109); o manifesto do que a organização pode ter e o contrato de app (MF-103); quem atualiza o próprio mAIg (MF-107).
 
 ## Decisões do PO para discutir
 
@@ -352,7 +362,7 @@ Os trechos do texto que vão além das decisões do dono da Maind, sem código d
 - **Decisão:** "os dados dele", na decisão 15, são o registro do app e as configurações dele em todas as organizações da instância. *Por que:* desinstalado o app, a configuração não tem mais a que servir. *Alternativa:* guardar a configuração mesmo depois de desinstalar, para uma reinstalação. *Reabrir se:* um cliente reinstalar um app e pedir a configuração de volta.
 - **Decisão:** cada app declara o mínimo de que precisa para funcionar, e fica "em configuração" até tê-lo; o estado "em configuração" foi criado para isso. *Por que:* é a mesma ideia que o Horus adotou para a organização, que só fica ativa com o mínimo configurado (D-277 do Horus). *Alternativa:* o owner da organização liberar o app a qualquer momento, mesmo incompleto. *Reabrir se:* um app não tiver um mínimo claro.
 - **Decisão:** a configuração do app guarda as ligações com os bancos e as IAs, e não os bancos e as chaves em si, que são da organização. *Por que:* um banco pode servir a vários apps, e retirar um app não pode apagar o banco que outro usa. *Alternativa:* cada app ter os seus próprios bancos e chaves. *Reabrir se:* a governança da IA ou os bancos da empresa definirem outro desenho (MF-106, MF-105).
-- **Decisão:** quem atualiza um app na instância é o administrador da instância; a atualização mantém a configuração e o registro, e uma permissão nova chega desligada até o owner da organização liberá-la. *Por que:* é coerente com quem instala (decisão 10) e com o ponto de partida do Horus, em que quem atualiza é quem hospeda (D-292 do Horus). *Alternativa:* a atualização chegar sozinha, sem ato do administrador da instância. *Reabrir se:* clientes deixarem de atualizar e travarem as versões novas.
+- **Decisão:** quem atualiza um app na instância é o administrador da instância; a atualização mantém a configuração e o registro, e uma permissão nova chega desligada até o owner da organização liberá-la. *Por que:* é coerente com quem instala (decisão 10) e com o ponto de partida do Horus, em que quem atualiza é quem hospeda (D-292 do Horus). *Alternativa:* a atualização chegar sozinha, sem ato do administrador da instância. *Reabrir se:* clientes deixarem de atualizar e travarem as versões novas. Foi decidido depois: os apps contratados no dia entram no setup, sem gesto por app, e o autorizado depois espera o clique do administrador da instância (decisões 134 e 137); no Kubernetes, quem troca a caixa é o cluster, a mando do núcleo, depois do aval (decisão 144).
 - **Decisão:** uma instalação, uma versão: todas as organizações da instância usam a mesma versão do app. *Por que:* é consequência de o app ser instalado uma vez só (decisão 10). *Alternativa:* versões diferentes por organização na mesma instância. *Reabrir se:* uma organização precisar ficar numa versão enquanto outra avança.
 - **Decisão:** a renovação devolve o app ao estado de antes, inclusive pausado. *Por que:* "volta como estava" (decisão 14) vale também para a pausa. *Alternativa:* a renovação sempre devolver o app em uso. *Reabrir se:* owners da organização estranharem o app voltar pausado.
 - **Decisão:** retirar o app não cancela o contrato; se a organização quiser o app de novo, com o contrato ainda valendo, o owner da organização o libera e configura do zero. *Por que:* retirar é um ato de operação, e o contrato é da contratação dos apps (MF-103). *Alternativa:* a retirada encerrar também o contrato daquele app para a organização. *Reabrir se:* organizações retirarem apps esperando parar de pagar por eles.
@@ -369,3 +379,7 @@ Os trechos do texto que vão além das decisões do dono da Maind, sem código d
 - **Decidido por delegação do dono da Maind em 11/11/2026:** toda desinstalação começa com um aviso de segurança, com prazo, aos owners da organização e aos auditores de toda organização que tem registro naquele app, inclusive as que já o retiraram e as encerradas que o tinham, e só se conclui no fim do prazo, se nenhuma organização ativa tiver o app. Todas podem baixar a cópia assinada dentro do prazo. A organização encerrada não segura a desinstalação; o que segura é o pedido de volta à espera de execução. Chega na onda 1.1 (decisão 107).
 - **Decidido por delegação do dono da Maind em 11/11/2026:** ninguém retira um app no lugar do owner da organização. O impasse da organização que não responde se resolve pela troca do owner da organização ou pelo encerramento da organização, na onda 1.1; a retirada à força não entra (decisão 108).
 - **Decidido por delegação do dono da Maind em 11/11/2026:** a regra de versão única é por prazo, para o mAIg e para o módulo de cada app: a TI do cliente adia a versão nova dentro do prazo e, vencido o prazo, o que ficou velho deixa de atender, com o aviso "Atualização necessária". Com o mAIg vencido, todos os apps recusam a conversa; com o módulo de um app vencido, só aquele app para. A contagem de versões que convivem saiu do texto. Entra na onda 1.0 (decisão 109).
+- **Decidido pelo dono da Maind em 12/11/2026:** o setup instala o núcleo e, junto, os apps que a organização já tem contratados no dia, sem um PDF nem um clique por app; o aval da TI do cliente está no próprio setup (decisão 134). Instalado não quer dizer liberado: o owner da organização libera e configura cada app no console (decisão 135). Um app autorizado depois do setup chega pela ligação, aparece no console como "app autorizado", e o administrador da instância clica em instalar; nenhum módulo novo entra na casa do cliente sem um gesto da TI do cliente (decisão 137). O tópico de instalar, o resumo, o estado "instalado" e a tabela de ondas foram reescritos nesse desenho.
+- **Decidido pelo dono da Maind em 12/11/2026:** o kit não traz certificado pronto e deixou de ser um arquivo: o app chega pela ligação, no manifesto assinado, e a chave dele nasce no mAIg (decisão 138). O ponto sobre de onde vem o módulo saiu desta mf, e o "Também depende" passou a apontar o manifesto e o contrato de app.
+- **Decidido pelo dono da Maind em 12/11/2026:** o mAIg é um pacote pronto em contêiner, e atualizar é trocar a caixa (decisão 142); no Kubernetes, o núcleo manda o cluster trocar a caixa, depois do aval da TI do cliente e dentro da janela, com permissão só no espaço do mAIg (decisão 144). O tópico de atualizar ganhou o parágrafo "Atualizar é trocar a caixa".
+- **Decidido pelo dono da Maind em 12/11/2026:** num cluster que não aplica a política de rede, o mAIg instala o núcleo e recusa instalar qualquer módulo até a política valer, com a mensagem dizendo o que falta; o próprio núcleo faz o diagnóstico, na instalação, a pedido da TI do cliente e de tempos em tempos (decisão 145). O tópico de instalar e "Quando dá errado" ganharam esse caso.

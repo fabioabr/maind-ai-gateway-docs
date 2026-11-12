@@ -1,23 +1,23 @@
 # MF-103:Contratar e liberar um app com segurança
 
-> A empresa contrata um app da Maind para uma organização, e a Maind entrega um kit com um certificado digital. O mAIg confere a contratação com a Maind e libera o app só para essa organização; no fim do contrato, o app não para de surpresa.
+> A empresa contrata um app da Maind para uma organização, e a equipe da Maind o cadastra no Gerenciador do mAIg. O app chega ao mAIg pela ligação, num manifesto assinado pela Maind: no setup, os apps já contratados entram sozinhos; depois, o console mostra "app autorizado", e o administrador da instância clica em instalar. O mAIg confere a contratação com a Maind e libera o app só para essa organização; no fim do contrato, o app não para de surpresa.
 
 **Também chamada de:** Contratação dos apps · **Versão do mAIg:** 1ª · **Classe:** essencial · **Situação:** rascunho do PO
 
 ## Em uma frase
 
-A contratação dos apps é o caminho pelo qual um app da Maind passa a valer para uma organização: o trâmite comercial, o kit de instalação com o certificado digital, a conferência da contratação com a Maind e, no fim do contrato, o aviso, a carência e a renovação. O certificado digital é uma espécie de carteira de identidade digital. A carência é o tempo em que o app continua funcionando depois do fim do contrato, à espera da renovação.
+A contratação dos apps é o caminho pelo qual um app da Maind passa a valer para uma organização: o trâmite comercial, o cadastro no Gerenciador do mAIg, a chegada do app ao mAIg pela ligação, com o certificado digital que o identifica, a conferência da contratação com a Maind e, no fim do contrato, o aviso, a carência e a renovação. O Gerenciador do mAIg é o cockpit da Maind para controlar e cobrar os clientes: roda na nuvem da Maind, separado de qualquer app. O certificado digital é uma espécie de carteira de identidade digital. A carência é o tempo em que o app continua funcionando depois do fim do contrato, à espera da renovação.
 
 O mAIg, o Maind AI Gateway, é a plataforma da Maind que fica na rede da empresa cliente, ou na infraestrutura da Maind, e pela qual os produtos da Maind chegam aos dados e à inteligência artificial (IA) da empresa. "Gateway" quer dizer portão. Cada produto entra no mAIg como um app, e o primeiro é o Horus.
 
 Cada instalação física do mAIg é uma instância. Dentro dela, cada cliente trabalha numa organização, o espaço com os seus próprios apps e as suas próprias regras (decisão 9). Um app só funciona para a organização que o contratou (decisão 11).
 
-Esta mf existe para que essa regra valha sempre do mesmo jeito. Sem ela, cada liberação seria um acerto feito à mão entre a equipe da Maind e a TI do cliente, a equipe de tecnologia da empresa. Com ela, a Maind libera um app sem entrar na rede do cliente, e o cliente não abre uma porta de entrada, a abertura na rede por onde alguém de fora começaria uma conversa com um computador de dentro. E uma renovação atrasada não derruba a operação (decisão 6, decisões 10 e 13).
+Esta mf existe para que essa regra valha sempre do mesmo jeito. Sem ela, cada liberação seria um acerto feito à mão entre a equipe da Maind e a TI do cliente, a equipe de tecnologia da empresa. Com ela, a Maind libera um app sem entrar na rede do cliente, e o cliente não abre uma porta de entrada, a abertura na rede por onde alguém de fora começaria uma conversa com um computador de dentro. Nada instalável viaja por e-mail: o app chega pela ligação que o próprio mAIg abre (decisão 131). E uma renovação atrasada não derruba a operação (decisão 6, decisões 10 e 13).
 
 ## Quem ganha
 
-- **Equipe da Maind** (as pessoas da Maind que vendem, entregam e dão suporte aos apps). Ganha um caminho único para liberar qualquer app em qualquer cliente: fecha a contratação, entrega o kit e deixa a conferência para o mAIg e para a Maind. Não precisa entrar na rede do cliente para liberar nada. E tem um jeito claro de parar um app quando for preciso.
-- **Administrador da instância** (quem cuida da instalação física do mAIg: a TI do cliente, quando o mAIg roda na rede da empresa, ou a equipe da Maind, quando roda na infraestrutura da Maind). Recebe um pacote pronto e o instala. Não precisa acreditar na palavra de ninguém: sem contratação, o mAIg não libera o app.
+- **Equipe da Maind** (as pessoas da Maind que vendem, entregam e dão suporte aos apps). Ganha um caminho único para liberar qualquer app em qualquer cliente: fecha a contratação, cadastra o app no Gerenciador do mAIg e deixa o resto com o mAIg e com a Maind: o app chega pela ligação, e nada instalável viaja por e-mail (decisão 131). Não precisa entrar na rede do cliente para liberar nada. E tem um jeito claro de parar um app quando for preciso.
+- **Administrador da instância** (quem cuida da instalação física do mAIg: a TI do cliente, quando o mAIg roda na rede da empresa, ou a equipe da Maind, quando roda na infraestrutura da Maind). Não recebe arquivo nenhum: os apps contratados no dia do setup entram sozinhos, e o contratado depois aparece no console como "app autorizado", à espera de um clique dele (decisões 134 e 137). Não precisa acreditar na palavra de ninguém: sem contratação, o mAIg não libera o app.
 - **Owner da organização** (a pessoa que responde pela organização no mAIg). Vê quais apps a organização contratou e até quando. É avisado antes do fim de cada contrato e tem uma carência para renovar, sem que o app pare no dia seguinte.
 - **De forma indireta, a pessoa que usa o app e a TI do cliente.** A pessoa que usa o app não fica sem ele porque um pedido de compra atrasou (decisão 13). A TI do cliente não abre porta de entrada na rede para que um app seja contratado (decisão 6).
 
@@ -37,24 +37,25 @@ Esta mf existe para que essa regra valha sempre do mesmo jeito. Sem ela, cada li
 **Quem é quem.**
 
 - **A empresa** é a companhia cliente, que assina o contrato com a Maind. **A organização** é o espaço com que a empresa trabalha dentro do mAIg, com os seus próprios apps e as suas próprias regras. **A instância** é cada instalação física do mAIg, que atende uma ou mais organizações sem misturá-las (decisões 9 e 11).
-- **O servidor da Maind Tech** é o computador da Maind, sempre ligado, que confere as contratações.
-- **O kit de instalação** é o pacote que a Maind entrega para cada app contratado. Dentro dele vem o certificado digital, uma espécie de carteira de identidade digital do app. A licença, com a data do fim do contrato e a carência, chega depois, pela ligação (decisão 56).
+- **O Gerenciador do mAIg** é o cockpit da Maind para controlar e cobrar os clientes: roda na nuvem da Maind, separado de qualquer app. É nele que a equipe da Maind cria a organização e cadastra cada app contratado. **O servidor da Maind Tech**, o computador da Maind, sempre ligado, que confere as contratações, faz parte dele.
+- **O manifesto** é a lista, assinada pela Maind, do que a organização pode ter: os apps contratados. Chega ao mAIg pela ligação, e não por arquivo. Para cada app, traz o que deixa o mAIg gerar a chave do app e pedir à Maind o certificado digital, uma espécie de carteira de identidade digital do app (decisão 138). A licença, com a data do fim do contrato e a carência, chega depois, pela ligação (decisão 56).
+- **O setup** é a configuração inicial do mAIg na infraestrutura do cliente, feita pela TI do cliente com uma chave temporária que a Maind manda num PDF com senha; é por ele que a organização chega à instância (MF-107).
 - **O handshake contratual** é a conversa em que o mAIg se apresenta à Maind com o certificado e a Maind confere a contratação. Handshake quer dizer "aperto de mão", em inglês.
 
 **Os oito passos** (decisões 10 e 13):
 
-1. Fechada a contratação, a equipe da Maind entrega o kit de instalação, com o certificado, ao administrador da instância.
-2. O administrador da instância instala o kit no mAIg, e a instalação fica anotada no registro da organização (decisão 82).
-3. O mAIg faz o handshake contratual com o servidor da Maind Tech.
-4. O servidor da Maind Tech libera o app para a organização que o contratou.
-5. O administrador da instância instala o app na instância, uma vez só.
-6. O owner da organização libera e configura o app para a organização dele. Daqui em diante, as pessoas da organização usam o app.
+1. Fechada a contratação, a equipe da Maind cadastra o app para a organização no Gerenciador do mAIg.
+2. O app chega ao mAIg pela ligação, no manifesto assinado. Se a organização ainda está no setup, os apps já contratados entram sozinhos, sem um gesto por app (decisão 134). Se a instância já roda, o console mostra "app autorizado", e o administrador da instância clica em instalar (decisão 137). A chegada de cada app fica anotada no registro da organização (decisão 82).
+3. O mAIg gera a chave do app, pede o atestado à Maind e faz o handshake contratual com o servidor da Maind Tech, pela ligação (decisão 138).
+4. O servidor da Maind Tech libera o app para a organização que o contratou e entrega a licença.
+5. O módulo do app passa a rodar na instância, uma vez só, para todas as organizações dela.
+6. Instalado não quer dizer liberado: o owner da organização libera e configura o app para a organização dele (decisão 135). Daqui em diante, as pessoas da organização usam o app.
 7. Antes de o contrato acabar, o mAIg avisa o owner da organização.
 8. O app só para por uma ação manual da equipe da Maind ou quando a licença vence sem ser renovada, ao fim da carência.
 
-**O que esta mf cobre.** Os passos 1 a 4, 7 e 8. Cobre também o trâmite comercial, que vem antes do passo 1, e a renovação. Os passos 5 e 6, instalar e liberar, são da gestão dos apps (MF-104).
+**O que esta mf cobre.** Os passos 1 a 4, 7 e 8. Cobre também o trâmite comercial, que vem antes do passo 1, e a renovação. Os passos 5 e 6, o módulo rodando e a liberação, são da gestão dos apps (MF-104).
 
-**O que vem antes.** A organização já existe na instância, com o usuário do primeiro owner da organização e com o certificado próprio dela, que a Maind emitiu quando ela foi criada (decisão 28, MF-107). E o mAIg já mantém aberta a conexão com a Maind, a ligação que ele mesmo abre de dentro para fora (MF-108).
+**O que vem antes.** A organização já nasceu no Gerenciador do mAIg e chegou à instância pelo setup, com o usuário do primeiro owner da organização e com o certificado próprio dela, que a Maind atestou quando o arquivo da organização chegou (decisões 28 e 128, MF-107). E o mAIg já mantém aberta a conexão com a Maind, a ligação que ele mesmo abre de dentro para fora (MF-108).
 
 ### O trâmite comercial: o que se contrata e para quem
 
@@ -66,52 +67,56 @@ Esta mf existe para que essa regra valha sempre do mesmo jeito. Sem ela, cada li
 - **A empresa assina; a organização recebe.** Quem assina é a empresa. Mas, para o mAIg, quem contrata cada app é a organização. Um mesmo contrato comercial pode listar várias organizações da mesma empresa (decisão 11).
 - **A equipe da Maind** conduz o trâmite do lado da Maind.
 
-**O que a Maind precisa cadastrar.** Para conferir a contratação, o servidor da Maind Tech precisa conhecê-la. Por isso, ao fechar o trâmite, a equipe da Maind cadastra nele três coisas: o app, a organização e a data em que o contrato acaba. Sem esse cadastro, o handshake não tem o que conferir, e o app não é liberado.
+**O que a Maind precisa cadastrar.** Para conferir a contratação, o servidor da Maind Tech precisa conhecê-la. Por isso, ao fechar o trâmite, a equipe da Maind cadastra no Gerenciador do mAIg três coisas: o app, a organização e a data em que o contrato acaba. Sem esse cadastro, o app não entra no manifesto da organização, o handshake não tem o que conferir, e o app não é liberado (decisão 128).
 
 **Por que é assim.** O trâmite fica fora do mAIg porque é um acordo entre pessoas, com proposta, assinatura e pedido de compra. O mAIg recebe só o resultado: uma prova, que ele consegue conferir, de que o app foi contratado por aquela organização (decisão 10).
 
 **O preço fica de fora.** O mAIg vem embutido no preço dos apps, sem linha própria na conta (decisão 17). O preço em reais é um ponto do mapa geral e não faz parte desta mf.
 
-### O kit de instalação
+### O manifesto no lugar do kit
 
-**Em resumo:** o kit é o pacote que a equipe da Maind entrega ao administrador da instância depois de fechada a contratação. Dentro dele vem o certificado digital que identifica o app; o contrato se prova pela licença, que chega depois, pela ligação (decisão 56).
+**Em resumo:** a Maind não entrega mais um arquivo. O que a organização pode ter vem num manifesto assinado pela Maind, que chega ao mAIg pela ligação. O que antes se chamava kit é a entrada de cada app nesse manifesto: traz o que deixa o mAIg gerar a chave do app e pedir à Maind o certificado que o identifica; o contrato se prova pela licença, que chega pela mesma ligação (decisões 56 e 138).
 
 **Quem é quem.**
 
-- **Quem entrega** é a equipe da Maind. **Quem recebe e instala** é o administrador da instância (decisão 10).
-- **Na infraestrutura do cliente,** o administrador da instância é a TI do cliente, e o kit passa de uma empresa para a outra. **Na infraestrutura da Maind,** o administrador da instância é a própria equipe da Maind, que entrega o kit a si mesma.
-- **Um kit vale para um app e uma organização.** Se a empresa contrata dois apps, recebe dois kits. Se um contrato lista duas organizações, cada uma recebe o seu kit. O kit identifica o app, e a licença prova o contrato (decisão 56); o certificado da organização, que não vem nele, prova de quem é o pedido (decisão 28).
+- **Quem cadastra** é a equipe da Maind, no Gerenciador do mAIg. **Quem traz** é o próprio mAIg, pela ligação. **Quem instala** é o setup, para os apps contratados no dia, ou o administrador da instância, com um clique, para o app autorizado depois (decisões 134 e 137).
+- **Na infraestrutura do cliente,** o administrador da instância é a TI do cliente. **Na infraestrutura da Maind,** é a própria equipe da Maind. O caminho é o mesmo nas duas: nada viaja por e-mail nem passa de mão em mão (decisão 131).
+- **Uma entrada do manifesto vale para um app e uma organização.** Se a empresa contrata dois apps, o manifesto da organização traz dois. Se um contrato lista duas organizações, cada uma tem o seu manifesto. A entrada identifica o app, e a licença prova o contrato (decisão 56); o certificado da organização, que não vem nela, prova de quem é o pedido (decisão 28).
 
-**Por que é assim.** O kit leva para dentro da instância a prova da contratação, sem que a Maind precise entrar nela. É o administrador da instância quem decide instalar o kit, porque é ele quem controla o que roda na instalação (decisão 10).
+**Por que é assim.** O manifesto leva para dentro da instância a prova da contratação, sem que a Maind precise entrar nela e sem um arquivo que alguém possa interceptar. A chave do app nasce no mAIg e nunca sai dele: a Maind atesta o certificado, e não o entrega (decisões 86 e 138). O aval da TI do cliente está no setup, que ela executa, ou no clique de instalar, porque é ela quem controla o que roda na instalação (decisão 10).
 
-**Quando dá errado.** O kit chega a uma instância onde a organização ainda não foi criada: não há para quem liberar o app, e a organização precisa vir antes (MF-107). O kit se perde ou cai em mãos erradas: o certificado dentro dele é o que identifica o app, e contê-lo depende da política do certificado, ainda em aberto. Mesmo assim, o kit sozinho não abre nada da organização, porque o pedido também exige o certificado dela (decisão 28).
+**O que ficou do kit.** "Instalado o kit" passa a ser "chegado o manifesto": a chegada de cada app continua anotada no registro da organização, com quem a trouxe e quando (decisões 82 e 134). Quando este texto fala em kit, fala dessa entrada do manifesto.
 
-**O que ainda está em aberto.** O que mais vem no kit, além do certificado, e por que caminho ele chega com segurança ao administrador da instância estão em "O que ainda falta decidir". Também estão lá em que ambientes o mAIg roda e o que um app declara ao núcleo para ser instalado, como a lista dos tipos de ato das linhas informadas pelo app, que chegam na onda 1.1 (decisão 104).
+**Quando dá errado.** Um app autorizado chega, e ninguém clica em instalar: ele fica dias "autorizado" sem rodar, e o caminho é o administrador da instância clicar (decisão 137). Alguém copia o que chegou pela ligação: sozinho, isso não abre nada da organização, porque o pedido também exige o certificado dela (decisão 28), e a chave do app nunca saiu do mAIg (decisão 86).
+
+**O que ainda está em aberto.** O que um app declara ao núcleo para ser instalado, como a lista dos tipos de ato das linhas informadas pelo app, que chegam na onda 1.1 (decisão 104), está em "O que ainda falta decidir".
 
 ### Três peças: o certificado, a licença e a autoridade pública
 
-**Em resumo:** cada app contratado tem três peças separadas. O certificado do kit diz quem é o app e se troca sozinho; a licença diz até quando vale o contrato e quanto dura a carência; e a autoridade certificadora pública só prova que o endereço da Maind é da Maind (decisão 56).
+**Em resumo:** cada app contratado tem três peças separadas. O certificado do app diz quem é o app e se troca sozinho; a licença diz até quando vale o contrato e quanto dura a carência; e a autoridade certificadora pública só prova que o endereço da Maind é da Maind (decisão 56).
 
 **Quem é quem.**
 
 - **O certificado digital** é um arquivo que diz a quem pertence e traz a assinatura digital de quem o emitiu. A assinatura digital é uma marca que só o emissor consegue produzir e que denuncia qualquer alteração no arquivo.
-- **O certificado do kit** é a identidade do app na organização. O mAIg gera o par de chaves e guarda a privada, que nunca sai dele; a Maind recebe só a pública e a atesta (decisão 86). Ele vale pouco tempo, e o mAIg o troca sozinho pela ligação, como faz com o da organização (decisão 44).
+- **O certificado do app** é a identidade do módulo do app na organização. O mAIg gera o par de chaves e guarda a privada, que nunca sai dele; a Maind recebe só a pública e a atesta (decisão 86). Ele vale pouco tempo, e o mAIg o troca sozinho pela ligação, como faz com o da organização (decisão 44). A parte de fora do app, a que roda na nuvem da Maind, tem uma segunda identidade, com a chave na nuvem da Maind, também atestada pela Maind e conferida pelo núcleo a cada conversa pela ligação (decisão 139). Nenhuma das duas assina o passe das pessoas: isso é só da chave da organização.
 - **A licença** é um documento assinado pela Maind, com a data do fim do contrato e a carência. Chega ao mAIg pela ligação, no handshake contratual e a cada renovação. Quando ela vence sem ser renovada, o app para (decisão 56).
 - **A autoridade certificadora pública** é uma entidade reconhecida publicamente que garante identidades no mundo digital. No mAIg, ela serve só para provar que o endereço da Maind, com que o mAIg conversa, é mesmo da Maind.
 
-**Por que é assim.** Cada peça faz um trabalho só. Um certificado roubado vale pouco tempo, porque é curto e se troca sozinho. Renovar o contrato é trocar a licença, sem reinstalar nada. E a carência vira um prazo do contrato, e não a data de validade de um arquivo. Antes, o certificado do kit, emitido abaixo de uma autoridade pública, fazia os três trabalhos (decisões 10 e 56). Abre-se mão de: são três peças em vez de uma, e a confiança nos certificados dos kits passa a se apoiar na Maind, e não numa autoridade de mercado.
+**Por que é assim.** Cada peça faz um trabalho só. Um certificado roubado vale pouco tempo, porque é curto e se troca sozinho. Renovar o contrato é trocar a licença, sem reinstalar nada. E a carência vira um prazo do contrato, e não a data de validade de um arquivo. Antes, o certificado do kit, emitido abaixo de uma autoridade pública, fazia os três trabalhos (decisões 10 e 56). Abre-se mão de: são três peças em vez de uma, e a confiança nos certificados dos apps passa a se apoiar na Maind, e não numa autoridade de mercado.
+
+**Onde ficam as chaves da Maind.** As chaves com que a Maind atesta os certificados e assina a licença e o manifesto ficam num cofre de chaves portátil, que roda em qualquer lugar, e a chave-mãe, a raiz, fica fora de linha e só é usada com duas pessoas. A chave nunca sai do cofre: ele devolve só a assinatura, e cada uso fica anotado. A regra de que a Maind nunca recebe a chave privada do cliente não muda e vale também no setup (decisões 86 e 148). Abre-se mão de: se o cofre da Maind cai, o cartório para de emitir, e uma parada longa chega a trancar organizações (decisão 44).
 
 > **Analogia:** numa empresa, o crachá diz quem é o funcionário e é trocado de tempos em tempos, o contrato de trabalho diz até quando ele trabalha ali, e o cartório reconhece a firma de quem assina. **Onde a analogia para:** no mAIg, o crachá se troca sozinho, sem ninguém pedir, e o cartório só confere o endereço da Maind, e não cada contrato.
 
-**Dois certificados em cada pedido.** O certificado do kit prova que a organização contratou aquele app. O certificado da organização, que a Maind emite quando a organização é criada, prova de quem é o pedido. Um pedido só passa com os dois, e por isso um kit copiado, sozinho, não abre nada da organização (decisão 28). Abre-se mão de: são dois tipos de certificado para emitir, renovar e cancelar; a Maind passa a emitir um novo a cada organização criada, e criar uma organização, mesmo na instância do cliente, depende dela; e a TI do cliente tem mais uma peça para entender e aprovar.
+**Dois certificados em cada pedido.** O certificado do app prova que a organização contratou aquele app. O certificado da organização, que a Maind atesta quando a organização chega à instância, prova de quem é o pedido. Um pedido só passa com os dois, e por isso uma cópia do que chegou pela ligação, sozinha, não abre nada da organização (decisão 28). Abre-se mão de: são dois tipos de certificado para emitir, renovar e cancelar; a Maind passa a emitir um novo a cada organização criada, e criar uma organização, mesmo na instância do cliente, depende dela; e a TI do cliente tem mais uma peça para entender e aprovar.
 
 **O certificado da organização se renova sozinho e nunca para sem aviso.** Ele vale 30 dias, e o mAIg o renova sozinho pela ligação com a Maind, que já é requisito para tudo funcionar. Se a renovação falhar, o certificado atual segue valendo até o fim, e o owner da organização e a TI do cliente são avisados 7 dias antes de ele vencer. Cancelá-lo antes do prazo exige a autorização de duas pessoas da Maind, e o ato fica anotado no registro da organização. Como ele assina todo login da organização, é o que mais precisa de cuidado: assim, ninguém é trancado por esquecimento, e um certificado roubado vale pouco tempo. (decisões 41 e 44)
 
-**O que ainda está em aberto.** Quanto tempo vale o certificado do kit e como ele é cancelado antes do prazo, se vazar, e quanto dura a carência estão em "O que ainda falta decidir". Também está em aberto se o certificado do kit é o mesmo com que a parte de fora do app, a que roda fora do mAIg, se identifica nele.
+**O que ainda está em aberto.** Quanto tempo vale o certificado do app e como ele é cancelado antes do prazo, se vazar, e quanto dura a carência estão em "O que ainda falta decidir".
 
 ### O handshake contratual: a Maind confere e libera
 
-**Em resumo:** instalado o kit, o mAIg se apresenta ao servidor da Maind Tech com o certificado. O servidor confere a contratação e libera o app só para a organização que o contratou (decisões 10 e 11).
+**Em resumo:** chegado o manifesto, o mAIg gera a chave do app, pede o atestado e se apresenta ao servidor da Maind Tech com o certificado. O servidor confere a contratação e libera o app só para a organização que o contratou (decisões 10 e 11).
 
 **Quem é quem.**
 
@@ -119,7 +124,9 @@ Esta mf existe para que essa regra valha sempre do mesmo jeito. Sem ela, cada li
 - **Liberar o app** é a Maind dizer ao mAIg, de um jeito que ele consegue conferir, que aquele app foi contratado por aquela organização.
 - **A conexão de dentro para fora** é a ligação que o mAIg abre com a Maind e mantém aberta. O handshake corre por dentro dela (decisão 6).
 
-**Como acontece.** O mAIg lê o certificado do kit. Pela conexão que ele mesmo abriu, apresenta o certificado ao servidor da Maind Tech. O servidor confere a assinatura e procura a contratação cadastrada pela equipe da Maind. Se a encontra, responde que o app está liberado para aquela organização e entrega a licença, com a data do fim do contrato e a carência (decisão 56).
+**Como acontece.** O mAIg, com o certificado do app atestado pela Maind, o apresenta ao servidor da Maind Tech pela conexão que ele mesmo abriu. O servidor confere a assinatura e procura a contratação cadastrada pela equipe da Maind no Gerenciador do mAIg. Se a encontra, responde que o app está liberado para aquela organização e entrega a licença, com a data do fim do contrato e a carência (decisão 56).
+
+**A primeira conexão, no setup.** Antes de a instância ter o próprio certificado, a primeira conexão com a Maind é feita com a chave temporária que veio no PDF: é a única sem o certificado da instância, e só serve para pedir o certificado e o arquivo da organização. A chave vale uma vez só, vence em pouco tempo e só é gasta quando a Maind entrega a organização; se o setup para antes, a TI do cliente tenta de novo com a mesma chave (decisão 133, MF-107). Daí em diante, tudo corre pela ligação, com o certificado, como nos outros tópicos.
 
 **O que vem depois.** Com o app liberado, o administrador da instância pode instalá-lo, e o owner da organização, liberá-lo para as pessoas da organização (MF-104).
 
@@ -143,19 +150,19 @@ Esta mf existe para que essa regra valha sempre do mesmo jeito. Sem ela, cada li
 
 **Exemplo.** Numa instância da Maind, a Organização A, da empresa X, e a Organização B, da empresa Y, convivem sem se misturar.
 
-1. A empresa X contrata o Horus para a Organização A. A equipe da Maind cadastra a contratação e entrega o kit.
-2. O handshake libera o Horus só para a Organização A. A equipe da Maind, no papel de administrador da instância, instala o Horus na instância.
+1. A empresa X contrata o Horus para a Organização A. A equipe da Maind cadastra a contratação no Gerenciador do mAIg.
+2. O Horus chega à instância pela ligação, como "app autorizado". A equipe da Maind, no papel de administrador da instância, clica em instalar, e o handshake libera o Horus só para a Organização A.
 3. Para a Organização B, o Horus está instalado, mas indisponível: ela não o contratou.
-4. Meses depois, a empresa Y contrata o Horus. A Organização B recebe o seu kit, e o handshake libera o app para ela. O Horus, que já estava instalado, não é instalado de novo.
+4. Meses depois, a empresa Y contrata o Horus. O manifesto da Organização B passa a trazer o Horus, e o handshake libera o app para ela. O Horus, que já estava instalado, não é instalado de novo.
 5. Mais tarde, a empresa X não renova, e o Horus para na Organização A. Na Organização B, nada muda.
 
-**Uma empresa, duas organizações.** Se a Farma Vida abrir no mAIg uma segunda organização, para a distribuidora dela, e contratar o Horus também para ela, o contrato comercial pode ser um só, listando as duas. Mesmo assim, cada organização recebe o seu kit e a sua liberação, e cada uma tem o seu owner da organização e as suas regras.
+**Uma empresa, duas organizações.** Se a Farma Vida abrir no mAIg uma segunda organização, para a distribuidora dela, e contratar o Horus também para ela, o contrato comercial pode ser um só, listando as duas. Mesmo assim, cada organização tem o seu manifesto e a sua liberação, e cada uma tem o seu owner da organização e as suas regras.
 
 ### Na infraestrutura da Maind: os mesmos passos, outras mãos
 
 **Em resumo:** com o mAIg hospedado pela Maind, o caminho é o mesmo. Muda só quem faz o papel de administrador da instância.
 
-**Quem faz o quê.** A equipe da Maind fecha a contratação, entrega o kit a si mesma, instala-o e instala o app. O owner da organização continua sendo quem libera e configura o app para a organização dele (decisão 10).
+**Quem faz o quê.** A equipe da Maind fecha a contratação, cadastra o app no Gerenciador do mAIg e, no papel de administrador da instância, clica em instalar o app autorizado; no setup de uma organização nova, os apps contratados entram sozinhos (decisões 134 e 137). O owner da organização continua sendo quem libera e configura o app para a organização dele (decisão 10).
 
 **O que protege cada cliente.** Na instância da Maind, organizações de empresas diferentes dividem a mesma instalação (decisão 9). É o handshake por organização que impede um app contratado por uma empresa de funcionar para outra (decisão 11). E é o certificado de cada organização que impede o pedido de uma de ser tomado por outra (decisão 28). E a equipe da Maind, mesmo no papel de administrador da instância, não vê o registro das organizações, a anotação de tudo o que os apps pedem ao mAIg em nome de cada uma (decisão 12).
 
@@ -168,27 +175,27 @@ Esta mf existe para que essa regra valha sempre do mesmo jeito. Sem ela, cada li
 **Exemplo.**
 
 1. **A contratação.** A Farma Vida e a Maind fecham a contratação do Horus para a organização Farma Vida, por um prazo combinado entre as duas.
-2. **O cadastro na Maind.** A equipe da Maind cadastra no servidor da Maind Tech o app, a organização e a data do fim do contrato.
-3. **O que já estava pronto.** Marta já tinha instalado o mAIg num servidor da Farma Vida e criado a organização e o usuário de Paulo (MF-107). O mAIg já mantém aberta a conexão com a Maind; Marta só liberou no firewall as saídas combinadas: a do endereço da Maind e a do provedor de IA da Farma Vida (MF-108).
-4. **O kit.** A equipe da Maind entrega a Marta o kit do Horus, com o certificado digital.
-5. **A instalação do kit.** Marta instala o kit no mAIg.
+2. **O cadastro na Maind.** A equipe da Maind cadastra no Gerenciador do mAIg o app, a organização e a data do fim do contrato.
+3. **O que já estava pronto.** Marta já tinha feito o setup do mAIg num servidor da Farma Vida, com a chave temporária que veio no PDF, e a organização chegou à instância com o usuário de Paulo (MF-107). O mAIg já mantém aberta a conexão com a Maind; Marta só liberou no firewall as saídas combinadas: a do endereço da Maind e a do provedor de IA da Farma Vida (MF-108).
+4. **O app chega.** Como o Horus foi contratado antes do setup, ele entrou no setup, sozinho, sem que a Maind entregasse nada a Marta (decisão 134).
+5. **A chave do app.** O mAIg gera a chave do Horus e pede à Maind o certificado que o identifica (decisão 138).
 6. **O handshake.** O mAIg apresenta o certificado ao servidor da Maind Tech, pela conexão que ele mesmo abriu. O servidor confere a contratação e libera o Horus para a organização Farma Vida.
 7. **A situação à vista.** Paulo abre o console do mAIg, a tela onde configura a organização, e vê o Horus contratado, "em vigor", com a data do fim do contrato (MF-110).
-8. **Os dois passos seguintes.** Marta instala o Horus na instância, e Paulo o libera e configura para a organização (MF-104). Depois, Ana faz a primeira pergunta.
+8. **O passo seguinte.** O Horus já roda na instância; instalado não quer dizer liberado, e Paulo o libera e configura para a organização (decisão 135, MF-104). Depois, Ana faz a primeira pergunta.
 
-**O que não aconteceu.** Ninguém abriu porta de entrada na rede da Farma Vida. A Maind não entrou na instância para liberar nada. E nenhuma senha de banco passou pela Maind: quem cadastra os bancos é Paulo, depois, e as senhas ficam no cofre do mAIg, o lugar trancado de onde nenhum app as tira (MF-105).
+**O que não aconteceu.** Ninguém abriu porta de entrada na rede da Farma Vida. A Maind não entrou na instância para liberar nada, e nenhum arquivo viajou por e-mail. E nenhuma senha de banco passou pela Maind: quem cadastra os bancos é Paulo, depois, e as senhas ficam no cofre do mAIg, o lugar trancado de onde nenhum app as tira (MF-105).
 
 ### O segundo app: o mesmo caminho, sem aprovação do zero
 
-**Em resumo:** com o mAIg instalado e aprovado, um segundo app da Maind passa pelo mesmo caminho, com o seu próprio kit e o seu próprio contrato, e sem uma nova rodada de aprovação de segurança do zero.
+**Em resumo:** com o mAIg instalado e aprovado, um segundo app da Maind passa pelo mesmo caminho, com a sua própria entrada no manifesto e o seu próprio contrato, e sem uma nova rodada de aprovação de segurança do zero.
 
 O segundo app deste exemplo é o Maind Doc, um assistente que gera documentos de projetos corporativos com IA. Ele é só um exemplo de segundo app possível: não está definido nem planejado.
 
 **Exemplo.**
 
-1. A Farma Vida contrata o segundo app para a mesma organização. A equipe da Maind cadastra a contratação no servidor da Maind Tech.
-2. A equipe da Maind entrega a Marta um kit novo, só desse app.
-3. Marta instala o kit, e o handshake libera o segundo app para a organização Farma Vida, pela mesma conexão que o mAIg já mantém aberta.
+1. A Farma Vida contrata o segundo app para a mesma organização. A equipe da Maind cadastra a contratação no Gerenciador do mAIg.
+2. O manifesto da Farma Vida passa a trazer o segundo app, e o console mostra "app autorizado" (decisão 137).
+3. Marta clica em instalar. O mAIg gera a chave do app, pede o atestado à Maind, e o handshake libera o segundo app para a organização Farma Vida, pela mesma conexão que o mAIg já mantém aberta.
 4. Marta não reabre a análise de segurança: o que a TI do cliente aprovou foi o mAIg, e o segundo app usa os mesmos serviços dele.
 5. No console, Paulo passa a ver dois apps contratados, cada um com a sua data de fim.
 
@@ -258,7 +265,7 @@ O segundo app deste exemplo é o Maind Doc, um assistente que gera documentos de
 
 **Quem é quem.** A renovação comercial é da empresa e da equipe da Maind. A licença renovada vem com ela: é ela que estende o prazo em que o app funciona (decisão 56). O owner da organização não reconfigura nada.
 
-**Como acontece.** A equipe da Maind cadastra a renovação no servidor da Maind Tech. O mAIg recebe a licença renovada pela ligação e confirma a contratação num novo handshake. A situação do contrato volta a "em vigor". Nada se reinstala: o kit e o certificado do app continuam os mesmos (decisão 56).
+**Como acontece.** A equipe da Maind cadastra a renovação no servidor da Maind Tech. O mAIg recebe a licença renovada pela ligação e confirma a contratação num novo handshake. A situação do contrato volta a "em vigor". Nada se reinstala: o app e o certificado dele continuam os mesmos (decisão 56).
 
 **Exemplo.**
 
@@ -274,9 +281,10 @@ O segundo app deste exemplo é o Maind Doc, um assistente que gera documentos de
 
 **Em resumo:** os casos mais prováveis desta mf e o que acontece em cada um; o atraso na renovação e a licença vencida estão nos tópicos acima.
 
-- **A conferência falha.** A contratação não foi cadastrada, o kit é de outra organização ou o certificado não vale: o app não é liberado, e o administrador da instância vê o motivo (decisão 10).
+- **A conferência falha.** A contratação não foi cadastrada, o app não está no manifesto daquela organização ou o certificado não vale: o app não é liberado, e o administrador da instância vê o motivo (decisão 10).
 - **Uma organização tenta usar um app que não contratou.** O app pode estar instalado na instância, mas não foi liberado para ela, e não funciona. O caminho é contratar (decisão 11).
-- **O mAIg está sem conexão quando o kit é instalado.** O handshake espera a conexão voltar, e o mAIg reconecta sozinho (decisão 6).
+- **O mAIg está sem conexão quando o manifesto chegaria.** O manifesto só chega pela ligação; quando ela volta, ele chega, e o handshake segue. O mAIg reconecta sozinho (decisão 6).
+- **O app autorizado espera o clique.** Ele fica "autorizado" no console, sem rodar, até o administrador da instância clicar em instalar (decisão 137).
 - **Um certificado vaza.** Contê-lo a tempo depende da política de cancelamento do certificado, ainda em aberto.
 - **A ação manual atinge o app ou a organização errada.** O app para ali, e a configuração dele fica guardada (decisão 14). Como o ato pede duas pessoas da Maind e o motivo fica no registro, o engano é conferido antes e aparece depois, e a Maind retoma o app (decisão 94).
 
@@ -286,9 +294,11 @@ A primeira versão do mAIg sai em duas ondas, a 1.0 e a 1.1, e a segunda versão
 
 | Capacidade | Onda | Decisões | Por quê |
 | --- | --- | --- | --- |
-| Kit de instalação com o certificado, instalado pelo administrador da instância | onda 1.0 | 10, 82 | É por ele que o mAIg passa a reconhecer o app. |
+| O app contratado chega pela ligação, no manifesto assinado: entra no setup, sem gesto por app, ou depois como "app autorizado", com o clique do administrador da instância | onda 1.0 | 134, 137, 138 | É por ele que o mAIg passa a reconhecer o app, e nada instalável viaja por e-mail. |
+| Duas identidades por app, a do módulo e a da parte de fora, atestadas pela Maind | onda 1.0 | 4, 86, 139 | A chave do módulo nunca sai do mAIg, e a parte de fora, que roda na nuvem da Maind, precisa da própria. |
+| A primeira conexão do setup, pela chave temporária de uso único | onda 1.0 | 132, 133 | É a única conexão sem o certificado da instância, e só serve para pedir o certificado e o arquivo da organização. |
 | As três peças separadas de cada app: a identidade, um certificado curto que se troca sozinho; a licença, com a data do fim do contrato; e a carência, que é um prazo da licença | onda 1.0 | 56 | É o que deixa conter um certificado vazado e parar um app sem contrato. |
-| Handshake contratual: o mAIg confere sozinho, com a Maind, que o contrato existe | onda 1.0 | 10, 11, 16 | Sem ele, qualquer cópia do kit ligaria o app. |
+| Handshake contratual: o mAIg confere sozinho, com a Maind, que o contrato existe | onda 1.0 | 10, 11, 16 | Sem ele, qualquer cópia do que chegou pela ligação ligaria o app. |
 | Contratação por organização | onda 1.0 | 11 | Duas organizações da mesma instância não dividem contrato. |
 | Um segundo app entra pelo mesmo caminho do primeiro | onda 1.0 | 11 | Regras iguais para todos os apps. |
 | Situação do contrato de cada app no console: em vigor, perto do fim, em carência ou parado | onda 1.0 | 13, 56 | Um app não pode parar sem que o owner da organização tenha visto chegar. |
@@ -300,7 +310,7 @@ A primeira versão do mAIg sai em duas ondas, a 1.0 e a 1.1, e a segunda versão
 
 Prova de valor proposta pelo PO; o dono da Maind ainda não a confirmou.
 
-1. **A liberação só para quem contratou, sem porta de entrada.** Numa instância com duas organizações, a equipe da Maind fecha a contratação de um app para uma só e entrega o kit. O administrador da instância instala o kit, e o handshake libera o app. A TI do cliente confere duas coisas: o app funciona só na organização que o contratou, e nenhuma porta de entrada foi aberta no firewall.
+1. **A liberação só para quem contratou, sem porta de entrada.** Numa instância com duas organizações, a equipe da Maind cadastra no Gerenciador do mAIg a contratação de um app para uma só. O app chega pela ligação como "app autorizado", o administrador da instância clica em instalar, e o handshake libera o app. A TI do cliente confere três coisas: o app funciona só na organização que o contratou, nenhuma porta de entrada foi aberta no firewall, e nenhum arquivo chegou por e-mail.
 2. **O fim do contrato sem susto.** Numa organização de teste, a equipe da Maind cadastra um contrato que acaba em poucos dias. O owner da organização recebe o aviso, o contrato acaba, e o app segue funcionando na carência. Depois, a renovação é cadastrada, e o app continua como estava, sem nenhuma configuração refeita. Quem confere é o owner da organização, pela situação do contrato no console, e a pessoa que usa o app, que não percebe interrupção.
 
 ## Retorno para o negócio
@@ -316,7 +326,7 @@ Prova de valor proposta pelo PO; o dono da Maind ainda não a confirmou.
 - **Instalar o app na instância e liberá-lo e configurá-lo para a organização:** gestão dos apps (MF-104).
 - **O que acontece com a configuração de um app parado e a exclusão dos dados ao desinstalar:** gestão dos apps (MF-104).
 - **O registro do que cada app pede e a consulta pelo auditor:** registro e auditoria (MF-102).
-- **Criar a organização e o usuário do primeiro owner da organização:** organizações e instâncias (MF-107).
+- **O nascimento da organização no Gerenciador do mAIg, o setup, a chave temporária e a chegada da organização à instância, com o usuário do primeiro owner da organização:** organizações e instâncias (MF-107).
 - **Quem é o owner da organização e como ele é trocado:** segurança e permissões (MF-101).
 - **A conexão que o mAIg abre para fora e a reconexão:** conexão de dentro para fora (MF-108).
 - **A tela onde o owner da organização vê a situação do contrato e os avisos:** console de configuração (MF-110).
@@ -328,7 +338,7 @@ Prova de valor proposta pelo PO; o dono da Maind ainda não a confirmou.
 ## Depende de
 
 - `MF-108:Conexão de dentro para fora`. O handshake contratual conversa com o servidor da Maind Tech pela conexão que o mAIg abre para fora. Sem ela, conferir a contratação exigiria abrir uma porta de entrada na rede do cliente.
-- `MF-107:Organizações e instâncias`. A contratação é por organização. Sem a organização criada na instância, não há para quem liberar o app.
+- `MF-107:Organizações e instâncias`. A contratação é por organização. Sem a organização chegada à instância, pelo setup, não há para quem liberar o app.
 - **Pré-requisito de negócio: o preço em reais dos apps.** Sem ele, não há trâmite comercial a fechar. É um ponto do mapa geral.
 - **Pré-requisito de negócio: um app da Maind pronto para ser contratado.** O primeiro é o Horus, na versão 2.0 dele.
 
@@ -336,18 +346,16 @@ Prova de valor proposta pelo PO; o dono da Maind ainda não a confirmou.
 
 O mAIg nasceu do middleware do Horus, a peça que ficava entre as telas do Horus, na nuvem da Maind, e os dados da empresa. A nuvem da Maind são os computadores da Maind, acessados pela internet.
 
-- **O certificado e a chave de instalação nasciam com a organização.** No Horus, criar uma organização gerava um certificado digital e uma chave de instalação cifrada, isto é, embaralhada de um jeito que só a ponta certa consegue ler. O certificado era importado no middleware, e as duas pontas confirmavam o handshake. O formato e o ciclo de vida do certificado ficaram para o arquiteto (D-258 do Horus). O mAIg decidiu diferente: há um certificado de identidade de cada app, curto e trocado sozinho (decisão 56), e outro de cada organização, atestado pela Maind quando ela é criada (decisão 28). A chave privada de todos eles nasce no mAIg e nunca sai dele (decisão 86).
+- **O certificado e a chave de instalação nasciam com a organização.** No Horus, criar uma organização gerava um certificado digital e uma chave de instalação cifrada, isto é, embaralhada de um jeito que só a ponta certa consegue ler. O certificado era importado no middleware, e as duas pontas confirmavam o handshake. O formato e o ciclo de vida do certificado ficaram para o arquiteto (D-258 do Horus). O mAIg decidiu diferente: há um certificado de identidade de cada app, curto e trocado sozinho (decisão 56), e outro de cada organização, atestado pela Maind quando ela chega à instância (decisão 28). A chave privada de todos eles nasce no mAIg e nunca sai dele (decisão 86), e nenhum deles viaja por arquivo: o app chega pela ligação, e a chave nasce no mAIg (decisão 138).
 - **A conexão se inverteu.** No Horus, isso já foi decidido assim, e vale no mAIg: o mAIg abre a conexão com a Maind e a mantém aberta, o certificado do handshake vale dentro dela, e o Horus deixa de cadastrar o endereço e a porta do middleware de cada organização (decisão 6, D-296 do Horus). Por isso, a parte do fluxo antigo em que o middleware devolvia o próprio endereço, para ser alcançado de fora, não vale para o mAIg.
-- **A política do certificado ficou adiada.** No Horus, a política de segurança do certificado, com o formato, a rotação e a revogação, foi dita escolha da organização, e a decisão ficou para depois (P-049 do Horus). O mAIg decidiu diferente: o certificado da organização vale 30 dias, se renova sozinho e só se cancela com duas pessoas da Maind (decisão 44), e o de cada app é curto e trocado sozinho pela ligação (decisão 56). Quanto vale o certificado de cada kit e como ele é cancelado antes do prazo estão no fim desta página.
+- **A política do certificado ficou adiada.** No Horus, a política de segurança do certificado, com o formato, a rotação e a revogação, foi dita escolha da organização, e a decisão ficou para depois (P-049 do Horus). O mAIg decidiu diferente: o certificado da organização vale 30 dias, se renova sozinho e só se cancela com duas pessoas da Maind (decisão 44), e o de cada app é curto e trocado sozinho pela ligação (decisão 56). Quanto vale o certificado de cada app e como ele é cancelado antes do prazo estão no fim desta página.
 - **As versões que convivem.** No Horus, a parte do Horus na nuvem funciona com o middleware na versão atual e na anterior, e recusa uma mais velha, com aviso (D-292 do Horus). No mAIg, a recusa com aviso vale para a versão adiada além do prazo (decisão 45). Na contagem, o mAIg decidiu diferente: não há número de versões que convivem, e a regra é uma só, por prazo, para o mAIg e para o módulo de cada app (decisão 109, MF-104).
 - **O fim do contrato, a carência e a renovação.** O Horus não tem decisão sobre isto: nas entradas usadas como ponto de partida, não há regra sobre o aviso, a carência ou a renovação, que nasceram no mAIg (decisão 13).
 
 ## O que ainda falta decidir
 
 - **Falta o dono da Maind decidir com quanta antecedência o owner da organização é avisado do fim do contrato e quanto dura a carência, que passou a ser um prazo da licença.** *O que está em jogo:* uma antecedência curta pega o cliente de surpresa, e uma carência longa demais alonga o uso sem contrato em vigor (decisões 13 e 56).
-- **Falta o arquiteto do mAIg definir, com o dono da Maind, o formato do handshake contratual e da licença, quanto tempo vale o certificado de cada kit e a revogação, que é o cancelamento dele antes do prazo.** *O que está em jogo:* é o que decide se um certificado vazado é contido a tempo. O formato também responde como chegam ao mAIg a licença, a ação manual e as trocas do certificado (decisão 56), e se o certificado do kit é o mesmo com que a parte de fora do app se identifica. No Horus, a política do certificado ficou como escolha da organização, e o assunto foi adiado; isso vale como ponto de partida, e o mAIg ainda confirma (P-049 do Horus). A política do certificado da organização já foi decidida (decisão 44).
-- **Falta o arquiteto do mAIg definir o que vem no kit de instalação, além do certificado, e por que caminho ele chega com segurança ao administrador da instância.** *O que está em jogo:* o kit carrega a prova da contratação, e alguém que o interceptasse poderia tentar usá-la. Saber se ele traz também o módulo do app, a parte que roda dentro do mAIg, muda o trabalho de instalar (MF-104).
-- **Falta o arquiteto do mAIg definir em que ambientes o mAIg roda e o que a Maind entrega para instalá-lo.** *O que está em jogo:* a TI do cliente precisa saber, antes de contratar, que máquina e que sistema preparar, e o administrador da instância precisa saber o que recebe para instalar o mAIg e cada app (decisão 10).
+- **Falta o arquiteto do mAIg definir, com o dono da Maind, o formato do handshake contratual e da licença, quanto tempo vale o certificado de cada app e a revogação, que é o cancelamento dele antes do prazo.** *O que está em jogo:* é o que decide se um certificado vazado é contido a tempo. O formato também responde como chegam ao mAIg a licença, a ação manual e as trocas do certificado (decisão 56). Já está decidido que cada app tem duas identidades, a do módulo e a da parte de fora (decisão 139). No Horus, a política do certificado ficou como escolha da organização, e o assunto foi adiado; isso vale como ponto de partida, e o mAIg ainda confirma (P-049 do Horus). A política do certificado da organização já foi decidida (decisão 44).
 - **Falta o arquiteto do mAIg definir o que um app declara ao núcleo para ser instalado, que é o contrato de app.** *O que está em jogo:* é o que faz um segundo app entrar pelo mesmo caminho do primeiro, sem trabalho novo no núcleo: os pedidos que o app faz, os bancos e a IA de que precisa e o que ele mostra no console (decisão 11).
 - **Falta o arquiteto do mAIg definir como o app declara a lista dos tipos de ato das linhas informadas pelo app.** *O que está em jogo:* o núcleo só aceita o tipo de ato que está na lista declarada na instalação e recusa o resto; sem o formato dessa lista, as linhas informadas pelo app não chegam na onda 1.1 (decisão 104).
 - **Também depende, e está tratado em outros lugares:** o preço em reais e a repartição do custo do mAIg entre os apps (mapa geral); como um mAIg novo conversa com um módulo antigo dentro do prazo de adiamento (MF-104).
@@ -356,8 +364,8 @@ O mAIg nasceu do middleware do Horus, a peça que ficava entre as telas do Horus
 
 Os trechos do texto que vão além das decisões do dono da Maind, sem código de decisão nem do Horus, estão aqui.
 
-- **Decisão:** ao fechar o trâmite, a equipe da Maind cadastra no servidor da Maind Tech o app, a organização e a data do fim do contrato. *Por que:* o handshake só confere a contratação se o servidor a conhecer, e as decisões não dizem como ela chega lá. *Alternativa:* a contratação viajar inteira dentro do certificado, sem cadastro no servidor. *Reabrir se:* o arquiteto do mAIg preferir que o certificado carregue tudo.
-- **Decisão:** um kit vale para um app e uma organização. *Por que:* é a leitura mais direta de duas regras: cada app se libera por certificado, e a liberação é por organização (decisões 10 e 11). *Alternativa:* um kit por contrato, valendo para todas as organizações e todos os apps listados nele. *Reabrir se:* empresas com muitas organizações acharem pesado receber um kit para cada uma.
+- **Decisão:** ao fechar o trâmite, a equipe da Maind cadastra no servidor da Maind Tech o app, a organização e a data do fim do contrato. *Por que:* o handshake só confere a contratação se o servidor a conhecer, e as decisões não dizem como ela chega lá. *Alternativa:* a contratação viajar inteira dentro do certificado, sem cadastro no servidor. *Reabrir se:* o arquiteto do mAIg preferir que o certificado carregue tudo. Foi decidido depois: o cadastro é feito no Gerenciador do mAIg, de que o servidor das contratações faz parte, e é dele que sai o manifesto do que a organização pode ter (decisões 128 e 134).
+- **Decisão:** um kit vale para um app e uma organização. *Por que:* é a leitura mais direta de duas regras: cada app se libera por certificado, e a liberação é por organização (decisões 10 e 11). *Alternativa:* um kit por contrato, valendo para todas as organizações e todos os apps listados nele. *Reabrir se:* empresas com muitas organizações acharem pesado receber um kit para cada uma. Foi decidido depois: o kit deixou de ser um arquivo e virou a entrada do app no manifesto da organização, que chega pela ligação; a regra de um app por organização continua (decisões 134 e 138).
 - **Decisão:** o mAIg mostra ao owner da organização a situação do contrato de cada app, em quatro situações: em vigor, perto do fim, em carência e encerrado. *Por que:* o aviso e a carência precisam de um lugar onde se vejam e se confiram depois. *Alternativa:* só o aviso, sem situação permanente à vista. *Reabrir se:* o console ficar carregado demais para o owner da organização.
 - **Decisão:** além do aviso antes do fim, o owner da organização recebe um aviso quando a carência começa e outro antes de o certificado vencer. *Por que:* a decisão 13 descarta parar sem aviso, e o vencimento do certificado para o app sozinho. *Alternativa:* só o aviso antes do fim, como diz a decisão 13. *Reabrir se:* os avisos virarem ruído para o owner da organização.
 - **Decisão:** os avisos aparecem no console do mAIg; outros canais, como o e-mail, ficam de fora por enquanto. *Por que:* o console é o lugar de trabalho do owner da organização, e as decisões não falam de e-mail. *Alternativa:* aviso também por e-mail. *Reabrir se:* um owner da organização perder um aviso por não abrir o console.
@@ -379,3 +387,8 @@ Os trechos do texto que vão além das decisões do dono da Maind, sem código d
 - **Decidido por delegação do dono da Maind em 11/11/2026:** a linha do registro "informada pelo app" só tem campos fixos: o tipo do ato, de uma lista que o app declara ao ser instalado; o alvo, por um código; a hora; e a pessoa, que o núcleo tira do passe. O núcleo recusa o que foge disso. Chega na onda 1.1 (decisão 104).
 - **Decidido por delegação do dono da Maind em 11/11/2026:** a regra de versão única é por prazo, para o mAIg e para o módulo de cada app: a TI do cliente adia a versão nova dentro do prazo e, vencido o prazo, o que ficou velho deixa de atender, com o aviso "Atualização necessária". Com o mAIg vencido, todos os apps recusam a conversa; com o módulo de um app vencido, só aquele app para. A contagem de versões que convivem saiu do texto. Entra na onda 1.0 (decisão 109).
 - **Decidido por delegação do dono da Maind em 11/11/2026:** na onda 1.0, cada aviso tem destinatário fixo, aparece sempre no console e vai por e-mail, sem dado nenhum. Os avisos de segurança vão aos owners da organização e ao auditor; a queda de um banco e de uma IA, o limite de gasto, a tarefa marcada que parou e o fim do contrato vão aos owners da organização; o certificado da organização perto de vencer vai aos owners da organização e aos administradores da instância; e os avisos da instância vão a todos os administradores da instância. A lista "o que a organização permite" e as preferências de aviso chegam na onda 1.1 (decisão 126).
+- **Decidido pelo dono da Maind em 12/11/2026:** a organização nasce na Maind, no Gerenciador do mAIg, o cockpit da Maind para controlar e cobrar os clientes, e chega à instância pela ligação; é nele que a equipe da Maind cadastra cada app contratado, e a nuvem de cada app conhece a organização por ele (decisão 128). Esta mf passou a dizer que o cadastro da contratação se faz no Gerenciador.
+- **Decidido pelo dono da Maind em 12/11/2026:** o PDF que a Maind manda traz as instruções e um código de ativação de uso único, e nenhum arquivo instalável viaja por e-mail; o mAIg busca pela ligação o que precisa (decisão 131). A primeira conexão do setup é feita com a chave temporária, a única sem o certificado da instância, que vale uma vez só e só é gasta quando a Maind entrega a organização (decisão 133). O tópico do handshake ganhou o parágrafo da primeira conexão.
+- **Decidido pelo dono da Maind em 12/11/2026:** o setup instala o núcleo e, junto, os apps que a organização já tem contratados no dia, sem um PDF nem um clique por app; "instalado o kit" passa a ser "chegado o manifesto" (decisão 134). Instalado não quer dizer liberado: o owner da organização libera e configura cada app depois (decisão 135). Um app autorizado depois do setup chega pela ligação, aparece no console como "app autorizado", e o administrador da instância clica em instalar (decisão 137). Os oito passos, o tópico do kit, os exemplos e a tabela de ondas foram reescritos nesse desenho.
+- **Decidido pelo dono da Maind em 12/11/2026:** o kit não traz certificado pronto: traz o que deixa o mAIg gerar a chave do app e pedir o atestado à Maind, e deixou de ser um arquivo entregue pela Maind (decisão 138). Cada app tem duas identidades atestadas pela Maind, a do módulo, com a chave no mAIg, e a da parte de fora, com a chave na nuvem da Maind (decisão 139). Os pontos em aberto sobre o que vem no kit, o caminho dele e os ambientes em que o mAIg roda saíram desta mf, e a dúvida sobre a identidade da parte de fora ficou respondida.
+- **Decidido pelo dono da Maind em 12/11/2026:** as chaves com que a Maind atesta e assina ficam num cofre de chaves portátil, que roda em qualquer lugar, com a raiz fora de linha e usada só com duas pessoas; a Maind continua sem receber chave privada de cliente, também no setup (decisão 148). O tópico das três peças ganhou o parágrafo das chaves da Maind.
