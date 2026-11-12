@@ -2,7 +2,7 @@
   "schema_version": 2,
   "diagram_type": "workflow",
   "meta": {
-    "title": "Do console vazio ao primeiro app em uso",
+    "title": "Do setup ao primeiro app em uso",
     "locale": "pt-BR",
     "translations": {
       "page.title": "Diagrama {title}",
@@ -496,8 +496,14 @@
     "output": "diagramas/fontes/mf-110-primeiro-app.archify.html",
     "legend": {
       "entries": {
+        "cloud": {
+          "label": "A Maind"
+        },
         "backend": {
           "label": "Administrador da instância"
+        },
+        "messagebus": {
+          "label": "O mAIg, sozinho"
         },
         "frontend": {
           "label": "Owner da organização"
@@ -513,8 +519,16 @@
   },
   "lanes": [
     {
+      "id": "maind",
+      "label": "A Maind"
+    },
+    {
       "id": "admin",
       "label": "Administrador da instância"
+    },
+    {
+      "id": "maig",
+      "label": "O mAIg"
     },
     {
       "id": "owner",
@@ -529,9 +543,25 @@
       "label": "Auditor"
     }
   ],
+  "phases": [
+    {
+      "id": "antes",
+      "label": "Na Maind e no setup",
+      "fromCol": 0,
+      "toCol": 1
+    },
+    {
+      "id": "console",
+      "label": "No console",
+      "fromCol": 2,
+      "toCol": 5,
+      "variant": "emphasis"
+    }
+  ],
   "mainPath": [
-    "email",
     "org",
+    "setup",
+    "instala",
     "acesso",
     "bancoIa",
     "libera",
@@ -539,45 +569,45 @@
   ],
   "nodes": [
     {
-      "id": "email",
+      "id": "org",
+      "lane": "maind",
+      "col": 0,
+      "type": "cloud",
+      "icon": "cloud",
+      "label": "Cria a organização",
+      "sublabel": "No Gerenciador, com owner e app"
+    },
+    {
+      "id": "setup",
       "lane": "admin",
       "col": 0,
       "type": "backend",
       "icon": "backend",
-      "label": "Testa o e-mail",
-      "sublabel": "Sem teste, não cria organização"
-    },
-    {
-      "id": "org",
-      "lane": "admin",
-      "col": 1,
-      "type": "backend",
-      "icon": "backend",
-      "label": "Cria a organização",
-      "sublabel": "E o owner, só pelo e-mail"
-    },
-    {
-      "id": "kit",
-      "lane": "admin",
-      "col": 3,
-      "type": "backend",
-      "icon": "backend",
-      "label": "Instala o kit e o app",
-      "sublabel": "Vem da Maind; o app, uma vez só"
+      "label": "Faz o setup",
+      "sublabel": "Endereço, e-mail testado, chave"
     },
     {
       "id": "painel",
       "lane": "admin",
-      "col": 4,
+      "col": 5,
       "type": "backend",
       "icon": "backend",
       "label": "Acompanha o painel",
       "sublabel": "Estado, versões, contagens"
     },
     {
+      "id": "instala",
+      "lane": "maig",
+      "col": 1,
+      "type": "messagebus",
+      "icon": "active",
+      "label": "Instala sozinho",
+      "sublabel": "Certificados, o app e o owner"
+    },
+    {
       "id": "acesso",
       "lane": "owner",
-      "col": 1,
+      "col": 2,
       "type": "frontend",
       "icon": "person",
       "label": "Primeiro acesso",
@@ -586,7 +616,7 @@
     {
       "id": "bancoIa",
       "lane": "owner",
-      "col": 2,
+      "col": 3,
       "type": "frontend",
       "icon": "person",
       "label": "Liga o banco e a IA",
@@ -595,16 +625,16 @@
     {
       "id": "libera",
       "lane": "owner",
-      "col": 3,
+      "col": 4,
       "type": "frontend",
       "icon": "person",
       "label": "Libera o app",
-      "sublabel": "Bancos, modelos, limite, pessoas"
+      "sublabel": "Instalado não é liberado"
     },
     {
       "id": "nomeia",
       "lane": "owner",
-      "col": 4,
+      "col": 5,
       "type": "frontend",
       "icon": "person",
       "label": "Nomeia o auditor",
@@ -613,7 +643,7 @@
     {
       "id": "usa",
       "lane": "pessoa",
-      "col": 3,
+      "col": 4,
       "type": "external",
       "icon": "person",
       "label": "Usa o app",
@@ -622,7 +652,7 @@
     {
       "id": "le",
       "lane": "auditor",
-      "col": 4,
+      "col": 5,
       "type": "security",
       "icon": "security",
       "label": "Lê o registro",
@@ -631,25 +661,36 @@
   ],
   "edges": [
     {
-      "id": "email-org",
-      "from": "email",
-      "to": "org",
-      "label": "teste feito"
-    },
-    {
-      "id": "org-acesso",
+      "id": "org-setup",
       "from": "org",
-      "to": "acesso",
-      "label": "link no e-mail",
+      "to": "setup",
+      "label": "PDF com a chave",
       "fromSide": "bottom",
       "toSide": "top"
     },
     {
-      "id": "org-kit",
-      "from": "org",
-      "to": "kit",
-      "label": "kit recebido",
-      "role": "branch"
+      "id": "setup-instala",
+      "from": "setup",
+      "to": "instala",
+      "label": "chave digitada",
+      "fromSide": "bottom",
+      "toSide": "left"
+    },
+    {
+      "id": "setup-painel",
+      "from": "setup",
+      "to": "painel",
+      "label": "depois, só acompanha",
+      "role": "branch",
+      "variant": "dashed"
+    },
+    {
+      "id": "instala-acesso",
+      "from": "instala",
+      "to": "acesso",
+      "label": "link no e-mail",
+      "fromSide": "bottom",
+      "toSide": "left"
     },
     {
       "id": "acesso-banco",
@@ -662,23 +703,6 @@
       "from": "bancoIa",
       "to": "libera",
       "label": "prontos"
-    },
-    {
-      "id": "kit-libera",
-      "from": "kit",
-      "to": "libera",
-      "label": "app instalado",
-      "role": "branch",
-      "fromSide": "bottom",
-      "toSide": "top"
-    },
-    {
-      "id": "kit-painel",
-      "from": "kit",
-      "to": "painel",
-      "label": "só acompanha",
-      "role": "branch",
-      "variant": "dashed"
     },
     {
       "id": "libera-usa",
@@ -699,7 +723,7 @@
       "id": "nomeia-le",
       "from": "nomeia",
       "to": "le",
-      "label": "nomeado",
+      "label": "nomeada",
       "fromSide": "bottom",
       "toSide": "top"
     },
@@ -719,17 +743,18 @@
       "dot": "cyan",
       "title": "Quem faz o quê",
       "items": [
-        "O administrador da instância prepara a casa: o servidor de e-mail, a organização, o primeiro owner e a instalação do kit e do app. Na casa do cliente, é a TI do cliente; na hospedagem da Maind, a equipe da Maind.",
-        "O owner da organização põe o app para funcionar: liga o banco e a IA, libera o app, cadastra as pessoas e nomeia o auditor.",
-        "Quem usa o app trabalha nas telas do app, sem entrar no console, e o auditor confere tudo no registro, sem mudar nada."
+        "A Maind cria a organização no Gerenciador do mAIg, com o e-mail do primeiro owner e o app contratado, e manda ao e-mail oficial da organização o PDF com a chave temporária; a senha do PDF vai por outro canal.",
+        "O administrador da instância faz o setup na interface de setup, que vem antes do console: o endereço do mAIg, o servidor de e-mail testado e a chave. Na casa do cliente, é a TI do cliente, e quem digita a chave vira o primeiro administrador da instância.",
+        "O mAIg se instala sozinho: traz a organização, cria os certificados, instala o app já contratado e cria o usuário do primeiro owner, que recebe o link de primeiro acesso no e-mail dele.",
+        "O owner põe o app para funcionar no console, porque instalado não quer dizer liberado. Quem usa o app trabalha nas telas dele, e o auditor confere tudo no registro, sem mudar nada."
       ]
     },
     {
       "dot": "emerald",
       "title": "O que cada um não vê",
       "items": [
-        "O administrador da instância não lê o registro da organização nem vê os bancos e a IA dela. Os atos dele que tocam a organização, como criá-la e instalar o kit, ficam anotados no registro dela.",
-        "O auditor só lê. O owner não vê nada de outras organizações, nem das que dividem a mesma instância."
+        "O administrador da instância não vê o link de primeiro acesso do owner, não lê o registro da organização nem vê os bancos e a IA dela. Os atos dele que tocam a organização, como digitar a chave, ficam anotados no registro dela.",
+        "A Maind atesta o certificado da organização sem nunca receber a chave que assina por ela. O auditor só lê, e o owner não vê nada de outras organizações, nem das que dividem a mesma instância."
       ]
     },
     {
@@ -737,6 +762,7 @@
       "title": "Em que onda",
       "items": [
         "Tudo o que o desenho mostra chega na onda 1.0, com um auditor só, de dentro da empresa.",
+        "Também na onda 1.0, um app contratado depois do setup aparece no console como app autorizado, e o administrador da instância clica em instalar.",
         "Na onda 1.1 chegam o cockpit de ativação, que mostra numa tela só o que falta, o segundo auditor e o auditor de fora, e o cadastro das pessoas em lote."
       ]
     }

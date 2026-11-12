@@ -497,7 +497,10 @@
     "legend": {
       "entries": {
         "start": {
-          "label": "Nasce em configuração"
+          "label": "Nasce na Maind"
+        },
+        "active": {
+          "label": "Na instância, em configuração"
         },
         "success": {
           "label": "Atende as pessoas"
@@ -512,49 +515,70 @@
     }
   },
   "mainPath": [
+    "gerenciador",
     "configuracao",
     "ativa",
-    "encerrada",
-    "encerrada_de_vez"
+    "encerrada"
   ],
   "states": [
     {
-      "id": "configuracao",
+      "id": "gerenciador",
       "type": "start",
-      "label": "Em configuração",
-      "sublabel": "Onda 1.0 · criada, ainda sem atender",
+      "label": "Criada no Gerenciador",
+      "sublabel": "Onda 1.0 · na Maind, com a chave",
       "step": "01"
+    },
+    {
+      "id": "configuracao",
+      "type": "active",
+      "label": "Em configuração",
+      "sublabel": "Onda 1.0 · na instância, sem atender",
+      "step": "02"
     },
     {
       "id": "ativa",
       "type": "success",
       "label": "Ativa",
       "sublabel": "Onda 1.0 · certificado e owner com acesso",
-      "step": "02"
+      "step": "03"
     },
     {
       "id": "encerrada",
       "type": "waiting",
       "label": "Encerrada",
       "sublabel": "Onda 1.1 · sem apps; volta por 30 dias",
-      "step": "03"
+      "step": "04"
     },
     {
       "id": "encerrada_de_vez",
       "type": "neutral",
       "label": "Encerrada de vez",
       "sublabel": "Onda 1.1 · só o registro segue legível",
-      "step": "04"
+      "step": "05"
     },
     {
       "id": "registro_apagado",
       "type": "neutral",
       "label": "Registro apagado",
       "sublabel": "Onda 1.1 · sai com a desinstalação do app",
-      "step": "05"
+      "step": "06"
     }
   ],
   "transitions": [
+    {
+      "id": "chega",
+      "from": "gerenciador",
+      "to": "configuracao",
+      "label": "chave digitada",
+      "variant": "emphasis"
+    },
+    {
+      "id": "chave-nova",
+      "from": "gerenciador",
+      "to": "gerenciador",
+      "label": "chave nova",
+      "variant": "dashed"
+    },
     {
       "id": "fica-ativa",
       "from": "configuracao",
@@ -592,20 +616,29 @@
   "cards": [
     {
       "dot": "cyan",
-      "title": "Quem move a organização",
+      "title": "Como a organização nasce",
       "items": [
-        "O administrador da instância cria a organização e o usuário do primeiro owner, e o mAIg a marca como ativa sozinho, sem ninguém clicar em ativar.",
-        "O owner da organização pede o encerramento no console, ou a Maind pede, quando todos os contratos da organização acabaram; o administrador da instância executa.",
-        "Para ficar ativa, a organização precisa do certificado atestado pela Maind e de ao menos um owner com acesso.",
-        "Os owners e os auditores da organização são avisados do encerramento e da volta."
+        "A equipe da Maind cria a organização no Gerenciador do mAIg, com o e-mail do primeiro owner e os apps contratados, e o Gerenciador gera a chave temporária.",
+        "A Maind manda o PDF com a chave ao e-mail oficial da organização, e a senha do PDF vai por telefone ou mensagem.",
+        "A TI digita a chave na interface de setup, ou no console, numa instância que já roda; o mAIg busca a organização, cria o certificado e instala sozinho os apps contratados.",
+        "No fim do setup, o mAIg cria o usuário do primeiro owner e manda o link de primeiro acesso; com o certificado e o owner com acesso, a organização fica ativa sozinha."
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "A chave temporária",
+      "items": [
+        "Vale uma vez só, vence em pouco tempo e só é gasta quando a Maind entrega a organização.",
+        "Se o setup para antes, por exemplo sem a saída da rede liberada, a mesma chave vale de novo.",
+        "Se a chave vence ou já foi usada, a Maind gera outra, com PDF e senha novos, e a tentativa de reuso é recusada e avisada."
       ]
     },
     {
       "dot": "amber",
-      "title": "A volta de 30 dias",
+      "title": "O encerramento e a volta de 30 dias",
       "items": [
-        "Qualquer owner da organização pede a volta, não importa quem pediu o encerramento.",
-        "Conta a data do pedido: a configuração fica guardada até a volta ser executada.",
+        "O owner da organização pede o encerramento no console, ou a Maind pede, quando todos os contratos acabaram; o administrador da instância executa.",
+        "Qualquer owner pede a volta, não importa quem pediu o encerramento, e conta a data do pedido.",
         "O app cujo contrato acabou volta parado.",
         "Passados 30 dias sem pedido de volta, a configuração sai de vez, e o registro segue legível até o app ser desinstalado."
       ]
@@ -614,7 +647,7 @@
       "dot": "emerald",
       "title": "Em que onda chega cada passo",
       "items": [
-        "Criar e ativar uma organização chegam na onda 1.0.",
+        "Nascer no Gerenciador, chegar à instância pelo setup e ficar ativa chegam na onda 1.0.",
         "Encerrar, voltar e desinstalar um app chegam juntos na onda 1.1.",
         "Antes de um app ser desinstalado, um aviso com prazo deixa os owners e os auditores baixarem a cópia assinada do registro.",
         "Na onda 1.0, a organização que deixa de usar o mAIg fica com os apps pausados ou parados e com a configuração guardada."

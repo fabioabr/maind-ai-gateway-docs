@@ -652,8 +652,8 @@
       "dot": "cyan",
       "title": "Quem leva a cada estado",
       "items": [
-        "Antes de tudo, a Maind libera o app para a organização, na contratação; só então o administrador da instância o instala.",
-        "O administrador da instância instala, suspende, retoma da suspensão, atualiza e desinstala, sempre na instância inteira.",
+        "Os apps contratados no dia entram sozinhos no setup; um app autorizado depois só entra quando o administrador da instância clica em instalar.",
+        "O administrador da instância instala o app autorizado, suspende, retoma da suspensão, atualiza e desinstala, sempre na instância inteira.",
         "O owner da organização libera, configura, pausa, retoma e retira, só na organização dele.",
         "O app para no fim do contrato, pela licença vencida ou por uma ação manual da Maind, e só a renovação o traz de volta."
       ]

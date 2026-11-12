@@ -11,7 +11,7 @@
   <li><strong>Guardar as chaves de IA da empresa no cofre.</strong> Nenhum app recebe uma chave, e nenhuma pessoa a vê de volta depois de guardada.</li>
   <li><strong>Dizer, app por app, quais modelos cada um pode usar.</strong> O núcleo confere a lista a cada pedido.</li>
   <li><strong>Pôr um limite de gasto em cada app</strong>, em dinheiro, por mês do calendário, com aviso aos 80% e recusa aos 100%.</li>
-  <li><strong>Contar o custo de cada pedido na conta do app que o fez</strong> e mostrar ao owner da organização o consumo de toda a IA da organização.</li>
+  <li><strong>Contar o custo de cada pedido na conta do app que o fez</strong>, com o número informado pelo provedor ou uma estimativa marcada como “estimado”, e mostrar ao owner da organização o consumo de toda a IA da organização.</li>
   <li><strong>Controlar o que o pedido ao provedor pode levar</strong> dos dados da empresa, em três camadas, app por app.</li>
   <li><strong>Anotar cada pedido de IA no registro</strong>, inclusive o recusado (veja <a href="#mf-102">Saber quem pediu o quê, quando e com que dado (MF-102)</a>).</li>
 </ul>
@@ -25,11 +25,15 @@
       <tr class="zebra"><td><strong>Auditor</strong></td><td>Lê no registro o uso de IA de cada pedido: qual app, qual modelo, em que camada, em nome de quem, quanto e quando. Não muda nenhuma configuração: quem configura não é quem confere.</td></tr>
       <tr class="zebra"><td><strong>Administrador da instância</strong></td><td>Cuida da instalação do mAIg. Não configura a IA das organizações e não vê o consumo nem o registro delas.</td></tr>
       <tr class="zebra"><td><strong>TI do cliente</strong></td><td>Cuida das contas da empresa nos provedores, gera as chaves e as cancela no provedor quando é preciso. Libera a saída da rede para cada provedor escolhido.</td></tr>
-      <tr class="zebra"><td><strong>Equipe da Maind</strong></td><td>Dá suporte ao owner da organização, antes e depois da venda, sem configurar no lugar dele. Na hospedagem da Maind, opera a instância, sem ver pelo mAIg a IA das organizações.</td></tr>
+      <tr class="zebra"><td><strong>Equipe da Maind</strong></td><td>Dá suporte ao owner da organização, antes e depois da venda, sem configurar no lugar dele, e mantém a tabela de preços dos modelos, com que o mAIg estima o custo quando o provedor não o informa. Na hospedagem da Maind, opera a instância, sem ver pelo mAIg a IA das organizações.</td></tr>
       <tr class="zebra"><td><strong>Quem usa um app</strong></td><td>Usa o app e recebe as respostas. Não vê chaves, modelos permitidos nem limites.</td></tr>
     </tbody>
   </table>
 </div>
+
+<h3 id="mf-106-provedores">Os cinco provedores da primeira versão</h3>
+<p>A primeira versão do mAIg fala com cinco provedores de IA, sempre com a chave da empresa cliente: <strong>dois que reúnem modelos de vários fabricantes numa conta só</strong>, o OpenRouter e o Amazon Bedrock, e <strong>três fabricantes, direto</strong>, a OpenAI, a Anthropic e o Google. Para cada um, o mAIg tem um <strong>conector</strong>, a peça que sabe conversar com aquele provedor.</p>
+<p>A organização usa só os provedores em que tem conta, e a TI do cliente libera a saída da rede só para os que a organização escolher (veja <a href="#mf-106-saida">Para onde vai o pedido ao provedor</a>, mais abaixo). Um provedor fora dos cinco entra por uma versão nova do mAIg. O que se abre mão: a empresa cuja conta está noutro provedor espera uma versão.</p>
 
 <h3 id="mf-106-chaves">As chaves: no cofre, nunca num app</h3>
 <p>Com a chave em cada app, cada produto novo seria mais um lugar com uma cópia dela. No mAIg, a chave é sempre da organização, que traz a própria conta em cada provedor: a Maind não dá chave nem paga a IA de nenhum cliente, e quem ainda não tem conta num provedor precisa criar uma antes de começar, com a orientação da equipe da Maind, se quiser. Digamos que uma rede de farmácias vai usar o primeiro app. Ana, da TI do cliente, cuida da conta da empresa no provedor, e Marcos, diretor de operações, é o owner da organização.</p>
@@ -71,10 +75,23 @@
   </table>
 </div>
 <p>Ao longo do mês, Marcos acompanha o consumo no console. Numa semana de fechamento, as perguntas crescem, o primeiro app se aproxima do teto, e Marcos recebe o aviso dos 80%: decide se aumenta o limite ou se o deixa como está. O que se abre mão: no fim do mês, o app pode parar para todos até alguém subir o limite. Na onda 1.0, esse aviso vai sempre aos owners da organização; escolher quem recebe cada aviso chega na onda 1.1.</p>
+<p>O limite trava pelo número que aparece na visão do consumo: o custo informado pelo provedor, quando ele informa, ou o estimado pelo mAIg, quando não informa (veja a seguir). O que se abre mão: com um provedor que não informa o custo, o limite trava por uma estimativa.</p>
 
 <h3 id="mf-106-custo">O custo por app e a visão do consumo</h3>
 <p>A cada pedido, o núcleo conta o custo na conta do app que o fez. O <strong>consumo</strong> é quanto de IA um app usou: quantos pedidos e a quais modelos. O <strong>custo</strong> é quanto esse uso custou. A <strong>visão do consumo</strong> é a tela do console em que o owner da organização vê o consumo e o custo de cada app e de toda a IA da organização, desde a onda 1.0. Quem cobra a IA é o provedor, direto da empresa dona da chave: o mAIg não cobra pela IA, mostra quanto cada app gastou.</p>
-<p>No fim do mês, Marcos abre a visão do consumo, vê quanto o primeiro app gastou e em quais modelos e compara com a fatura do provedor: consegue dizer quanto da fatura veio desse app. Com um segundo app, ele vê o gasto de cada um separado, e não só o total. Se a soma do mAIg e a fatura não baterem, pode ser que a mesma chave esteja sendo usada fora do mAIg, ou pode ser diferença no jeito de calcular, um ponto ainda em definição (veja abaixo). O auditor confere o uso de IA pedido a pedido, no registro.</p>
+<h4 id="mf-106-informado-ou-estimado">Informado ou estimado</h4>
+<p>Nem todo provedor diz quanto custou cada pedido. Por isso, a visão do consumo mostra sempre um número e diz de onde ele veio:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quando</th><th>O que a visão do consumo mostra</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>O provedor informa o custo de cada pedido</strong>, como faz o OpenRouter</td><td>O número que o provedor informou.</td></tr>
+      <tr class="zebra"><td><strong>O provedor não informa o custo</strong></td><td>Uma estimativa: o uso de cada pedido vezes a <strong>tabela de preços dos modelos</strong>, mantida pela Maind, com a marca “estimado” ao lado do número e a data da tabela.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>A tabela de preços dos modelos chega ao mAIg pela ligação com a Maind e se atualiza sem versão nova do mAIg. O owner da organização não a preenche nem a edita: assim, ela não depende de alguém da organização mantê-la em dia. O que se abre mão: a estimativa pode divergir da fatura do provedor por descontos dele, inclusive o de trechos que se repetem de um pedido para outro, e por arredondamentos.</p>
+<p>No fim do mês, Marcos abre a visão do consumo, vê quanto o primeiro app gastou e em quais modelos e compara com a fatura do provedor: consegue dizer quanto da fatura veio desse app. Com um segundo app, ele vê o gasto de cada um separado, e não só o total. Se a soma do mAIg e a fatura não baterem, pode ser que a mesma chave esteja sendo usada fora do mAIg, que só enxerga o que passa por ele, ou que o número seja estimado; a marca “estimado” e a data da tabela dizem isso a Marcos. O auditor confere o uso de IA pedido a pedido, no registro.</p>
 
 <h3 id="mf-106-um-pedido">Um pedido de IA, passo a passo</h3>
 <p>Carla, gerente comercial da rede de farmácias, pergunta ao primeiro app: “quais farmácias venderam menos em outubro do que em setembro?”.</p>
@@ -91,7 +108,7 @@
 <dx-diagrama ref="mf-106-um-pedido-de-ia"></dx-diagrama>
 
 <h3 id="mf-106-saida">Para onde vai o pedido ao provedor</h3>
-<p>O pedido ao modelo sai do mAIg direto para o provedor de IA, que fica fora da rede da empresa, <strong>sem passar pela Maind</strong>. Só o núcleo faz esse pedido: o módulo do app não tem saída própria para a internet. Por isso, a TI do cliente libera, no firewall, além da saída para o endereço da Maind, uma saída para cada provedor de IA que a organização escolheu (veja <a href="#mf-108">Funcionar sem abrir porta de entrada na rede (MF-108)</a>). Cada provedor novo é um novo pedido à TI do cliente.</p>
+<p>O pedido ao modelo sai do mAIg direto para o provedor de IA, que fica fora da rede da empresa, <strong>sem passar pela Maind</strong>. Só o núcleo faz esse pedido: o módulo do app não tem saída própria para a internet. Por isso, a TI do cliente libera, no firewall, além da saída para o endereço da Maind, uma saída para cada provedor de IA que a organização escolheu entre os cinco (veja <a href="#mf-108">Funcionar sem abrir porta de entrada na rede (MF-108)</a>). Cada provedor novo é um novo pedido à TI do cliente.</p>
 <p>Se um app precisa de algo da web, como a cotação do dólar, ele pede ao provedor de IA que faça a pesquisa, sob as mesmas regras: a camada, o limite e o registro. Escolher os provedores e os modelos de cada app decide para quem vai o pedido; a camada, a seguir, decide o que vai nele. O que volta à nuvem da Maind é outra coisa: na onda 1.0, só a resposta pronta, com um teto de linhas e as colunas sensíveis mascaradas; as outras saídas que o owner da organização pode liberar chegam na onda 1.1 (veja <a href="#mf-109">Rodar cada app isolado dentro do mAIg (MF-109)</a>).</p>
 
 <h3 id="mf-106-camadas">O que o pedido pode levar: as três camadas</h3>
@@ -117,8 +134,8 @@
 <p>A regra vale para qualquer app, e o primeiro app serve de exemplo. Por padrão, ele trabalha na camada 1: à IA vão só a pergunta e os nomes das tabelas, a IA escreve a consulta, o mAIg a roda no banco e monta a resposta, e a IA não vê número nenhum. Quando a pessoa liga, numa pergunta, a análise avançada do app, os dados voltam à IA para ela raciocinar sobre eles, mas só se o owner da organização tiver liberado ao app a camada que essa análise pede; se não tiver, o pedido é recusado inteiro. Assim, a promessa de que nenhum dado da empresa vai à IA vale por padrão. O que se abre mão: na pergunta comum, uma explicação como “por que as vendas caíram” sai mais pobre.</p>
 
 <h3 id="mf-106-hospedagem">Na casa do cliente ou na hospedagem da Maind</h3>
-<p>As regras da IA são as mesmas nas duas hospedagens. Muda o lugar onde a chave fica guardada e de onde sai o pedido ao provedor. <strong>Na casa do cliente</strong>, a chave fica no cofre do mAIg, dentro da rede da empresa, e o pedido sai dessa rede. <strong>Na hospedagem da Maind</strong>, a chave fica no cofre da instância, na infraestrutura da Maind, e o pedido sai de lá; quem configura continua a ser o owner da organização, e cada organização tem a sua própria configuração de IA, mesmo dividindo a instância com outras (veja <a href="#mf-107">Atender várias organizações numa instalação, sem misturá-las (MF-107)</a>). Uma organização vizinha não enxerga as chaves, os modelos, os limites nem o consumo da outra.</p>
-<p>Nas duas, o cofre fica cifrado com a chave da organização, que quem opera a máquina não alcança: a equipe da Maind, na hospedagem dela, e a TI do cliente, na casa do cliente. O risco aceito é o que estiver em uso naquele momento, com a máquina ligada. E não há uma IA da instância, compartilhada pelas organizações: cada organização tem a sua, com a própria conta em cada provedor.</p>
+<p>As regras da IA são as mesmas nas duas hospedagens. Muda o lugar onde a chave fica guardada e de onde sai o pedido ao provedor. <strong>Na casa do cliente</strong>, a chave fica no cofre do mAIg, dentro da rede da empresa, e o pedido sai dessa rede. <strong>Na hospedagem da Maind</strong>, a chave fica no cofre da instância, na infraestrutura da Maind, e o pedido sai de lá; quem configura continua a ser o owner da organização, e cada organização tem a própria configuração de IA, mesmo dividindo a instância com outras (veja <a href="#mf-107">Atender várias organizações numa instalação, sem misturá-las (MF-107)</a>). Uma organização vizinha não enxerga as chaves, os modelos, os limites nem o consumo da outra.</p>
+<p>Nas duas, o cofre fica cifrado com a chave da organização, que quem opera a máquina não alcança: a equipe da Maind, na hospedagem dela, e a TI do cliente, na casa do cliente. O risco aceito é o que estiver em uso naquele momento, com a máquina ligada. E não há uma IA da instância, compartilhada pelas organizações: cada organização tem a dela, com a própria conta em cada provedor.</p>
 
 <h3 id="mf-106-quando-da-errado">Quando dá errado</h3>
 <p>Quando a IA não pode ou não consegue atender, o pedido não segue e fica no registro. Nenhuma falha faz o mAIg entregar uma chave a um app. O limite atingido, o modelo fora da lista e a chave usada fora do mAIg estão explicados acima.</p>
@@ -135,7 +152,7 @@
 </div>
 
 <h3 id="mf-106-ondas">O que chega em cada onda</h3>
-<p>Das 12 capacidades, 11 chegam na onda 1.0 e 1 não entra. Nesta funcionalidade, tudo o que faz parte da primeira versão chega na onda 1.0.</p>
+<p>Das 14 capacidades, 13 chegam na onda 1.0 e 1 não entra. Nesta funcionalidade, tudo o que faz parte da primeira versão chega na onda 1.0.</p>
 <div class="table-wrap">
   <table class="t">
     <thead><tr><th>Capacidade</th><th>Onda</th><th>Em poucas palavras</th></tr></thead>
@@ -149,6 +166,8 @@
       <tr class="zebra"><td>Mudar a camada de um app avisa na hora os outros owners da organização e o auditor</td><td><span class="badge badge--success">Onda 1.0</span></td><td>O auditor fica sabendo quando a IA passa a ver mais.</td></tr>
       <tr class="zebra"><td>O limite de gasto de IA de cada app, em dinheiro, por mês do calendário, com aviso aos 80% e recusa aos 100%</td><td><span class="badge badge--success">Onda 1.0</span></td><td>A conta da IA é da empresa, e ela não entrega a chave sem um freio de gasto.</td></tr>
       <tr class="zebra"><td>O custo por app e o consumo de toda a IA da organização, à vista do owner da organização no console</td><td><span class="badge badge--success">Onda 1.0</span></td><td>O limite em dinheiro só faz sentido se o owner da organização vê o gasto.</td></tr>
+      <tr class="zebra"><td>Cinco provedores de IA na primeira versão, sempre com a chave da empresa; a TI do cliente libera a saída só dos escolhidos</td><td><span class="badge badge--success">Onda 1.0</span></td><td>O primeiro app precisa dos provedores que os clientes já usam, e a chave segue sendo da empresa.</td></tr>
+      <tr class="zebra"><td>O custo informado pelo provedor, quando ele informa, ou “estimado” pela tabela de preços dos modelos, com a data; o limite trava pelo número que aparece</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Sem um número sempre à vista, o limite em dinheiro não teria em que se apoiar.</td></tr>
       <tr class="zebra"><td>O aviso ao owner da organização quando a chave é recusada ou o crédito acaba</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Quem resolve precisa saber.</td></tr>
       <tr class="zebra"><td>O mAIg não troca de modelo sozinho quando um falha; o app pode pedir outro modelo da lista dele</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Trocar de modelo muda a resposta e o custo, e a lista de modelos é da empresa.</td></tr>
       <tr class="zebra"><td>Limites e modelos diferentes para cada pessoa</td><td><span class="badge">Não entra</span></td><td>A governança da IA é por app; por pessoa, o que existe é o limite de pedidos.</td></tr>
@@ -162,7 +181,8 @@
   <li><strong>A IA é parte do núcleo.</strong> As regras da IA ficam no que vem pronto no mAIg e serve a todos os apps, junto com o cofre dos bancos. O que se abre mão: o núcleo fica maior antes de o primeiro app sair.</li>
   <li><strong>O módulo pede, o núcleo faz.</strong> Cada app tem as telas fora do mAIg e um módulo que roda isolado dentro dele (veja <a href="#mf-109">MF-109</a>). Quem monta o conteúdo do pedido é o app; quem confere o modelo, o limite e a camada, usa a chave e faz o pedido ao provedor é o núcleo.</li>
   <li><strong>Tudo fica no registro.</strong> O pedido atendido e o recusado entram no registro da organização, que só o owner da organização e o auditor consultam (veja <a href="#mf-102">MF-102</a>).</li>
-  <li><strong>O custo é contado pedido a pedido</strong>, na conta do app que fez cada um. O limite em dinheiro depende de o mAIg calcular bem esse custo.</li>
+  <li><strong>Um conector para cada provedor.</strong> O núcleo fala com cada um dos cinco provedores por um conector próprio, feito e mantido pela Maind. Por isso, um provedor novo pede uma versão nova do mAIg.</li>
+  <li><strong>O custo é contado pedido a pedido</strong>, na conta do app que fez cada um, com o número do provedor ou a estimativa. A tabela de preços dos modelos chega assinada pelo <a href="#glossario">Gerenciador do mAIg</a>, o cockpit da Maind, e a assinatura mostra ao mAIg que ela veio mesmo da Maind. O limite em dinheiro trava pelo número que aparece.</li>
 </ul>
 
 <h3 id="mf-106-limites">O que esta funcionalidade não faz</h3>
@@ -187,7 +207,7 @@
       <tr class="zebra"><td><a href="#mf-102">Saber quem pediu o quê, quando e com que dado (MF-102)</a></td><td>Cada pedido de IA fica anotado, com o modelo, a camada e o quanto usou; é ali que o auditor confere o uso.</td></tr>
       <tr class="zebra"><td><a href="#mf-104">Instalar, pausar e retirar apps sem refazer nada (MF-104)</a></td><td>Os modelos e o limite valem para um app liberado na organização e ficam guardados quando o app para.</td></tr>
       <tr class="zebra"><td><a href="#mf-105">Usar os bancos da empresa sem expor a senha (MF-105)</a></td><td>Os números das respostas vêm dos bancos, pelo caminho deles; a IA recebe só o que a camada permite.</td></tr>
-      <tr class="zebra"><td><a href="#mf-107">Atender várias organizações numa instalação, sem misturá-las (MF-107)</a></td><td>Cada organização tem a sua própria configuração de IA, mesmo dividindo a instância.</td></tr>
+      <tr class="zebra"><td><a href="#mf-107">Atender várias organizações numa instalação, sem misturá-las (MF-107)</a></td><td>Cada organização tem a própria configuração de IA, mesmo dividindo a instância.</td></tr>
       <tr class="zebra"><td><a href="#mf-108">Funcionar sem abrir porta de entrada na rede (MF-108)</a></td><td>A TI do cliente libera uma saída para cada provedor de IA, além da saída para a Maind.</td></tr>
       <tr class="zebra"><td><a href="#mf-109">Rodar cada app isolado dentro do mAIg (MF-109)</a></td><td>O módulo do app pede a IA ao núcleo e não tem saída própria para a internet.</td></tr>
       <tr class="zebra"><td><a href="#mf-110">Configurar tudo num lugar só (MF-110)</a></td><td>As chaves, os modelos, os limites, as camadas e a visão do consumo ficam no console.</td></tr>
@@ -196,7 +216,7 @@
 </div>
 <div class="callout callout--neutral">
   <span class="ico">•</span>
-  <div><b>Ainda em definição</b><p><strong>Como o custo de cada pedido é calculado.</strong> A forma técnica ainda será definida, e com ela a precisão com que a visão do consumo acompanha a fatura do provedor. O limite mede dinheiro e depende desse cálculo.</p><p><strong>Quais modelos cada app consegue usar.</strong> Como o owner da organização fica sabendo, antes de montar a lista, quais modelos servem a cada app ainda será definido.</p><p><strong>O que conta como “poucas linhas”.</strong> A regra está decidida: um total sobre poucas linhas conta como linha de dados. O número exato ainda será definido, e a forma técnica de o núcleo reconhecer o que é dado e o que é total também.</p></div>
+  <div><b>Ainda em definição</b><p><strong>Quais modelos cada app consegue usar.</strong> Como o owner da organização fica sabendo, antes de montar a lista, quais modelos servem a cada app ainda será definido.</p><p><strong>O que conta como “poucas linhas”.</strong> A regra está decidida: um total sobre poucas linhas conta como linha de dados. O número exato ainda será definido, e a forma técnica de o núcleo reconhecer o que é dado e o que é total também.</p></div>
 </div>
 
 <h3 id="mf-106-faq">Perguntas frequentes</h3>
@@ -206,8 +226,12 @@
     <div class="faq-body"><p>Não. A chave fica no cofre do mAIg, e só o núcleo a usa, na hora de pedir ao provedor. O módulo do app recebe a resposta da IA, nunca a chave. Depois de guardada, a chave não aparece em tela nenhuma, nem para o owner da organização que a cadastrou.</p></div>
   </details>
   <details>
+    <summary>Com quais provedores de IA o mAIg funciona?</summary>
+    <div class="faq-body"><p>A primeira versão fala com cinco: o OpenRouter, o Amazon Bedrock, a OpenAI, a Anthropic e o Google, sempre com a chave da própria empresa. A organização usa os provedores em que tem conta, e a TI do cliente libera a saída da rede só para os escolhidos. Um provedor fora dos cinco entra por uma versão nova do mAIg.</p></div>
+  </details>
+  <details>
     <summary>Quem paga a IA que os apps usam?</summary>
-    <div class="faq-body"><p>A própria empresa, direto ao provedor. A chave é sempre da organização, e o provedor cobra o uso de quem é dono da chave. A Maind não dá chave nem paga a IA de nenhum cliente, e o mAIg não cobra pela IA: mostra quanto cada app gastou.</p></div>
+    <div class="faq-body"><p>A própria empresa, direto ao provedor. A chave é sempre da organização, e o provedor cobra o uso de quem é dono da chave. A Maind não dá chave nem paga a IA de nenhum cliente, e o mAIg não cobra pela IA: mostra quanto cada app gastou, com o custo informado pelo provedor, quando ele informa, ou uma estimativa marcada como “estimado”, com a data da tabela de preços dos modelos.</p></div>
   </details>
   <details>
     <summary>O que acontece quando um app chega ao limite do mês?</summary>
@@ -216,10 +240,6 @@
   <details>
     <summary>Os dados da nossa empresa vão para o provedor de IA?</summary>
     <div class="faq-body"><p>Depende da camada que o owner da organização libera para cada app. Todo app começa na camada 1, em que vão só a pergunta e os nomes das tabelas e das colunas, sem nenhum dado. O owner pode subir para totais (camada 2) ou para linhas de dados (camada 3). Um pedido que precisaria de mais do que a camada permite é recusado inteiro, e cada pedido fica no registro com a camada.</p></div>
-  </details>
-  <details>
-    <summary>Se o provedor sair do ar, o mAIg passa o pedido para outro modelo?</summary>
-    <div class="faq-body"><p>Não por conta própria. Trocar de modelo muda a resposta e o custo, e quem escolhe o modelo de cada pedido é o app, dentro da lista que o owner da organização liberou. O pedido que falhou fica no registro, e o app pode pedir outro modelo da lista dele.</p></div>
   </details>
   <details>
     <summary>Dá para limitar o gasto de IA de uma pessoa ou de uma área?</summary>

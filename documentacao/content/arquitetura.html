@@ -1,0 +1,235 @@
+<p>Pense num prédio comercial. Na entrada há uma portaria, que confere o crachá de cada visitante e anota no livro quem entrou, quando e para qual sala; no subsolo há um cofre, com as chaves das salas. O prédio é administrado de fora: a administradora tem um escritório central, em outro endereço, que cadastra cada condômino novo, emite os crachás e aprova as reformas. No mAIg, o prédio é a instalação na casa do cliente, com a portaria que confere cada pedido, o livro que anota tudo e o cofre das senhas; o escritório central é o lado da Maind, onde as organizações nascem e de onde vêm os certificados e as versões novas. <strong>Onde a analogia para:</strong> a administradora de um prédio costuma ter cópia das chaves e pode mandar alguém entrar; a Maind não tem chave do cofre, não lê o livro e não entra no prédio. É o mAIg que liga para ela, de dentro para fora, e ela só fala pela linha que ele abriu.</p>
+<p>Esta página conta, em linguagem simples, como o mAIg é construído: as duas metades da arquitetura, as peças de dentro do mAIg e o trabalho de cada uma, o caminho de um pedido, como uma organização nasce, onde o mAIg roda e com que tecnologia ele é feito. Descreve a primeira versão, que ainda está em construção, e diz o que fica para a segunda. As funcionalidades, uma a uma, estão nas páginas das macro funcionalidades; as ondas estão em <a href="#como-ler-ondas">As ondas da primeira versão</a>, e as palavras novas, no <a href="#glossario">glossário</a>.</p>
+
+<h3 id="arq-duas-metades">As duas metades: a casa do cliente e o lado da Maind</h3>
+<p>O mAIg tem duas metades, que conversam só por uma ligação. A primeira fica na casa do cliente, dentro da rede da empresa: é o próprio mAIg, numa máquina ou num cluster da empresa, cercado do que já existe ali. A segunda fica na Maind, num ambiente só do mAIg. Quem começa a conversa entre as duas é sempre o mAIg, e a Maind só fala pela linha que ele abriu.</p>
+<h4 id="arq-casa-do-cliente">Na casa do cliente: o mAIg e os periféricos</h4>
+<p>Periférico é tudo o que não é o mAIg, mas de que ele depende para funcionar. É da empresa, e a TI do cliente cuida de cada um:</p>
+<ul>
+  <li><strong>A máquina onde o mAIg roda:</strong> uma máquina virtual, uma VPS, um servidor ou um cluster Kubernetes da empresa.</li>
+  <li><strong>Os bancos da empresa</strong>, que o mAIg lê só para consulta, com um usuário que só lê, criado pela TI.</li>
+  <li><strong>O servidor de e-mail da empresa</strong>, por onde saem os links de primeiro acesso e os avisos, sem dado nenhum.</li>
+  <li><strong>Os provedores de IA</strong>, com a conta e a chave da própria empresa.</li>
+  <li><strong>O Google</strong>, quando o owner da organização liga a entrada pela conta Google.</li>
+  <li><strong>O lugar da cópia de segurança</strong>, fora da máquina do mAIg.</li>
+  <li><strong>A rede, o firewall e a VPN</strong>, com as saídas liberadas e nenhuma porta de entrada.</li>
+  <li><strong>O navegador das pessoas</strong>, de dentro da rede ou pela VPN.</li>
+</ul>
+<p>Na segunda versão entram mais dois: o provedor de identidade da empresa, para o login da empresa, e os servidores MCP da empresa, que oferecem ferramentas à IA.</p>
+<h4 id="arq-lado-da-maind">Do lado da Maind: o ambiente do mAIg e a nuvem dos apps</h4>
+<p>As peças da Maind de que o mAIg depende ficam num <strong>ambiente próprio do mAIg</strong>, numa conta separada na nuvem da Maind. Fora dele fica a nuvem dos apps, com as telas de cada app.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Peça</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>O Gerenciador do mAIg</strong></td><td>O cockpit de controle e cobrança da Maind, usado só pela equipe dela. É onde cada organização nasce, com o e-mail do primeiro owner e os apps contratados, e de onde saem a chave temporária e o PDF com senha do setup.</td></tr>
+      <tr class="zebra"><td><strong>O servidor das contratações</strong></td><td>Confere a chave temporária e cada contratação e entrega pela ligação, assinados, o arquivo da organização, o manifesto do que ela pode ter, a licença de cada app e a tabela de preços da IA.</td></tr>
+      <tr class="zebra"><td><strong>O cartório dos certificados</strong></td><td>Atesta as chaves públicas que cada mAIg manda, como um cartório que reconhece a firma sem ter a caneta: nunca recebe uma chave privada.</td></tr>
+      <tr class="zebra"><td><strong>O canal de atualização</strong></td><td>O registro de imagens da Maind: guarda as versões assinadas do mAIg e dos apps. A imagem não passa pela ligação: quem a baixa direto do registro, no mesmo nome único, é o zelador, a peça do mAIg que cuida das caixas, ou o próprio cluster, no Kubernetes, com um bilhete de validade curta que o mAIg recebeu pela ligação.</td></tr>
+      <tr class="zebra"><td><strong>O ponto de conexão</strong></td><td>O lugar onde os mAIg de todos os clientes se ligam, num nome só, com IP fixo, e que entrega cada pedido ao mAIg certo e cada resposta ao app certo.</td></tr>
+      <tr class="zebra"><td><strong>O e-mail da Maind</strong></td><td>Leva o PDF com senha ao e-mail oficial da organização e, na hospedagem da Maind, os links e os avisos.</td></tr>
+      <tr class="zebra"><td><strong>A nuvem dos apps</strong>, fora do ambiente do mAIg</td><td>A parte de fora de cada app, com as telas. Fala com o mAIg só pela ligação e não grava resultado nenhum: guarda só a receita de cada painel.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p><strong>Por que um ambiente separado.</strong> Quem invadir a nuvem dos apps não alcança o cartório, o canal de atualização nem o Gerenciador. As instâncias que a Maind hospeda, para quem não quer instalar nada, também ficam à parte, com as mesmas peças e o mesmo console da casa do cliente, como conta <a href="#mf-107">Atender várias organizações numa instalação, sem misturá-las (MF-107)</a>. E três conversas saem da casa do cliente sem passar pela Maind: o pedido à IA, que vai direto do mAIg ao provedor, o login pelo Google e o e-mail.</p>
+<p>O desenho mostra as duas metades, em blocos, com os periféricos em volta. Um clique num bloco mostra o que ele faz.</p>
+<dx-diagrama ref="arq-visao-geral"></dx-diagrama>
+
+<h3 id="arq-pecas">As peças do mAIg</h3>
+<p>Por dentro, o mAIg da primeira versão tem 24 peças, cada uma com um trabalho só. Uma peça não é uma tela nem um servidor: é um papel dentro do programa, como os funcionários de um prédio, cada um com a própria função. Elas se juntam em sete grupos. Todas existem desde a onda 1.0; a onda 1.1 não traz peça nova, só acrescenta capacidades às que já existem, e a segunda versão traz mais duas.</p>
+<h4 id="arq-entrada">A entrada e a identidade</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Peça</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>A porta de entrada</strong></td><td>O endereço do mAIg na rede da empresa, com a tela onde a pessoa escolhe a organização e entra por usuário e senha ou pela conta Google.</td></tr>
+      <tr class="zebra"><td><strong>O cadastro das pessoas</strong></td><td>Guarda as pessoas de cada organização, confere a senha ou a confirmação do Google e gera os links de primeiro acesso e de troca de senha.</td></tr>
+      <tr class="zebra"><td><strong>O emissor de passes</strong></td><td>Assina o passe de cada pessoa para um app só, com o papel dela nele, e confere a assinatura de todo passe que chega num pedido.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="arq-nucleo">O núcleo que confere e anota</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Peça</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>A portaria dos pedidos</strong></td><td>A única porta entre os módulos dos apps e o resto: confere a pessoa, o app, a organização, o estado do app e o limite de pedidos antes de deixar um pedido passar.</td></tr>
+      <tr class="zebra"><td><strong>O livro de regras da organização</strong></td><td>Guarda a configuração de cada organização e de cada app nela, e marca sozinho a organização como ativa e o app como em uso quando o mínimo está pronto.</td></tr>
+      <tr class="zebra"><td><strong>O leitor dos bancos</strong></td><td>O único que fala com os bancos da empresa: lê só para consulta, com limite de tempo e de linhas, e nunca entrega a senha a ninguém.</td></tr>
+      <tr class="zebra"><td><strong>O intermediário da IA</strong></td><td>O único que fala com os provedores de IA: confere o modelo, o limite de gasto e a camada, faz o pedido com a chave da empresa e conta o custo.</td></tr>
+      <tr class="zebra"><td><strong>O fiscal da saída</strong></td><td>Confere tudo o que sai do mAIg com dado da empresa: o teto de linhas e a máscara das colunas sensíveis; a resposta que passa do teto é recusada inteira.</td></tr>
+      <tr class="zebra"><td><strong>O escrivão do registro</strong></td><td>O único que escreve no registro: anota cada pedido e cada ato, e, se ele não consegue anotar, o pedido não é atendido.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="arq-cofres">Os cofres e o registro</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Peça</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>O cofre da organização</strong></td><td>Guarda, cifradas com a chave da organização, as senhas dos bancos e as chaves de IA, que nenhum app vê.</td></tr>
+      <tr class="zebra"><td><strong>O chaveiro</strong></td><td>Gera dentro do mAIg toda chave, guarda a parte secreta, que nunca sai, e cuida dos certificados e da chave que cifra o registro e o cofre de cada organização.</td></tr>
+      <tr class="zebra"><td><strong>O registro de cada organização</strong></td><td>O livro de cada organização, em que só se acrescenta: fica cifrado e é lido só pelo owner da organização e pelo auditor.</td></tr>
+      <tr class="zebra"><td><strong>O registro da instância</strong></td><td>O livro dos atos que não tocam organização nenhuma, como cada etapa do setup e a cópia de segurança, lido só pelos administradores da instância.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="arq-apps">Os apps isolados</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Peça</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>A guarda dos documentos assinados</strong></td><td>Recebe pela ligação, e nunca por e-mail, o que a Maind assina: o arquivo da organização, o manifesto do que ela pode ter e a licença de cada app.</td></tr>
+      <tr class="zebra"><td><strong>O catálogo dos apps instalados</strong></td><td>Sabe o que cada app declarou e em que versão está, e confere a assinatura da Maind antes de instalar ou atualizar um app.</td></tr>
+      <tr class="zebra"><td><strong>O compartimento dos módulos</strong></td><td>Roda o módulo de cada app numa caixa fechada, sem saída de rede, que só fala com a portaria e não alcança o que é de outro app.</td></tr>
+      <tr class="zebra"><td><strong>O cache dos painéis</strong></td><td>Guarda por um tempo o último resultado de cada painel, para ele abrir rápido, e só o entrega a quem pode ver o mesmo dado.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="arq-a-ligacao">A ligação</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Peça</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>A ligação com a Maind</strong></td><td>A conversa que o mAIg abre com a Maind, de dentro para fora, e mantém aberta; religa sozinha quando cai.</td></tr>
+      <tr class="zebra"><td><strong>A luz de estado e a página de status</strong></td><td>A luz, igual em todos os apps, diz se o mAIg está "no ar", "instável" ou "fora do ar"; a página de status, com login, chega na onda 1.1.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="arq-console">O console</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Peça</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>O console</strong></td><td>A tela onde se configura e se consulta tudo, para todos os apps, em duas partes: a da instância, do administrador da instância, e a de cada organização, do owner e do auditor dela, cada papel vendo só a parte dele.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="arq-operacao">A operação</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Peça</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>O instalador</strong></td><td>A imagem do mAIg com a interface de setup, que guia a TI na instalação; depois, serve ao procedimento que devolve o acesso quando nenhum administrador consegue entrar.</td></tr>
+      <tr class="zebra"><td><strong>O atualizador</strong></td><td>Recebe pela ligação só o aviso da versão nova, o manifesto e o bilhete; a versão em si é baixada do registro de imagens da Maind, no mesmo nome único, e trocada depois do aval da TI, pelo zelador, quando o mAIg roda só com contêineres, ou pelo próprio Kubernetes.</td></tr>
+      <tr class="zebra"><td><strong>A ferramenta de cópia de segurança</strong></td><td>Gera a cópia cifrada da instância, que quem opera a máquina guarda fora dela, e a restaura numa máquina nova.</td></tr>
+      <tr class="zebra"><td><strong>O carteiro dos avisos</strong></td><td>Entrega cada aviso no console e por e-mail, só com o tipo do aviso, a organização e um link, sem dado nenhum.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 id="arq-pedido">O caminho de um pedido</h3>
+<p>Todo pedido de um app atravessa as mesmas peças, sempre na mesma ordem. Digamos que Carla, gerente comercial de uma rede de farmácias, pergunta ao primeiro app quanto cada loja vendeu em outubro. Ela já entrou pelo mAIg, e o app tem o passe dela. O desenho mostra o caminho por dentro do mAIg:</p>
+<dx-diagrama ref="arq-por-dentro"></dx-diagrama>
+<ol class="steps">
+  <li><div><h4>O pedido desce pela ligação</h4><p>A parte de fora do app, na nuvem, manda a pergunta ao ponto de conexão da Maind, que a entrega pela ligação que o mAIg abriu. O pedido leva um número e o passe de Carla.</p></div></li>
+  <li><div><h4>A portaria confere</h4><p>A portaria dos pedidos confere o passe, a identidade do app, a organização, se o app está em uso nela e se o limite de pedidos não foi atingido. Só então o pedido entra no compartimento do app, com a indicação de que é de Carla.</p></div></li>
+  <li><div><h4>O módulo pede, e o núcleo faz</h4><p>O módulo do app não alcança nada por conta própria: pede ao núcleo a leitura do banco de vendas e um modelo de IA. O leitor dos bancos pega a senha no cofre e lê só para consulta, dentro do limite de tempo e de linhas; o intermediário da IA confere o modelo, o limite de gasto e a camada e faz o pedido direto ao provedor, com a chave da empresa.</p></div></li>
+  <li><div><h4>Tudo fica anotado</h4><p>O escrivão anota no registro da organização a leitura, com o valor dos filtros sensíveis mascarado e quantas linhas voltaram, e o pedido à IA, com a camada e o custo. Nunca anota os dados nem a resposta. Se não consegue anotar, o pedido não é atendido.</p></div></li>
+  <li><div><h4>A resposta sai conferida</h4><p>O módulo monta a resposta, e o fiscal da saída confere o teto de linhas do app, que começa em 200, e mascara as colunas sensíveis; se passar do teto, a resposta é recusada inteira, com mensagem clara. A resposta pronta sobe pela ligação, e a nuvem do app a mostra a Carla sem gravá-la.</p></div></li>
+</ol>
+<p>Se a ligação cai no meio do caminho, o mAIg guarda o pedido por cerca de 15 minutos e religa sozinho; se ela não volta nesse tempo, o pedido é descartado, e Carla refaz a pergunta. Cada trecho desse caminho tem a própria página: a leitura dos bancos em <a href="#mf-105">Usar os bancos da empresa sem expor a senha (MF-105)</a>, a IA em <a href="#mf-106">Controlar quais IAs, quanto e a que custo (MF-106)</a>, o registro em <a href="#mf-102">Saber quem pediu o quê, quando e com que dado (MF-102)</a>, a ligação em <a href="#mf-108">Funcionar sem abrir porta de entrada na rede (MF-108)</a> e o módulo isolado em <a href="#mf-109">Rodar cada app isolado dentro do mAIg (MF-109)</a>.</p>
+
+<h3 id="arq-nascimento">Como uma organização nasce</h3>
+<p>A organização nasce na Maind, e não no mAIg: é a Maind quem diz quais organizações existem e o que cada uma pode ter, e por isso não há um segundo cadastro que possa divergir. Digamos que a rede de farmácias contratou o primeiro app. Ana, da TI, vai instalar o mAIg na rede da empresa, e Marcos, diretor de operações, será o primeiro owner da organização.</p>
+<dx-diagrama ref="arq-nascimento-da-organizacao"></dx-diagrama>
+<ol class="steps">
+  <li><div><h4>A Maind cria a organização no Gerenciador</h4><p>A equipe da Maind cadastra no Gerenciador do mAIg a organização das farmácias, com o e-mail oficial dela, o e-mail de Marcos como primeiro owner e o app contratado. O Gerenciador gera uma chave temporária, que vale uma vez só e vence em pouco tempo.</p></div></li>
+  <li><div><h4>O PDF chega por e-mail, e a senha, por outro canal</h4><p>O Gerenciador gera um PDF protegido por senha, com as instruções da primeira etapa e a chave temporária, e a Maind o manda ao e-mail oficial da organização. A senha vem por outro caminho: a equipe da Maind a passa ao responsável pela contratação, por telefone ou mensagem. Nenhum arquivo instalável viaja por e-mail, e quem invadir só o e-mail não abre o PDF.</p></div></li>
+  <li><div><h4>A TI sobe a imagem e digita a chave na interface de setup</h4><p>Seguindo o PDF, Ana baixa do registro de imagens da Maind a imagem do mAIg, que já traz a interface de setup, e a sobe numa máquina ou num cluster da empresa. A interface guia a instalação em cinco etapas. Na primeira, Ana informa o nome do endereço do mAIg e o certificado dele. Na segunda, digita a chave temporária, e o mAIg se instala, como no passo seguinte. Na terceira, configura o servidor de e-mail da empresa e o testa com um código que chega ao e-mail dela, porque é por ele que sai o link do primeiro owner. Na quarta, define a própria conta, com e-mail e senha, e passa a ser a primeira administradora da instância. Se o setup parar antes de a Maind entregar a organização, por exemplo porque a saída da rede ainda não foi liberada, Ana tenta de novo com a mesma chave.</p></div></li>
+  <li><div><h4>O mAIg se instala sozinho, como um gerenciador de pacotes</h4><p>Com a chave, o mAIg liga para a Maind e recebe o arquivo assinado da organização e o manifesto do que ela pode ter. Gera as próprias chaves, com a parte secreta nascendo dentro dele, e pede os certificados ao cartório da Maind. Pela ligação chega também um bilhete de validade curta para cada app já contratado; com ele, o zelador, ou o próprio cluster, no Kubernetes, baixa o app do registro de imagens da Maind, no mesmo nome único, sem passar pela ligação, e o mAIg confere a assinatura e o sobe, sem um clique por app: é como um celular novo que, ao entrar na conta, baixa sozinho os aplicativos que a pessoa já tinha. Na instalação, o mAIg mostra também, uma vez só, a chave da cópia de segurança da instância, que Ana guarda fora da máquina.</p></div></li>
+  <li><div><h4>O primeiro owner recebe o link e assume</h4><p>No fim do setup, na quinta etapa, o mAIg cria sozinho o usuário de Marcos, com o e-mail que veio da Maind, e manda o link de primeiro acesso direto a ele: Ana não digita esse e-mail nem vê o link. A interface de setup se desliga, e o console assume o endereço. Marcos define a senha, guarda o código de recuperação da organização, e ela fica ativa sozinha.</p></div></li>
+</ol>
+<p><strong>Instalado não é liberado.</strong> Depois do setup, Marcos libera e configura o app no console: quais bancos ele lê, quais IAs usa e quem da organização o usa; o app entra em uso sozinho quando o mínimo está pronto. A autorização de um app contratado depois do setup chega pela ligação, e ele aparece no console como <strong>app autorizado</strong>, e a administradora da instância clica em instalar: nenhum app novo entra na rede da empresa sem um gesto da TI. Uma organização a mais numa instância que já roda nasce do mesmo jeito, com a chave temporária digitada no console. Cada passo fica anotado: no registro da instância, desde a abertura da interface de setup, e no registro da nova organização, desde a chegada do arquivo. A vida da organização depois disso está em <a href="#mf-107">Atender várias organizações numa instalação, sem misturá-las (MF-107)</a>, a contratação em <a href="#mf-103">Contratar e liberar um app com segurança (MF-103)</a> e o console em <a href="#mf-110">Configurar tudo num lugar só (MF-110)</a>.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>A chave temporária é o elo mais humano da cadeia: quem tem o PDF, a senha e a saída liberada instala em nome da organização. A defesa é a vida curta, o uso único e o aviso: o Gerenciador mostra quando a chave foi usada e de onde, e uma tentativa de usá-la de novo é recusada e avisada. A TI deve tratar a chave como uma senha, e a organização deve esperar o e-mail do PDF, para não confundi-lo com golpe. Se a chave vencer ou se perder, a Maind gera outra no Gerenciador, com PDF e senha novos.</p></div>
+</div>
+
+<h3 id="arq-onde-roda">Onde o mAIg roda</h3>
+<p>O mAIg roda onde a TI já tem costume, dos dois lados: na casa do cliente e na hospedagem da Maind. A Maind o entrega como um pacote de contêineres, caixas fechadas com o programa e tudo de que ele precisa, em dois formatos com as mesmas caixas dentro. Atualizar é sempre trocar a caixa por uma nova, assinada pela Maind.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Onde</th><th>Formato</th><th>Quem troca a caixa</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Uma máquina virtual, uma VPS ou um servidor Linux</strong></td><td>O formato de contêineres, com o Docker, o programa que põe as caixas para rodar numa máquina.</td><td>O zelador, uma caixa pequena do mAIg com acesso ao motor de contêineres, depois do aval da TI e dentro da janela de horário que ela define.</td></tr>
+      <tr class="zebra"><td><strong>Um cluster Kubernetes, gerenciado ou não</strong></td><td>O formato para Kubernetes: um pacote pronto, o chart, que cria tudo num espaço só do mAIg dentro do cluster.</td><td>O próprio cluster, a mando do núcleo, depois do aval da TI e dentro da janela, com permissão só no espaço do mAIg e só para as versões assinadas pela Maind.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p><strong>Num cluster que não aplica a regra de rede, os apps não entram.</strong> No Kubernetes, "o módulo não tem saída de rede" é uma regra do cluster, e só vale se a camada de rede dele a aplicar. O próprio mAIg faz o teste: na instalação, sempre que a TI pedir pelo console e de tempos em tempos. Se a regra não vale, ele instala o núcleo, recusa instalar qualquer app e diz o que falta ajustar.</p>
+<h4 id="arq-ordem">Os dois formatos e a hospedagem da Maind</h4>
+<p>Os dois formatos estão na primeira versão, já na onda 1.0, e a atualização com o aval da TI funciona nos dois. Na hospedagem da Maind, as instâncias rodam num Kubernetes gerenciado da nuvem, cada uma num espaço próprio, separado dos outros pela regra de rede, e a troca de caixa, o reinício e a cópia agendada vêm do próprio cluster. A empresa não instala nada, e as caixas, o console e as telas são os mesmos da casa do cliente; o que muda entre as duas hospedagens está em <a href="#mf-107">Atender várias organizações numa instalação, sem misturá-las (MF-107)</a>.</p>
+<h4 id="arq-saidas">A ligação: um nome só, dois caminhos</h4>
+<p>Na rede da empresa, a TI não abre nenhuma porta de entrada. Ela libera só saídas, e a da Maind é uma linha só: um <strong>nome único da Maind, com IP fixo, na porta 443</strong>, que a TI pode liberar pelo nome ou pelo IP. Atrás desse nome ficam a ligação e o registro de imagens, de onde vêm as versões novas do mAIg e os apps. O IP só muda por decisão da Maind, com aviso. As outras saídas são as de cada provedor de IA que a organização escolher, a do Google, se for usado, e a do servidor de e-mail da empresa.</p>
+<p>A ligação tem <strong>dois caminhos</strong>, os dois já na onda 1.0 e os dois feitos pela própria Maind, sem serviço de outra empresa no meio. O principal é o de sempre. Muitas empresas têm, na saída da rede, um intermediário que barra esse jeito de conversa; quando isso acontece, o mAIg passa sozinho para o caminho alternativo, um jeito de conversa que esses intermediários deixam passar, sem ninguém mexer em nada. Assim, nenhuma empresa fica de fora por causa do intermediário dela. Os detalhes estão em <a href="#mf-108">Funcionar sem abrir porta de entrada na rede (MF-108)</a>.</p>
+<p><strong>Um endereço só, também dentro da rede.</strong> Na rede do cliente, o mAIg tem um endereço só, com um nome e um certificado que a TI escolhe e instala. Nele ficam a tela de entrada, a renovação do passe, o console e, na onda 1.1, a página de status e a planilha. O nome precisa estar sob um domínio público da empresa, porque o Google e as autoridades que emitem certificados só aceitam nomes assim, mas o endereço pode continuar visível só de dentro da rede ou pela VPN.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Quem troca a caixa tem poder sobre a máquina</b><p>Com contêineres, o zelador tem acesso ao motor de contêineres da máquina; no Kubernetes, o núcleo tem permissão para trocar as próprias caixas, presa ao espaço do mAIg. É o preço de "atualizar é trocar a caixa", e o material da TI diz isso com todas as letras, nos dois formatos.</p></div>
+</div>
+
+<h3 id="arq-tecnologia">A tecnologia em poucas palavras</h3>
+<p>Só o bastante para a TI do cliente saber o que vai rodar na casa dela. Uma regra vale acima de todas: nenhuma peça depende de um serviço que só uma nuvem tem. Onde um serviço da nuvem ajuda, ele entra como um encaixe: a peça usa o serviço quando ele existe e uma peça portátil quando não existe. Assim, trocar de nuvem não muda nenhuma peça.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Peça</th><th>Tecnologia</th><th>Por quê</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>O programa do mAIg</strong></td><td>C# sobre .NET, num programa só, dividido em partes internas.</td><td>É a plataforma de programas da Microsoft, de código aberto, que roda em Linux. A criptografia de que o mAIg precisa já vem nela, e é a mesma plataforma das peças da Maind e do primeiro app: um time só, uma linguagem só. Num programa só, é mais fácil provar que só uma peça escreve no registro e só uma usa as chaves.</td></tr>
+      <tr class="zebra"><td><strong>O banco interno</strong></td><td>SQLite, com um arquivo da instância e um arquivo por organização.</td><td>É um banco que vive dentro do próprio programa, num arquivo, sem um segundo programa para a TI instalar e proteger. Cada organização fica num arquivo próprio, com o registro e o cofre cifrados com a chave dela: a cópia de segurança copia arquivos, e a organização encerrada é um arquivo que fica.</td></tr>
+      <tr class="zebra"><td><strong>O pacote</strong></td><td>Imagens de contêiner assinadas, num formato para Docker e num chart para Kubernetes.</td><td>As mesmas caixas nos dois formatos e nas duas hospedagens; muda só o embrulho. Toda imagem sai assinada pela Maind, e a imagem sem assinatura ou alterada é recusada.</td></tr>
+      <tr class="zebra"><td><strong>O compartimento de cada app</strong></td><td>Uma caixa por app, sem rede; no Kubernetes, com a regra de rede do cluster.</td><td>Dentro de um programa só, uma parte não fica isolada da outra. Numa caixa sem rede, o módulo só fala com o núcleo, não lê o que é de outro app e, se falhar, não derruba os outros.</td></tr>
+      <tr class="zebra"><td><strong>A ligação</strong></td><td>gRPC sobre HTTP/2 e, como caminho alternativo, WebSocket, com a troca sozinha.</td><td>O gRPC é um jeito rápido de dois programas conversarem, com cada mensagem num formato combinado, e o HTTP/2 é a versão da conversa da web que ele usa. O WebSocket é o jeito de conversa que os intermediários das empresas deixam passar quando barram o HTTP/2.</td></tr>
+      <tr class="zebra"><td><strong>O console</strong></td><td>Vue 3, uma biblioteca de código aberto para telas que rodam no navegador, com o design system da casa e a marca da Maind.</td><td>O design system é o conjunto de botões, tabelas, formulários e menus que dá a cara de um produto. É o mesmo das telas do primeiro app, e o console parece da mesma família. A tela de entrada é uma página simples, feita no próprio servidor, que funciona em qualquer navegador.</td></tr>
+      <tr class="zebra"><td><strong>As chaves da Maind</strong></td><td>OpenBao, um cofre de chaves portátil e de código aberto.</td><td>Roda em qualquer lugar, sem prender a Maind a uma nuvem. A chave nunca sai dele: o cofre devolve só a assinatura, e cada uso fica anotado. A chave mestra do cartório fica fora de linha e só é usada com duas pessoas.</td></tr>
+      <tr class="zebra"><td><strong>A IA</strong></td><td>Cinco provedores: OpenRouter, Amazon Bedrock, OpenAI, Anthropic e Google.</td><td>O mAIg tem um conector para cada um, sempre com a chave da empresa, e a TI libera a saída só dos provedores que a organização escolher. Os primeiros a ficar prontos são o OpenRouter e a Anthropic. O custo aparece como o provedor informa ou, quando ele não informa, como "estimado", pela tabela de preços da Maind, com a data.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 id="arq-depois">O que fica para depois</h3>
+<p>A primeira versão traz as 24 peças. Duas peças a mais, e duas capacidades das que já existem, ficam para a segunda versão:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>O que</th><th>Quando</th><th>Em poucas palavras</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>O login da empresa</strong></td><td><span class="badge badge--warning">Segunda versão</span></td><td>Uma peça nova, a ligação com o provedor de identidade da empresa: a pessoa entra nos apps com a conta que a TI já lhe deu. Está em <a href="#mf-112">Entrar com o login que a empresa já usa (MF-112)</a>.</td></tr>
+      <tr class="zebra"><td><strong>As ferramentas da empresa para a IA</strong></td><td><span class="badge badge--warning">Segunda versão</span></td><td>Uma peça nova, a ponte dos servidores MCP: o owner da organização libera, uma a uma, só as ferramentas de leitura, e o mAIg faz cada chamada no lugar do app e a anota. Está em <a href="#mf-111">Dar à IA as ferramentas da empresa, só para leitura (MF-111)</a>.</td></tr>
+      <tr class="zebra"><td><strong>A confirmação em dois passos</strong></td><td><span class="badge badge--warning">Segunda versão</span></td><td>Uma segunda prova além da senha, como um código no celular, no cadastro das pessoas.</td></tr>
+      <tr class="zebra"><td><strong>Fechar a rede da instância da Maind</strong></td><td><span class="badge badge--warning">Segunda versão</span></td><td>Na hospedagem da Maind, o endereço do mAIg fica aberto na internet, protegido pelo login; fechar essa rede fica para a segunda versão, ou depois.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>Os números da instalação.</strong> O mínimo de processador, de memória e de disco da máquina e do cluster, e a lista de navegadores aceitos, ainda serão definidos.</p><p><strong>A disponibilidade da ligação.</strong> O compromisso de quanto tempo o ponto de conexão da Maind fica no ar ainda será definido.</p><p><strong>Uma máquina só, na hospedagem da Maind.</strong> Na hospedagem da Maind, as instâncias ficam separadas em espaços de um mesmo cluster, uma separação mais fraca que a de máquinas diferentes. Quando uma empresa pode ter uma máquina só dela, ou uma organização, uma instância só dela, ainda será definido.</p><p><strong>Os servidores MCP fora da rede da empresa.</strong> Na segunda versão, como o mAIg alcança um servidor MCP da empresa quando roda na hospedagem da Maind, e não dentro da rede dela, a forma técnica ainda será definida.</p></div>
+</div>
+
+<h3 id="arq-faq">Perguntas frequentes</h3>
+<div class="faq">
+  <details open>
+    <summary>A Maind consegue entrar na nossa rede pelo mAIg?</summary>
+    <div class="faq-body"><p>Não. Quem abre a ligação é o mAIg, de dentro da rede para fora, e a TI não abre nenhuma porta de entrada. Pela ligação descem só os pedidos que o mAIg conhece, cada um conferido pela portaria, e nunca um acesso à rede da empresa. O pedido à IA, o login pelo Google e o e-mail nem passam pela Maind.</p></div>
+  </details>
+  <details>
+    <summary>A Maind guarda alguma chave ou senha nossa?</summary>
+    <div class="faq-body"><p>Na casa do cliente, não. Toda chave secreta do mAIg nasce dentro dele e nunca sai; o cartório da Maind atesta só a parte pública, como quem reconhece uma firma sem ter a caneta. As senhas dos bancos e as chaves de IA ficam no cofre da organização, cifradas, e o código de recuperação de cada organização fica só com o owner dela. Na hospedagem da Maind, a chave da instância fica no cofre de chaves da Maind, fora do alcance de quem opera a instância, e o código de recuperação continua só com o owner.</p></div>
+  </details>
+  <details>
+    <summary>Precisamos de Kubernetes para usar o mAIg?</summary>
+    <div class="faq-body"><p>Não. O mAIg roda numa máquina virtual, numa VPS ou num servidor Linux só com contêineres, ou num cluster Kubernetes, gerenciado ou não, e os dois formatos chegam na onda 1.0. No Kubernetes, o cluster precisa aplicar a regra de rede que deixa o módulo de cada app sem saída: sem ela, o mAIg instala o núcleo, mas não os apps, e diz o que falta.</p></div>
+  </details>
+  <details>
+    <summary>O que a TI precisa liberar no firewall?</summary>
+    <div class="faq-body"><p>Só saídas, nenhuma entrada. Para a Maind, uma linha só: o nome único da Maind, com IP fixo, na porta 443, pelo nome ou pelo IP. Além dela, a saída de cada provedor de IA que a organização escolher, a do Google, se a entrada pela conta Google estiver ligada, e a do servidor de e-mail da empresa. Se o intermediário da empresa barrar o caminho principal da ligação, o mAIg passa sozinho para o alternativo, pela mesma saída.</p></div>
+  </details>
+  <details>
+    <summary>E se alguém interceptar o e-mail com o PDF do setup?</summary>
+    <div class="faq-body"><p>Sem a senha, que vem por telefone ou mensagem, o PDF não abre. E ele não traz nada instalável: traz as instruções e a chave temporária, que vale uma vez só e vence em pouco tempo. O Gerenciador mostra quando a chave foi usada e de onde, e uma tentativa de usá-la de novo é recusada e avisada. Mesmo assim, a TI deve tratar a chave como uma senha.</p></div>
+  </details>
+  <details>
+    <summary>Um app contratado depois do setup se instala sozinho?</summary>
+    <div class="faq-body"><p>Não. Só o setup instala sozinho os apps que a organização já tinha contratado no dia. A autorização de um app contratado depois chega pela ligação, e ele aparece no console como "app autorizado", e o administrador da instância clica em instalar, no momento que a TI escolher. Depois, como todo app, ele só funciona quando o owner da organização o libera e configura.</p></div>
+  </details>
+</div>

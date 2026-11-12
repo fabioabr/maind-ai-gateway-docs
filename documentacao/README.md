@@ -4,7 +4,7 @@ Esta pasta é a **documentação para quem vai contratar ou operar o Maind AI Ga
 funcionalidade (MF), em linguagem simples, com o que chega em cada onda, perguntas frequentes e, quando um fluxo ajuda, um
 diagrama. Ela é **gerada com o plugin DocX** (design da Kinto), no mesmo formato do site das mfs do Horus v2.
 
-**Situação:** em revisão (11/11/2026). Escritas: **as 12 macro funcionalidades** (MF-101 a MF-110, da primeira versão, e
+**Situação:** em revisão (12/11/2026). Escritas: as 12 macro funcionalidades, a página "Como ler" e a página "Como o mAIg é construído", com os três diagramas da arquitetura. As MF-101 a MF-104 e MF-106 a MF-110 foram atualizadas em 12/11/2026 com as decisões 128 a 155.
 MF-111 e MF-112, da segunda) e a página "Como ler". Substitui o portal de visão de 08/11/2026, que segue no histórico do
 git (commit `1fe07cc` e anteriores).
 
@@ -15,7 +15,8 @@ documentacao/
 ├── docx.json              ← a configuração do portal (as macro funcionalidades por versão, a seção "Como ler", os diagramas)
 ├── content/               ← os fragmentos HTML, que são a fonte editável
 │   ├── como-ler.html      ← o que é o mAIg, as ondas, os papéis, como cada página é organizada, o glossário
-│   └── mf-101.html … mf-112.html   ← uma página por macro funcionalidade
+│   ├── mf-101.html … mf-112.html   ← uma página por macro funcionalidade
+│   └── arquitetura.html   ← como o mAIg é construído, com os três diagramas da arquitetura
 ├── diagramas/             ← a casca de cada diagrama; fontes/ guarda o JSON do Archify e os arquivos dos gates
 ├── marca/                 ← os logos da Maind (tema claro e tema escuro)
 └── .gitignore             ← site/, *.archify.html e os recibos dos gates
@@ -63,7 +64,7 @@ mapa das macro funcionalidades.
 | Assunto da página | Fonte |
 |---|---|
 | Abertura (a portaria, igual para todos os apps) | decisões 3 e 5; mf "Em uma frase", "Quem ganha" |
-| O que é e quem usa | decisões 3, 5, 10, 12, 23, 32, 51, 56 e 99; mf "Autenticação e autorização" |
+| O que é e quem usa | decisões 3, 5, 10, 12, 23, 32, 51, 56, 99 e 132 |
 | A portaria, pedido a pedido; quando dá errado | decisões 4, 5, 33 e 96; mf "Autenticação e autorização" |
 | Senha esquecida e tentativas erradas | decisões 50, 99 e 102 |
 | Os jeitos de entrar | decisões 16, 37, 40, 50, 54, 85, 92 e 98; mf "Os jeitos de entrar na primeira versão" |
@@ -72,21 +73,25 @@ mapa das macro funcionalidades.
 | Certificado da organização | decisões 28, 44 e 126 |
 | Tarefas marcadas | decisão 42 |
 | Diagrama | decisões 5, 32, 33, 37, 40, 86 e 96; mf "Onde se entra", "As permissões" |
-| Os quatro papéis | decisões 9, 10, 12, 39, 46, 65, 78, 81, 83, 84, 96, 97, 100, 114 e 119; mf "Os quatro papéis" |
+| Os quatro papéis | decisões 9, 10, 12, 39, 46, 65, 78, 81, 83, 84, 96, 97, 100, 114, 119, 128, 134, 135, 136 e 137 |
 | Separação de funções, fé pública, mais de um papel | decisões 12, 54, 67 e 96 |
-| Os owners da organização | decisões 51, 54, 83, 84 e 85 |
+| Os owners da organização | decisões 51, 54, 83, 84, 85 e 136 |
 | Os auditores | decisões 54, 79, 96, 97 e 127 |
-| Os administradores da instância; a equipe da Maind | decisões 24, 68, 100, 102, 126 e 127 |
+| Os administradores da instância; a equipe da Maind | decisões 24, 68, 100, 102, 126, 127, 132, 143 e 144 |
 | As duas conferências, a recusa e o que fica com o app | decisões 4, 5, 9, 10, 60, 73 e 96; mf "As permissões" |
-| Primeiro acesso do owner e servidor de e-mail | decisões 29, 51, 87, 90 e 125; mf "O primeiro acesso" |
+| Primeiro acesso do owner e servidor de e-mail | decisões 51, 83, 87, 90, 125, 128, 129, 132, 133 e 136 |
 | As pessoas: cadastro, login único, sem convite, em lote | decisões 23, 77 e 101 |
 | Quando uma pessoa sai | decisões 15, 27 e 37 |
 | Uma pessoa em duas organizações | decisões 9, 11, 40 e 66 |
-| O que chega em cada onda | mf "O que entra em cada onda"; decisões 92 e 95 |
-| Nos bastidores | decisões 3, 5, 32, 33, 51, 54, 86, 96 e 99 |
-| Limites e ligadas | mf "O que não inclui", "Depende de"; decisões 16, 50, 60, 73 e 77 |
-| Ainda em definição | mf "O que ainda falta decidir"; decisões 37, 48, 50, 99 e 100 |
-| Perguntas frequentes | decisões 5, 16, 27, 32, 37, 42, 48, 83, 84, 86, 96, 98 e 99 |
+| O que chega em cada onda | mf "O que entra em cada onda"; decisões 92, 95, 120, 132, 136 e 140 |
+| Nos bastidores | decisões 3, 5, 32, 33, 51, 54, 86, 96, 99 e 139 |
+| Limites e ligadas | decisões 16, 50, 60, 73, 77, 128 e 136 |
+| Ainda em definição | decisões 37, 48, 50, 99, 100, 132 e 144 |
+| Perguntas frequentes | decisões 5, 16, 27, 32, 37, 42, 48, 83, 84, 86, 96, 98, 99 e 136 |
+| O endereço do mAIg e o passe (endereço único) | decisões 32, 33, 37, 40, 48, 86, 120 e 140; mf "Onde se entra" |
+| Exemplo da rede de farmácias (setup) | decisões 128 e 136 |
+
+Atualizada em 12/11/2026 com as decisões 128 a 155 (a arquitetura).
 
 ### MF-102 · Saber quem pediu o quê, quando e com que dado
 
@@ -116,29 +121,43 @@ mapa das macro funcionalidades.
 | Funcionalidades ligadas | mf "Depende de"; mapa |
 | Ainda em definição | mf "O que ainda falta decidir"; decisões 27, 57 e 107 |
 | Perguntas frequentes | decisões 12, 15, 27, 31, 57, 58, 79, 80, 87, 97, 103, 105, 106, 107 e 127 |
+| O que é: quem configura, desde o setup | decisões 12, 29 e 128 |
+| Os atos do administrador da instância (lista nova) | decisões 29, 46, 47, 51, 82, 83, 128, 134, 136 e 137 |
+| Registro da instância: nasce no primeiro acesso ao setup e anota cada etapa | decisões 81, 102 e 132 |
+| O setup deixa rastro desde o primeiro minuto | decisões 100, 102, 128, 132, 134, 135, 136 e 137 |
+| Sigilo: código de recuperação no primeiro acesso; chave da cópia | decisões 57, 65, 87, 116 e 152 |
+| Pergunta 1: o Gerenciador não recebe o registro | decisões 12, 57, 87, 123 e 128 |
+
+Atualizada em 12/11/2026 com as decisões 128 a 155 (a arquitetura).
 
 ### MF-103 · Contratar e liberar um app com segurança
 
 | Assunto da página | Fonte |
 |---|---|
-| Abertura e "O que é" | mf §Em uma frase, §Quem ganha; decisões 9, 10, 11 e 13 |
-| Quem faz o quê | mf §Quem ganha, §O kit, §A situação do contrato; decisões 10, 12 e 94 |
-| O caminho inteiro | mf §O caminho inteiro; decisões 6, 10, 13, 28 e 82 |
-| O trâmite comercial e quem paga o quê | mf §O trâmite comercial, §O que não inclui; decisões 10, 11 e 17 |
+| Abertura e "O que é" | decisões 9, 10, 11, 13, 128 e 131 |
+| Quem faz o quê | decisões 10, 12, 94, 128, 134 e 137 |
+| O caminho inteiro | decisões 6, 10, 13, 28, 82, 128, 134, 135, 137 e 138 |
+| O trâmite comercial e quem paga o quê | decisões 10, 11, 17 e 128 |
 | O kit de instalação | mf §O kit de instalação; decisões 10, 28 e 82 |
 | Três peças e dois certificados | mf §Três peças; decisões 10, 28, 44, 56, 86 e 126 |
-| A conferência da contratação | mf §O handshake contratual; decisões 6, 10, 11 e 56 |
-| Uma contratação por organização; na hospedagem da Maind | mf §Uma contratação por organização, §Na infraestrutura da Maind; decisões 9, 11, 12 e 28 |
-| Exemplo completo e segundo app | mf §Exemplo completo, §O segundo app; decisões 6 e 56 |
-| A situação do contrato e o diagrama | mf §A situação do contrato, §A carência, §O handshake; decisões 12, 13, 56, 70 e 94 |
+| A conferência da contratação | decisões 6, 10, 11, 56, 128 e 138 |
+| Uma contratação por organização; na hospedagem da Maind | decisões 9, 11, 12, 28, 134 e 137 |
+| Exemplo completo e segundo app | decisões 6, 56, 133, 134, 135, 136, 137 e 138 |
+| A situação do contrato e o diagrama | decisões 12, 13, 56, 70, 94, 128, 134 e 137 |
 | O aviso do fim do contrato | mf §O aviso do fim do contrato; decisões 13, 56, 64, 83 e 126 |
 | A carência e as duas formas de parar | mf §A carência, §Quando dá errado; decisões 11, 13, 14, 15, 56, 85 e 94 |
 | A renovação | mf §A renovação; decisões 13, 14, 56 e 106 |
-| O que chega em cada onda | mf §O que entra em cada onda; decisões 10, 11, 13, 14, 16, 56, 82, 94, 106 e 126 |
-| Nos bastidores | decisões 6, 12, 28, 44, 56, 82, 86 e 94 |
-| Limites e funcionalidades ligadas | mf §O que não inclui, §Depende de; decisões 8, 17, 70, 106 e 121 |
+| O que chega em cada onda | decisões 4, 10, 11, 13, 14, 16, 56, 86, 94, 126, 132, 133, 134, 137, 138 e 139 |
+| Nos bastidores | decisões 6, 12, 28, 44, 56, 82, 86, 88, 94, 131, 134 e 148 |
+| Limites e funcionalidades ligadas | decisões 8, 17, 70, 106, 121, 128, 134 e 137 |
 | Ainda em definição | mf §O que ainda falta decidir; decisões 10, 13 e 56 |
-| Perguntas frequentes | decisões 6, 11, 13, 14, 28, 56, 86 e 94 |
+| Perguntas frequentes | decisões 6, 11, 13, 14, 28, 56, 86, 94, 131, 134, 137 e 149 |
+| O manifesto no lugar do kit | decisões 10, 28, 56, 82, 86, 88, 131, 134, 138 e 149 |
+| No setup ou depois: as duas formas de chegar | decisões 10, 39, 82, 134 e 137 |
+| Três peças, duas identidades e dois certificados | decisões 10, 28, 44, 56, 86, 126, 128, 139 e 148 |
+| A primeira conexão, no setup | decisões 129, 130, 131, 132 e 133 |
+
+Atualizada em 12/11/2026 com as decisões 128 a 155 (a arquitetura).
 
 ### MF-104 · Instalar, pausar e retirar apps sem refazer nada
 
@@ -163,9 +182,23 @@ mapa das macro funcionalidades.
 | Uma instância, várias organizações | mf "Uma instância, várias organizações"; decisões 9 e 11 |
 | O que chega em cada onda | mf "O que entra em cada onda"; decisões 10, 12, 13, 14, 15, 21, 29, 31, 45, 46, 72, 78, 80, 81, 85, 88, 92, 95, 96, 106, 107, 108 e 109 |
 | Nos bastidores | mf "Instalar", "Desinstalar"; decisões 4, 12, 15, 29, 81 e 88 |
-| Limites e funcionalidades ligadas | mf "O que não inclui", "Depende de"; decisões 70 e 108 |
+| Limites e funcionalidades ligadas | decisões 128, 132, 134, 137, 138, 139, 145 e 149 |
 | Ainda em definição | mf "O que ainda falta decidir"; decisões 107 e 109 |
 | Perguntas frequentes | mf; decisões 14, 46, 88, 94, 106, 107, 108 e 109 |
+| Abertura e "O que é" (setup, app autorizado, instalado não é liberado) | decisões 134, 135 e 137 |
+| Quem faz o quê: o administrador executa o setup e clica em instalar | decisões 132, 134 e 137 |
+| Quem faz o quê: a equipe da Maind registra no Gerenciador | decisão 128 |
+| Ciclo de vida, estado "Instalado" | decisões 134 e 137 |
+| Instalar e liberar, passos 1 e 2 | decisões 10, 88, 128, 134 e 135 |
+| O app autorizado | decisões 10, 39 e 137 |
+| Num Kubernetes que não isola a rede | decisões 63, 143 e 145 |
+| Atualizar é trocar a caixa; a janela de horário | decisões 39, 142 e 144 |
+| Várias organizações: setup ou clique | decisões 134 e 137 |
+| Ondas, as 4 linhas novas | decisões 10, 39, 63, 88, 134, 137, 142, 144, 145 e 149 |
+| Bastidores: manifesto e bilhete, registro de imagens, zelador ou cluster | decisões 12, 134, 137, 144 e 149 |
+| Perguntas 1 e 2 | decisões 10, 13, 14, 88, 96, 106, 134, 135 e 137 |
+
+Atualizada em 12/11/2026 com as decisões 128 a 155 (a arquitetura).
 
 ### MF-105 · Usar os bancos da empresa sem expor a senha
 
@@ -200,18 +233,24 @@ mapa das macro funcionalidades.
 | Quem faz o quê | mf §Quem faz e quem vê o quê com a IA; decisões 12, 19, 22 e 96 |
 | As chaves: no cofre, nunca num app | mf §As chaves; decisões 5, 22 e 96 |
 | Os modelos permitidos, app por app | mf §Os modelos permitidos; decisões 5 e 96 |
-| O limite de gasto de cada app | mf §Os limites; decisões 64, 75, 112 e 126 |
+| O limite de gasto de cada app | decisões 64, 75, 112, 126 e 153 |
 | O custo por app e a visão do consumo | mf §O custo por app; decisões 5, 12, 16, 22 e 112 |
 | Um pedido de IA, passo a passo, e o diagrama | mf §Um pedido de IA; decisões 5, 6, 19, 20, 58, 62 e 75 |
-| Para onde vai o pedido ao provedor | mf §Para onde vai o pedido; decisões 19, 34, 43, 63, 74 e 95 |
+| Para onde vai o pedido ao provedor | decisões 19, 34, 43, 63, 74, 95 e 141 |
 | As três camadas e o primeiro app na camada 1 | mf §O que o pedido pode levar; decisões 20, 54, 58, 62, 76 e 113 |
 | Na casa do cliente ou na hospedagem da Maind | mf §Na hospedagem da Maind; decisões 9, 22 e 57 |
 | Quando dá errado | mf §Quando dá errado; decisões 14, 15, 71, 96, 106 e 126 |
-| O que chega em cada onda | mf §O que entra em cada onda; decisões 5, 16, 19, 20, 22, 54, 62, 71, 75, 76, 85, 92, 95, 96, 112, 113 e 126 |
-| Nos bastidores | mf §O que se governa, §Quem é quem; decisões 3, 4, 5, 12, 96 e 112 |
+| O que chega em cada onda | decisões 5, 16, 19, 20, 22, 54, 62, 71, 75, 76, 85, 92, 95, 96, 112, 113, 126, 141 e 153 |
+| Nos bastidores | decisões 3, 4, 5, 12, 96, 112, 128, 141 e 153 |
 | O que não faz e funcionalidades ligadas | mf §O que não inclui, §Depende de; mapa; decisões 20, 22, 58, 89 e 96 |
-| Ainda em definição | mf §O que ainda falta decidir; decisões 20, 112 e 113 |
-| Perguntas frequentes | decisões 5, 20, 22, 62, 75, 89, 96 e 112 |
+| Ainda em definição | decisões 20 e 113 |
+| Perguntas frequentes | decisões 5, 20, 22, 62, 75, 89, 96, 112, 141 e 153 |
+| O que é, em poucas palavras (custo informado ou estimado) | decisões 1, 3, 5, 16, 112 e 153 |
+| Quem faz o quê (a tabela de preços) | decisões 12, 19, 22, 96 e 153 |
+| Os cinco provedores da primeira versão | decisões 22, 90 e 141 |
+| O custo por app: informado ou estimado | decisões 5, 12, 16, 22, 112 e 153 |
+
+Atualizada em 12/11/2026 com as decisões 128 a 155 (a arquitetura).
 
 ### MF-107 · Atender várias organizações numa instalação, sem misturá-las
 
@@ -231,16 +270,31 @@ mapa das macro funcionalidades.
 | Em configuração e ativa; cockpit de ativação | mf §A organização fica ativa; decisões 72, 83 e 95 |
 | Painel da instância | mf §O painel da instância; decisões 12, 29, 39, 46, 83 e 119 |
 | Registro da instância | decisões 81, 100, 102 e 116 |
-| Atualizar o próprio mAIg | mf §Atualizar o próprio mAIg; decisões 2, 29, 39, 45, 47, 109 e 126 |
+| Atualizar o próprio mAIg | decisões 2, 39, 45, 47, 109, 134, 142, 144 e 149 |
 | Cópia de segurança e o código de recuperação | mf §A cópia de segurança; decisões 57, 65, 86, 87, 93, 102 e 116 |
 | Encerrar uma organização | mf §Encerrar; decisões 15, 21, 31, 56, 78, 107, 114 e 115 |
 | Saída do cliente | decisões 87 e 118 |
 | Diagrama | decisões 15, 28, 31, 72, 78, 107, 114 e 115 |
-| O que chega em cada onda | mf §O que entra em cada onda; decisões 92 e 95 |
-| Nos bastidores | decisões 28, 32, 57, 86 e 123 |
+| O que chega em cada onda | mf "O que entra em cada onda"; decisões 92 e 95 |
+| Nos bastidores | decisões 28, 32, 56, 57, 86, 88, 123, 133, 134, 146 e 149 |
 | Limites e funcionalidades ligadas | mf §O que não inclui, §Depende de; decisões 11, 12, 31, 117 e 122 |
 | Ainda em definição | mf §O que ainda falta decidir; decisões 9, 39, 107, 116 e 120 |
-| Perguntas frequentes | decisões 9, 12, 28, 31, 39, 45, 47, 57, 65, 72, 87, 95, 114, 116, 117 e 118 |
+| Perguntas frequentes | decisões 39, 45, 47, 65, 72, 87, 116, 128, 129, 130, 132, 134, 135, 136, 144 e 152 |
+| Abertura e "O que é" | decisões 9, 128 e 143 |
+| Quem faz o quê | decisões 12, 39, 65, 83, 128, 129, 130, 132, 136, 137 e 152 |
+| Onde a instância roda (tabela) | decisões 9, 26, 39, 46, 47, 48, 90, 91, 125, 142, 143 e 151 |
+| Os dois formatos do pacote | decisões 39, 63, 142, 143, 144 e 145 |
+| O endereço do mAIg | decisões 28, 44, 98, 120, 132 e 140 |
+| Do nascimento na Maind ao primeiro uso | decisões 10, 28, 29, 41, 51, 72, 83, 86, 97, 125, 128, 129, 130, 131, 132, 134, 135, 136 e 137 |
+| A chave temporária | decisões 41, 131, 133 e 136 |
+| O certificado de cada organização | decisões 28, 32, 44, 56, 86, 126 e 128 |
+| O painel da instância | decisões 12, 29, 39, 46, 83, 116, 119, 120, 123, 125, 128, 137 e 145 |
+| O registro da instância | decisões 81, 102, 116 e 132 |
+| A cópia de segurança | decisões 57, 65, 86, 87, 93, 116 e 152 |
+| Limites | decisões 11, 12, 31, 117, 122, 128, 129 e 131 |
+| Diagrama "A vida de uma organização" | decisões 31, 72, 78, 107, 114, 115, 128, 132, 133 e 136 |
+
+Atualizada em 12/11/2026 com as decisões 128 a 155 (a arquitetura).
 
 ### MF-108 · Funcionar sem abrir porta de entrada na rede
 
@@ -267,7 +321,18 @@ mapa das macro funcionalidades.
 | Nos bastidores | mf "Quem faz a ligação"; decisões 33, 38, 39 e 43 |
 | O que não faz; funcionalidades ligadas | mf "O que não inclui", "Depende de"; decisões 19, 32, 39, 41, 56, 69, 70, 90, 91, 109, 121 e 122 |
 | Ainda em definição | mf "O que ainda falta decidir"; decisões 6, 33, 38, 39, 69 e 121 |
-| Perguntas frequentes | decisões 6, 19, 26, 33, 43, 69, 71, 90 e 123 |
+| Perguntas frequentes | decisões 39, 134, 137, 149 e 154 |
+| A ligação: o nome único da Maind, com IP fixo, porta 443 | decisões 6, 90 e 149 |
+| Dois caminhos, e o mAIg escolhe sozinho | decisões 38 e 154 |
+| As saídas: o nome único e os cinco provedores de IA | decisões 19, 90, 141 e 149 |
+| O que corre pela ligação (e a imagem fora dela) | decisões 39, 128, 134, 137, 144 e 149 |
+| O certificado: duas identidades; o passe com a chave da organização | decisões 4, 6, 10, 86 e 139 |
+| A primeira conexão, no setup | decisões 132 e 133 |
+| Quem faz o quê (TI e Maind) | decisões 132, 133, 149 e 154 |
+| Bastidores: ambiente à parte; versões assinadas | decisões 39, 88, 134, 146 e 149 |
+| Ondas: as três linhas novas | decisões 38, 90, 132, 133, 149 e 154 |
+
+Atualizada em 12/11/2026 com as decisões 128 a 155 (a arquitetura).
 
 ### MF-109 · Rodar cada app isolado dentro do mAIg
 
@@ -293,33 +358,45 @@ mapa das macro funcionalidades.
 | O que não faz | mf §O que não inclui; decisões 8, 60, 73 e 106 |
 | Ainda em definição | mf §O que ainda falta decidir; decisões 4, 6, 89 e 93 |
 | Perguntas frequentes | decisões 4, 5, 9, 34, 35, 43, 46, 60, 63, 74, 95 e 121 |
+| Quando o mAIg roda num Kubernetes | decisões 63, 143 e 145; mf "A única porta do módulo" |
+| Quem faz o quê (TI do cliente; administrador da instância) | decisões 132, 134, 137 e 145 |
+| Instalar não é rodar | decisões 10, 134 e 137 |
+| Quando o módulo atende | decisões 10, 128, 134, 135, 137 e 138 |
+| Quando dá errado: o cluster | decisão 145 |
+| Ondas: a linha do cluster | decisões 63 e 145 |
+| Bastidores: só entra módulo assinado; só o núcleo sai | decisões 88, 134, 144 e 149 |
+| Pergunta 5 (Kubernetes) | decisões 63 e 145 |
+
+Atualizada em 12/11/2026 com as decisões 128 a 155 (a arquitetura).
 
 ### MF-110 · Configurar tudo num lugar só
 
 | Assunto da página | Fonte |
 |---|---|
 | Abertura (a sala da administração, um lugar só) | mf "Em uma frase", "Por que esta mf existe", "O console"; decisões 3 e 5 |
-| O que é, em poucas palavras | mf "O console", "Cada papel vê só a sua parte"; decisões 10, 12 e 96 |
-| Quem entra e o que vê | mf "Cada papel vê só a sua parte"; decisões 9, 10, 12, 96 e 119 |
-| Do console vazio ao primeiro app em uso (passos e diagrama) | mf "A parte da instância", "A parte da organização"; decisões 5, 10, 28, 51, 82, 86, 88 e 125 |
+| O que é, em poucas palavras | decisões 7, 10, 12, 96, 132 e 155 |
+| Quem entra e o que vê | decisões 9, 10, 12, 83, 96, 119, 128, 136 e 137 |
 | O que falta para ficar pronto (cockpit de ativação) | mf "Quando dá errado"; decisões 72 e 95 |
-| A parte da instância | mf "A parte da instância"; decisões 39, 45, 46, 65, 83, 84, 88, 90, 100, 102, 114, 116, 119 e 125 |
-| O que o administrador da instância não vê | decisões 12, 29, 67 e 119 |
+| A parte da instância | decisões 39, 45, 46, 65, 83, 84, 88, 90, 100, 102, 114, 116, 119, 125, 128, 133, 134, 136, 137 e 145 |
+| O que o administrador da instância não vê | decisões 12, 29, 67, 119 e 128 |
 | A parte da organização | mf "A parte da organização"; decisões 13, 14, 20, 23, 43, 64, 72, 74, 77, 79, 83, 89, 95, 96, 97, 98, 99, 101, 106, 111, 112 e 126 |
 | Os atos sensíveis | decisões 54, 68, 74, 79, 80, 85, 95 e 111 |
 | Por que é o owner quem configura; quando dá errado | decisões 5, 10, 14, 67, 68 e 106 |
 | O auditor no console | mf "O auditor no console"; decisões 12, 80 e 96 |
 | Os avisos do console | decisões 64, 71, 85 e 126 |
-| O que fica fora do console | mf "O que fica fora do console"; decisões 42, 55, 77 e 120 |
-| O mesmo console nas duas hospedagens | mf "O mesmo console nas duas hospedagens"; decisões 9, 26, 39, 47, 48, 57, 83, 91 e 96 |
+| O que fica fora do console | decisões 42, 55, 77, 120 e 132 |
+| O mesmo console nas duas hospedagens | decisões 9, 26, 39, 47, 48, 57, 83, 91, 96, 128, 136 e 140 |
 | Ponto de atenção (console na internet, só com senha) | decisões 48, 50 e 92 |
 | O suporte da equipe da Maind | mf "O suporte da equipe da Maind"; decisões 54, 67, 68 e 127 |
-| Quando dá errado | mf "Quando dá errado"; decisões 70, 83, 99, 100, 120 e 121 |
-| O que chega em cada onda | mf "O que entra em cada onda"; decisões 10, 12, 26, 48, 64, 67, 68, 71, 85, 90, 92, 96, 125, 126 e 127 |
-| Nos bastidores | mf "Quando dá errado"; decisões 24, 26, 55 e 57 |
-| O que não faz e funcionalidades ligadas | mf "O que não inclui", "Depende de"; decisões 16, 50 e 92 |
-| Ainda em definição | mf "O que não inclui", "O que ainda falta decidir"; decisões 89, 99, 100 e 120 |
-| Perguntas frequentes | decisões 12, 23, 26, 48, 57, 67, 68, 77, 79, 96, 97 e 127 |
+| Quando dá errado | decisões 70, 83, 99, 100, 120, 121, 133 e 145 |
+| O que chega em cada onda | decisões 7, 10, 12, 26, 48, 64, 67, 68, 71, 85, 90, 92, 96, 125, 126, 127, 128, 137, 140, 145 e 155 |
+| Nos bastidores | decisões 24, 26, 55, 57, 98, 120 e 140 |
+| O que não faz e funcionalidades ligadas | decisões 16, 50, 92, 132, 134, 137 e 145 |
+| Ainda em definição | decisões 89, 99, 100, 120 e 155 |
+| Perguntas frequentes | decisões 12, 23, 26, 48, 57, 67, 68, 77, 79, 96, 97, 127, 137 e 140 |
+| Do setup ao primeiro app em uso (passos e diagrama) | decisões 5, 10, 28, 29, 51, 82, 86, 88, 120, 125, 128, 129, 130, 132, 134, 135 e 136 |
+
+Atualizada em 12/11/2026 com as decisões 128 a 155 (a arquitetura).
 
 ### MF-111 · Dar à IA as ferramentas da empresa, só para leitura
 
@@ -362,6 +439,28 @@ mapa das macro funcionalidades.
 | Funcionalidades ligadas | mf "Depende de"; decisões 5, 9, 11, 85, 90 e 96 |
 | Ainda em definição | mf "O que ainda falta decidir" |
 | Perguntas frequentes | decisões 16, 23, 24, 32, 37, 55, 77 e 98 |
+
+### Como o mAIg é construído (página de arquitetura)
+
+| Assunto da página | Fonte |
+|---|---|
+| Abertura (o prédio e a administradora) | componentes.md §2; decisões 6, 33 e 86 |
+| A casa do cliente e os periféricos | componentes.md §4; decisões 6, 19, 22, 61, 65, 90, 98 e 110 |
+| O lado da Maind, num ambiente separado e em conta separada | componentes.md §5; decisões 48, 49, 128, 129, 146, 147, 148, 149, 150 e 153 |
+| As conversas que não passam pela Maind | decisões 19 e 90 |
+| As peças por grupo | componentes.md §3 e §7 |
+| O caminho de um pedido | componentes.md §2; decisões 5, 20, 32, 33, 35, 43, 58, 61, 62, 69, 96, 103, 112 e 124 |
+| Como uma organização nasce | componentes.md §2 e §9; tecnologia.md §2.3; decisões 51, 72, 86, 87, 99, 100, 120, 125 e 128 a 138, e 152 |
+| Onde roda: formatos, quem troca a caixa e a regra de rede | tecnologia.md §2.3; decisões 142, 143, 144 e 145 |
+| A ordem de construção | estimativa.md; decisões 143 e 151 |
+| A ligação: um nome só e dois caminhos | decisões 6, 38, 90, 149 e 154 |
+| Um endereço só na rede | decisões 120 e 140 |
+| A tecnologia em poucas palavras | tecnologia.md §1.1 e §2; decisões 141, 143, 148, 153, 154 e 155 |
+| O que fica para depois | componentes.md §7; decisões 16, 48, 50 e 92 |
+| Ainda em definição | tecnologia.md §6; decisão 151 |
+| Perguntas frequentes | decisões 6, 19, 33, 57, 86, 87, 129 a 135, 137, 143, 145, 148, 149 e 154 |
+
+Os três diagramas desta página (`diagramas/arq-*.html`) são as versões para o site dos diagramas de `../arquitetura/diagramas/`, com os cartões sem códigos; as fontes ficam em `diagramas/fontes/arq-*.json`.
 
 ## O que as páginas declaram como "Ainda em definição"
 

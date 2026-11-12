@@ -8,7 +8,7 @@
     "description": "As funcionalidades do mAIg explicadas uma a uma, em linguagem simples: o que cada uma faz, em que onda chega, como funciona na prática e as dúvidas mais comuns.",
     "version": "1 em desenho, sem versão publicada",
     "owner": "Maind Tech",
-    "updated": "2026-11-11",
+    "updated": "2026-11-12",
     "eyebrow": "Maind AI Gateway · Documentação do produto",
     "hero_title": "O mAIg, funcionalidade por funcionalidade"
   },
@@ -62,7 +62,7 @@
               "code": "MF-103",
               "badge": "1ª versão",
               "title": "Contratar e liberar um app com segurança",
-              "summary": "O caminho pelo qual um app da Maind passa a valer para uma organização: o kit com o certificado, a conferência com a Maind, o aviso do fim do contrato, a carência e a renovação.",
+              "summary": "O caminho pelo qual um app da Maind passa a valer para uma organização: o cadastro no Gerenciador, a chegada pela ligação, a conferência, o aviso do fim do contrato, a carência e a renovação.",
               "links": [
                 {
                   "label": "O que chega em cada onda",
@@ -80,7 +80,7 @@
               "code": "MF-104",
               "badge": "1ª versão",
               "title": "Instalar, pausar e retirar apps sem refazer nada",
-              "summary": "Tudo o que acontece com um app depois de contratado: instalar, liberar, pausar, suspender, parar e atualizar sem refazer nada; retirar e desinstalar, os únicos que apagam, chegam na onda 1.1.",
+              "summary": "Os apps contratados entram sozinhos no setup; o autorizado depois espera um clique. Pausar, suspender, parar e atualizar não refazem nada; retirar e desinstalar, que apagam, chegam na onda 1.1.",
               "links": [
                 {
                   "label": "O ciclo de vida de um app",
@@ -116,7 +116,7 @@
               "code": "MF-106",
               "badge": "1ª versão",
               "title": "Controlar quais IAs, quanto e a que custo",
-              "summary": "O mAIg guarda as chaves de IA da empresa, confere o modelo, o limite de gasto e a camada de cada app e conta o custo de cada pedido, sem que nenhum app toque uma chave.",
+              "summary": "O mAIg guarda as chaves de IA da empresa, de cinco provedores, confere o modelo, o limite e a camada de cada app e conta o custo de cada pedido, informado ou estimado.",
               "links": [
                 {
                   "label": "O que chega em cada onda",
@@ -134,15 +134,15 @@
               "code": "MF-107",
               "badge": "1ª versão",
               "title": "Atender várias organizações numa instalação, sem misturá-las",
-              "summary": "Uma instalação do mAIg serve a várias organizações, cada uma no seu espaço fechado, na casa do cliente ou na hospedagem da Maind, com o painel da instância, a atualização e a cópia de segurança.",
+              "summary": "Uma instalação do mAIg serve a várias organizações, cada uma num espaço fechado: a organização nasce na Maind e chega pelo setup, e a instância roda na casa do cliente ou na hospedagem da Maind.",
               "links": [
+                {
+                  "label": "Do nascimento na Maind ao primeiro uso",
+                  "href": "#mf-107-criar"
+                },
                 {
                   "label": "O que chega em cada onda",
                   "href": "#mf-107-ondas"
-                },
-                {
-                  "label": "Perguntas frequentes",
-                  "href": "#mf-107-faq"
                 }
               ]
             },
@@ -191,7 +191,7 @@
               "summary": "O console é a tela do mAIg onde se ajusta e se consulta tudo, para todos os apps: a parte da instância, a de cada organização, e cada papel vendo só o que lhe cabe.",
               "links": [
                 {
-                  "label": "Do console vazio ao primeiro app em uso",
+                  "label": "Do setup ao primeiro app em uso",
                   "href": "#mf-110-primeiro-app"
                 },
                 {
@@ -254,6 +254,13 @@
       "summary": "O que é o mAIg, o que é uma macro funcionalidade, as ondas da primeira versão, os papéis e as palavras que aparecem nas páginas.",
       "category": "Para começar",
       "source": "content/como-ler.html"
+    },
+    {
+      "id": "arquitetura",
+      "title": "Como o mAIg é construído",
+      "summary": "As duas metades do mAIg, as peças de dentro dele, o caminho de um pedido, como uma organização nasce, onde o mAIg roda e com que tecnologia é feito.",
+      "category": "Arquitetura",
+      "source": "content/arquitetura.html"
     }
   ],
   "diagrams": [
@@ -272,7 +279,7 @@
     {
       "id": "mf-103-vida-do-contrato",
       "title": "A vida do contrato de um app",
-      "description": "Do kit instalado à conferência com a Maind, as situações do contrato (em vigor, perto do fim, em carência e parado), as duas formas de parar e a renovação, que traz o app de volta como estava.",
+      "description": "Do cadastro no Gerenciador do mAIg à chegada do app pela ligação, no setup ou como app autorizado, a conferência com a Maind, as situações do contrato, as duas formas de parar e a renovação, que traz o app de volta como estava.",
       "source": "diagramas/mf-103-vida-do-contrato.html"
     },
     {
@@ -296,7 +303,7 @@
     {
       "id": "mf-107-vida-da-organizacao",
       "title": "A vida de uma organização",
-      "description": "Da criação, em configuração, à organização ativa e, na onda 1.1, ao encerramento, com a volta de 30 dias e o registro que sai com a desinstalação do app",
+      "description": "Do nascimento no Gerenciador do mAIg, com a chave temporária, à organização ativa na instância e, na onda 1.1, ao encerramento, com a volta de 30 dias e o registro que sai com a desinstalação do app.",
       "source": "diagramas/mf-107-vida-da-organizacao.html"
     },
     {
@@ -313,8 +320,8 @@
     },
     {
       "id": "mf-110-primeiro-app",
-      "title": "Do console vazio ao primeiro app em uso",
-      "description": "Quem faz cada passo no console, do servidor de e-mail testado à primeira pergunta: o administrador da instância, o owner da organização, quem usa o app e o auditor.",
+      "title": "Do setup ao primeiro app em uso",
+      "description": "Quem faz cada passo, da organização criada pela Maind ao primeiro uso do app: a Maind, o administrador da instância no setup, o mAIg sozinho, o owner da organização, quem usa o app e o auditor.",
       "source": "diagramas/mf-110-primeiro-app.html"
     },
     {
@@ -328,6 +335,24 @@
       "title": "Entrar com o login da empresa",
       "description": "Do dia em que a TI prepara o provedor de identidade da empresa até a pessoa desligada sair dos apps: a entrada pela tela da empresa, a conferência do cadastro, o passe de cada app e os dois relógios.",
       "source": "diagramas/mf-112-login-da-empresa.html"
+    },
+    {
+      "id": "arq-visao-geral",
+      "title": "O mAIg e o que está em volta",
+      "description": "As duas metades: o mAIg na casa do cliente, com os periféricos e os provedores de login, e, na Maind, o ambiente do mAIg numa conta separada, longe da nuvem dos apps.",
+      "source": "diagramas/arq-visao-geral.html"
+    },
+    {
+      "id": "arq-por-dentro",
+      "title": "Dentro do mAIg: o caminho de um pedido",
+      "description": "Da ligação à portaria, ao módulo do app, ao leitor dos bancos e ao intermediário da IA, com o cofre, o registro e o fiscal da saída, até a resposta voltar à nuvem do app.",
+      "source": "diagramas/arq-por-dentro.html"
+    },
+    {
+      "id": "arq-nascimento-da-organizacao",
+      "title": "O nascimento de uma organização",
+      "description": "Do Gerenciador do mAIg ao PDF com senha, à interface de setup com a chave temporária, à instalação no estilo de um gerenciador de pacotes e ao primeiro owner, que libera o app.",
+      "source": "diagramas/arq-nascimento-da-organizacao.html"
     }
   ]
 }

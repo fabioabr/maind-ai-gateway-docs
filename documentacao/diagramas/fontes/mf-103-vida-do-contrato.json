@@ -497,13 +497,16 @@
     "legend": {
       "entries": {
         "start": {
-          "label": "Kit instalado, à espera da conferência"
+          "label": "Contratado, cadastrado no Gerenciador do mAIg"
+        },
+        "active": {
+          "label": "Instalado, à espera da conferência da Maind"
         },
         "success": {
           "label": "O app funciona"
         },
         "waiting": {
-          "label": "O app funciona, com aviso dado"
+          "label": "À espera do clique de instalar ou da renovação"
         },
         "neutral": {
           "label": "Parado, com a configuração guardada"
@@ -515,60 +518,91 @@
     }
   },
   "mainPath": [
-    "kit",
+    "contratado",
+    "chegou",
     "vigor",
     "perto",
     "carencia"
   ],
   "states": [
     {
-      "id": "kit",
+      "id": "contratado",
       "type": "start",
-      "label": "Kit instalado",
-      "sublabel": "Depois de fechada a contratação"
+      "label": "Contratado",
+      "sublabel": "No Gerenciador do mAIg"
+    },
+    {
+      "id": "chegou",
+      "type": "active",
+      "label": "Instalado",
+      "sublabel": "O mAIg gera a chave"
     },
     {
       "id": "vigor",
       "type": "success",
       "label": "Em vigor",
-      "sublabel": "A licença chegou, e o app funciona"
+      "sublabel": "O app funciona"
     },
     {
       "id": "perto",
       "type": "waiting",
       "label": "Perto do fim",
-      "sublabel": "O primeiro aviso já foi dado"
+      "sublabel": "1º aviso já dado"
     },
     {
       "id": "carencia",
       "type": "waiting",
       "label": "Em carência",
-      "sublabel": "O contrato acabou; o app segue"
+      "sublabel": "O app segue"
     },
     {
-      "id": "parado",
-      "type": "neutral",
-      "label": "Parado",
-      "sublabel": "A configuração fica guardada"
+      "id": "autorizado",
+      "type": "waiting",
+      "label": "App autorizado",
+      "sublabel": "No console, à espera do clique"
     },
     {
       "id": "nao_liberado",
       "type": "failure",
       "label": "Não liberado",
       "sublabel": "O administrador vê o motivo"
+    },
+    {
+      "id": "parado",
+      "type": "neutral",
+      "label": "Parado",
+      "sublabel": "A configuração fica guardada"
     }
   ],
   "transitions": [
     {
+      "id": "entra-no-setup",
+      "from": "contratado",
+      "to": "chegou",
+      "label": "no setup"
+    },
+    {
+      "id": "depois-do-setup",
+      "from": "contratado",
+      "to": "autorizado",
+      "label": "depois do setup"
+    },
+    {
+      "id": "clique-instalar",
+      "from": "autorizado",
+      "to": "chegou",
+      "label": "clique em instalar"
+    },
+    {
       "id": "handshake",
-      "from": "kit",
+      "from": "chegou",
       "to": "vigor",
-      "label": "handshake confere",
+      "label": "a Maind confere",
       "variant": "emphasis"
     },
     {
       "id": "nao-confere",
-      "from": "kit",
+      "from": "chegou",
       "to": "nao_liberado",
       "label": "não confere",
       "variant": "security"
@@ -583,7 +617,7 @@
       "id": "fim-do-contrato",
       "from": "perto",
       "to": "carencia",
-      "label": "o contrato acaba"
+      "label": "fim do contrato"
     },
     {
       "id": "licenca-vence",
@@ -622,11 +656,12 @@
   "cards": [
     {
       "dot": "cyan",
-      "title": "Quem move o contrato",
+      "title": "Como o app chega",
       "items": [
-        "A equipe da Maind fecha a contratação, cadastra no servidor da Maind Tech o app, a organização e a data do fim do contrato, e entrega o kit.",
-        "O administrador da instância instala o kit no mAIg, e o mAIg faz o handshake contratual pela ligação que ele mesmo abriu. Sem ligação, o handshake espera, e o mAIg reconecta sozinho.",
-        "Liberado o app, o administrador da instância o instala, e o owner da organização o libera para a organização (MF-104). O owner vê no console a situação do contrato e recebe os avisos."
+        "A equipe da Maind fecha a contratação e cadastra no Gerenciador do mAIg o app, a organização e a data do fim do contrato.",
+        "A autorização do app chega pela ligação, no manifesto assinado pela Maind, e a caixa dele vem do registro de imagens da Maind, com um bilhete. Contratado antes do setup, entra no próprio setup, sem um gesto por app; contratado depois, aparece no console como app autorizado, e o administrador da instância clica em instalar. Nenhum arquivo instalável viaja por e-mail.",
+        "O mAIg gera a chave do app, pede o atestado à Maind e faz o handshake contratual pela ligação. Sem ligação, o handshake espera, e o mAIg reconecta sozinho.",
+        "Liberado o app, o owner da organização o libera e configura para a organização (MF-104), vê no console a situação do contrato e recebe os avisos."
       ]
     },
     {
