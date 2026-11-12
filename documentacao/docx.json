@@ -5,156 +5,329 @@
   "design": "kbr",
   "project": {
     "name": "Maind AI Gateway (mAIg)",
-    "description": "O que é o Maind AI Gateway, por que ele existe e como funciona, explicado sem jargão: quatro desenhos, as 18 decisões e o que falta decidir.",
+    "description": "As funcionalidades do mAIg explicadas uma a uma, em linguagem simples: o que cada uma faz, em que onda chega, como funciona na prática e as dúvidas mais comuns.",
     "version": "1 em desenho, sem versão publicada",
     "owner": "Maind Tech",
-    "updated": "2026-11-08",
-    "eyebrow": "Maind AI Gateway · Visão do produto",
-    "hero_title": "Visão do Maind AI Gateway (mAIg)"
+    "updated": "2026-11-11",
+    "eyebrow": "Maind AI Gateway · Documentação do produto",
+    "hero_title": "O mAIg, funcionalidade por funcionalidade"
   },
-  "diagrams": [
-    {
-      "id": "maig-visao-geral",
-      "title": "O mAIg na casa do cliente",
-      "description": "A nuvem da Maind e a rede do cliente, e quem liga para quem: o mAIg liga para fora.",
-      "source": "diagramas/maig-visao-geral.html"
-    },
-    {
-      "id": "maig-por-dentro",
-      "title": "Por dentro do mAIg: o núcleo e os apps",
-      "description": "O núcleo que o mAIg traz pronto, o módulo do app e a parte de fora do app.",
-      "source": "diagramas/maig-por-dentro.html"
-    },
-    {
-      "id": "maig-instancia-organizacoes",
-      "title": "Uma instância, várias organizações",
-      "description": "As instâncias na Maind e no cliente, as organizações de cada uma e quem cuida de quê.",
-      "source": "diagramas/maig-instancia-organizacoes.html"
-    },
-    {
-      "id": "maig-contratacao",
-      "title": "Da contratação ao uso",
-      "description": "O kit, o certificado, o handshake contratual e os dois passos de liberação de um app.",
-      "source": "diagramas/maig-contratacao.html"
-    }
-  ],
-  "sections": [
-    {
-      "id": "visao",
-      "title": "O que é o mAIg e por que ele existe",
-      "summary": "O problema que o mAIg resolve, a ideia, os cinco objetivos e o que o mercado já faz.",
-      "category": "Comece por aqui",
-      "source": "content/visao.html"
-    },
-    {
-      "id": "nucleo-e-apps",
-      "title": "O núcleo do mAIg e os apps",
-      "summary": "O que o mAIg traz pronto, como um app se divide em duas partes e por que o mAIg liga para fora.",
-      "category": "Como funciona",
-      "source": "content/nucleo-e-apps.html"
-    },
-    {
-      "id": "organizacoes-e-contratacao",
-      "title": "Organizações, papéis e contratação",
-      "summary": "Instâncias e organizações, os papéis, como um app é contratado e liberado e o que acontece quando o contrato acaba.",
-      "category": "Como funciona",
-      "source": "content/organizacoes-e-contratacao.html"
-    },
-    {
-      "id": "decisoes",
-      "title": "As decisões e o que falta decidir",
-      "summary": "As 18 decisões, com os motivos, e o que ainda falta decidir, por papel.",
-      "category": "Decisões e acompanhamento",
-      "source": "content/decisoes.html"
-    }
-  ],
   "portal": {
     "macros": {
-      "title": "Visão do produto",
+      "title": "Macro funcionalidades",
       "groups": [
         {
-          "label": "Comece por aqui",
-          "text": "O problema, a ideia e os objetivos do mAIg.",
+          "label": "Primeira versão",
+          "text": "A primeira versão do mAIg, em duas ondas: a onda 1.0, o mínimo para o primeiro app funcionar, e a onda 1.1, que completa a governança. Dez macro funcionalidades.",
           "items": [
             {
-              "title": "O que é o mAIg e por que ele existe",
-              "summary": "O problema que o mAIg resolve, a ideia, os cinco objetivos e o que o mercado já faz.",
-              "href": "visao.html",
+              "id": "mf-101",
+              "source": "content/mf-101.html",
+              "code": "MF-101",
+              "badge": "1ª versão",
+              "title": "Entrar e agir só dentro do que foi permitido",
+              "summary": "O mAIg confere quem é cada pessoa e cada app que chega até ele e, a cada pedido, só deixa cada um fazer o que o owner da organização permitiu, do mesmo jeito para todos os apps.",
               "links": [
                 {
-                  "label": "Ver o desenho",
-                  "href": "#visao-desenho"
+                  "label": "Onde se entra: o endereço do mAIg e o passe",
+                  "href": "#mf-101-passe"
                 },
                 {
-                  "label": "O que falta decidir aqui",
-                  "href": "#visao-falta-decidir"
+                  "label": "O que chega em cada onda",
+                  "href": "#mf-101-ondas"
                 }
-              ],
-              "badge": "2 a decidir"
-            }
-          ]
-        },
-        {
-          "label": "Como funciona",
-          "text": "O que o mAIg traz pronto, quem faz o quê e como um app é contratado.",
-          "items": [
-            {
-              "title": "O núcleo do mAIg e os apps",
-              "summary": "O que o mAIg traz pronto, como um app se divide em duas partes e por que o mAIg liga para fora.",
-              "href": "nucleo-e-apps.html",
-              "links": [
-                {
-                  "label": "Ver o desenho",
-                  "href": "#nucleo-e-apps-desenho"
-                },
-                {
-                  "label": "O que falta decidir aqui",
-                  "href": "#nucleo-e-apps-falta-decidir"
-                }
-              ],
-              "badge": "2 a decidir"
+              ]
             },
             {
-              "title": "Organizações, papéis e contratação",
-              "summary": "Instâncias e organizações, os papéis, como um app é contratado e liberado e o que acontece quando o contrato acaba.",
-              "href": "organizacoes-e-contratacao.html",
+              "id": "mf-102",
+              "source": "content/mf-102.html",
+              "code": "MF-102",
+              "badge": "1ª versão",
+              "title": "Saber quem pediu o quê, quando e com que dado",
+              "summary": "O mAIg anota cada pedido dos apps e cada ato de quem configura, e o owner da organização e o auditor conferem quem pediu o quê, quando e com que dado; ninguém apaga uma linha.",
               "links": [
                 {
-                  "label": "Ver o desenho",
-                  "href": "#organizacoes-e-contratacao-desenho"
+                  "label": "O que cada linha anota",
+                  "href": "#mf-102-cada-linha"
                 },
                 {
-                  "label": "O que falta decidir aqui",
-                  "href": "#organizacoes-e-contratacao-falta-decidir"
+                  "label": "O que chega em cada onda",
+                  "href": "#mf-102-ondas"
                 }
-              ],
-              "badge": "5 a decidir"
+              ]
+            },
+            {
+              "id": "mf-103",
+              "source": "content/mf-103.html",
+              "code": "MF-103",
+              "badge": "1ª versão",
+              "title": "Contratar e liberar um app com segurança",
+              "summary": "O caminho pelo qual um app da Maind passa a valer para uma organização: o kit com o certificado, a conferência com a Maind, o aviso do fim do contrato, a carência e a renovação.",
+              "links": [
+                {
+                  "label": "O que chega em cada onda",
+                  "href": "#mf-103-ondas"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-103-faq"
+                }
+              ]
+            },
+            {
+              "id": "mf-104",
+              "source": "content/mf-104.html",
+              "code": "MF-104",
+              "badge": "1ª versão",
+              "title": "Instalar, pausar e retirar apps sem refazer nada",
+              "summary": "Tudo o que acontece com um app depois de contratado: instalar, liberar, pausar, suspender, parar e atualizar sem refazer nada; retirar e desinstalar, os únicos que apagam, chegam na onda 1.1.",
+              "links": [
+                {
+                  "label": "O ciclo de vida de um app",
+                  "href": "#mf-104-ciclo"
+                },
+                {
+                  "label": "O que chega em cada onda",
+                  "href": "#mf-104-ondas"
+                }
+              ]
+            },
+            {
+              "id": "mf-105",
+              "source": "content/mf-105.html",
+              "code": "MF-105",
+              "badge": "1ª versão",
+              "title": "Usar os bancos da empresa sem expor a senha",
+              "summary": "O mAIg guarda num cofre as senhas dos bancos da empresa e lê os dados por cada app, só para consulta, depois de conferir a permissão e de anotar o pedido no registro.",
+              "links": [
+                {
+                  "label": "O caminho de um pedido de dados",
+                  "href": "#mf-105-pedido"
+                },
+                {
+                  "label": "O que chega em cada onda",
+                  "href": "#mf-105-ondas"
+                }
+              ]
+            },
+            {
+              "id": "mf-106",
+              "source": "content/mf-106.html",
+              "code": "MF-106",
+              "badge": "1ª versão",
+              "title": "Controlar quais IAs, quanto e a que custo",
+              "summary": "O mAIg guarda as chaves de IA da empresa, confere o modelo, o limite de gasto e a camada de cada app e conta o custo de cada pedido, sem que nenhum app toque uma chave.",
+              "links": [
+                {
+                  "label": "O que chega em cada onda",
+                  "href": "#mf-106-ondas"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-106-faq"
+                }
+              ]
+            },
+            {
+              "id": "mf-107",
+              "source": "content/mf-107.html",
+              "code": "MF-107",
+              "badge": "1ª versão",
+              "title": "Atender várias organizações numa instalação, sem misturá-las",
+              "summary": "Uma instalação do mAIg serve a várias organizações, cada uma no seu espaço fechado, na casa do cliente ou na hospedagem da Maind, com o painel da instância, a atualização e a cópia de segurança.",
+              "links": [
+                {
+                  "label": "O que chega em cada onda",
+                  "href": "#mf-107-ondas"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-107-faq"
+                }
+              ]
+            },
+            {
+              "id": "mf-108",
+              "source": "content/mf-108.html",
+              "code": "MF-108",
+              "badge": "1ª versão",
+              "title": "Funcionar sem abrir porta de entrada na rede",
+              "summary": "O mAIg liga para a Maind de dentro da rede da empresa e mantém a ligação aberta: a TI libera só saídas conhecidas, e nenhuma porta de entrada é aberta.",
+              "links": [
+                {
+                  "label": "As saídas que a TI libera",
+                  "href": "#mf-108-saidas"
+                },
+                {
+                  "label": "O que chega em cada onda",
+                  "href": "#mf-108-ondas"
+                }
+              ]
+            },
+            {
+              "id": "mf-109",
+              "source": "content/mf-109.html",
+              "code": "MF-109",
+              "badge": "1ª versão",
+              "title": "Rodar cada app isolado dentro do mAIg",
+              "summary": "A parte de cada app que trabalha perto dos dados roda dentro do mAIg, num compartimento fechado, e só alcança bancos e IA pedindo ao núcleo, que confere e anota.",
+              "links": [
+                {
+                  "label": "A única porta do módulo",
+                  "href": "#mf-109-porta-unica"
+                },
+                {
+                  "label": "O que chega em cada onda",
+                  "href": "#mf-109-ondas"
+                }
+              ]
+            },
+            {
+              "id": "mf-110",
+              "source": "content/mf-110.html",
+              "code": "MF-110",
+              "badge": "1ª versão",
+              "title": "Configurar tudo num lugar só",
+              "summary": "O console é a tela do mAIg onde se ajusta e se consulta tudo, para todos os apps: a parte da instância, a de cada organização, e cada papel vendo só o que lhe cabe.",
+              "links": [
+                {
+                  "label": "Do console vazio ao primeiro app em uso",
+                  "href": "#mf-110-primeiro-app"
+                },
+                {
+                  "label": "O que chega em cada onda",
+                  "href": "#mf-110-ondas"
+                }
+              ]
             }
           ]
         },
         {
-          "label": "Decisões e acompanhamento",
-          "text": "O que já foi decidido e o que ainda falta.",
+          "label": "Segunda versão",
+          "text": "O que chega depois da primeira versão: duas macro funcionalidades.",
           "items": [
             {
-              "title": "As decisões e o que falta decidir",
-              "summary": "As 18 decisões, com os motivos, e o que ainda falta decidir, por papel.",
-              "href": "decisoes.html",
+              "id": "mf-111",
+              "source": "content/mf-111.html",
+              "code": "MF-111",
+              "badge": "2ª versão",
+              "title": "Dar à IA as ferramentas da empresa, só para leitura",
+              "summary": "O owner da organização libera, uma a uma, as ferramentas de leitura da empresa para a IA dos apps, e o mAIg faz cada chamada no lugar do app e a anota no registro.",
               "links": [
                 {
-                  "label": "As 18 decisões",
-                  "href": "#decisoes-decisao-1-o-nome"
+                  "label": "Toda ferramenta nasce bloqueada",
+                  "href": "#mf-111-ferramentas"
                 },
                 {
-                  "label": "O que falta decidir aqui",
-                  "href": "#decisoes-falta-decidir"
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-111-faq"
                 }
-              ],
-              "badge": "9 a decidir"
+              ]
+            },
+            {
+              "id": "mf-112",
+              "source": "content/mf-112.html",
+              "code": "MF-112",
+              "badge": "2ª versão",
+              "title": "Entrar com o login que a empresa já usa",
+              "summary": "A pessoa entra nos apps com a conta que a TI da empresa já lhe deu, ao lado do usuário e senha e da conta Google; quem a empresa desliga perde os apps.",
+              "links": [
+                {
+                  "label": "O que chega em cada onda",
+                  "href": "#mf-112-ondas"
+                },
+                {
+                  "label": "Perguntas frequentes",
+                  "href": "#mf-112-faq"
+                }
+              ]
             }
           ]
         }
       ]
     }
-  }
+  },
+  "sections": [
+    {
+      "id": "como-ler",
+      "title": "Como ler esta documentação",
+      "summary": "O que é o mAIg, o que é uma macro funcionalidade, as ondas da primeira versão, os papéis e as palavras que aparecem nas páginas.",
+      "category": "Para começar",
+      "source": "content/como-ler.html"
+    }
+  ],
+  "diagrams": [
+    {
+      "id": "mf-101-do-login-ao-pedido",
+      "title": "Do login ao pedido conferido",
+      "description": "O caminho da pessoa, do login no endereço do mAIg ao pedido conferido duas vezes: a pessoa pode usar o app, e o app pode pedir aquilo.",
+      "source": "diagramas/mf-101-do-login-ao-pedido.html"
+    },
+    {
+      "id": "mf-102-do-pedido-a-linha",
+      "title": "Do pedido à linha do registro",
+      "description": "O caminho de um pedido de um app: o núcleo confere a permissão, lê o banco ou pede à IA, anota a linha e só então devolve a resposta; o pedido sem permissão vira uma linha “recusado”, e o que não consegue ser anotado é recusado.",
+      "source": "diagramas/mf-102-do-pedido-a-linha.html"
+    },
+    {
+      "id": "mf-103-vida-do-contrato",
+      "title": "A vida do contrato de um app",
+      "description": "Do kit instalado à conferência com a Maind, as situações do contrato (em vigor, perto do fim, em carência e parado), as duas formas de parar e a renovação, que traz o app de volta como estava.",
+      "source": "diagramas/mf-103-vida-do-contrato.html"
+    },
+    {
+      "id": "mf-104-vida-de-um-app",
+      "title": "A vida de um app numa organização",
+      "description": "Os estados de um app, do instalado ao desinstalado: o caminho até entrar em uso, as três formas de parar sem perder nada e os dois atos que apagam, que chegam na onda 1.1.",
+      "source": "diagramas/mf-104-vida-de-um-app.html"
+    },
+    {
+      "id": "mf-105-caminho-do-pedido",
+      "title": "O caminho de um pedido de dados",
+      "description": "Da pergunta nas telas do app à resposta pronta, com as duas conferências do núcleo do mAIg: a permissão, antes de ler o banco com a senha do cofre, e o teto, antes de a resposta sair",
+      "source": "diagramas/mf-105-caminho-do-pedido.html"
+    },
+    {
+      "id": "mf-106-um-pedido-de-ia",
+      "title": "Um pedido de IA, do módulo à resposta",
+      "description": "O caminho de um pedido de IA: o módulo pede, o núcleo confere o modelo, o limite e a camada, faz o pedido com a chave da empresa, conta o custo e anota; o pedido que não passa é recusado inteiro.",
+      "source": "diagramas/mf-106-um-pedido-de-ia.html"
+    },
+    {
+      "id": "mf-107-vida-da-organizacao",
+      "title": "A vida de uma organização",
+      "description": "Da criação, em configuração, à organização ativa e, na onda 1.1, ao encerramento, com a volta de 30 dias e o registro que sai com a desinstalação do app",
+      "source": "diagramas/mf-107-vida-da-organizacao.html"
+    },
+    {
+      "id": "mf-108-um-pedido-pela-ligacao",
+      "title": "Um pedido pela ligação de dentro para fora",
+      "description": "O caminho de um pedido, da tela do app à resposta, pela ligação que o mAIg abre de dentro da rede do cliente, com o que acontece quando ela cai no meio do trabalho.",
+      "source": "diagramas/mf-108-um-pedido-pela-ligacao.html"
+    },
+    {
+      "id": "mf-109-porta-unica",
+      "title": "Da pergunta à resposta, sempre pelo núcleo",
+      "description": "O caminho de uma pergunta: o módulo do app pede ao núcleo os dados e a IA, o núcleo confere, faz o pedido e anota, e só a resposta pronta volta à nuvem do app.",
+      "source": "diagramas/mf-109-porta-unica.html"
+    },
+    {
+      "id": "mf-110-primeiro-app",
+      "title": "Do console vazio ao primeiro app em uso",
+      "description": "Quem faz cada passo no console, do servidor de e-mail testado à primeira pergunta: o administrador da instância, o owner da organização, quem usa o app e o auditor.",
+      "source": "diagramas/mf-110-primeiro-app.html"
+    },
+    {
+      "id": "mf-111-da-pergunta-a-ferramenta",
+      "title": "Uma pergunta que usa o servidor MCP",
+      "description": "Quem fala com quem quando a IA usa uma ferramenta da empresa: o módulo do app pede, o núcleo do mAIg confere, chama o servidor MCP e anota no registro, e só a resposta pronta volta à nuvem do app.",
+      "source": "diagramas/mf-111-da-pergunta-a-ferramenta.html"
+    },
+    {
+      "id": "mf-112-login-da-empresa",
+      "title": "Entrar com o login da empresa",
+      "description": "Do dia em que a TI prepara o provedor de identidade da empresa até a pessoa desligada sair dos apps: a entrada pela tela da empresa, a conferência do cadastro, o passe de cada app e os dois relógios.",
+      "source": "diagramas/mf-112-login-da-empresa.html"
+    }
+  ]
 }

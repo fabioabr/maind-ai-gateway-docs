@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="As funcionalidades do mAIg explicadas uma a uma, em linguagem simples: o que cada uma faz, em que onda chega, como funciona na prática e as dúvidas mais comuns." />
+<link rel="icon" href="assets/logo-claro.png" />
+<title>MF-104 · Instalar, pausar e retirar apps sem refazer nada — Maind AI Gateway (mAIg)</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
+</head>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Maind AI Gateway (mAIg)"><img class="logo-light" src="assets/logo-claro.png" alt="Maind AI Gateway (mAIg)" /><img class="logo-dark" src="assets/logo-escuro.png" alt="Maind AI Gateway (mAIg)" /></a><div class="div"></div><div class="doc-meta"><b>Maind AI Gateway (mAIg) · Documentação</b><small>Documentação do produto</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Maind AI Gateway (mAIg)</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Para começar</h6><ul><li><a href="como-ler.html">Como ler esta documentação</a></li></ul><h6>Primeira versão</h6><ul class="side-sub"><li><a href="mf-101.html">MF-101 · Entrar e agir só dentro do que foi permitido</a></li><li><a href="mf-102.html">MF-102 · Saber quem pediu o quê, quando e com que dado</a></li><li><a href="mf-103.html">MF-103 · Contratar e liberar um app com segurança</a></li><li><a href="mf-104.html" class="active">MF-104 · Instalar, pausar e retirar apps sem refazer nada</a></li><li><a href="mf-105.html">MF-105 · Usar os bancos da empresa sem expor a senha</a></li><li><a href="mf-106.html">MF-106 · Controlar quais IAs, quanto e a que custo</a></li><li><a href="mf-107.html">MF-107 · Atender várias organizações numa instalação, sem misturá-las</a></li><li><a href="mf-108.html">MF-108 · Funcionar sem abrir porta de entrada na rede</a></li><li><a href="mf-109.html">MF-109 · Rodar cada app isolado dentro do mAIg</a></li><li><a href="mf-110.html">MF-110 · Configurar tudo num lugar só</a></li></ul><h6>Segunda versão</h6><ul class="side-sub"><li><a href="mf-111.html">MF-111 · Dar à IA as ferramentas da empresa, só para leitura</a></li><li><a href="mf-112.html">MF-112 · Entrar com o login que a empresa já usa</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Maind AI Gateway (mAIg)</a><span class="sep">/</span><span>Primeira versão</span><span class="sep">/</span><span class="now">Instalar, pausar e retirar apps sem refazer nada</span></nav><span class="doc-eyebrow">Primeira versão</span><div class="dx-macro-topo"><span class="dx-codigo">MF-104</span><span class="dx-selo">1ª versão</span></div><h1 class="doc-h1">Instalar, pausar e retirar apps sem refazer nada</h1><p class="doc-lead">Tudo o que acontece com um app depois de contratado: instalar, liberar, pausar, suspender, parar e atualizar sem refazer nada; retirar e desinstalar, os únicos que apagam, chegam na onda 1.1.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#mf-104-o-que-e">O que é, em poucas palavras</a><small>1 tópico</small></h3><ul><li><a href="#mf-104-quem-faz">Quem faz o quê</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-104-ciclo">O ciclo de vida de um app</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-104-instalar">Instalar e liberar: dois passos, de dois papéis</a><small>1 tópico</small></h3><ul><li><a href="#mf-104-configuracao">As quatro partes da configuração</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-104-pausar">Pausar e retomar: o freio do owner da organização</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-104-suspender">A suspensão de emergência: o freio da instância</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-104-fim-do-contrato">Quando o contrato acaba: o app para, e a configuração fica</a><small>1 tópico</small></h3><ul><li><a href="#mf-104-guardado">O que fica guardado, e o que é da organização</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-104-atualizar">Atualizar sem reinstalar</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-104-retirar">Retirar o app da organização</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-104-desinstalar">Desinstalar: o app sai da instância</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-104-varias-organizacoes">Uma instância, várias organizações: cada uma no seu passo</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-104-ondas">O que chega em cada onda</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-104-bastidores">Nos bastidores, sem complicar</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-104-limites">O que esta funcionalidade não faz</a><small>1 tópico</small></h3><ul><li><a href="#mf-104-ligadas">Funcionalidades ligadas a esta</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-104-faq">Perguntas frequentes</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><p>Quem já bloqueou um cartão de crédito por um tempo conhece a ideia: o cartão para de funcionar, mas o limite, a senha e o histórico continuam lá, e desbloquear é um gesto só. Cancelar o cartão é outra coisa: um ato pensado, e não um efeito colateral. No mAIg, um app vive do mesmo jeito.</p>
+<p>Depois de contratado, o app é instalado, liberado e configurado. Daí em diante, ele pode ser pausado, suspenso numa emergência, parar no fim do contrato e ser atualizado, e em nenhum desses casos alguém precisa refazer a configuração. Só dois atos apagam alguma coisa, e os dois chegam na onda 1.1: retirar o app de uma organização e desinstalá-lo da instância. Esta página conta a vida de um app, do primeiro dia ao último.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Primeira versão, em construção</b><p>O que está aqui é o que a primeira versão do mAIg vai entregar, em duas ondas: a onda 1.0, o mínimo para o primeiro app funcionar, e a onda 1.1, que completa a governança. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-104-o-que-e">O que é, em poucas palavras</h2>
+<p>A gestão dos apps é tudo o que acontece com um app depois de contratado. Cada instalação física do mAIg é uma <strong>instância</strong>, e dentro dela cada cliente trabalha numa <strong>organização</strong>, o espaço com os seus próprios apps e as suas próprias regras (veja <a href="mf-107.html">Atender várias organizações numa instalação, sem misturá-las (MF-107)</a>). Esta funcionalidade cuida de seis coisas:</p>
+<ul>
+  <li><strong>Instalar o app uma vez por instância</strong>, com a assinatura da Maind conferida, e liberá-lo e configurá-lo em cada organização que o contratou.</li>
+  <li><strong>Pausar e retomar</strong> o app numa organização, sem apagar nada.</li>
+  <li><strong>Suspender o app numa emergência</strong>, em todas as organizações da instância de uma vez, guardando a prova do que aconteceu.</li>
+  <li><strong>Guardar a configuração quando o contrato acaba</strong>, para o app voltar como estava na renovação.</li>
+  <li><strong>Atualizar o app por cima</strong>, sem reinstalar e sem perder a configuração.</li>
+  <li><strong>Retirar e desinstalar</strong>, os dois únicos atos que apagam alguma coisa, sempre com aviso. Os dois chegam na onda 1.1.</li>
+</ul>
+<h3 class="doc-h3" id="mf-104-quem-faz">Quem faz o quê</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Administrador da instância</strong></td><td>Cuida da instalação física do mAIg: é a TI do cliente, quando o mAIg roda na rede da empresa, ou a equipe da Maind, quando roda na hospedagem da Maind. Instala, suspende e atualiza os apps e, a partir da onda 1.1, os desinstala, sempre na instância inteira.</td></tr>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Responde pela organização. Libera e configura cada app para ela, pausa, retoma e, a partir da onda 1.1, retira.</td></tr>
+      <tr class="zebra"><td><strong>Equipe da Maind</strong></td><td>Entra pelo contrato: libera o app na contratação, e o app para por uma ação manual dela, só em três casos (falta de pagamento depois dos avisos, incidente de segurança ou ordem judicial), ou pela licença vencida.</td></tr>
+      <tr class="zebra"><td><strong>Auditor</strong></td><td>A pessoa nomeada pelo owner da organização que só lê o registro. Encontra ali a história inteira do app enquanto ele estiver instalado.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Os papéis estão explicados em <a href="como-ler.html#como-ler-papeis">Quem é quem</a>, e as demais palavras, em <a href="como-ler.html#glossario">Palavras que aparecem nas páginas</a>. O <strong>registro</strong> é a anotação de tudo o que os apps pedem ao mAIg em nome de cada organização (veja <a href="mf-102.html">Saber quem pediu o quê, quando e com que dado (MF-102)</a>).</p>
+
+<h2 class="doc-h2" id="mf-104-ciclo">O ciclo de vida de um app</h2>
+<p>Ao longo da vida, um app muda de situação muitas vezes: uma pausa para conferir algo, uma renovação atrasada, uma versão nova. Cada mudança é um ato de um papel. Os estados instalado, suspenso e desinstalado valem para a instância inteira; os outros valem para cada organização.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Estado</th><th>O que quer dizer</th><th>Quem leva a ele</th><th>Onda</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Instalado</strong></td><td>O app está na instância, mas ainda não atende nenhuma organização.</td><td>O administrador da instância, ao instalar.</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>Em configuração</strong></td><td>O app foi liberado para a organização, mas ainda falta o mínimo para funcionar.</td><td>O owner da organização, ao começar a configurar.</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>Em uso</strong></td><td>O app atende a organização, com a configuração dela.</td><td>O owner da organização, ao completar o mínimo.</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>Pausado</strong></td><td>O app não atende a organização, mas tudo fica guardado.</td><td>O owner da organização, ao pausar; ele mesmo retoma.</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>Suspenso</strong></td><td>O app não atende nenhuma organização da instância, mas tudo fica guardado.</td><td>O administrador da instância, numa emergência; ele mesmo retoma.</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>Parado</strong></td><td>O contrato acabou e o app parou; a configuração fica guardada.</td><td>A licença vencida ou uma ação manual da Maind; só a renovação o traz de volta.</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>Retirado</strong></td><td>A organização deixou de ter o app, e a configuração dela foi apagada.</td><td>O owner da organização, ao retirar.</td><td><span class="badge badge--info">Onda 1.1</span></td></tr>
+      <tr class="zebra"><td><strong>Desinstalado</strong></td><td>O app saiu da instância, e os dados dele foram excluídos.</td><td>O administrador da instância, ao desinstalar.</td><td><span class="badge badge--info">Onda 1.1</span></td></tr>
+    </tbody>
+  </table>
+</div>
+<p>O mesmo ciclo em desenho: o caminho até o app entrar em uso, as três formas de parar sem perder nada e os dois atos que apagam.</p>
+<figure class="dx-diagrama"><figcaption><b>A vida de um app numa organização</b> <span>Os estados de um app, do instalado ao desinstalado: o caminho até entrar em uso, as três formas de parar sem perder nada e os dois atos que apagam, que chegam na onda 1.1.</span><a href="media/diagramas/mf-104-vida-de-um-app.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/mf-104-vida-de-um-app.html?embutido=1" title="A vida de um app numa organização" loading="lazy"></iframe></figure>
+<p>Na onda 1.0, um app só para: pela pausa, pela suspensão, pelo fim da licença ou pela ação manual da Maind, e nada se apaga. Até a onda 1.1, o app que a organização não quer mais fica pausado, e o instalado por engano continua instalado, com a configuração e o registro guardados.</p>
+
+<h2 class="doc-h2" id="mf-104-instalar">Instalar e liberar: dois passos, de dois papéis</h2>
+<p>Um app tem duas partes. A <strong>parte de fora</strong> roda fora do mAIg e tem as telas. O <strong>módulo</strong> é a parte interna, que roda isolada dentro do mAIg e só usa os serviços que o mAIg oferece a todo app (veja <a href="mf-109.html">Rodar cada app isolado dentro do mAIg (MF-109)</a>). Digamos que uma rede de farmácias contratou o primeiro app, com o mAIg na própria rede. Ana, da TI do cliente, é a administradora da instância; Marcos, diretor de operações, é o owner da organização.</p>
+<ol class="steps">
+  <li><div><h4>A Maind libera o app</h4><p>Na contratação, a Maind libera o app para a organização da rede, numa conferência entre o mAIg e a Maind chamada handshake contratual (veja <a href="mf-103.html">Contratar e liberar um app com segurança (MF-103)</a>).</p></div></li>
+  <li><div><h4>A administradora da instância instala</h4><p>Ana instala o app na instância, uma vez só, mesmo que várias organizações dela venham a usá-lo. Antes, o mAIg confere a assinatura da Maind no módulo e recusa um módulo sem assinatura ou alterado no caminho.</p></div></li>
+  <li><div><h4>O owner da organização libera e configura</h4><p>Instalado, o app ainda não atende ninguém. Marcos o libera para a organização e o configura no console, a tela do mAIg onde tudo se ajusta (veja <a href="mf-110.html">Configurar tudo num lugar só (MF-110)</a>).</p></div></li>
+  <li><div><h4>O app entra em uso</h4><p>Cada app declara, ao ser instalado, o mínimo de que precisa para funcionar; o primeiro app, por exemplo, precisa de ao menos um banco e de uma IA. Enquanto falta algo, o app fica “em configuração”, e a tela dele no console diz a Marcos o que falta. Completo o mínimo, o mAIg o marca “em uso” sozinho.</p></div></li>
+  <li><div><h4>As pessoas passam a usar</h4><p>Marcos dá acesso às pessoas da organização, como a gerente comercial Carla (veja <a href="mf-101.html">Entrar e agir só dentro do que foi permitido (MF-101)</a>).</p></div></li>
+</ol>
+<h3 class="doc-h3" id="mf-104-configuracao">As quatro partes da configuração</h3>
+<ul>
+  <li><strong>As permissões:</strong> o que o app pode pedir ao mAIg nesta organização, escolhido da lista com que o app foi registrado.</li>
+  <li><strong>Os bancos que o app lê</strong>, sempre só para leitura (veja <a href="mf-105.html">Usar os bancos da empresa sem expor a senha (MF-105)</a>).</li>
+  <li><strong>As IAs que o app usa</strong>, com os modelos e os limites (veja <a href="mf-106.html">Controlar quais IAs, quanto e a que custo (MF-106)</a>).</li>
+  <li><strong>Os ajustes:</strong> o que mais o app permite ajustar para a organização.</li>
+</ul>
+<p>São dois atos, de papéis diferentes, porque cada organização escolhe o que usa, e quem escolhe é alguém dela. É como num prédio: a administração decide quais serviços o prédio oferece, como uma lavanderia, e cada condômino decide se assina e como usa. A diferença é que, no mAIg, a organização contrata o app com a Maind, e o administrador da instância nem vê o que o owner configurou. Um app instalado que a organização não contratou não aparece para o owner como disponível: o caminho é contratar. E o cockpit de ativação, uma tela única com tudo o que falta na organização e em cada app e o passo que resolve cada pendência, chega na onda 1.1.</p>
+
+<h2 class="doc-h2" id="mf-104-pausar">Pausar e retomar: o freio do owner da organização</h2>
+<p>Há momentos em que o owner precisa que o app pare de ler os dados sem desmontar nada: uma troca no banco de dados, uma conferência da área de segurança, uma dúvida sobre os limites de gasto. Para isso existe a pausa. Só o owner da organização pausa, e só na organização dele.</p>
+<ul>
+  <li><strong>Na pausa,</strong> o mAIg deixa de atender os pedidos do app na organização: o módulo não lê banco nenhum nem usa IA nenhuma em nome dela. A configuração e o registro ficam guardados.</li>
+  <li><strong>Na volta,</strong> o app está como estava. Retomar é um gesto só, do owner da organização.</li>
+  <li><strong>O que a pausa não muda:</strong> o contrato segue correndo, com as mesmas datas; as outras organizações da instância seguem usando o app; e os outros apps da organização não são afetados.</li>
+  <li><strong>O que as pessoas veem:</strong> a tela do app nesse tempo é do próprio app. O mAIg dá a luz de estado, na onda 1.0, e a página de status, na onda 1.1, que mostra o app pausado (veja <a href="mf-108.html">Funcionar sem abrir porta de entrada na rede (MF-108)</a>). Se o owner esquece o app pausado, as pessoas ficam sem ele até alguém retomá-lo; o console mostra o app “pausado”, com a data da pausa.</li>
+</ul>
+<p>Por exemplo: a TI da rede de farmácias vai trocar o servidor do banco de vendas. Marcos pausa o app por um dia, e Carla não consegue usá-lo nesse dia. Terminada a troca, Marcos o retoma, e Carla volta a trabalhar sem nada refeito. Se o endereço do banco mudou, Marcos o corrige no cadastro do banco, e não na configuração do app.</p>
+
+<h2 class="doc-h2" id="mf-104-suspender">A suspensão de emergência: o freio da instância</h2>
+<p>Quando um app faz o que não devia, o administrador da instância o suspende de uma vez, em todas as organizações da instância. É como o registro geral de água de um prédio: o zelador fecha a água de todos os apartamentos quando um cano estoura, e fechar o registro não apaga nada. Na casa do cliente, quem suspende é a TI do cliente; na hospedagem da Maind, a equipe da Maind, com a autorização de duas pessoas.</p>
+<p><strong>Suspender não é pausar.</strong> A pausa é do owner da organização, vale só na organização dele e serve ao dia a dia. A suspensão é do administrador da instância, vale para todas as organizações da instância e serve à emergência. Nas duas, a configuração de cada organização e o registro ficam guardados, porque o registro é a prova do que aconteceu, e quem parou é quem retoma. Na suspensão, os owners e o auditor de cada organização recebem um aviso de segurança, que a organização não pode desligar, a suspensão fica anotada no registro de cada organização que usa o app, e os outros apps da instância seguem funcionando.</p>
+<p>Por exemplo: Ana nota que o app está lendo do banco de vendas muito mais do que o normal e o suspende no painel da instância. Todas as organizações da instância, como a da rede de farmácias e a da distribuidora do mesmo grupo, deixam de usá-lo na hora, e os owners e o auditor de cada uma são avisados. Renata, a auditora da organização, consulta no registro o que o app leu, porque nada foi apagado. A Maind corrige o app, Ana instala a versão nova e o retoma, e Carla volta a usá-lo sem nada refeito. O risco é o de um gesto errado parar o app em todas as organizações de uma vez. Nesse caso, as pessoas ficam sem ele até a retomada, e o registro mostra quem suspendeu e quando.</p>
+
+<h2 class="doc-h2" id="mf-104-fim-do-contrato">Quando o contrato acaba: o app para, e a configuração fica</h2>
+<p>Quando o contrato acaba, o app para por uma ação manual da Maind ou pela licença vencida, o documento assinado pela Maind que diz até quando vale o contrato, com a carência (veja <a href="mf-103.html">MF-103</a>). A configuração fica guardada até a organização renovar ou até o owner da organização apagá-la, o que só existe a partir da onda 1.1.</p>
+<ul>
+  <li><strong>Parado não é pausado.</strong> O app pausado volta quando o owner quiser; o parado só volta com a renovação do contrato. Nos dois casos, a configuração e o registro ficam guardados.</li>
+  <li><strong>A renovação devolve o estado de antes.</strong> Se o app estava em uso, volta em uso; se estava pausado quando o contrato acabou, volta pausado, e o owner o retoma quando quiser.</li>
+  <li><strong>Nada se apaga por prazo.</strong> A configuração não some na hora em que o app para, nem depois de um tempo: quem renova não refaz nada. Em troca, fica uma configuração parada, sem uso, até alguém decidir.</li>
+</ul>
+<h3 class="doc-h3" id="mf-104-guardado">O que fica guardado, e o que é da organização</h3>
+<p>A configuração guardada é a de um app numa organização: as permissões que o owner deu ao app, a lista dos bancos que ele lê, os modelos de IA que ele usa com os limites e os ajustes. É tudo o que o owner precisaria refazer se ela se perdesse. Já o cadastro de cada banco, com a senha guardada no cofre do mAIg, e as chaves dos provedores de IA são da organização e podem servir a vários apps. Por isso, apagar a configuração de um app não apaga o banco nem a chave: apaga só a ligação entre o app e eles. É como a mesa de um funcionário em licença: os papéis ficam na ordem em que ele deixou, até ele voltar ou até a empresa decidir esvaziá-la. A diferença é que, no mAIg, a organização segue usando os mesmos bancos e as mesmas chaves em outros apps enquanto a configuração espera. Na onda 1.0, o owner já pode apagar, um a um, o cadastro de um banco e a chave de uma IA, que são da organização, e não do app.</p>
+
+<h2 class="doc-h2" id="mf-104-atualizar">Atualizar sem reinstalar</h2>
+<p>Quando a Maind lança uma versão nova de um app, o administrador da instância a instala por cima da anterior, uma vez para a instância. Antes, o mAIg confere a assinatura da Maind e recusa a versão sem assinatura ou alterada. O ato fica anotado no registro de cada organização que usa o app, e o auditor sabe quando o app mudou de versão e quem o mudou. Atualizar não é reinstalar: a configuração e o registro ficam como estavam.</p>
+<ul>
+  <li><strong>Uma permissão nova chega desligada.</strong> Se a versão nova pede algo que a anterior não pedia, o app segue com as permissões de antes até o owner da organização decidir liberar a nova.</li>
+  <li><strong>Uma instalação, uma versão.</strong> Como o app é instalado uma vez por instância, todas as organizações dela usam a mesma versão; uma organização não escolhe, sozinha, ficar numa versão mais velha.</li>
+  <li><strong>Na casa do cliente, a TI atualiza no tempo dela, dentro de um prazo.</strong> Ela pode adiar a versão nova do módulo de um app; vencido o prazo, só aquele app deixa de atender, e os outros seguem. A pessoa vê um aviso próprio, “Atualização necessária”, e não um erro. Enquanto a Maind não disser outro número, o prazo do módulo é o do próprio mAIg: até 30 dias para uma versão nova e até 7 para uma correção de segurança.</li>
+</ul>
+<p>O próprio mAIg segue outro caminho: ele baixa a versão nova sozinho e, na casa do cliente, só a instala com o aval da TI do cliente. Se o mAIg ficar vencido, todos os apps recusam a conversa até ele ser atualizado (veja <a href="mf-107.html">MF-107</a>). A página de status, que mostra o motivo da parada, chega na onda 1.1.</p>
+
+<h2 class="doc-h2" id="mf-104-retirar">Retirar o app da organização</h2>
+<p>Retirar é o owner da organização tirar o app da organização dele: o app deixa de atendê-la, e a configuração dela é apagada. É o único ato do owner que obriga a refazer algo. Retirar chega na onda 1.1, junto com a cópia assinada do registro.</p>
+<ul>
+  <li><strong>Só o owner da organização retira,</strong> e só na organização dele. Nem o administrador da instância nem a equipe da Maind retiram no lugar dele: a retirada à força não entra na primeira versão.</li>
+  <li><strong>O que se apaga e o que fica.</strong> Apaga-se a configuração do app na organização. Fica o registro do que o app pediu em nome dela, que o owner e o auditor continuam consultando até o app ser desinstalado da instância.</li>
+  <li><strong>O aviso e a cópia.</strong> Ao retirar, o console avisa o owner de que o registro do app só será excluído na desinstalação e de que, até lá, ele pode baixar uma cópia. Os auditores também podem baixá-la, num arquivo assinado pelo mAIg.</li>
+  <li><strong>O contrato e as outras organizações não mudam.</strong> Retirar o app não cancela o contrato: se a organização quiser o app de novo, com o contrato valendo, o owner o libera e configura do zero. E o app segue instalado na instância e em uso nas outras organizações que o têm.</li>
+</ul>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>Retirar não é pausar. Quem retira pensando que pausava perde a configuração e precisa refazê-la. Por isso, a confirmação diz com todas as letras que a configuração será apagada e lembra que a pausa existe para o caso contrário.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-104-desinstalar">Desinstalar: o app sai da instância</h2>
+<p>Desinstalar é o administrador da instância tirar o app da instância inteira. Desinstalado o app, os dados dele são excluídos: o registro do que ele pediu e as configurações dele em todas as organizações. A exclusão não tem volta. Desinstalar chega na onda 1.1.</p>
+<ol class="steps">
+  <li><div><h4>A trava confere as organizações</h4><p>A desinstalação só vai adiante quando nenhuma organização tem o app em configuração, em uso, pausado ou parado com a configuração guardada: todas o retiraram ou foram encerradas. O console dele mostra se alguma organização ainda tem o app, sem mostrar a configuração dela.</p></div></li>
+  <li><div><h4>Todos com registro no app são avisados</h4><p>Toda desinstalação começa com um aviso de segurança, com prazo, aos owners e aos auditores de toda organização que tem registro no app, inclusive as que já o retiraram e as encerradas que o tinham. Dentro do prazo, todos podem baixar a cópia assinada do registro.</p></div></li>
+  <li><div><h4>No fim do prazo, o app sai</h4><p>Se, no fim do prazo, nenhuma organização ativa tiver o app, a desinstalação se conclui. Quem desinstalou e quando ficam no registro próprio da instância, onde só se acrescenta e que o administrador da instância lê.</p></div></li>
+</ol>
+<p>O mAIg não exclui uma organização: <strong>encerra</strong>. Encerrar retira todos os apps dela, com o aviso e a cópia do registro, e tem volta por 30 dias; o encerramento chega inteiro na onda 1.1 (veja <a href="mf-107.html">MF-107</a>). A organização encerrada não segura a desinstalação. O que segura é um pedido de volta à espera de execução: a volta é executada primeiro, e a organização que voltou segura a desinstalação como qualquer outra. A encerrada que deixa passar o prazo do aviso ainda pode voltar dentro dos 30 dias, mas recebe só o que ainda existir.</p>
+<p>E se uma organização guarda o app e não responde? A trava impede a desinstalação, e ninguém retira o app no lugar do owner. O impasse se resolve pela troca do owner da organização que não responde, feita pelo administrador da instância, ou pelo encerramento da organização. Os dois caminhos levam dias, e o app fica instalado, sem uso, enquanto isso.</p>
+
+<h2 class="doc-h2" id="mf-104-varias-organizacoes">Uma instância, várias organizações: cada uma no seu passo</h2>
+<p>O app é um só na instância, mas cada organização o configura, pausa e retira por conta própria, e o que uma faz não alcança as outras. Numa instância da Maind, por exemplo, convivem a organização A, de uma empresa, e a organização B, de outra, e a equipe da Maind faz o papel de administrador da instância. Ela instala o app uma vez, e o owner de cada organização o libera e configura com os seus bancos e as suas IAs. O owner da A pausa o app para trocar o banco de vendas, e na B ninguém percebe nada. A equipe da Maind atualiza o app: as duas passam à versão nova com a configuração intacta, e a A continua pausada. Já na onda 1.1, a empresa da A deixa de usar o app, e o owner o retira: a configuração da A é apagada, e o registro dela fica, porque o app segue instalado. E a equipe da Maind não consegue desinstalá-lo, porque a B ainda o usa.</p>
+
+<h2 class="doc-h2" id="mf-104-ondas">O que chega em cada onda</h2>
+<p>Das 14 capacidades, 8 chegam na onda 1.0, 5 na onda 1.1 e 1 não entra. A regra que resume: a onda 1.0 liga e para; a onda 1.1 desfaz e encerra (veja <a href="como-ler.html#como-ler-ondas">As ondas da primeira versão</a>).</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Capacidade</th><th>Onda</th><th>Em poucas palavras</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Instalar o app na instância, uma vez, com a assinatura do módulo conferida</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>O administrador da instância instala; um módulo sem a assinatura da Maind é recusado.</td></tr>
+      <tr class="zebra"><td><strong>Liberar e configurar o app em cada organização</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>O owner escolhe as permissões, os bancos, as IAs e os ajustes.</td></tr>
+      <tr class="zebra"><td><strong>O estado “em configuração” e o que falta, na tela do próprio app</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>O owner sabe por que o app ainda não atende.</td></tr>
+      <tr class="zebra"><td><strong>Pausar e retomar, pelo owner, só na organização dele</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>O freio do dia a dia, sem apagar nada.</td></tr>
+      <tr class="zebra"><td><strong>Suspender o app numa emergência, com aviso a cada owner</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>O app para em todas as organizações da instância, e a prova fica guardada.</td></tr>
+      <tr class="zebra"><td><strong>App parado no fim do contrato, com a configuração guardada</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>A renovação devolve o app como estava.</td></tr>
+      <tr class="zebra"><td><strong>Atualizar o app por cima, com a assinatura conferida</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>A configuração fica, e uma permissão nova chega desligada.</td></tr>
+      <tr class="zebra"><td><strong>Adiar a versão nova do módulo dentro do prazo</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>Vencido o prazo, só aquele app deixa de atender, com o aviso “Atualização necessária”.</td></tr>
+      <tr class="zebra"><td><strong>Apagar a configuração guardada de um app parado</strong></td><td><span class="badge badge--info">Onda 1.1</span></td><td>Anda junto com retirar.</td></tr>
+      <tr class="zebra"><td><strong>Retirar o app da organização, com aviso e direito à cópia do registro</strong></td><td><span class="badge badge--info">Onda 1.1</span></td><td>Apaga a configuração; o registro fica até a desinstalação.</td></tr>
+      <tr class="zebra"><td><strong>Desinstalar o app da instância, com a trava</strong></td><td><span class="badge badge--info">Onda 1.1</span></td><td>Só se conclui quando nenhuma organização ativa tem o app.</td></tr>
+      <tr class="zebra"><td><strong>O aviso de segurança, com prazo, que abre toda desinstalação</strong></td><td><span class="badge badge--info">Onda 1.1</span></td><td>Chega a toda organização com registro no app, inclusive as que o retiraram e as encerradas.</td></tr>
+      <tr class="zebra"><td><strong>O pedido de volta de uma organização encerrada segura a desinstalação</strong></td><td><span class="badge badge--info">Onda 1.1</span></td><td>A volta é executada primeiro.</td></tr>
+      <tr class="zebra"><td><strong>Retirar o app à força, pelo administrador da instância ou pela Maind</strong></td><td><span class="badge">Não entra</span></td><td>Retirar é do owner; o impasse se resolve pela troca do owner ou pelo encerramento.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="doc-h2" id="mf-104-bastidores">Nos bastidores, sem complicar</h2>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Instalar é registrar e pôr para rodar.</strong> O mAIg anota o certificado da parte de fora do app, uma espécie de carteira de identidade digital, e a lista do que o app pode pedir, e põe o módulo para rodar.</li>
+  <li><strong>Cada versão do módulo é assinada pela Maind.</strong> O mAIg confere a assinatura na primeira instalação e em cada atualização, para que ninguém ponha um módulo falso dentro da rede do cliente.</li>
+  <li><strong>O administrador da instância vê pouco das organizações.</strong> Vê as instalações, o estado e as versões de cada app e se alguma organização ainda o tem, mas não a configuração delas nem o registro.</li>
+  <li><strong>O registro anota quem gere os apps.</strong> Instalar, atualizar e suspender um app viram linhas no registro de cada organização que o usa; o administrador da instância só escreve a linha, sem lê-la. A desinstalação fica no registro da instância.</li>
+  <li><strong>Não há prazo de guarda.</strong> O registro de um app só sai na desinstalação. Em troca, o volume só cresce, e guardar dados de pessoas sem prazo pede cuidado com a lei de proteção de dados pessoais.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-104-limites">O que esta funcionalidade não faz</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Contratar o app e tratar o fim e a renovação do contrato</strong></td><td>A contratação, o kit de instalação, o handshake contratual e a licença são da <a href="mf-103.html">MF-103</a>.</td></tr>
+      <tr class="zebra"><td><strong>Isolar o módulo dentro do mAIg</strong></td><td>Impedir que um módulo prejudique os outros é da <a href="mf-109.html">MF-109</a>. Se o problema é o que o app faz, vale a suspensão.</td></tr>
+      <tr class="zebra"><td><strong>Cadastrar os bancos e as chaves de IA</strong></td><td>Os bancos e as senhas são da <a href="mf-105.html">MF-105</a>; as chaves, os modelos, os limites e o custo da IA, da <a href="mf-106.html">MF-106</a>. Aqui o app só ganha a ligação com eles.</td></tr>
+      <tr class="zebra"><td><strong>Dar acesso às pessoas e definir as regras das permissões</strong></td><td>É da <a href="mf-101.html">MF-101</a>.</td></tr>
+      <tr class="zebra"><td><strong>Guardar e consultar o registro</strong></td><td>É da <a href="mf-102.html">MF-102</a>, que também faz a cópia assinada.</td></tr>
+      <tr class="zebra"><td><strong>Criar e encerrar organizações e atualizar o próprio mAIg</strong></td><td>É da <a href="mf-107.html">MF-107</a>.</td></tr>
+      <tr class="zebra"><td><strong>Decidir o que a tela do app mostra com ele pausado ou parado</strong></td><td>É do próprio app. A luz de estado e a página de status são do mAIg (<a href="mf-108.html">MF-108</a>).</td></tr>
+      <tr class="zebra"><td><strong>Ter versões diferentes do mesmo app por organização</strong></td><td>Uma instalação, uma versão: as organizações da instância andam juntas.</td></tr>
+      <tr class="zebra"><td><strong>Retirar o app no lugar do owner da organização</strong></td><td><span class="badge">Não entra</span> Nem o administrador da instância nem a Maind retiram à força.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-104-ligadas">Funcionalidades ligadas a esta</h3>
+<p>Quase tudo o que um app faz no mAIg depende de ele estar instalado, liberado e em uso, e é aqui que isso se decide.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="mf-103.html">Contratar e liberar um app com segurança (MF-103)</a></td><td>Um app só é instalado depois de contratado e liberado pela Maind. O fim do contrato e a renovação são de lá.</td></tr>
+      <tr class="zebra"><td><a href="mf-101.html">Entrar e agir só dentro do que foi permitido (MF-101)</a></td><td>Define os papéis de quem instala e de quem libera, as permissões que o owner dá ao app e o acesso das pessoas.</td></tr>
+      <tr class="zebra"><td><a href="mf-102.html">Saber quem pediu o quê, quando e com que dado (MF-102)</a></td><td>Guarda o registro que fica na pausa, na retirada e na suspensão, e que sai na desinstalação.</td></tr>
+      <tr class="zebra"><td><a href="mf-105.html">Usar os bancos da empresa sem expor a senha (MF-105)</a></td><td>Os bancos que o app lê são cadastrados lá e continuam da organização quando o app sai.</td></tr>
+      <tr class="zebra"><td><a href="mf-106.html">Controlar quais IAs, quanto e a que custo (MF-106)</a></td><td>As IAs e os limites que o app usa vêm de lá, e as chaves continuam da organização.</td></tr>
+      <tr class="zebra"><td><a href="mf-107.html">Atender várias organizações numa instalação, sem misturá-las (MF-107)</a></td><td>Instalar é por instância, e liberar, pausar e retirar são por organização. O encerramento retira todos os apps.</td></tr>
+      <tr class="zebra"><td><a href="mf-109.html">Rodar cada app isolado dentro do mAIg (MF-109)</a></td><td>O módulo que se instala aqui roda isolado lá; a luz de estado e a página de status, que mostram a situação dos apps, são da <a href="mf-108.html">MF-108</a>.</td></tr>
+      <tr class="zebra"><td><a href="mf-110.html">Configurar tudo num lugar só (MF-110)</a></td><td>O console é onde o administrador da instância instala e o owner libera, configura, pausa e retira.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>O prazo do aviso que abre toda desinstalação.</strong> Quem recebe o aviso e o que segura a desinstalação já estão decididos; o prazo exato ainda será definido. Um prazo curto não dá tempo de baixar a cópia, e um longo segura um app instalado sem uso.</p><p><strong>A conversa entre versões.</strong> A regra já vale por prazo. A forma técnica que mantém um mAIg mais novo conversando com o módulo de um app mais antigo, e o contrário, enquanto o prazo corre ainda será definida.</p><p><strong>De onde vem o módulo.</strong> Se o módulo chega dentro do kit de instalação ou por outro caminho ainda será definido, na contratação (<a href="mf-103.html">MF-103</a>).</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-104-faq">Perguntas frequentes</h2>
+<div class="faq">
+  <details open>
+    <summary>Se pausarmos um app, vamos ter de configurar tudo de novo?</summary>
+    <div class="faq-body"><p>Não. Na pausa, o app deixa de atender a organização, mas as permissões, os bancos, as IAs e os ajustes ficam guardados, e o registro também. Retomar é um gesto só do owner da organização, e o app volta como estava. A pausa não mexe no contrato, que segue correndo com as mesmas datas.</p></div>
+  </details>
+  <details>
+    <summary>O contrato venceu e o app parou. Perdemos a configuração?</summary>
+    <div class="faq-body"><p>Não. A configuração fica guardada até a organização renovar ou até o owner da organização apagá-la, o que só existe a partir da onda 1.1. Na renovação, o app volta como estava: em uso, se estava em uso, ou pausado, se estava pausado.</p></div>
+  </details>
+  <details>
+    <summary>Qual é a diferença entre pausar, suspender e retirar?</summary>
+    <div class="faq-body"><p>A pausa é do owner da organização, vale só na organização dele e não apaga nada. A suspensão é do administrador da instância, vale para todas as organizações da instância, serve à emergência e também não apaga nada. Retirar é do owner da organização, apaga a configuração do app nela e guarda o registro até a desinstalação; chega na onda 1.1.</p></div>
+  </details>
+  <details>
+    <summary>A Maind pode parar ou retirar um app da nossa organização?</summary>
+    <div class="faq-body"><p>Retirar, não: ninguém retira um app no lugar do owner da organização. A Maind pode parar o app por uma ação manual, só em três casos (falta de pagamento depois dos avisos, incidente de segurança ou ordem judicial) e com duas pessoas autorizando (<a href="mf-103.html">MF-103</a>). Suspender numa emergência é do administrador da instância: na casa do cliente, a TI do cliente; na hospedagem da Maind, a equipe da Maind, também com a autorização de duas pessoas. Não existe um gesto da Maind que suspenda o app em todas as instâncias de uma vez.</p></div>
+  </details>
+  <details>
+    <summary>Uma versão nova do app apaga a nossa configuração?</summary>
+    <div class="faq-body"><p>Não. O administrador da instância instala a versão nova por cima, depois de o mAIg conferir a assinatura da Maind, e a configuração e o registro ficam como estavam. Se a versão nova pede uma permissão a mais, ela chega desligada até o owner da organização liberá-la. Na casa do cliente, a TI pode adiar a versão nova dentro do prazo; vencido o prazo, só aquele app deixa de atender.</p></div>
+  </details>
+  <details>
+    <summary>Quando um app é desinstalado, o que acontece com o registro dele?</summary>
+    <div class="faq-body"><p>O registro do app é excluído, junto com as configurações dele em todas as organizações, e a exclusão não tem volta. Antes, toda organização com registro no app recebe um aviso de segurança, com prazo, e o owner e os auditores podem baixar a cópia assinada. O administrador da instância só conclui a desinstalação quando nenhuma organização ativa tem mais o app. Tudo isso chega na onda 1.1.</p></div>
+  </details>
+</div>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="mf-103.html"><span class="cat">Anterior</span><h5>Contratar e liberar um app com segurança</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="mf-105.html"><span class="cat">Próxima</span><h5>Usar os bancos da empresa sem expor a senha</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.png" alt="Maind AI Gateway (mAIg)" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.png" alt="Maind AI Gateway (mAIg)" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind AI Gateway · Documentação do produto · primeira versão em construção</b></div></div><div class="ftr-center"><span class="ftr-tag">v1 em desenho, sem versão publicada · 11/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Maind AI Gateway (mAIg)</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#mf-104-o-que-e">O que é, em poucas palavras</a></li><li class="lvl-3"><a href="#mf-104-quem-faz">Quem faz o quê</a></li><li><a href="#mf-104-ciclo">O ciclo de vida de um app</a></li><li><a href="#mf-104-instalar">Instalar e liberar: dois passos, de dois papéis</a></li><li class="lvl-3"><a href="#mf-104-configuracao">As quatro partes da configuração</a></li><li><a href="#mf-104-pausar">Pausar e retomar: o freio do owner da organização</a></li><li><a href="#mf-104-suspender">A suspensão de emergência: o freio da instância</a></li><li><a href="#mf-104-fim-do-contrato">Quando o contrato acaba: o app para, e a configuração fica</a></li><li class="lvl-3"><a href="#mf-104-guardado">O que fica guardado, e o que é da organização</a></li><li><a href="#mf-104-atualizar">Atualizar sem reinstalar</a></li><li><a href="#mf-104-retirar">Retirar o app da organização</a></li><li><a href="#mf-104-desinstalar">Desinstalar: o app sai da instância</a></li><li><a href="#mf-104-varias-organizacoes">Uma instância, várias organizações: cada uma no seu passo</a></li><li><a href="#mf-104-ondas">O que chega em cada onda</a></li><li><a href="#mf-104-bastidores">Nos bastidores, sem complicar</a></li><li><a href="#mf-104-limites">O que esta funcionalidade não faz</a></li><li class="lvl-3"><a href="#mf-104-ligadas">Funcionalidades ligadas a esta</a></li><li><a href="#mf-104-faq">Perguntas frequentes</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
+</body>
+</html>

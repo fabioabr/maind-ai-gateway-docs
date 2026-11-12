@@ -1,0 +1,226 @@
+<p>Pense no aluguel de uma sala comercial. O contrato é assinado com a imobiliária, a chave é entregue a quem vai abrir a sala e, perto do vencimento, alguém avisa. Se a renovação emperrar na burocracia, ninguém troca a fechadura no dia seguinte. No mAIg, a sala é um <strong>app</strong> da Maind, e a chave é um <strong>kit de instalação</strong> com um certificado digital.</p>
+<p>Esta página conta o caminho inteiro: como a empresa contrata um app para uma organização, como o mAIg confere essa contratação com a Maind antes de liberar o app, e o que acontece quando o contrato chega ao fim. A regra que vale sempre: um app só funciona para a organização que o contratou, e nunca para de surpresa.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Primeira versão, em construção</b><p>O que está aqui é o que a primeira versão do mAIg vai entregar, em duas ondas: a onda 1.0, o mínimo para o primeiro app funcionar, e a onda 1.1, que completa a governança. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+
+<h3 id="mf-103-o-que-e">O que é, em poucas palavras</h3>
+<p>Contratar e liberar um app é o caminho pelo qual um app da Maind passa a valer para uma <strong>organização</strong>, o espaço de um cliente dentro do mAIg, com os seus próprios apps e as suas próprias regras. Esta funcionalidade cuida de seis coisas:</p>
+<ul>
+  <li><strong>O trâmite comercial.</strong> A empresa e a Maind fecham qual app, para quais organizações e até quando.</li>
+  <li><strong>O kit de instalação.</strong> A Maind entrega um kit para cada app de cada organização, com o certificado digital que prova a contratação.</li>
+  <li><strong>A conferência com a Maind.</strong> O mAIg se apresenta à Maind com o certificado, e a Maind confere a contratação antes de liberar o app.</li>
+  <li><strong>A situação do contrato.</strong> O owner da organização vê, para cada app, se o contrato está em vigor, perto do fim, em carência ou parado.</li>
+  <li><strong>O aviso e a carência.</strong> O mAIg avisa antes do fim, e o app continua funcionando por um tempo depois dele, à espera da renovação.</li>
+  <li><strong>A renovação.</strong> Renovado o contrato, o app segue ou volta como estava, sem ninguém refazer nada.</li>
+</ul>
+<p>Instalar o app na instância e liberá-lo para as pessoas da organização são os dois passos seguintes, e ficam em <a href="#mf-104">Instalar, pausar e retirar apps sem refazer nada (MF-104)</a>. A <strong>instância</strong> é cada instalação do mAIg, que atende uma ou mais organizações sem misturá-las. As demais palavras estão em <a href="#glossario">Palavras que aparecem nas páginas</a>.</p>
+<h4 id="mf-103-quem-faz">Quem faz o quê</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Equipe da Maind</strong></td><td>Conduz o trâmite comercial, cadastra a contratação no servidor da Maind Tech, entrega o kit e cadastra a renovação. Só ela faz a ação manual que para um app numa organização, e só em três casos.</td></tr>
+      <tr class="zebra"><td><strong>Administrador da instância</strong></td><td>Instala o kit no mAIg e, depois da conferência, instala o app. Na rede da empresa, é a TI do cliente; na hospedagem da Maind, é a própria equipe da Maind. Vê se o app está instalado, em que estado e em que versão, mas não o contrato de cada organização.</td></tr>
+      <tr class="zebra"><td><strong>O mAIg</strong></td><td>Apresenta o certificado à Maind pela ligação, recebe a licença, mostra a situação do contrato e avisa antes do fim.</td></tr>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>A pessoa que responde pela organização. Vê quais apps ela contratou e até quando, recebe os avisos e libera o app para as pessoas da organização.</td></tr>
+      <tr class="zebra"><td><strong>Quem usa o app</strong></td><td>Não vê nada diferente enquanto o app funciona, nem durante a carência.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 id="mf-103-caminho">O caminho inteiro, do contrato ao uso</h3>
+<p>Todo app, o primeiro e os seguintes, passa pelos mesmos oito passos, sempre na mesma ordem: seis no começo e dois no fim do contrato.</p>
+<ol class="steps">
+  <li><div><h4>A Maind entrega o kit</h4><p>Fechada a contratação, a equipe da Maind entrega o kit de instalação, com o certificado, ao administrador da instância.</p></div></li>
+  <li><div><h4>O kit é instalado</h4><p>O administrador da instância instala o kit no mAIg, e a instalação fica anotada no registro da organização, com quem instalou e quando.</p></div></li>
+  <li><div><h4>O mAIg se apresenta à Maind</h4><p>Pela ligação que ele mesmo abre com a Maind, o mAIg apresenta o certificado ao servidor da Maind Tech. É o <strong>handshake contratual</strong>.</p></div></li>
+  <li><div><h4>A Maind libera o app</h4><p>O servidor confere a contratação e libera o app só para a organização que o contratou.</p></div></li>
+  <li><div><h4>O app é instalado na instância</h4><p>O administrador da instância instala o app, uma vez só (<a href="#mf-104">MF-104</a>).</p></div></li>
+  <li><div><h4>O owner libera o app para a organização</h4><p>O owner da organização libera e configura o app, e as pessoas da organização passam a usá-lo (<a href="#mf-104">MF-104</a>).</p></div></li>
+  <li><div><h4>Antes do fim, o aviso</h4><p>Antes de o contrato acabar, o mAIg avisa o owner da organização.</p></div></li>
+  <li><div><h4>Só duas formas de parar</h4><p>O app só para por uma ação manual da equipe da Maind ou quando a licença vence sem ser renovada, ao fim da carência.</p></div></li>
+</ol>
+<p><strong>O que vem antes.</strong> A organização já existe na instância, com o usuário do primeiro owner da organização e com o certificado próprio dela (<a href="#mf-107">MF-107</a>). E o mAIg já mantém aberta a ligação com a Maind, que ele abre de dentro da rede para fora (<a href="#mf-108">MF-108</a>).</p>
+
+<h3 id="mf-103-tramite">O trâmite comercial: o que se contrata e para quem</h3>
+<p>Antes de qualquer passo técnico, a empresa e a Maind fecham a contratação, com proposta, assinatura e pedido de compra. É um acordo entre pessoas, e por isso fica fora do mAIg. O mAIg recebe só o resultado: uma prova, que ele consegue conferir, de que o app foi contratado por aquela organização.</p>
+<p><strong>A empresa assina; a organização recebe.</strong> Quem assina é a empresa, mas, para o mAIg, quem contrata cada app é a organização, e um mesmo contrato comercial pode listar várias organizações da mesma empresa. Ao fechar o trâmite, a equipe da Maind cadastra no <strong>servidor da Maind Tech</strong>, o computador da Maind que confere as contratações, três coisas: o app, a organização e a data em que o contrato acaba. Sem esse cadastro, a conferência não tem o que conferir, e o app não é liberado.</p>
+<p><strong>Quem paga o quê.</strong> O cliente paga pelos apps, e o mAIg vem junto, sem linha própria na conta. A cobrança, a nota fiscal e o texto do contrato ficam com a área comercial da Maind, fora do mAIg.</p>
+
+<h3 id="mf-103-kit">O kit de instalação</h3>
+<p>O kit é o pacote que a equipe da Maind entrega ao administrador da instância depois de fechada a contratação. Ele leva para dentro da instância a prova da contratação, sem que a Maind precise entrar nela. E é o administrador da instância quem decide instalá-lo, porque é ele quem controla o que roda na instalação. Na rede da empresa, o kit passa da Maind para a TI do cliente; na hospedagem da Maind, a equipe da Maind faz os dois papéis e entrega o kit a si mesma.</p>
+<p><strong>Um kit vale para um app e uma organização.</strong> Se a empresa contrata dois apps, recebe dois kits; se um contrato lista duas organizações, cada uma recebe o seu. A organização precisa vir antes: um kit que chega a uma instância onde ela ainda não foi criada não tem para quem liberar o app. E <strong>o kit sozinho não abre nada</strong>: todo pedido também exige o certificado da organização, que não vem no kit, e por isso um kit copiado ou extraviado não alcança nada da organização.</p>
+
+<h3 id="mf-103-tres-pecas">Três peças: o certificado, a licença e a autoridade pública</h3>
+<p>Um <strong>certificado digital</strong> é uma espécie de carteira de identidade digital: um arquivo que diz a quem pertence e traz a assinatura digital de quem o emitiu, uma marca que só o emissor consegue produzir e que denuncia qualquer alteração no arquivo. Cada app contratado tem três peças separadas, e cada uma faz um trabalho só:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Peça</th><th>O que diz</th><th>Como dura</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>O certificado do kit</strong></td><td>Quem é o app naquela organização. A Maind o atesta.</td><td>Vale pouco tempo, e o mAIg o troca sozinho pela ligação. Um certificado roubado vale pouco.</td></tr>
+      <tr class="zebra"><td><strong>A licença</strong></td><td>Até quando vale o contrato e quanto dura a carência. É um documento assinado pela Maind.</td><td>Chega ao mAIg pela ligação, na conferência e a cada renovação. Renovar é trocar a licença, sem reinstalar nada.</td></tr>
+      <tr class="zebra"><td><strong>A autoridade certificadora pública</strong></td><td>Que o endereço da Maind, com que o mAIg conversa, é mesmo da Maind. É uma entidade reconhecida publicamente que garante identidades no mundo digital.</td><td>Não confere contrato nenhum.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Numa empresa, seria assim: o crachá diz quem é o funcionário e é trocado de tempos em tempos, o contrato de trabalho diz até quando ele trabalha ali, e o cartório reconhece a firma de quem assina. A diferença é que, no mAIg, o crachá se troca sozinho, e o cartório só confere o endereço da Maind, e não cada contrato. Assim, a carência é um prazo do contrato, e não a data de validade de um arquivo.</p>
+<h4 id="mf-103-dois-certificados">Dois certificados em cada pedido</h4>
+<p>O certificado do kit prova que a organização contratou aquele app. O <strong>certificado da organização</strong>, que a Maind atesta quando a organização é criada, prova de quem é o pedido. Um pedido só passa com os dois. O da organização vale 30 dias e o mAIg o renova sozinho; se a renovação falhar, o atual segue valendo até o fim, e os owners da organização e os administradores da instância são avisados 7 dias antes de ele vencer. Cancelá-lo antes do prazo exige a autorização de duas pessoas da Maind, e o ato fica no registro da organização. Nos dois certificados, a <strong>chave privada</strong>, a parte secreta que assina, nasce dentro do mAIg e nunca sai dele. A Maind recebe só a parte pública e a atesta, como um cartório que reconhece a firma sem ter a caneta.</p>
+
+<h3 id="mf-103-handshake">O handshake contratual: a Maind confere e libera</h3>
+<p>Instalado o kit, o mAIg lê o certificado e o apresenta ao servidor da Maind Tech. "Handshake" quer dizer "aperto de mão", em inglês, e o nome leva "contratual" porque o que se confere é o contrato, e não só a identidade; nesta documentação, ele também aparece como a <a href="#glossario">conferência da contratação</a>. O servidor confere a assinatura e procura a contratação que a equipe da Maind cadastrou. Se a encontra, responde que o app está liberado para aquela organização e entrega a licença. É como a recepção de um hotel que, antes de entregar a chave, liga para a central de reservas e confere a reserva. A diferença: a recepção confere uma vez, na chegada; no mAIg, a liberação dura enquanto a licença vale, e pode acabar com ela.</p>
+<ul>
+  <li><strong>Nenhuma porta de entrada.</strong> A conversa corre por dentro da ligação que o mAIg abre para fora e mantém aberta. Por isso, contratar um app não pede à TI do cliente que abra uma porta de entrada no firewall, o muro de proteção da rede. A porta de entrada é a abertura por onde alguém de fora começaria uma conversa com um computador de dentro.</li>
+  <li><strong>Se a conferência falha.</strong> A contratação não foi cadastrada, o certificado é de outra organização ou não vale: o app não é liberado. O administrador da instância vê que a conferência falhou e o motivo, em palavras simples, e procura a equipe da Maind.</li>
+  <li><strong>Se a ligação cai.</strong> Sem ligação com a Maind, a conferência espera a ligação voltar, e o mAIg reconecta sozinho.</li>
+</ul>
+
+<h3 id="mf-103-por-organizacao">Uma contratação por organização</h3>
+<p>Cada organização contrata os próprios apps, e a conferência libera o app só para ela, mesmo numa instância que atende outras. A regra é a mesma na instância da Maind, onde convivem organizações de empresas diferentes, e na instância do cliente, onde as organizações costumam ser da própria empresa. Uma organização que sai não afeta as outras.</p>
+<p>Um exemplo, numa instância da Maind. A organização A, de uma empresa, contrata o primeiro app; a conferência o libera só para ela, e a equipe da Maind, no papel de administrador da instância, instala o app. Para a organização B, de outra empresa, o app está instalado, mas indisponível: ela não o contratou. Meses depois, a empresa da organização B contrata o mesmo app, recebe o seu kit, e a conferência o libera para ela, sem instalar o app de novo. Mais tarde, a empresa da organização A não renova, e o app para nela. Na organização B, nada muda.</p>
+<p>Uma empresa com duas organizações, por exemplo a rede de farmácias e a distribuidora do mesmo grupo, pode ter um contrato comercial só, listando as duas. Mesmo assim, cada organização recebe o seu kit e a sua liberação, e cada uma tem o seu owner e as suas regras.</p>
+<h4 id="mf-103-hospedagem-maind">Na hospedagem da Maind: os mesmos passos, outras mãos</h4>
+<p>Com o mAIg hospedado pela Maind, o caminho é o mesmo. A equipe da Maind fecha a contratação, entrega o kit a si mesma, instala-o e instala o app; o owner da organização continua sendo quem libera e configura o app para a organização dele. O que protege cada cliente: a conferência por organização impede um app contratado por uma empresa de funcionar para outra; o certificado de cada organização impede o pedido de uma de ser tomado por outra; e a equipe da Maind, mesmo no papel de administrador da instância, não vê o registro das organizações, a anotação de tudo o que os apps pedem ao mAIg em nome de cada uma.</p>
+
+<h3 id="mf-103-exemplo">Exemplo completo: uma rede de farmácias contrata o primeiro app</h3>
+<p>Uma rede de farmácias tem o mAIg num servidor da própria rede. Ana, da TI do cliente, faz o papel de administradora da instância. Marcos, diretor de operações, é o owner da organização. Carla, gerente comercial, é quem vai usar o app.</p>
+<ol class="steps">
+  <li><div><h4>A contratação e o cadastro</h4><p>A rede e a Maind fecham a contratação do primeiro app para a organização da rede, por um prazo combinado entre as duas. A equipe da Maind cadastra no servidor da Maind Tech o app, a organização e a data do fim do contrato.</p></div></li>
+  <li><div><h4>O que já estava pronto</h4><p>Ana já tinha instalado o mAIg e criado a organização e o usuário de Marcos (<a href="#mf-107">MF-107</a>). O mAIg já mantém aberta a ligação com a Maind; Ana só liberou no firewall as saídas combinadas, entre elas a do endereço da Maind (<a href="#mf-108">MF-108</a>).</p></div></li>
+  <li><div><h4>O kit e a conferência</h4><p>A equipe da Maind entrega a Ana o kit do app, com o certificado, e Ana o instala no mAIg. O mAIg apresenta o certificado ao servidor da Maind Tech, pela ligação que ele mesmo abriu. O servidor confere a contratação e libera o app para a organização da rede.</p></div></li>
+  <li><div><h4>A situação à vista</h4><p>Marcos abre o console do mAIg, a tela onde configura a organização, e vê o app contratado, "em vigor", com a data do fim do contrato (<a href="#mf-110">MF-110</a>).</p></div></li>
+  <li><div><h4>Os dois passos seguintes</h4><p>Ana instala o app na instância, e Marcos o libera e configura para a organização (<a href="#mf-104">MF-104</a>). Depois, Carla começa a usar o app.</p></div></li>
+</ol>
+<p><strong>O que não aconteceu.</strong> Ninguém abriu porta de entrada na rede. A Maind não entrou na instância para liberar nada. E nenhuma senha de banco passou pela Maind: quem cadastra os bancos é Marcos, depois, e as senhas ficam no cofre do mAIg, de onde nenhum app as tira (<a href="#mf-105">MF-105</a>).</p>
+<h4 id="mf-103-segundo-app">O segundo app: o mesmo caminho</h4>
+<p>Quando a rede contrata um segundo app da Maind para a mesma organização, o caminho se repete, com um kit novo, só desse app, e pela mesma ligação que o mAIg já mantém aberta. Ana não precisa reabrir a análise de segurança do zero: o que ela aprovou foi o mAIg, e o segundo app usa os mesmos serviços dele. No console, Marcos passa a ver dois apps contratados. Os dois contratos são independentes: cada um tem a sua licença, a sua data de fim, o seu aviso, a sua carência e a sua renovação. Se o segundo não for renovado, o primeiro segue como estava.</p>
+
+<h3 id="mf-103-situacao">A situação do contrato de cada app</h3>
+<p>Para cada app de cada organização, o mAIg mostra ao owner da organização, no console, em que pé está o contrato. A carência só funciona se alguém souber que ela começou, e o aviso precisa de um lugar onde o owner o encontre e o confira depois.</p>
+<ul>
+  <li><strong>Em vigor:</strong> o contrato vale, e o app funciona.</li>
+  <li><strong>Perto do fim:</strong> o contrato ainda vale, mas o aviso do fim já foi dado.</li>
+  <li><strong>Em carência:</strong> o contrato acabou, e o app continua funcionando, à espera da renovação.</li>
+  <li><strong>Parado:</strong> o app parou, por ação manual da Maind ou por licença vencida, e a configuração dele fica guardada. É o mesmo "parado" da gestão dos apps (<a href="#mf-104">MF-104</a>).</li>
+</ul>
+<p>Quem vê: o owner da organização, no console (<a href="#mf-110">MF-110</a>); a equipe da Maind acompanha os contratos pelo lado dela. O administrador da instância vê se o app está instalado, em que estado e em que versão, mas não o contrato de cada organização.</p>
+<p>A vida do contrato em desenho: do kit instalado à conferência, as situações do contrato, as duas formas de parar e a renovação, que traz o app de volta.</p>
+<dx-diagrama ref="mf-103-vida-do-contrato"></dx-diagrama>
+
+<h3 id="mf-103-aviso">O aviso do fim do contrato</h3>
+<p>Quem avisa é o mAIg, e quem recebe são os owners da organização. O mAIg sabe a data do fim porque ela vem na licença. Um aviso só, muito antes do fim, poderia se perder entre a área de operações e a de compras; por isso são três. O <strong>primeiro</strong> chega antes de o contrato acabar, com uma antecedência que ainda será definida. O <strong>segundo</strong> chega no dia em que o contrato acaba e a carência começa. O <strong>terceiro</strong> chega antes de a licença vencer, porque é o vencimento dela que, sem renovação, para o app.</p>
+<p>Os três aparecem no console, junto da situação do contrato, e chegam também por e-mail, só com o tipo do aviso, a organização e um link para o console, sem dado nenhum. Na onda 1.0, o destinatário é fixo: os avisos vão aos owners da organização, e ninguém os desliga nem os redireciona. As preferências de aviso chegam na onda 1.1.</p>
+<p><strong>E se o owner saiu da empresa?</strong> O app continua funcionando na carência, e a equipe da Maind, que acompanha os contratos, procura a empresa pelo lado comercial. Se a organização tem outro owner, ele assume; se não tem, o administrador da instância cadastra um novo, e os owners e o auditor são avisados na hora e podem barrar a troca por 48 horas (<a href="#mf-101">MF-101</a>).</p>
+
+<h3 id="mf-103-carencia">A carência e as duas únicas formas de parar</h3>
+<p>O fim do contrato, sozinho, não para o app. A <strong>carência</strong> é o tempo em que ele continua funcionando depois do fim do contrato: é um prazo que vem na licença e vai do fim do contrato até o vencimento dela. Assim, uma renovação atrasada pela burocracia de compras não derruba a operação do cliente. É como a assinatura de um jornal que continua chegando por algumas semanas depois do vencimento, enquanto o assinante renova; só que, no mAIg, o limite é o vencimento da licença, que todos conhecem de antemão, ou um ato explícito da Maind, e nunca um corte em silêncio.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Forma de parar</th><th>Como acontece</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>A licença vence</strong></td><td>Ao fim da carência, sem renovação, o app para sozinho, sem ninguém agir.</td></tr>
+      <tr class="zebra"><td><strong>A ação manual da Maind</strong></td><td>Só em três casos: falta de pagamento depois dos avisos, incidente de segurança ou ordem judicial. Vale só para aquele app e aquela organização. Duas pessoas da Maind autorizam, o motivo fica no registro da organização, e os owners da organização e o auditor recebem na hora um aviso de segurança.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Quando o app para, a configuração dele na organização fica guardada (<a href="#mf-104">MF-104</a>), e o registro do que ele pediu fica guardado enquanto ele estiver instalado na instância (<a href="#mf-102">MF-102</a>). Se uma ação manual atingir o app ou a organização errada, o engano é conferido antes, porque o ato pede duas pessoas, e aparece depois, porque o motivo fica no registro; a Maind retoma o app, e a configuração estava guardada.</p>
+<p>Um exemplo. O contrato do app da rede de farmácias vai acabar, e Marcos recebe o primeiro aviso. Ele pede a renovação, mas o pedido de compra emperra. O contrato acaba, o console mostra "em carência", e Marcos recebe o segundo aviso; Carla continua usando o app sem perceber nada. A equipe da Maind não faz a ação manual, porque sabe que a renovação está a caminho. Antes de a licença vencer, chega o terceiro aviso, e dessa vez a compra sai. A licença renovada chega ao mAIg, e o app volta a "em vigor".</p>
+
+<h3 id="mf-103-renovacao">A renovação: o app segue ou volta como estava</h3>
+<p>A equipe da Maind cadastra a renovação no servidor da Maind Tech. O mAIg recebe a licença renovada pela ligação e confirma a contratação numa nova conferência, e a situação volta a "em vigor". Nada se reinstala: o kit e o certificado do app continuam os mesmos, e o owner da organização não reconfigura nada.</p>
+<p>Se o app estava em carência, ele simplesmente segue funcionando. Se tinha parado, volta como estava: as permissões, os bancos que ele lê, a IA que usa e os limites que o owner definiu, e quem audita encontra no registro a história de antes e de depois da parada.</p>
+<p><strong>Apagar a configuração guardada</strong> de um app parado só existe a partir da onda 1.1 (<a href="#mf-104">MF-104</a>); na onda 1.0, o app parado volta sempre como estava. Se a configuração tiver sido apagada, a renovação traz o app de volta sem ela, e ela precisa ser refeita.</p>
+
+<h3 id="mf-103-ondas">O que chega em cada onda</h3>
+<p>Das 9 capacidades, todas as 9 chegam na onda 1.0.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Capacidade</th><th>Onda</th><th>Em poucas palavras</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>O kit de instalação com o certificado, instalado pelo administrador da instância</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>É por ele que o mAIg passa a reconhecer o app.</td></tr>
+      <tr class="zebra"><td><strong>As três peças de cada app: a identidade, que se troca sozinha; a licença, com o fim do contrato; e a carência, que é um prazo da licença</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>Deixa conter um certificado vazado e parar um app sem contrato.</td></tr>
+      <tr class="zebra"><td><strong>A conferência com a Maind de que o contrato existe</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>Sem ela, qualquer cópia do kit ligaria o app.</td></tr>
+      <tr class="zebra"><td><strong>A contratação por organização</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>Duas organizações da mesma instância não dividem contrato.</td></tr>
+      <tr class="zebra"><td><strong>Um segundo app pelo mesmo caminho do primeiro</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>As regras são iguais para todos os apps.</td></tr>
+      <tr class="zebra"><td><strong>A situação do contrato de cada app no console</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>Em vigor, perto do fim, em carência ou parado: o app não para sem o owner ver chegar.</td></tr>
+      <tr class="zebra"><td><strong>O aviso do fim do contrato aos owners da organização</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>O fim do contrato não para o app sozinho, mas é sempre avisado.</td></tr>
+      <tr class="zebra"><td><strong>O app só para por licença vencida ou por ação manual da Maind, com o motivo no registro e aviso de segurança</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>Uma parada sem anotação seria invisível para a organização.</td></tr>
+      <tr class="zebra"><td><strong>A renovação devolve o app como estava</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>Ninguém refaz a configuração por causa de um atraso.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Duas coisas ligadas a esta página chegam depois, em outras funcionalidades: as preferências de aviso, na onda 1.1, e retirar um app, apagar a configuração guardada de um app parado e desinstalar, juntos na onda 1.1 (<a href="#mf-104">MF-104</a>).</p>
+
+<h3 id="mf-103-bastidores">Nos bastidores, sem complicar</h3>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>A Maind nunca entra.</strong> Toda conversa com a Maind, a conferência, a licença e a troca dos certificados, corre pela ligação que o mAIg abre de dentro para fora e mantém aberta. Se ela cai, o mAIg reconecta sozinho.</li>
+  <li><strong>A parte secreta não viaja.</strong> A chave privada de todo certificado nasce no mAIg e nunca sai dele. A Maind recebe só a parte pública, que qualquer um confere, e a atesta.</li>
+  <li><strong>Peças curtas, contrato longo.</strong> Os certificados valem pouco tempo e se trocam sozinhos; o que dura o contrato inteiro é a licença, assinada pela Maind. Um certificado vazado perde a validade logo.</li>
+  <li><strong>Duas travas por pedido.</strong> O certificado do kit e o da organização precisam estar juntos. É uma segunda trava entre as organizações que dividem a mesma instância.</li>
+  <li><strong>Tudo fica anotado.</strong> A instalação do kit e a ação manual da Maind ficam no registro da organização, com quem fez, quando e por quê. Quem lê o registro é o owner da organização e o auditor dela; o administrador da instância não o lê (<a href="#mf-102">MF-102</a>).</li>
+</ul>
+
+<h3 id="mf-103-limites">O que esta funcionalidade não faz</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Instalar o app e liberá-lo para a organização</strong></td><td>São os passos 5 e 6 do caminho, da <a href="#mf-104">MF-104</a>, que cuida também da configuração guardada de um app parado.</td></tr>
+      <tr class="zebra"><td><strong>Retirar e desinstalar um app</strong></td><td><span class="badge badge--info">Onda 1.1</span> Chegam juntos na onda 1.1, na <a href="#mf-104">MF-104</a>. Na onda 1.0, um app só para.</td></tr>
+      <tr class="zebra"><td><strong>Criar a organização e o usuário do primeiro owner</strong></td><td>Vêm antes da contratação, na <a href="#mf-107">MF-107</a>.</td></tr>
+      <tr class="zebra"><td><strong>Abrir a ligação com a Maind</strong></td><td>É da <a href="#mf-108">MF-108</a>, que também cuida da luz de estado, na onda 1.0, e da página de status, na onda 1.1, onde um app parado aparece. O que a tela do próprio app mostra quando ele para é da parte do app que fica fora do mAIg.</td></tr>
+      <tr class="zebra"><td><strong>Cobrar, emitir nota fiscal e escrever o contrato</strong></td><td>Ficam com a área comercial da Maind, fora do mAIg.</td></tr>
+      <tr class="zebra"><td><strong>Receber apps de outras empresas ou sistemas do próprio cliente</strong></td><td>Por enquanto, o mAIg recebe só apps da Maind, e não se vende sozinho: entra junto com um app.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-103-ligadas">Funcionalidades ligadas a esta</h4>
+<p>Contratar é por onde todo app entra: nenhum app funciona numa organização sem que a Maind confirme que ela o contratou.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="#mf-104">Instalar, pausar e retirar apps sem refazer nada (MF-104)</a></td><td>Depois da conferência, o app é instalado e liberado lá. O estado "parado" e a configuração guardada são os mesmos.</td></tr>
+      <tr class="zebra"><td><a href="#mf-107">Atender várias organizações numa instalação, sem misturá-las (MF-107)</a></td><td>A organização precisa existir, com o certificado dela, antes de receber o kit.</td></tr>
+      <tr class="zebra"><td><a href="#mf-108">Funcionar sem abrir porta de entrada na rede (MF-108)</a></td><td>A conferência e a licença correm pela ligação que o mAIg abre para fora.</td></tr>
+      <tr class="zebra"><td><a href="#mf-110">Configurar tudo num lugar só (MF-110)</a></td><td>É no console que o owner da organização vê a situação do contrato e os avisos.</td></tr>
+      <tr class="zebra"><td><a href="#mf-102">Saber quem pediu o quê, quando e com que dado (MF-102)</a></td><td>A instalação do kit e a ação manual ficam no registro da organização.</td></tr>
+      <tr class="zebra"><td><a href="#mf-101">Entrar e agir só dentro do que foi permitido (MF-101)</a></td><td>Define quem é o owner da organização e como ele é trocado quando sai da empresa.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>O aviso e a carência.</strong> Com quanta antecedência o owner da organização é avisado do fim do contrato e quanto dura a carência: o prazo exato ainda será definido.</p><p><strong>O certificado do kit.</strong> Quanto tempo ele vale e como é cancelado antes do prazo, se vazar. A forma técnica da conferência e da licença também ainda será definida.</p><p><strong>O kit por dentro.</strong> O que mais vem no kit, além do certificado, e por que caminho ele chega com segurança ao administrador da instância.</p><p><strong>Onde o mAIg roda.</strong> Em que ambientes o mAIg roda e o que a Maind entrega para instalá-lo: que máquina e que sistema a TI do cliente prepara.</p></div>
+</div>
+
+<h3 id="mf-103-faq">Perguntas frequentes</h3>
+<div class="faq">
+  <details open>
+    <summary>Precisamos abrir alguma porta na nossa rede para contratar um app?</summary>
+    <div class="faq-body"><p>Não. A conferência da contratação corre por dentro da ligação que o próprio mAIg abre com a Maind, de dentro da rede da empresa para fora, pela saída para o endereço da Maind que a TI do cliente libera (<a href="#mf-108">MF-108</a>). A Maind também não entra na instância para liberar o app: quem instala o kit é o administrador da instância.</p></div>
+  </details>
+  <details>
+    <summary>O app para no dia em que o contrato acaba?</summary>
+    <div class="faq-body"><p>Não. O app continua funcionando durante a carência, um prazo que vem na licença. Os owners da organização recebem três avisos: antes do fim, no dia do fim e antes de a licença vencer. Se a renovação chegar a tempo, o app segue como estava; se a licença vencer, ele para, com a configuração guardada.</p></div>
+  </details>
+  <details>
+    <summary>A Maind pode desligar o nosso app quando quiser?</summary>
+    <div class="faq-body"><p>Não. Além da licença vencida, a Maind só para um app à mão em três casos: falta de pagamento depois dos avisos, incidente de segurança ou ordem judicial. Duas pessoas da Maind precisam autorizar, o motivo fica no registro da organização, e os owners da organização e o auditor recebem na hora um aviso de segurança.</p></div>
+  </details>
+  <details>
+    <summary>Se alguém copiar o kit, consegue usar o app no nosso lugar?</summary>
+    <div class="faq-body"><p>O kit sozinho não abre nada. Todo pedido exige também o certificado da organização, que não vem no kit, e a parte secreta dos certificados nasce dentro do mAIg e nunca sai dele. O certificado do kit vale pouco tempo e se troca sozinho. Como ele é cancelado antes do prazo, se vazar, ainda será definido.</p></div>
+  </details>
+  <details>
+    <summary>Ao renovar, precisamos reinstalar ou reconfigurar o app?</summary>
+    <div class="faq-body"><p>Não. Renovar é trocar a licença, que chega ao mAIg pela ligação. O kit e o certificado do app continuam os mesmos, e a configuração fica como estava: as permissões, os bancos, a IA e os limites. Mesmo depois de parado, o app volta como estava, a menos que o owner da organização tenha apagado a configuração guardada, o que só existe a partir da onda 1.1.</p></div>
+  </details>
+  <details>
+    <summary>Temos duas organizações no mAIg. Um contrato serve para as duas?</summary>
+    <div class="faq-body"><p>O contrato comercial pode ser um só, listando as duas organizações da mesma empresa. Para o mAIg, porém, quem contrata é cada organização: cada uma recebe o seu kit e a sua liberação, e o contrato de uma não muda nada na outra. O mesmo vale para um segundo app, que tem o seu próprio kit, a sua licença e a sua data de fim.</p></div>
+  </details>
+</div>

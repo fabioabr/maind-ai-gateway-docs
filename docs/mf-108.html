@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="As funcionalidades do mAIg explicadas uma a uma, em linguagem simples: o que cada uma faz, em que onda chega, como funciona na prática e as dúvidas mais comuns." />
+<link rel="icon" href="assets/logo-claro.png" />
+<title>MF-108 · Funcionar sem abrir porta de entrada na rede — Maind AI Gateway (mAIg)</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
+</head>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Maind AI Gateway (mAIg)"><img class="logo-light" src="assets/logo-claro.png" alt="Maind AI Gateway (mAIg)" /><img class="logo-dark" src="assets/logo-escuro.png" alt="Maind AI Gateway (mAIg)" /></a><div class="div"></div><div class="doc-meta"><b>Maind AI Gateway (mAIg) · Documentação</b><small>Documentação do produto</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Maind AI Gateway (mAIg)</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Para começar</h6><ul><li><a href="como-ler.html">Como ler esta documentação</a></li></ul><h6>Primeira versão</h6><ul class="side-sub"><li><a href="mf-101.html">MF-101 · Entrar e agir só dentro do que foi permitido</a></li><li><a href="mf-102.html">MF-102 · Saber quem pediu o quê, quando e com que dado</a></li><li><a href="mf-103.html">MF-103 · Contratar e liberar um app com segurança</a></li><li><a href="mf-104.html">MF-104 · Instalar, pausar e retirar apps sem refazer nada</a></li><li><a href="mf-105.html">MF-105 · Usar os bancos da empresa sem expor a senha</a></li><li><a href="mf-106.html">MF-106 · Controlar quais IAs, quanto e a que custo</a></li><li><a href="mf-107.html">MF-107 · Atender várias organizações numa instalação, sem misturá-las</a></li><li><a href="mf-108.html" class="active">MF-108 · Funcionar sem abrir porta de entrada na rede</a></li><li><a href="mf-109.html">MF-109 · Rodar cada app isolado dentro do mAIg</a></li><li><a href="mf-110.html">MF-110 · Configurar tudo num lugar só</a></li></ul><h6>Segunda versão</h6><ul class="side-sub"><li><a href="mf-111.html">MF-111 · Dar à IA as ferramentas da empresa, só para leitura</a></li><li><a href="mf-112.html">MF-112 · Entrar com o login que a empresa já usa</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Maind AI Gateway (mAIg)</a><span class="sep">/</span><span>Primeira versão</span><span class="sep">/</span><span class="now">Funcionar sem abrir porta de entrada na rede</span></nav><span class="doc-eyebrow">Primeira versão</span><div class="dx-macro-topo"><span class="dx-codigo">MF-108</span><span class="dx-selo">1ª versão</span></div><h1 class="doc-h1">Funcionar sem abrir porta de entrada na rede</h1><p class="doc-lead">O mAIg liga para a Maind de dentro da rede da empresa e mantém a ligação aberta: a TI libera só saídas conhecidas, e nenhuma porta de entrada é aberta.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#mf-108-o-que-e">O que é, em poucas palavras</a><small>1 tópico</small></h3><ul><li><a href="#mf-108-quem-e-quem">Quem faz o quê</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-108-ligacao">A ligação que o mAIg abre para fora</a><small>1 tópico</small></h3><ul><li><a href="#mf-108-todas-as-pessoas">Uma ligação para todas as pessoas</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-108-saidas">As saídas que a TI do cliente libera</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-108-o-que-corre">O que corre pela ligação, e o que não corre</a><small>2 tópicos</small></h3><ul><li><a href="#mf-108-minimo">O mínimo de operação</a></li><li><a href="#mf-108-um-pedido">Um pedido, do começo ao fim</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-108-certificado">O certificado dentro da ligação</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-108-queda">Quando a ligação cai</a><small>2 tópicos</small></h3><ul><li><a href="#mf-108-em-andamento">O que estava em andamento fica guardado</a></li><li><a href="#mf-108-tarefas">As tarefas marcadas esperam até uma hora</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-108-estado">O estado da ligação: quem vê e quem é avisado</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-108-recusa">Ligação no ar, conversa recusada</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-108-hospedagens">A ligação nas duas hospedagens</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-108-ondas">O que chega em cada onda</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-108-bastidores">Nos bastidores, sem complicar</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-108-limites">O que esta funcionalidade não faz</a><small>1 tópico</small></h3><ul><li><a href="#mf-108-ligadas">Funcionalidades ligadas a esta</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-108-faq">Perguntas frequentes</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><p>Pense num ramal de telefone que só faz ligações para a central e nunca recebe ligação de fora. Ele liga uma vez e deixa a linha aberta, e a central fala por ela sempre que precisa. O mAIg trabalha assim com a Maind: de dentro da rede da empresa cliente, ele liga para a Maind e mantém a ligação aberta, e tudo o que os apps pedem a ele corre por essa linha. Com uma diferença para o telefone: se a ligação cair, o mAIg religa sozinho e guarda o que estava em andamento.</p>
+<p>Para a TI do cliente, é a diferença entre um pedido difícil e um fácil. Abrir uma <strong>porta de entrada</strong> no firewall, para que alguém de fora comece uma conexão com um computador de dentro, é um pedido grande, que muitas TIs recusam. Liberar algumas <strong>saídas</strong>, todas conhecidas e listadas, é um pedido que quase toda TI aprova. Com o mAIg, a TI só libera saídas.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Primeira versão, em construção</b><p>O que está aqui é o que a primeira versão do mAIg vai entregar, em duas ondas: a onda 1.0, o mínimo para o primeiro app funcionar, e a onda 1.1, que completa a governança. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-108-o-que-e">O que é, em poucas palavras</h2>
+<p>Funcionar sem abrir porta de entrada na rede é o jeito como o mAIg conversa com a Maind: quem liga é sempre ele, de dentro para fora. Esta funcionalidade cuida de seis coisas:</p>
+<ul>
+  <li><strong>Ligar para fora e manter a ligação aberta.</strong> A rede da empresa não abre porta de entrada nenhuma e não precisa de endereço fixo na internet.</li>
+  <li><strong>Dizer à TI, uma a uma, as saídas que ela libera.</strong> São poucas, e todas conhecidas.</li>
+  <li><strong>Levar pela ligação o que os apps precisam, e só isso.</strong> Os pedidos e as respostas dos apps e um mínimo de operação, que a TI vê antes de liberar a saída.</li>
+  <li><strong>Conferir quem conversa com o mAIg.</strong> Dentro da ligação, só é aceita a parte de um app que prove, com um certificado digital, que é um app contratado da Maind.</li>
+  <li><strong>Religar sozinho quando a ligação cai</strong> e guardar, por um tempo curto, o que estava em andamento.</li>
+  <li><strong>Mostrar o estado da ligação e avisar quem resolve</strong>, com uma luz igual em todos os apps.</li>
+</ul>
+<p>Algumas palavras ajudam a seguir a página. A <strong>rede do cliente</strong> é o conjunto de computadores da empresa, ligados entre si e protegidos de quem está fora; o <strong>firewall</strong> é o muro dessa rede, que decide o que entra e o que sai. O <strong>ponto de conexão da Maind</strong> é o lugar, na nuvem da Maind, onde os mAIg de todos os clientes se conectam. E cada app tem duas partes: a <strong>parte de fora</strong>, que roda na nuvem da Maind, com as telas, e o <strong>módulo</strong>, que roda isolado dentro do mAIg (veja <a href="mf-109.html">Rodar cada app isolado dentro do mAIg (MF-109)</a>). As demais palavras estão no <a href="como-ler.html#glossario">glossário</a>.</p>
+<h3 class="doc-h3" id="mf-108-quem-e-quem">Quem faz o quê</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>TI do cliente</strong></td><td>Instala o mAIg num servidor da empresa e libera, no firewall, só as saídas da lista. Não abre porta de entrada. Quando a ligação não volta sozinha, desfaz o bloqueio ou religa a máquina. Dá o aval das versões novas.</td></tr>
+      <tr class="zebra"><td><strong>Administrador da instância</strong></td><td>Acompanha o estado da ligação no painel da instância, a parte do console que mostra o estado da instalação, e recebe o aviso quando ela não volta. É a TI do cliente, quando o mAIg roda na casa do cliente, e a equipe da Maind, quando roda na hospedagem da Maind.</td></tr>
+      <tr class="zebra"><td><strong>Maind</strong></td><td>Faz as duas pontas da ligação e mantém sempre de pé o ponto de conexão. Também é avisada quando a ligação de uma instância não volta.</td></tr>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Escolhe os provedores de IA e liga a entrada com a conta Google, se quiser: cada escolha é uma saída que a TI libera. Na onda 1.1, decide se a consulta feita ao banco volta à tela.</td></tr>
+      <tr class="zebra"><td><strong>Quem usa o app</strong></td><td>Vê a luz de estado e, com a ligação fora, um aviso próprio. Na onda 1.1, consulta a página de status.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="doc-h2" id="mf-108-ligacao">A ligação que o mAIg abre para fora</h2>
+<p>É o mAIg quem liga para a Maind e mantém a ligação aberta; ninguém de fora começa uma conversa com ele. As partes de fora dos apps mandam os pedidos e recebem as respostas por essa ligação. Como foi o mAIg quem começou a conexão, a TI só liberou a saída, e nenhuma porta de entrada foi aberta. Por isso também não é preciso <strong>endereço fixo</strong> (o IP fixo, um endereço de internet que não muda): quem recebe ligações de fora costuma precisar de um; quem só liga para fora, não. Digamos que Ana, da TI de uma rede de farmácias, prepara a rede para o mAIg. Marcos, owner da organização, já escolheu o provedor de IA que a organização vai usar.</p>
+<ol class="steps">
+  <li><div><h4>A TI instala o mAIg</h4><p>Ana instala o mAIg num servidor da empresa, um computador que fica ligado o tempo todo.</p></div></li>
+  <li><div><h4>Libera só as saídas</h4><p>No firewall, ela libera a saída para o endereço da Maind e a saída para o provedor de IA que Marcos escolheu. Não abre nenhuma porta de entrada.</p></div></li>
+  <li><div><h4>O mAIg liga para a Maind</h4><p>Ao subir, o mAIg liga para o ponto de conexão da Maind e deixa a ligação aberta. A rede de farmácias não tem IP fixo, e isso não faz diferença: quem liga é o mAIg.</p></div></li>
+  <li><div><h4>A revisão de segurança confere</h4><p>Na revisão de segurança, Ana mostra que o firewall não tem porta de entrada nenhuma aberta para o mAIg.</p></div></li>
+</ol>
+<h3 class="doc-h3" id="mf-108-todas-as-pessoas">Uma ligação para todas as pessoas</h3>
+<p>O login não abre ligação nova. A ligação nasce quando o mAIg sobe, em duas ou três linhas, para não depender de uma só, e todas as pessoas e todas as organizações da instância (cada instalação do mAIg) a usam. Cada pedido leva um número, para a resposta voltar ao lugar certo, e o <strong>passe</strong> de quem pediu, a credencial curta que o mAIg assina para dizer quem é a pessoa; o núcleo do mAIg, o que vem pronto nele para todos os apps, confere o passe em todo pedido. Pela ligação descem só os pedidos que o mAIg conhece, nunca acesso à rede do cliente: a Maind pede, e o mAIg decide. Por isso quem está na internet não enxerga o mAIg, e nenhum computador da Maind precisa alcançá-lo por outro caminho. E um segundo app da Maind não pede à TI uma liberação nova de rede: a parte de fora dele responde pela ligação que o mAIg já mantém.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Sem a saída, não há mAIg na rede da empresa</b><p>A primeira versão não tem modo sem ligação: a empresa que não libera a saída da rede até a Maind não usa o mAIg na própria rede. Sem a ligação, não há login nos apps, licença nem atualização, e a instalação só serve para abrir o console. Nenhuma versão está marcada para um modo sem ligação.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-108-saidas">As saídas que a TI do cliente libera</h2>
+<p>A lista é curta e fechada: são os únicos pedidos de rede que o mAIg faz à casa do cliente. Cada provedor de IA novo é um pedido novo à TI, e por isso a promessa é “poucas saídas, todas conhecidas”, e não “uma saída só”.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Saída</th><th>Para quê</th><th>Quando</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>O endereço da Maind</strong></td><td>A ligação do mAIg com a Maind, por onde correm os apps.</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>Cada provedor de IA que a organização escolher</strong></td><td>O núcleo do mAIg faz o pedido à IA direto ao provedor, sem passar pela Maind. O módulo do app não tem saída própria.</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>O Google, quando a organização entra com a conta Google</strong></td><td>Cada organização nasce só com usuário e senha, e o owner da organização liga o Google, se quiser.</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>O servidor de e-mail da própria empresa</strong></td><td>Por onde saem os links de primeiro acesso e os avisos. A TI o configura na instalação.</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>O provedor do login que a empresa já usa</strong></td><td>Para entrar nos apps com a conta que a TI da empresa já deu a cada pessoa (<a href="mf-112.html">MF-112</a>).</td><td><span class="badge badge--warning">Segunda versão</span></td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Na hospedagem da Maind, o e-mail sai pelo serviço de e-mail da Maind. Os jeitos de entrar estão em <a href="mf-101.html">Entrar e agir só dentro do que foi permitido (MF-101)</a>, e os provedores de IA, em <a href="mf-106.html">Controlar quais IAs, quanto e a que custo (MF-106)</a>.</p>
+
+<h2 class="doc-h2" id="mf-108-o-que-corre">O que corre pela ligação, e o que não corre</h2>
+<p>Pela ligação correm os pedidos que a parte de fora de cada app manda ao módulo dele, e as respostas. Os dados crus da empresa não passam: o módulo os trabalha dentro do mAIg, e à nuvem volta a <strong>resposta pronta</strong>, que pode conter dados da empresa, até o teto de 200 linhas e com as colunas sensíveis mascaradas. A nuvem não guarda a resposta; guarda só a receita de cada painel: que dados buscar, que gráfico, que filtros. Na onda 1.0, dos dados da empresa sai só a resposta pronta. Na onda 1.1, o owner da organização pode liberar também a consulta feita ao banco, para a pessoa ver de onde veio o número: ela volta sem dado nenhum, e o valor de um filtro que toca uma coluna sensível aparece mascarado. A <strong>conferência da contratação</strong>, que aparece na tabela, é a confirmação, entre o mAIg e a Maind, de que o app foi mesmo contratado pela organização.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Passa pela ligação</th><th>Não passa pela ligação</th></tr></thead>
+    <tbody>
+      <tr class="zebra">
+        <td><ul><li>Os pedidos dos apps e a resposta pronta, até 200 linhas.</li><li>A troca do código do login pelo passe, quando a pessoa entra.</li><li>O download das versões novas do mAIg, com a assinatura conferida.</li><li>A renovação do certificado da organização, que vale 30 dias e se renova sozinho.</li><li>A licença de cada app, na conferência da contratação e a cada renovação.</li><li>O mínimo de operação, explicado logo abaixo.</li><li>A consulta feita ao banco, sem dado nenhum, se o owner da organização a liberar. <span class="badge badge--info">Onda 1.1</span></li></ul></td>
+        <td><ul><li>Os dados crus da empresa, que o módulo trabalha dentro do mAIg.</li><li>O pedido ao provedor de IA, que sai direto, pela saída própria.</li><li>A tela do console, que, na casa do cliente, se abre de dentro da rede ou pela VPN da empresa.</li><li>Acesso à rede do cliente: a Maind só pede, e o mAIg decide.</li><li>A planilha, que sai direto do mAIg para o navegador da pessoa. <span class="badge badge--info">Onda 1.1</span></li></ul></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-108-minimo">O mínimo de operação</h3>
+<p>Além do que os apps precisam para funcionar, a instância manda à Maind só o mínimo de operação: a versão do mAIg e a dos módulos, o estado da ligação e o estado da licença de cada app. Nunca vai dado, nome de pessoa, consulta nem mensagem de erro com valores. A lista fica à vista da TI do cliente no painel da instância, para que ela saiba, antes de liberar a saída, tudo o que a máquina manda para a Maind. O outro lado: a Maind sabe menos quando algo falha, e o suporte depende de alguém do cliente mostrar a tela, na onda 1.0, ou do acesso de suporte, que chega na onda 1.1.</p>
+<h3 class="doc-h3" id="mf-108-um-pedido">Um pedido, do começo ao fim</h3>
+<p>Carla, gerente comercial da rede de farmácias, quer saber quanto cada farmácia vendeu em outubro. Ela digita a pergunta nas telas do app, que ficam na nuvem da Maind. A parte de fora do app manda a pergunta ao módulo pela ligação que o mAIg da empresa mantém aberta, com um número e o passe de Carla. O núcleo confere a permissão, lê o banco de vendas só para consulta, faz o pedido à IA direto ao provedor, pela outra saída, e anota tudo no registro. A resposta pronta volta pela mesma ligação, e Carla vê a tabela na tela. Nada disso pediu uma porta de entrada. O que o registro anota está em <a href="mf-102.html">Saber quem pediu o quê, quando e com que dado (MF-102)</a>, e como o núcleo lê o banco, em <a href="mf-105.html">Usar os bancos da empresa sem expor a senha (MF-105)</a>.</p>
+<p>O mesmo caminho em desenho, com o que acontece quando a ligação cai no meio do trabalho:</p>
+<figure class="dx-diagrama"><figcaption><b>Um pedido pela ligação de dentro para fora</b> <span>O caminho de um pedido, da tela do app à resposta, pela ligação que o mAIg abre de dentro da rede do cliente, com o que acontece quando ela cai no meio do trabalho.</span><a href="media/diagramas/mf-108-um-pedido-pela-ligacao.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/mf-108-um-pedido-pela-ligacao.html?embutido=1" title="Um pedido pela ligação de dentro para fora" loading="lazy"></iframe></figure>
+
+<h2 class="doc-h2" id="mf-108-certificado">O certificado dentro da ligação</h2>
+<p>A ligação aberta de dentro protege a rede; o certificado protege a conversa. O <strong>certificado digital</strong> é uma espécie de carteira de identidade digital: um arquivo que diz quem é o portador e traz a assinatura de quem o emitiu, que não se falsifica sem que se perceba. O núcleo do mAIg confere o certificado da parte de fora de cada app dentro da ligação que o próprio mAIg abriu. Sem certificado válido, ela não é aceita, e o app não funciona. Sem essa conferência, bastaria alguém se passar pela Maind do outro lado da ligação. A conferência da contratação também corre pela ligação e libera o app só para a organização que o contratou. Se a licença de um app vence sem ser renovada, ao fim da carência, o app para para aquela organização, e as outras organizações da instância seguem como antes. A configuração do app fica guardada até a organização renovar ou o owner da organização apagá-la; apagar a configuração guardada de um app parado chega na onda 1.1. O certificado, a licença e a carência estão em <a href="mf-103.html">Contratar e liberar um app com segurança (MF-103)</a>.</p>
+
+<h2 class="doc-h2" id="mf-108-queda">Quando a ligação cai</h2>
+<p>Se a ligação cair, o mAIg reconecta sozinho, do mesmo jeito que ligou da primeira vez: de dentro para fora, sem ninguém da TI do cliente fazer nada. É o outro lado da ligação aberta de dentro: como ninguém de fora pode ligar para o mAIg, só ele pode refazer a ligação. Se dependesse de uma pessoa, cada queda de internet viraria um chamado.</p>
+<ul>
+  <li><strong>A internet do cliente cai.</strong> O mAIg guarda o que estava em andamento e religa sozinho quando ela volta.</li>
+  <li><strong>O ponto de conexão da Maind sai do ar.</strong> Todos os mAIg que se conectam a ele ficam sem a ligação ao mesmo tempo; quando ele volta, cada um religa sozinho. Por isso a Maind o mantém sempre de pé.</li>
+  <li><strong>Uma mudança no firewall bloqueia a saída.</strong> O mAIg tenta, mas não consegue sozinho, e os apps daquela instância ficam sem ele até a TI do cliente liberar a saída de novo.</li>
+  <li><strong>A máquina do mAIg é desligada.</strong> Alguém da TI do cliente precisa religá-la.</li>
+</ul>
+<h3 class="doc-h3" id="mf-108-em-andamento">O que estava em andamento fica guardado</h3>
+<p>Quando a ligação cai no meio de um trabalho, o mAIg guarda o que estava em andamento por um tempo curto, de cerca de 15 minutos. Se a ligação volta nesse tempo, a resposta chega normalmente; se não, o pedido é descartado, e a pessoa vê que a ligação caiu e que precisa refazer a pergunta. É como o carteiro que encontra a ponte fechada: não joga a carta fora, guarda na bolsa e entrega quando a ponte reabre. A diferença é que a carta pode esperar dias, e o pedido espera pouco, porque uma resposta que chega horas depois pode já não servir.</p>
+<h3 class="doc-h3" id="mf-108-tarefas">As tarefas marcadas esperam até uma hora</h3>
+<p>Uma <strong>tarefa marcada</strong> é um trabalho que um app faz sozinho numa hora marcada, como um relatório das 7h. Se a ligação está fora na hora marcada, a tarefa espera até uma hora, ou até a próxima rodada da mesma agenda, se vier antes. Se a ligação volta nesse prazo, a tarefa roda uma vez, atrasada, e diz que atrasou; passado o prazo, ela é pulada, e a agenda segue. Nunca roda mais de uma rodada atrasada por agenda, e assim uma queda não faz a tarefa rodar duas vezes nem sumir sem aviso.</p>
+<p>Por exemplo: Marcos tem um relatório de vendas marcado para as 7h. Às 6h50, a internet da empresa cai; às 7h20, ela volta, e o mAIg religa sozinho. O relatório roda uma vez, atrasado, e diz que foi gerado às 7h20, com previsão para as 7h. Se a internet só voltasse depois das 8h, a rodada seria pulada. Quem o app avisa da rodada pulada é regra de cada app. O aviso do mAIg sobre uma tarefa marcada é outro: quando ela para porque a pessoa que a criou perdeu o acesso, são avisados os owners da organização.</p>
+
+<h2 class="doc-h2" id="mf-108-estado">O estado da ligação: quem vê e quem é avisado</h2>
+<p>A ligação é da instância: todas as organizações de uma instância usam a mesma ligação com a Maind, e uma queda alcança todas elas de uma vez. Por isso o estado da ligação faz parte do estado da instância, que o administrador da instância acompanha no painel da instância, desde a onda 1.0: ali ele vê se o problema é da rede dele. Para as pessoas, o mAIg tem uma luz de estado e uma página de status, iguais para todos os apps: a mesma queda aparece do mesmo jeito em qualquer app, e nenhum app refaz esse trabalho.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>O quê</th><th>O que mostra, e para quem</th><th>Quando</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>A luz de estado</strong></td><td>Verde, “No ar”; amarela, “Instável”, e a pessoa entra normalmente; vermelha, “Fora do ar”. Sempre com texto ao lado, em todos os apps e também na tela de entrada, antes do login.</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>O aviso próprio</strong></td><td>Com a ligação fora ou a versão vencida, quem tenta usar o app vê um aviso próprio, e não um erro; com a versão vencida, o aviso é “Atualização necessária”. O resto da tela é de cada app.</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>O aviso de que a ligação não voltou</strong></td><td>Depois de cerca de 5 minutos sem a ligação voltar, são avisados todos os administradores da instância e a Maind, que vê a queda do outro lado. O aviso chega no console e por e-mail, sem dado nenhum. Na onda 1.0, ninguém o desliga nem o redireciona; as preferências de aviso chegam na onda 1.1. Uma queda curta pode gerar um aviso à toa.</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>A página de status</strong></td><td>Com o login do mAIg, mostra a cada pessoa o estado da ligação e dos apps da organização dela (em uso, pausado, suspenso, parado ou com atualização necessária) e as quedas passadas, com início, fim e duração, sem nome de pessoa nem de banco.</td><td><span class="badge badge--info">Onda 1.1</span></td></tr>
+    </tbody>
+  </table>
+</div>
+<p>A entrada nos apps cai junto com a ligação, porque sem ela ninguém troca o código do login pelo passe. A tela de entrada e a página de status, da onda 1.1, ficam no próprio mAIg e continuam abrindo; a tela de entrada mostra a luz em vermelho, com o texto “Fora do ar”. A página pede o login do mAIg porque mostra a cada pessoa só os apps da organização dela, e uma página aberta sem login não saberia quem olha. Na casa do cliente, ela só abre de dentro da rede da empresa ou pela VPN, como o console. Na hospedagem da Maind, o endereço do mAIg, com a tela de entrada e o console, fica por enquanto aberto na internet, protegido pelo login. Na onda 1.0, quem quer o detalhe de uma queda pergunta a quem cuida da instância; na onda 1.1, quem não tem conta ou não consegue entrar vê só a luz.</p>
+
+<h2 class="doc-h2" id="mf-108-recusa">Ligação no ar, conversa recusada</h2>
+<p>Mesmo com a ligação no ar, a conversa pode ser recusada, por dois motivos:</p>
+<ul>
+  <li><strong>Um certificado que não vale.</strong> Sem certificado válido, a parte de fora de um app não é aceita, como explica o tópico do certificado.</li>
+  <li><strong>Uma versão adiada além do prazo.</strong> A TI do cliente pode adiar uma versão nova do mAIg por até 30 dias, e uma correção de segurança por até 7. Vencido o prazo, a parte de fora de todos os apps recusa a conversa, e quem tenta usar um app vê o aviso próprio “Atualização necessária”. A mesma regra, por prazo, vale para o módulo de cada app: com o módulo de um app vencido, só aquele app para, e os outros seguem.</li>
+</ul>
+<p>Por exemplo: a Maind lança uma correção de segurança, e o mAIg da empresa a baixa pela ligação, mas Ana a deixa esperando o aval enquanto a empresa fecha o mês. Passados os 7 dias, a parte de fora do app deixa de aceitar a conversa, e Carla vê o aviso “Atualização necessária”. Ana vê no painel da instância o motivo e a versão e dá o aval; a correção se instala na janela de horário seguinte, e a conversa volta. A regra de versão dos apps está em <a href="mf-104.html">Instalar, pausar e retirar apps sem refazer nada (MF-104)</a>, e a atualização do mAIg, com o aval da TI e a janela de horário, em <a href="mf-107.html">Atender várias organizações numa instalação, sem misturá-las (MF-107)</a>.</p>
+
+<h2 class="doc-h2" id="mf-108-hospedagens">A ligação nas duas hospedagens</h2>
+<p>A regra é a mesma nas duas hospedagens: o mAIg liga para fora. Mas a promessa de não abrir a rede vale por inteiro só com o mAIg na infraestrutura do cliente. Quem escolhe a hospedagem da Maind precisa saber que o “sem porta de entrada” desta página fala da <strong>ligação do mAIg</strong>, e não do caminho até o banco: prometer mais do que isso seria prometer o que a hospedagem da Maind não entrega.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Sobre</th><th>Na infraestrutura do cliente</th><th>Na infraestrutura da Maind</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Onde o mAIg roda</strong></td><td>Nas máquinas e na rede da empresa.</td><td>Nas máquinas da Maind, separadas da nuvem dos apps. A empresa não instala nada.</td></tr>
+      <tr class="zebra"><td><strong>O endereço do mAIg</strong></td><td>Fica na rede da empresa, e o console se abre de dentro dela ou pela VPN da empresa.</td><td>Por enquanto, fica aberto na internet, protegido pelo login. Fechar essa rede fica para a segunda versão, ou depois.</td></tr>
+      <tr class="zebra"><td><strong>O caminho até o banco</strong></td><td>O mAIg lê o banco por dentro, e o banco não é alcançado de fora.</td><td>O banco aceita conexão só do endereço fixo da Maind (veja <a href="mf-105.html">MF-105</a>).</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="doc-h2" id="mf-108-ondas">O que chega em cada onda</h2>
+<p>Das 12 capacidades, 10 chegam na onda 1.0, 1 na onda 1.1 e 1 não entra.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Capacidade</th><th>Onda</th><th>Em poucas palavras</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td>A ligação parte do mAIg e fica aberta, sem porta de entrada na rede nem endereço fixo</td><td><span class="badge badge--success">Onda 1.0</span></td><td>É a condição para a TI aceitar instalar.</td></tr>
+      <tr class="zebra"><td>A TI libera só saídas, uma a uma: a Maind, cada provedor de IA, o Google, se usado, e o servidor de e-mail</td><td><span class="badge badge--success">Onda 1.0</span></td><td>A TI sabe exatamente para onde a máquina fala.</td></tr>
+      <tr class="zebra"><td>O certificado é conferido dentro da ligação</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Sem certificado válido, a parte de fora do app não é aceita.</td></tr>
+      <tr class="zebra"><td>A ligação religa sozinha, e o que estava em andamento fica guardado por cerca de 15 minutos</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Uma queda curta não derruba o trabalho de ninguém.</td></tr>
+      <tr class="zebra"><td>A tarefa marcada espera a ligação por até uma hora e roda uma vez só, atrasada</td><td><span class="badge badge--success">Onda 1.0</span></td><td>A tarefa não roda duas vezes nem some sem aviso.</td></tr>
+      <tr class="zebra"><td>O estado da ligação no painel da instância</td><td><span class="badge badge--success">Onda 1.0</span></td><td>A TI vê se o problema é da rede dela.</td></tr>
+      <tr class="zebra"><td>A luz de estado, igual em todos os apps e na tela de entrada, com três cores e sempre com texto, e o aviso próprio em vez de erro</td><td><span class="badge badge--success">Onda 1.0</span></td><td>A pessoa sabe que o problema é a ligação, e não ela.</td></tr>
+      <tr class="zebra"><td>O aviso a quem cuida da instância quando a ligação não volta em cerca de 5 minutos</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Quem resolve fica sabendo.</td></tr>
+      <tr class="zebra"><td>A conversa recusada quando o certificado não vale ou a versão passou do prazo de adiamento</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Um mAIg sem contrato ou velho demais não fala com o app.</td></tr>
+      <tr class="zebra"><td>O mínimo de operação: além do trabalho dos apps, só as versões, o estado da ligação e o da licença de cada app vão à Maind, numa lista à vista da TI</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Uma lista curta e fechada, que a TI aprova antes de liberar a saída.</td></tr>
+      <tr class="zebra"><td>A página de status do mAIg, com o login do mAIg; na casa do cliente, só de dentro da rede ou pela VPN</td><td><span class="badge badge--info">Onda 1.1</span></td><td>Mostra o estado da ligação e dos apps da organização da pessoa e as quedas passadas.</td></tr>
+      <tr class="zebra"><td>Funcionar sem ligação com a Maind</td><td><span class="badge">Não entra</span></td><td>A ligação é requisito; sem ela, só o console abre.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="doc-h2" id="mf-108-bastidores">Nos bastidores, sem complicar</h2>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>As duas pontas são da Maind.</strong> Dentro do mAIg, uma peça liga para a Maind, mantém a ligação viva e religa sozinha; na Maind, o ponto de conexão guarda as ligações abertas e entrega cada pedido ao mAIg certo. Nenhum serviço de outra empresa fica no caminho dos dados, nem serviço pronto de nuvem, nem túnel de mercado.</li>
+  <li><strong>O teto é conferido antes de sair.</strong> O núcleo confere o teto de 200 linhas antes de a resposta sair pela ligação, para que a promessa não dependa só do app.</li>
+  <li><strong>Versões assinadas.</strong> O mAIg baixa a versão nova pela ligação e confere, pela assinatura, que ela é da Maind antes de esperar o aval da TI.</li>
+  <li><strong>Uma ligação por instância.</strong> Quem abre a ligação é o mAIg, e cada instância é um mAIg instalado; por isso a ligação é da instância, e não de cada organização.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-108-limites">O que esta funcionalidade não faz</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Abrir uma porta de entrada na rede</strong></td><td>Nunca: quem liga é sempre o mAIg, de dentro para fora.</td></tr>
+      <tr class="zebra"><td><strong>Funcionar sem ligação com a Maind</strong></td><td>Não entra na primeira versão, e nenhuma versão está marcada para isso. Sem a ligação, só o console abre.</td></tr>
+      <tr class="zebra"><td><strong>Desenhar a tela do app durante a queda</strong></td><td>O texto e o desenho do aviso são de cada app. Do mAIg são a regra do aviso próprio, a luz de estado e a página de status.</td></tr>
+      <tr class="zebra"><td><strong>Decidir quem o app avisa quando uma tarefa é pulada</strong></td><td>É regra de cada app. A espera de até uma hora é regra do mAIg.</td></tr>
+      <tr class="zebra"><td><strong>Cuidar do caminho até o banco na hospedagem da Maind</strong></td><td>É de <a href="mf-105.html">Usar os bancos da empresa sem expor a senha (MF-105)</a>.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-108-ligadas">Funcionalidades ligadas a esta</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="mf-101.html">Entrar e agir só dentro do que foi permitido (MF-101)</a></td><td>O login começa no mAIg, e o código do login vira passe pela ligação. Sem a ligação, ninguém entra nos apps.</td></tr>
+      <tr class="zebra"><td><a href="mf-102.html">Saber quem pediu o quê, quando e com que dado (MF-102)</a></td><td>O registro anota o que passa pela ligação.</td></tr>
+      <tr class="zebra"><td><a href="mf-103.html">Contratar e liberar um app com segurança (MF-103)</a></td><td>A conferência da contratação e a licença correm pela ligação, e o certificado que ela confere vem da contratação.</td></tr>
+      <tr class="zebra"><td><a href="mf-104.html">Instalar, pausar e retirar apps sem refazer nada (MF-104)</a></td><td>A regra de versão por prazo do módulo de cada app, e a situação de cada app que a página de status mostra.</td></tr>
+      <tr class="zebra"><td><a href="mf-105.html">Usar os bancos da empresa sem expor a senha (MF-105)</a></td><td>O caminho até o banco, inclusive na hospedagem da Maind.</td></tr>
+      <tr class="zebra"><td><a href="mf-106.html">Controlar quais IAs, quanto e a que custo (MF-106)</a></td><td>Cada provedor de IA escolhido é uma saída a liberar; o pedido à IA não passa pela ligação.</td></tr>
+      <tr class="zebra"><td><a href="mf-107.html">Atender várias organizações numa instalação, sem misturá-las (MF-107)</a></td><td>Todas as organizações da instância usam a mesma ligação. A atualização do mAIg, com o aval da TI e a janela de horário, é de lá.</td></tr>
+      <tr class="zebra"><td><a href="mf-109.html">Rodar cada app isolado dentro do mAIg (MF-109)</a></td><td>O módulo trabalha os dados dentro do mAIg e não tem saída própria.</td></tr>
+      <tr class="zebra"><td><a href="mf-110.html">Configurar tudo num lugar só (MF-110)</a></td><td>O painel da instância mostra o estado da ligação e a lista do que vai à Maind; o console não passa pela ligação.</td></tr>
+      <tr class="zebra"><td><a href="mf-112.html">Entrar com o login que a empresa já usa (MF-112)</a></td><td>Na segunda versão, acrescenta a saída para o provedor do login da empresa.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>O endereço exato que a TI libera.</strong> Que endereço da Maind a TI do cliente libera, como ela fica sabendo se ele mudar e se as versões novas vêm do mesmo endereço: a forma técnica ainda será definida.</p><p><strong>O compromisso com o ponto de conexão.</strong> A Maind mantém o ponto de conexão sempre de pé; o compromisso de disponibilidade que ela assume ainda será definido.</p><p><strong>O que conta como “em andamento”.</strong> O prazo de cerca de 15 minutos e o que a pessoa vê estão definidos; o que conta exatamente como “em andamento” e como o mAIg guarda esse trabalho ainda serão definidos.</p><p><strong>A saída que passa por um intermediário.</strong> Muitas empresas fazem a saída da rede passar por um intermediário que abre a conversa para inspecioná-la, o que costuma quebrar a ligação. O caminho alternativo para essas empresas, e como a ligação aguenta muitas pessoas ao mesmo tempo e a queda de um servidor da Maind, ainda serão definidos.</p><p><strong>Os dias de quedas na página de status.</strong> A página mostra as quedas passadas, com início, fim e duração; quantos dias ela cobre ainda será definido.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-108-faq">Perguntas frequentes</h2>
+<div class="faq">
+  <details open>
+    <summary>Precisamos abrir alguma porta de entrada no firewall para o mAIg?</summary>
+    <div class="faq-body"><p>Não. Quem liga é sempre o mAIg, de dentro da rede da empresa para fora, e a ligação fica aberta. A TI libera só saídas, todas conhecidas: a do endereço da Maind, a de cada provedor de IA que a organização escolher, a do Google, se a organização entrar com a conta Google, e a do servidor de e-mail da própria empresa.</p></div>
+  </details>
+  <details>
+    <summary>Precisamos de um endereço fixo na internet?</summary>
+    <div class="faq-body"><p>Não. Quem recebe ligações de fora costuma precisar de um endereço fixo; quem só liga para fora, não. A TI também não precisa mudar a rede. Um cuidado: se a saída da rede da empresa passa por um intermediário que abre a conversa para inspecioná-la, a ligação costuma quebrar, e o caminho para esse caso ainda será definido.</p></div>
+  </details>
+  <details>
+    <summary>O que acontece se a nossa internet cair?</summary>
+    <div class="faq-body"><p>A ligação cai junto, e o mAIg religa sozinho quando a internet volta, sem ninguém da TI fazer nada. O pedido que estava em andamento fica guardado por cerca de 15 minutos, e as tarefas marcadas esperam até uma hora. Enquanto isso, quem tenta usar o app vê a luz vermelha e um aviso próprio, e, se a ligação não volta em cerca de 5 minutos, os administradores da instância e a Maind são avisados.</p></div>
+  </details>
+  <details>
+    <summary>O que a nossa rede manda para a Maind pela ligação?</summary>
+    <div class="faq-body"><p>A resposta pronta que a pessoa vê, até 200 linhas e com as colunas sensíveis mascaradas, que a nuvem não guarda; a troca do código do login pelo passe; o download das versões novas; a renovação do certificado; e a licença de cada app. Além disso, só o mínimo de operação: as versões, o estado da ligação e o da licença de cada app, sem dado, nome de pessoa, consulta nem mensagem de erro com valores. A lista fica à vista no painel da instância. O pedido à IA não passa pela Maind: sai direto para o provedor.</p></div>
+  </details>
+  <details>
+    <summary>A Maind consegue entrar na nossa rede por essa ligação?</summary>
+    <div class="faq-body"><p>Não. Pela ligação descem só os pedidos que o mAIg conhece, nunca acesso à rede da empresa: a Maind pede, e o mAIg decide. Quem está na internet não enxerga o mAIg, e a tela do console também não passa pela ligação: ela se abre de dentro da rede da empresa ou pela VPN.</p></div>
+  </details>
+  <details>
+    <summary>Quando contratarmos um segundo app, a TI precisa liberar algo novo?</summary>
+    <div class="faq-body"><p>Para o app, não: a parte de fora dele responde pela ligação que o mAIg já mantém. O que pede uma liberação nova é um provedor de IA novo, porque cada um é uma saída a mais, e o Google, se a organização passar a entrar com a conta Google.</p></div>
+  </details>
+</div>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="mf-107.html"><span class="cat">Anterior</span><h5>Atender várias organizações numa instalação, sem misturá-las</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="mf-109.html"><span class="cat">Próxima</span><h5>Rodar cada app isolado dentro do mAIg</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.png" alt="Maind AI Gateway (mAIg)" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.png" alt="Maind AI Gateway (mAIg)" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind AI Gateway · Documentação do produto · primeira versão em construção</b></div></div><div class="ftr-center"><span class="ftr-tag">v1 em desenho, sem versão publicada · 11/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Maind AI Gateway (mAIg)</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#mf-108-o-que-e">O que é, em poucas palavras</a></li><li class="lvl-3"><a href="#mf-108-quem-e-quem">Quem faz o quê</a></li><li><a href="#mf-108-ligacao">A ligação que o mAIg abre para fora</a></li><li class="lvl-3"><a href="#mf-108-todas-as-pessoas">Uma ligação para todas as pessoas</a></li><li><a href="#mf-108-saidas">As saídas que a TI do cliente libera</a></li><li><a href="#mf-108-o-que-corre">O que corre pela ligação, e o que não corre</a></li><li class="lvl-3"><a href="#mf-108-minimo">O mínimo de operação</a></li><li class="lvl-3"><a href="#mf-108-um-pedido">Um pedido, do começo ao fim</a></li><li><a href="#mf-108-certificado">O certificado dentro da ligação</a></li><li><a href="#mf-108-queda">Quando a ligação cai</a></li><li class="lvl-3"><a href="#mf-108-em-andamento">O que estava em andamento fica guardado</a></li><li class="lvl-3"><a href="#mf-108-tarefas">As tarefas marcadas esperam até uma hora</a></li><li><a href="#mf-108-estado">O estado da ligação: quem vê e quem é avisado</a></li><li><a href="#mf-108-recusa">Ligação no ar, conversa recusada</a></li><li><a href="#mf-108-hospedagens">A ligação nas duas hospedagens</a></li><li><a href="#mf-108-ondas">O que chega em cada onda</a></li><li><a href="#mf-108-bastidores">Nos bastidores, sem complicar</a></li><li><a href="#mf-108-limites">O que esta funcionalidade não faz</a></li><li class="lvl-3"><a href="#mf-108-ligadas">Funcionalidades ligadas a esta</a></li><li><a href="#mf-108-faq">Perguntas frequentes</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
+</body>
+</html>

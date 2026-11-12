@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="As funcionalidades do mAIg explicadas uma a uma, em linguagem simples: o que cada uma faz, em que onda chega, como funciona na prática e as dúvidas mais comuns." />
+<link rel="icon" href="assets/logo-claro.png" />
+<title>MF-112 · Entrar com o login que a empresa já usa — Maind AI Gateway (mAIg)</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
+</head>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Maind AI Gateway (mAIg)"><img class="logo-light" src="assets/logo-claro.png" alt="Maind AI Gateway (mAIg)" /><img class="logo-dark" src="assets/logo-escuro.png" alt="Maind AI Gateway (mAIg)" /></a><div class="div"></div><div class="doc-meta"><b>Maind AI Gateway (mAIg) · Documentação</b><small>Documentação do produto</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Maind AI Gateway (mAIg)</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Para começar</h6><ul><li><a href="como-ler.html">Como ler esta documentação</a></li></ul><h6>Primeira versão</h6><ul class="side-sub"><li><a href="mf-101.html">MF-101 · Entrar e agir só dentro do que foi permitido</a></li><li><a href="mf-102.html">MF-102 · Saber quem pediu o quê, quando e com que dado</a></li><li><a href="mf-103.html">MF-103 · Contratar e liberar um app com segurança</a></li><li><a href="mf-104.html">MF-104 · Instalar, pausar e retirar apps sem refazer nada</a></li><li><a href="mf-105.html">MF-105 · Usar os bancos da empresa sem expor a senha</a></li><li><a href="mf-106.html">MF-106 · Controlar quais IAs, quanto e a que custo</a></li><li><a href="mf-107.html">MF-107 · Atender várias organizações numa instalação, sem misturá-las</a></li><li><a href="mf-108.html">MF-108 · Funcionar sem abrir porta de entrada na rede</a></li><li><a href="mf-109.html">MF-109 · Rodar cada app isolado dentro do mAIg</a></li><li><a href="mf-110.html">MF-110 · Configurar tudo num lugar só</a></li></ul><h6>Segunda versão</h6><ul class="side-sub"><li><a href="mf-111.html">MF-111 · Dar à IA as ferramentas da empresa, só para leitura</a></li><li><a href="mf-112.html" class="active">MF-112 · Entrar com o login que a empresa já usa</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Maind AI Gateway (mAIg)</a><span class="sep">/</span><span>Segunda versão</span><span class="sep">/</span><span class="now">Entrar com o login que a empresa já usa</span></nav><span class="doc-eyebrow">Segunda versão</span><div class="dx-macro-topo"><span class="dx-codigo">MF-112</span><span class="dx-selo">2ª versão</span></div><h1 class="doc-h1">Entrar com o login que a empresa já usa</h1><p class="doc-lead">A pessoa entra nos apps com a conta que a TI da empresa já lhe deu, ao lado do usuário e senha e da conta Google; quem a empresa desliga perde os apps.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#mf-112-o-que-e">O que é, em poucas palavras</a><small>1 tópico</small></h3><ul><li><a href="#mf-112-quem-faz">Quem faz o quê</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-112-ligar">Ligar o login da empresa numa organização</a><small>2 tópicos</small></h3><ul><li><a href="#mf-112-padrao">O padrão aceito</a></li><li><a href="#mf-112-cada-organizacao">Uma ligação em cada organização</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-112-entrar">Entrar com a conta da empresa</a><small>2 tópicos</small></h3><ul><li><a href="#mf-112-cadastro">O login confirma quem é; o cadastro decide quem entra</a></li><li><a href="#mf-112-papel">O papel que vem da empresa</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-112-desligar">Quem sai da empresa perde os apps</a><small>1 tópico</small></h3><ul><li><a href="#mf-112-owner">O owner e o administrador seguem com usuário e senha</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-112-ondas">O que chega em cada onda</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-112-bastidores">Nos bastidores, sem complicar</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-112-limites">O que esta funcionalidade não faz</a><small>1 tópico</small></h3><ul><li><a href="#mf-112-ligadas">Funcionalidades ligadas a esta</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-112-faq">Perguntas frequentes</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><p>Pense no primeiro dia de um funcionário numa rede de farmácias. A TI da empresa lhe dá uma conta, e com ela ele entra no e-mail, na intranet e nos sistemas internos. No dia em que ele sai da empresa, a TI desliga essa conta uma vez, e todas essas portas se fecham juntas. O <strong>login da empresa</strong> põe os apps da Maind dentro desse mesmo controle: a pessoa entra nos apps com a conta que a TI já lhe deu, e quem confirma quem ela é passa a ser o <strong>provedor de identidade</strong> da empresa, o sistema onde a TI cadastra os funcionários.</p>
+<p>É como mostrar na portaria do prédio o crachá que a empresa já deu ao funcionário, em vez de pedir um crachá novo ao prédio. Só que o porteiro do mAIg não confere o crachá a olho: pergunta ao próprio sistema da empresa, e o crachá só vale enquanto a empresa o mantiver ativo.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Segunda versão, em construção</b><p>O que está aqui é o que a segunda versão do mAIg vai entregar, depois da primeira. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+<p>Na primeira versão, as pessoas já entram nos apps pelo mAIg, de dois jeitos, desde a onda 1.0: com usuário e senha, que toda organização já traz ligado, e com a conta Google, que o owner da organização liga se quiser (veja <a href="mf-101.html">Entrar e agir só dentro do que foi permitido (MF-101)</a>). A segunda versão acrescenta um terceiro jeito, o login da empresa, no mesmo lugar. Como ela ainda está sendo desenhada, parte das regras desta página é o <strong>ponto de partida</strong> do desenho: o detalhe se fecha junto com a segunda versão, e a página diz quais são.</p>
+
+<h2 class="doc-h2" id="mf-112-o-que-e">O que é, em poucas palavras</h2>
+<p>O login da empresa é mais um jeito de entrar nos apps, ligado pelo owner da organização. Esta funcionalidade cuida de seis coisas:</p>
+<ul>
+  <li><strong>Entrar com a conta de sempre.</strong> A pessoa escolhe “entrar com o login da empresa” e digita a senha na tela da própria empresa. O mAIg nunca vê essa senha.</li>
+  <li><strong>Somar, sem trocar.</strong> O login da empresa fica ao lado do usuário e senha e da conta Google, e o owner da organização liga ou desliga cada um.</li>
+  <li><strong>Deixar entrar só quem a organização cadastrou.</strong> O login confirma quem a pessoa é; quem entra continua sendo decidido pelo owner da organização.</li>
+  <li><strong>Trazer o papel da pessoa</strong> a partir do setor ou da função que a empresa já guarda, dentro de cada app.</li>
+  <li><strong>Tirar dos apps quem a empresa desligou.</strong> Pelo ponto de partida, o mAIg volta a perguntar à empresa, de tempos em tempos, se a conta ainda vale.</li>
+  <li><strong>Nunca trancar quem configura.</strong> O owner da organização e o administrador da instância seguem entrando no console com usuário e senha.</li>
+</ul>
+<h3 class="doc-h3" id="mf-112-quem-faz">Quem faz o quê</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>TI do cliente</strong></td><td>Controla o provedor de identidade da empresa: cria, muda e desliga as contas dos funcionários. Prepara o provedor para aceitar o mAIg, libera a saída da rede até ele e entrega ao owner da organização os dados da ligação.</td></tr>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Liga ou desliga o login da empresa no console, com os dados que a TI lhe deu, e cadastra as pessoas que podem entrar. Continua entrando no console com usuário e senha, como o administrador da instância, que não liga o login da empresa: ele é configuração da organização.</td></tr>
+      <tr class="zebra"><td><strong>Auditor</strong></td><td>É avisado na hora quando os jeitos de entrar da organização mudam, junto com os outros owners da organização.</td></tr>
+      <tr class="zebra"><td><strong>Quem usa um app</strong></td><td>Entra com a conta da empresa, na tela da própria empresa, sem uma senha nova.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Os papéis estão explicados em <a href="como-ler.html#como-ler-papeis">Quem é quem</a>, e o provedor de identidade e o passe, nas <a href="como-ler.html#glossario">palavras que aparecem nas páginas</a>.</p>
+
+<h2 class="doc-h2" id="mf-112-ligar">Ligar o login da empresa numa organização</h2>
+<p>Digamos que uma rede de farmácias usa o mAIg com o primeiro app e quer que os funcionários entrem com a conta da empresa. Ana é da TI do cliente, e Marcos é o owner da organização.</p>
+<ol class="steps">
+  <li><div><h4>A TI prepara o provedor de identidade</h4><p>Ana prepara o provedor de identidade da empresa para aceitar o mAIg, libera a saída da rede até ele e entrega a Marcos os dados da ligação.</p></div></li>
+  <li><div><h4>O owner liga o login no console</h4><p>Marcos abre o console do mAIg, liga o login da empresa e informa os dados que Ana lhe deu. Mantém o usuário e senha para quem ainda não tem conta na empresa e desliga a conta Google. Mudar os jeitos de entrar é um ato sensível: os outros owners da organização e o auditor são avisados na hora.</p></div></li>
+  <li><div><h4>As pessoas passam a entrar com a conta da empresa</h4><p>Na próxima vez em que Carla, gerente comercial, abre o app, a tela de entrada já mostra “entrar com o login da empresa”.</p></div></li>
+</ol>
+<p>Marcos continua entrando no console com o usuário e a senha dele. Se os dados da ligação estiverem errados, o login da empresa não funciona, mas os outros jeitos de entrar que ele deixou ligados continuam valendo, e ele corrige a ligação no console.</p>
+<h3 class="doc-h3" id="mf-112-padrao">O padrão aceito</h3>
+<p>O login da empresa segue o <strong>OpenID Connect</strong>, um padrão, isto é, uma regra combinada entre fabricantes, que permite a um sistema pedir ao provedor de identidade da empresa que confirme quem é a pessoa. Pelo ponto de partida, só ele é aceito, porque cobre os provedores de identidade mais comuns. O <strong>SAML</strong>, outro padrão de login, usado por parte das empresas, não é aceito: a empresa que só tem SAML fica sem o login da empresa até uma decisão nova.</p>
+<h3 class="doc-h3" id="mf-112-cada-organizacao">Uma ligação em cada organização</h3>
+<p>O mAIg não tem um nível de empresa acima da organização, e cada organização tem as próprias regras. Por isso, uma empresa com duas organizações, como a matriz e uma subsidiária, liga o login da empresa nas duas, mesmo com o mesmo provedor de identidade. E uma pessoa que está nas duas tem uma conta em cada uma e escolhe a organização na tela de entrada (veja <a href="mf-107.html">Atender várias organizações numa instalação, sem misturá-las (MF-107)</a>).</p>
+
+<h2 class="doc-h2" id="mf-112-entrar">Entrar com a conta da empresa</h2>
+<p>Para quem usa o app, entrar fica assim:</p>
+<ol class="steps">
+  <li><div><h4>Carla abre o app</h4><p>O app a manda à tela de entrada do mAIg da organização, no endereço do mAIg, e não na nuvem da Maind. Lá aparece “entrar com o login da empresa”.</p></div></li>
+  <li><div><h4>Entra na tela da empresa</h4><p>Ela é levada à tela de login da rede de farmácias e entra com a conta de sempre. O mAIg nunca vê essa senha.</p></div></li>
+  <li><div><h4>A empresa confirma quem ela é</h4><p>O provedor de identidade devolve ao mAIg uma confirmação assinada, que diz quem ela é e não se falsifica sem que se perceba.</p></div></li>
+  <li><div><h4>O mAIg confere o cadastro e emite o passe</h4><p>Carla está cadastrada na organização. O mAIg emite o passe do app, e ela cai no app. Se depois ela abre outro app, não digita a senha de novo: o mAIg emite outro passe, só para esse app.</p></div></li>
+</ol>
+<p>O mesmo caminho em desenho, do dia em que a TI prepara o provedor de identidade até o momento em que uma pessoa desligada sai dos apps:</p>
+<figure class="dx-diagrama"><figcaption><b>Entrar com o login da empresa</b> <span>Do dia em que a TI prepara o provedor de identidade da empresa até a pessoa desligada sair dos apps: a entrada pela tela da empresa, a conferência do cadastro, o passe de cada app e os dois relógios.</span><a href="media/diagramas/mf-112-login-da-empresa.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/mf-112-login-da-empresa.html?embutido=1" title="Entrar com o login da empresa" loading="lazy"></iframe></figure>
+<h3 class="doc-h3" id="mf-112-cadastro">O login confirma quem é; o cadastro decide quem entra</h3>
+<p><strong>Autenticar</strong> é provar quem a pessoa é. <strong>Dar acesso</strong> é decidir que ela pode entrar e o que pode fazer. O login da empresa só autentica: dar acesso continua com o owner da organização, que cadastra as pessoas no console, como na primeira versão. Ter uma conta no provedor de identidade da empresa não basta.</p>
+<p>Por exemplo: João, da logística, tem conta na empresa, mas Marcos não o cadastrou. O provedor de identidade confirma que é João, o mAIg confere que ele não está cadastrado, e ele não entra. Se João precisar do app, pede a Marcos, que o cadastra no console, e a próxima entrada dele pelo login da empresa funciona. Assim, ligar o login da empresa não muda quem pode entrar.</p>
+<h3 class="doc-h3" id="mf-112-papel">O papel que vem da empresa</h3>
+<p>O <strong>papel</strong> é o conjunto de funcionalidades que a pessoa pode usar num app. O provedor de identidade costuma guardar o setor ou a função de cada funcionário, e o login da empresa pode trazer essa informação junto com a confirmação de quem a pessoa é. Esse papel vale dentro de cada app, e não para todos os apps de uma vez: o passe de cada app leva o papel da pessoa naquele app. Por isso, a TI do cliente cuida de um papel por app, e não de um papel comum a todos.</p>
+<p>Pelo ponto de partida, quando o papel do cadastro e o que vem da empresa discordam, vale o da empresa, e quem chega sem um papel correspondente recebe o papel padrão da organização. Assim, a TI do cliente governa os papéis num lugar só, e quem muda de área não fica com uma permissão velha. Em troca, o owner da organização deixa de poder mudar, dentro do app, o papel de quem entra pelo login da empresa. Quando Carla é promovida a diretora comercial e Ana muda a função dela no provedor de identidade, a próxima entrada de Carla já traz o que o novo papel permite, sem Marcos mexer em nada.</p>
+
+<h2 class="doc-h2" id="mf-112-desligar">Quem sai da empresa perde os apps</h2>
+<p>A <strong>sessão</strong> é o tempo em que a pessoa segue dentro do app sem precisar entrar de novo. Quem entra pelo login da empresa tem dois relógios correndo ao mesmo tempo, e o que vencer primeiro tira a pessoa dos apps:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Relógio</th><th>Como corre</th><th>Quem ele tira dos apps</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>O passe do app</strong></td><td>A cada 15 minutos, o passe se renova pelo mAIg, que confere se a pessoa ainda tem acesso na organização e se a máquina dela ainda o alcança. Já vale desde a primeira versão.</td><td>Quem o owner tirou do cadastro e quem saiu da rede da empresa ou da VPN: perde os apps em até 15 minutos.</td></tr>
+      <tr class="zebra"><td><strong>A confirmação com a empresa</strong></td><td>De tempos em tempos, o mAIg pergunta ao provedor de identidade se a conta da pessoa ainda vale. O ponto de partida é a cada 8 horas.</td><td>Quem a empresa desligou no provedor de identidade, sem ninguém mexer no cadastro da organização: perde os apps na confirmação seguinte.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Um exemplo, com o ponto de partida de 8 horas:</p>
+<ol class="steps">
+  <li><div><h4>8h: Jorge entra</h4><p>Jorge, farmacêutico, entra no app pelo login da empresa, e a sessão dele começa.</p></div></li>
+  <li><div><h4>10h: a empresa o desliga</h4><p>A rede de farmácias desliga Jorge, e Ana desativa a conta dele no provedor de identidade. Até a próxima confirmação, a sessão dele ainda vale.</p></div></li>
+  <li><div><h4>16h: o mAIg confirma com a empresa</h4><p>O provedor de identidade diz que a conta não vale mais. Jorge precisa entrar de novo e não consegue.</p></div></li>
+</ol>
+<p>Ninguém precisou avisar Marcos nem a Maind: a TI do cliente desligou Jorge num lugar só. Na casa do cliente, a TI pode deixar o mAIg visível só de dentro da rede ou pela VPN. Se Ana também tira Jorge da VPN, ele perde os apps bem antes, em até 15 minutos, porque o passe só se renova pelo mAIg e a máquina dele deixa de alcançá-lo.</p>
+<h3 class="doc-h3" id="mf-112-owner">O owner e o administrador seguem com usuário e senha</h3>
+<p>O owner da organização e o administrador da instância entram no console sempre com usuário e senha, mesmo com o login da empresa ligado. Vale para todos os owners da organização, quantos a organização contratar. Assim, quem configura tudo nunca fica trancado do lado de fora se o login da empresa falhar ou for mal configurado. Essa senha abre só o console: para usar os apps, o owner entra como qualquer pessoa, pelo jeito de entrar que a organização ligou.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>A senha do console não passa pelo provedor de identidade da empresa, e a TI do cliente não impõe a ela a política de senha da empresa. Quando a empresa desliga um owner da organização, ele perde os apps como qualquer pessoa, mas mantém a senha do console até ser retirado. Quem retira um owner da organização é o administrador da instância (veja <a href="mf-101.html">MF-101</a>).</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-112-ondas">O que chega em cada onda</h2>
+<p>Das 3 capacidades, nenhuma chega na primeira versão: as 3 chegam na segunda versão.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Capacidade</th><th>Onda</th><th>Em poucas palavras</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Entrar com o login que a empresa já usa</strong></td><td><span class="badge badge--warning">Segunda versão</span></td><td>A pessoa entra nos apps com a conta da empresa, ao lado do usuário e senha e da conta Google.</td></tr>
+      <tr class="zebra"><td><strong>O papel da pessoa vem do login da empresa</strong></td><td><span class="badge badge--warning">Segunda versão</span></td><td>O papel de cada pessoa em cada app pode vir do provedor de identidade da empresa.</td></tr>
+      <tr class="zebra"><td><strong>A sessão se confirma com a empresa de tempos em tempos</strong></td><td><span class="badge badge--warning">Segunda versão</span></td><td>Quem a empresa desliga perde os apps na confirmação seguinte.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>A primeira versão já deixa pronto, desde a onda 1.0, o lugar onde o login da empresa entra: a entrada pelo mAIg, igual para todos os apps, com o passe de cada app (<a href="mf-101.html">MF-101</a>); os jeitos de entrar como configuração da organização, que o owner da organização liga e desliga; o cadastro das pessoas, com que o login da empresa confere quem pode entrar; o usuário e senha do owner e do administrador; e o console, onde o owner vai ligar o login da empresa (<a href="mf-110.html">MF-110</a>).</p>
+
+<h2 class="doc-h2" id="mf-112-bastidores">Nos bastidores, sem complicar</h2>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>A senha fica na empresa.</strong> A pessoa digita a senha só na tela do provedor de identidade. O mAIg recebe uma confirmação assinada de quem ela é, e quem decide se a conta vale é a TI do cliente.</li>
+  <li><strong>A confirmação fica no mAIg.</strong> O login começa no endereço do mAIg, e a confirmação do provedor de identidade chega ao mAIg e fica nele: nunca vai à nuvem da Maind. A nuvem dos apps recebe só o passe que o mAIg assina e não consegue fabricar um, porque não tem a chave da organização.</li>
+  <li><strong>Uma saída a mais na rede.</strong> Para o mAIg conversar com o provedor de identidade, a TI do cliente libera a saída da rede até ele, como já libera a do Google quando a organização usa a conta Google (veja <a href="mf-108.html">Funcionar sem abrir porta de entrada na rede (MF-108)</a>).</li>
+  <li><strong>Um login para todos os apps.</strong> A entrada é do núcleo do mAIg, e não de cada app. Ligado uma vez na organização, o login da empresa vale para os apps dela, e cada app recebe o próprio passe.</li>
+  <li><strong>Por que fica para a segunda versão.</strong> A primeira versão traz o que o primeiro app usa logo de saída, e o login da empresa chega quando ele passa a usá-lo. Até lá, a TI do cliente que exige o login da empresa pode segurar a aprovação do mAIg.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-112-limites">O que esta funcionalidade não faz</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Criar ou mudar contas no provedor de identidade</strong></td><td>O provedor é da empresa, e a TI do cliente o mantém. O mAIg só recebe a confirmação de quem a pessoa é.</td></tr>
+      <tr class="zebra"><td><strong>Deixar entrar quem não está cadastrado</strong></td><td>O login da empresa só autentica. O cadastro das pessoas e as permissões são da <a href="mf-101.html">MF-101</a>, e quem cadastra é o owner da organização, no console.</td></tr>
+      <tr class="zebra"><td><strong>Aceitar o SAML ou outros padrões de login</strong></td><td>O ponto de partida é só o OpenID Connect. Outro padrão depende de uma decisão nova.</td></tr>
+      <tr class="zebra"><td><strong>Tirar a senha do owner e do administrador</strong></td><td>Os dois seguem entrando no console com usuário e senha, mesmo com o login da empresa ligado, e essa senha abre só o console.</td></tr>
+      <tr class="zebra"><td><strong>Decidir quem vê o quê dentro de um banco</strong></td><td>Isso é de cada app, e o recorte se faz no próprio banco (<a href="mf-105.html">MF-105</a>). Se o login da empresa vai ajudar a fazer valer as regras do próprio banco, pessoa por pessoa, ainda está em definição.</td></tr>
+      <tr class="zebra"><td><strong>Pedir uma segunda prova além da senha</strong></td><td>É a confirmação em dois passos, que também chega na segunda versão, como configuração da entrada (<a href="mf-101.html">MF-101</a>).</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-112-ligadas">Funcionalidades ligadas a esta</h3>
+<p>O login da empresa é mais um jeito de entrar, dentro do que outras funcionalidades já fazem. O nome de cada uma leva à página dela.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="mf-101.html">Entrar e agir só dentro do que foi permitido (MF-101)</a></td><td>Traz os jeitos de entrar da primeira versão, o cadastro das pessoas, o passe e as permissões. O login da empresa entra como mais um jeito de entrar, no mesmo lugar.</td></tr>
+      <tr class="zebra"><td><a href="mf-110.html">Configurar tudo num lugar só (MF-110)</a></td><td>É no console que o owner da organização liga o login da empresa, como faz com os bancos e a IA.</td></tr>
+      <tr class="zebra"><td><a href="mf-102.html">Saber quem pediu o quê, quando e com que dado (MF-102)</a></td><td>Ligar ou desligar o login da empresa é uma mudança de configuração do owner da organização, e fica anotada no registro da organização.</td></tr>
+      <tr class="zebra"><td><a href="mf-107.html">Atender várias organizações numa instalação, sem misturá-las (MF-107)</a></td><td>Não há um nível de empresa acima das organizações: cada organização liga o próprio login, mesmo com o mesmo provedor de identidade.</td></tr>
+      <tr class="zebra"><td><a href="mf-105.html">Usar os bancos da empresa sem expor a senha (MF-105)</a></td><td>Quem consulta os bancos é o núcleo, com a senha guardada no cofre. Se ele vai levar ao banco a identidade de quem entrou pelo login da empresa ainda está em definição.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>Quando o provedor de identidade da empresa sai do ar.</strong> O que acontece com quem tenta entrar e com as sessões que já estão abertas ainda será definido.</p><p><strong>O intervalo da confirmação com a empresa.</strong> O ponto de partida é a cada 8 horas. O intervalo exato ainda será definido, e também se o owner da organização poderá ajustá-lo.</p><p><strong>As regras do próprio banco, pessoa por pessoa.</strong> Se o mAIg vai levar ao banco a identidade de quem entrou pelo login da empresa, para que as regras de acesso do banco valham para cada pessoa, ainda está em definição.</p><p><strong>As outras regras de ponto de partida.</strong> O padrão aceito e o papel que vem da empresa se fecham junto com a segunda versão.</p></div>
+</div>
+<h2 class="doc-h2" id="mf-112-faq">Perguntas frequentes</h2>
+<div class="faq">
+  <details open>
+    <summary>O mAIg ou a Maind ficam sabendo da senha dos nossos funcionários?</summary>
+    <div class="faq-body"><p>Não. Com o login da empresa, a pessoa digita a senha só na tela da própria empresa, e o mAIg recebe apenas a confirmação de quem ela é. Essa confirmação fica no mAIg e nunca vai à nuvem da Maind: a nuvem dos apps recebe só o passe que o mAIg assina.</p></div>
+  </details>
+  <details>
+    <summary>Quando o login da empresa fica disponível, e como se entra até lá?</summary>
+    <div class="faq-body"><p>Ele chega na segunda versão do mAIg, depois das duas ondas da primeira. Até lá, as pessoas entram de dois jeitos, desde a onda 1.0: com usuário e senha, que toda organização já traz ligado, e com a conta Google, se o owner da organização a ligar.</p></div>
+  </details>
+  <details>
+    <summary>Quem a empresa desliga perde o acesso na hora?</summary>
+    <div class="faq-body"><p>Perde na próxima confirmação do mAIg com o provedor de identidade da empresa. O ponto de partida é a cada 8 horas, e o intervalo exato ainda será definido. Quem o owner da organização tira do cadastro, ou quem sai da rede da empresa ou da VPN, perde os apps em até 15 minutos, porque o passe só se renova pelo mAIg. Para o desligamento valer, a TI do cliente não precisa pedir nada ao owner da organização nem à Maind.</p></div>
+  </details>
+  <details>
+    <summary>Basta ter conta na empresa para entrar nos apps?</summary>
+    <div class="faq-body"><p>Não. O login da empresa só confirma quem a pessoa é. Para entrar, ela precisa estar cadastrada na organização pelo owner da organização, no console, como na primeira versão. Quem tem conta na empresa mas não foi cadastrado não entra.</p></div>
+  </details>
+  <details>
+    <summary>Se o login da empresa falhar, alguém fica trancado do lado de fora?</summary>
+    <div class="faq-body"><p>Quem configura, não. O owner da organização e o administrador da instância entram no console sempre com usuário e senha, mesmo com o login da empresa ligado, e o owner corrige a ligação no console. Para as demais pessoas, continuam valendo os outros jeitos de entrar que o owner deixou ligados, como o usuário e senha.</p></div>
+  </details>
+  <details>
+    <summary>A nossa empresa usa SAML. O login da empresa funciona?</summary>
+    <div class="faq-body"><p>Pelo ponto de partida, não. O login da empresa segue o OpenID Connect, que cobre os provedores de identidade mais comuns. O SAML só entra com uma decisão nova; até lá, a empresa que só tem SAML segue com o usuário e senha e a conta Google.</p></div>
+  </details>
+</div>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="mf-111.html"><span class="cat">Anterior</span><h5>Dar à IA as ferramentas da empresa, só para leitura</h5><span class="arrow">←</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.png" alt="Maind AI Gateway (mAIg)" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.png" alt="Maind AI Gateway (mAIg)" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind AI Gateway · Documentação do produto · primeira versão em construção</b></div></div><div class="ftr-center"><span class="ftr-tag">v1 em desenho, sem versão publicada · 11/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Maind AI Gateway (mAIg)</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#mf-112-o-que-e">O que é, em poucas palavras</a></li><li class="lvl-3"><a href="#mf-112-quem-faz">Quem faz o quê</a></li><li><a href="#mf-112-ligar">Ligar o login da empresa numa organização</a></li><li class="lvl-3"><a href="#mf-112-padrao">O padrão aceito</a></li><li class="lvl-3"><a href="#mf-112-cada-organizacao">Uma ligação em cada organização</a></li><li><a href="#mf-112-entrar">Entrar com a conta da empresa</a></li><li class="lvl-3"><a href="#mf-112-cadastro">O login confirma quem é; o cadastro decide quem entra</a></li><li class="lvl-3"><a href="#mf-112-papel">O papel que vem da empresa</a></li><li><a href="#mf-112-desligar">Quem sai da empresa perde os apps</a></li><li class="lvl-3"><a href="#mf-112-owner">O owner e o administrador seguem com usuário e senha</a></li><li><a href="#mf-112-ondas">O que chega em cada onda</a></li><li><a href="#mf-112-bastidores">Nos bastidores, sem complicar</a></li><li><a href="#mf-112-limites">O que esta funcionalidade não faz</a></li><li class="lvl-3"><a href="#mf-112-ligadas">Funcionalidades ligadas a esta</a></li><li><a href="#mf-112-faq">Perguntas frequentes</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
+</body>
+</html>

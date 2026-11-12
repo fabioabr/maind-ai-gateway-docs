@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="As funcionalidades do mAIg explicadas uma a uma, em linguagem simples: o que cada uma faz, em que onda chega, como funciona na prática e as dúvidas mais comuns." />
+<link rel="icon" href="assets/logo-claro.png" />
+<title>MF-109 · Rodar cada app isolado dentro do mAIg — Maind AI Gateway (mAIg)</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
+</head>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Maind AI Gateway (mAIg)"><img class="logo-light" src="assets/logo-claro.png" alt="Maind AI Gateway (mAIg)" /><img class="logo-dark" src="assets/logo-escuro.png" alt="Maind AI Gateway (mAIg)" /></a><div class="div"></div><div class="doc-meta"><b>Maind AI Gateway (mAIg) · Documentação</b><small>Documentação do produto</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Maind AI Gateway (mAIg)</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Para começar</h6><ul><li><a href="como-ler.html">Como ler esta documentação</a></li></ul><h6>Primeira versão</h6><ul class="side-sub"><li><a href="mf-101.html">MF-101 · Entrar e agir só dentro do que foi permitido</a></li><li><a href="mf-102.html">MF-102 · Saber quem pediu o quê, quando e com que dado</a></li><li><a href="mf-103.html">MF-103 · Contratar e liberar um app com segurança</a></li><li><a href="mf-104.html">MF-104 · Instalar, pausar e retirar apps sem refazer nada</a></li><li><a href="mf-105.html">MF-105 · Usar os bancos da empresa sem expor a senha</a></li><li><a href="mf-106.html">MF-106 · Controlar quais IAs, quanto e a que custo</a></li><li><a href="mf-107.html">MF-107 · Atender várias organizações numa instalação, sem misturá-las</a></li><li><a href="mf-108.html">MF-108 · Funcionar sem abrir porta de entrada na rede</a></li><li><a href="mf-109.html" class="active">MF-109 · Rodar cada app isolado dentro do mAIg</a></li><li><a href="mf-110.html">MF-110 · Configurar tudo num lugar só</a></li></ul><h6>Segunda versão</h6><ul class="side-sub"><li><a href="mf-111.html">MF-111 · Dar à IA as ferramentas da empresa, só para leitura</a></li><li><a href="mf-112.html">MF-112 · Entrar com o login que a empresa já usa</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Maind AI Gateway (mAIg)</a><span class="sep">/</span><span>Primeira versão</span><span class="sep">/</span><span class="now">Rodar cada app isolado dentro do mAIg</span></nav><span class="doc-eyebrow">Primeira versão</span><div class="dx-macro-topo"><span class="dx-codigo">MF-109</span><span class="dx-selo">1ª versão</span></div><h1 class="doc-h1">Rodar cada app isolado dentro do mAIg</h1><p class="doc-lead">A parte de cada app que trabalha perto dos dados roda dentro do mAIg, num compartimento fechado, e só alcança bancos e IA pedindo ao núcleo, que confere e anota.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#mf-109-o-que-e">O que é, em poucas palavras</a><small>1 tópico</small></h3><ul><li><a href="#mf-109-quem-faz">Quem faz o quê</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-109-duas-partes">Um app, duas partes</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-109-da-pergunta-a-resposta">Da pergunta à resposta, passo a passo</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-109-porta-unica">A única porta do módulo</a><small>1 tópico</small></h3><ul><li><a href="#mf-109-o-modulo-nao-faz">O que o módulo não faz</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-109-o-que-volta">O que volta à nuvem do app</a><small>2 tópicos</small></h3><ul><li><a href="#mf-109-teto">O teto da resposta e o limite de pedidos</a></li><li><a href="#mf-109-saidas">As saídas além da resposta pronta</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-109-garantias">As quatro garantias do isolamento</a><small>1 tópico</small></h3><ul><li><a href="#mf-109-nucleo-e-app">O que o núcleo garante e o que é do app</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-109-organizacoes">Um módulo, várias organizações</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-109-quando-atende">Quando o módulo atende e quando deixa de atender</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-109-quando-da-errado">Quando dá errado</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-109-ondas">O que chega em cada onda</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-109-bastidores">Nos bastidores, sem complicar</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-109-limites">O que esta funcionalidade não faz</a><small>1 tópico</small></h3><ul><li><a href="#mf-109-ligadas">Funcionalidades ligadas a esta</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-109-faq">Perguntas frequentes</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><p>Pense num escritório de contabilidade que atende na própria sede, mas põe um contador para trabalhar numa sala da empresa cliente, com os papéis que ela entrega ali dentro. À sede vai só o relatório pronto. Agora imagine que esse contador não pode abrir gaveta nenhuma por conta própria: cada papel de que precisa, ele pede a quem cuida da sala, que confere se ele pode ver, entrega e anota o pedido.</p>
+<p>No mAIg é assim. Cada app da Maind tem uma parte que trabalha dentro do mAIg, perto dos dados da empresa, chamada <strong>módulo</strong>. O módulo roda num compartimento fechado e só chega aos bancos e à inteligência artificial (IA) pedindo ao <strong>núcleo</strong>, a parte do mAIg que vem pronta e serve a todos os apps. Esta página conta como o módulo roda, o que ele pode pedir e o que ele nunca alcança.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Primeira versão, em construção</b><p>O que está aqui é o que a primeira versão do mAIg vai entregar, em duas ondas: a onda 1.0, o mínimo para o primeiro app funcionar, e a onda 1.1, que completa a governança. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-109-o-que-e">O que é, em poucas palavras</h2>
+<p>Rodar cada app isolado é o que deixa o mAIg levar o trabalho de cada app até os dados, em vez de levar os dados até o app, sem abrir uma porta dos fundos na rede da empresa. Esta funcionalidade cuida de seis coisas:</p>
+<ul>
+  <li><strong>Dar a cada app um lugar dentro do mAIg.</strong> O módulo do app roda ali, perto dos dados, e as telas ficam fora, na nuvem da Maind.</li>
+  <li><strong>Manter o módulo fechado.</strong> Ele roda separado dos outros módulos e do resto do mAIg, com quatro garantias que a TI do cliente consegue conferir.</li>
+  <li><strong>Dar ao módulo uma porta só.</strong> Para cada dado, cada uso da IA e cada anotação no registro, ele pede ao núcleo, que confere a permissão, faz o pedido por ele e anota.</li>
+  <li><strong>Controlar o que volta à nuvem do app.</strong> Volta a resposta pronta, com um teto de 200 linhas e as colunas sensíveis mascaradas, e ela não fica gravada lá.</li>
+  <li><strong>Atender várias organizações com o mesmo app</strong>, usando em cada pedido só os bancos, a chave de IA e o registro da organização que pediu.</li>
+  <li><strong>Dizer quando o módulo atende uma organização</strong> e quando deixa de atendê-la.</li>
+</ul>
+<h3 class="doc-h3" id="mf-109-quem-faz">Quem faz o quê</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>TI do cliente</strong></td><td>Avalia uma vez o jeito como todo módulo roda e confere as quatro garantias quando aprova o mAIg. Esse jeito vale para cada app que vier depois.</td></tr>
+      <tr class="zebra"><td><strong>Administrador da instância</strong></td><td>Cuida da instalação do mAIg. Instala cada app uma vez por instância, acompanha o estado de cada app e, numa emergência, suspende um app na instância inteira. Não vê o registro das organizações.</td></tr>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Libera o app para a organização dele e escolhe, no console, quais bancos e quais IAs o app usa. Confere as colunas sensíveis, sobe o teto da resposta e ajusta o limite de pedidos. Na onda 1.1, libera as saídas a mais.</td></tr>
+      <tr class="zebra"><td><strong>Auditor</strong></td><td>Só lê o registro da organização, inclusive os pedidos que o núcleo recusou.</td></tr>
+      <tr class="zebra"><td><strong>Pessoa que usa o app</strong></td><td>Pergunta nas telas do app e recebe a resposta pronta.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Os papéis estão explicados em <a href="como-ler.html#como-ler-papeis">Quem é quem</a>, e as palavras que se repetem em todas as páginas, como instância e organização, em <a href="como-ler.html#glossario">Palavras que aparecem nas páginas</a>.</p>
+
+<h2 class="doc-h2" id="mf-109-duas-partes">Um app, duas partes</h2>
+<p>Todo app da Maind tem duas partes. A <strong>parte de fora</strong> roda fora do mAIg, na nuvem da Maind, onde ficam as telas, e fica registrada no mAIg com um certificado, uma espécie de carteira de identidade digital do app, e com as permissões, a lista do que ele pode pedir. O <strong>módulo</strong> roda dentro do mAIg. No primeiro app, em que as pessoas fazem perguntas sobre os dados da empresa, é no módulo que a pergunta vira resposta: as consultas aos dados e o trabalho com o modelo de IA acontecem ali.</p>
+<p>O <strong>núcleo</strong> reúne os serviços prontos para todos os apps: a segurança e as permissões, o registro, os certificados, a gestão dos apps, as conexões com os bancos e a governança da IA, o conjunto de regras sobre quais IAs cada app usa, quanto e a que custo. <strong>Isolado</strong> quer dizer separado dos outros módulos e do resto do mAIg, para que um módulo não prejudique os outros nem leia o que não deve. Com as duas partes, o trabalho com os dados fica perto deles, e as telas continuam na nuvem, sem precisar ser instaladas na casa do cliente. Os dados crus não saem: para fora vão a pergunta e a resposta pronta. E o módulo não vira uma porta dos fundos, porque não tem senha, não tem chave e não tem caminho próprio até nada.</p>
+<p><strong>Instalar não é rodar.</strong> Instalar um app é registrar a parte de fora e implantar o módulo, isto é, pô-lo dentro do mAIg, pronto para trabalhar. Quem instala é o administrador da instância, uma vez só por instância, e esse passo está em <a href="mf-104.html">Instalar, pausar e retirar apps sem refazer nada (MF-104)</a>. Esta página cuida do que vem depois: como o módulo roda e o que ele pode e não pode fazer.</p>
+
+<h2 class="doc-h2" id="mf-109-da-pergunta-a-resposta">Da pergunta à resposta, passo a passo</h2>
+<p>Digamos que uma rede de farmácias tenha o mAIg na própria rede. Ana, da TI da empresa, é a administradora da instância. Marcos, diretor de operações, é o owner da organização e liberou para o primeiro app a leitura do banco de vendas. Carla, gerente comercial, quer saber quanto cada farmácia vendeu em outubro.</p>
+<ol class="steps">
+  <li><div><h4>Carla pergunta, e a pergunta chega pela ligação</h4><p>Ela digita a pergunta nas telas do app, na nuvem da Maind. A parte de fora do app passa a pergunta ao mAIg pela ligação que o próprio mAIg abriu para fora e mantém aberta: ninguém de fora abriu uma conexão para dentro da rede da empresa. O mAIg entrega a pergunta ao módulo, com a indicação de que ela é de Carla, daquela organização.</p></div></li>
+  <li><div><h4>O módulo pede os dados</h4><p>O núcleo confere se o app, nesta organização, pode ler o banco de vendas. Pode, porque Marcos deu essa permissão. O núcleo tira a senha do cofre, lê o banco só para consulta e entrega os dados ao módulo. A senha não sai do núcleo.</p></div></li>
+  <li><div><h4>O módulo pede a IA</h4><p>O núcleo confere se o modelo é permitido ao app e se o app está dentro dos limites, faz o pedido ao provedor de IA com a chave da própria empresa e soma o custo ao do app. A chave também não sai do núcleo, e cada um desses pedidos fica no registro: o quê, por quem e quando.</p></div></li>
+  <li><div><h4>O módulo monta a resposta</h4><p>Ele monta a tabela de vendas por farmácia. Os dados crus de vendas ficam dentro do mAIg.</p></div></li>
+  <li><div><h4>Só a resposta pronta volta</h4><p>O núcleo confere o teto da resposta, e ela sai pela mesma ligação. Carla vê a tabela na tela.</p></div></li>
+</ol>
+<p>Entre a nuvem da Maind e o mAIg passaram só a pergunta, de ida, e a resposta pronta, de volta. O mesmo caminho em desenho, com o que o núcleo confere a cada pedido do módulo:</p>
+<figure class="dx-diagrama"><figcaption><b>Da pergunta à resposta, sempre pelo núcleo</b> <span>O caminho de uma pergunta: o módulo do app pede ao núcleo os dados e a IA, o núcleo confere, faz o pedido e anota, e só a resposta pronta volta à nuvem do app.</span><a href="media/diagramas/mf-109-porta-unica.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/mf-109-porta-unica.html?embutido=1" title="Da pergunta à resposta, sempre pelo núcleo" loading="lazy"></iframe></figure>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>A instância pode rodar na infraestrutura da empresa ou na da Maind. Na da Maind, o módulo roda lá também: o banco precisa ser alcançável pela Maind, e os dados lidos vão da rede da empresa até a instância da Maind. À parte de fora do app continuam chegando só a pergunta e a resposta pronta, mas a promessa de que os dados não saem crus da casa do cliente vale por inteiro só com o mAIg na infraestrutura da empresa.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-109-porta-unica">A única porta do módulo</h2>
+<p>O módulo é como um técnico num laboratório com uma janela de passagem: recebe as amostras pela janela e devolve só o laudo, sem sair da sala nem receber visitas. A diferença é que, no laboratório, quem está do lado de fora escolhe o que passa pela janela; no mAIg, quem pede é o módulo, e o núcleo confere se ele pode antes de entregar qualquer coisa, e anota tudo.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>O módulo pede</th><th>O que o núcleo faz por ele</th><th>Onde se explica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Conferir uma permissão</strong></td><td>Diz se o app pode fazer aquilo naquela organização.</td><td><a href="mf-101.html">MF-101</a></td></tr>
+      <tr class="zebra"><td><strong>Dados</strong></td><td>Lê o banco por ele, só para consulta, com a senha que fica no cofre.</td><td><a href="mf-105.html">MF-105</a></td></tr>
+      <tr class="zebra"><td><strong>A IA</strong></td><td>Fala com o provedor por ele, dentro dos modelos e dos limites permitidos ao app.</td><td><a href="mf-106.html">MF-106</a></td></tr>
+      <tr class="zebra"><td><strong>Anotar no registro</strong></td><td>Anota cada pedido, para a auditoria, a conferência dessas anotações depois.</td><td><a href="mf-102.html">MF-102</a></td></tr>
+      <tr class="zebra"><td><strong>As ferramentas da empresa para a IA</strong> <span class="badge badge--warning">Segunda versão</span></td><td>Na segunda versão, o módulo pede pela mesma porta o uso dos servidores MCP, os programas da empresa que dão à IA ferramentas extras.</td><td><a href="mf-111.html">MF-111</a></td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-109-o-modulo-nao-faz">O que o módulo não faz</h3>
+<ul>
+  <li><strong>Não vê uma senha de banco nem uma chave de IA</strong>, nem vai direto ao banco ou ao provedor de IA. E não altera os bancos da empresa: o mAIg só lê.</li>
+  <li><strong>Não recebe nada direto de fora.</strong> A pergunta chega pela ligação do mAIg, depois de o núcleo conferir o certificado da parte de fora do app.</li>
+  <li><strong>Não conversa com o módulo de outro app.</strong> Cada módulo fica no seu compartimento.</li>
+  <li><strong>Não muda configuração nenhuma.</strong> Quais bancos o app lê e quais IAs usa são escolhas do owner da organização, no console (<a href="mf-110.html">MF-110</a>).</li>
+  <li><strong>Não tem saída própria para a internet.</strong> O único caminho dele para fora são os serviços do núcleo. Um app que precise de algo da web, como a cotação do dólar, pede ao provedor de IA que faça a pesquisa, sob as regras de IA da organização.</li>
+</ul>
+<p>Uma porta só é fácil de vigiar: a TI do cliente avalia uma vez o caminho que todo módulo é obrigado a usar. E se o módulo pedir o que não pode? Carla pergunta quantas pessoas trabalham em cada farmácia, e a resposta precisaria do banco de pessoal, que Marcos não liberou para o app. O módulo pede esses dados ao núcleo, que confere a permissão, não entrega nada e anota o pedido recusado no registro. O módulo não tem como dar a volta, porque não tem a senha do banco nem um caminho próprio até ele; o que Carla vê nesse caso é decidido pelo app, porque é a lógica dele. Mais tarde, Renata, a auditora que Marcos nomeou, e o próprio Marcos veem o pedido recusado no registro.</p>
+
+<h2 class="doc-h2" id="mf-109-o-que-volta">O que volta à nuvem do app</h2>
+<p>A resposta pronta volta à nuvem do app, porque é lá que ficam as telas. Ela é o que a pessoa vê, uma tabela, um gráfico, um número, e pode conter dados da empresa. Na nuvem da Maind, a resposta só passa pela memória: a parte de fora do app a mostra na tela e não a grava. Com os <strong>painéis</strong>, as telas que a pessoa monta no app, com vários gráficos, e abre de novo quando quiser, é como uma receita de bolo. A nuvem guarda só a <strong>receita</strong>: que dados buscar, que gráfico desenhar e que filtros usar, sem número nenhum. O bolo, que são os números, se faz na hora, na cozinha da empresa, cada vez que alguém abre o painel. A cozinha pode guardar o último bolo por um tempo, para servir mais rápido, e quem o guarda é o mAIg, na casa do cliente.</p>
+<p>Um exemplo: Carla monta um painel de vendas por farmácia, e a nuvem do app guarda a receita, com vendas por farmácia, gráfico de barras e mês atual. Às 9h, ela abre o painel: a parte de fora do app lê a receita e pede os dados ao mAIg pela ligação, e o mAIg lê o banco, guarda o resultado por um tempo e devolve a resposta pronta, que aparece na tela sem ficar gravada na nuvem. Às 9h05, um colega abre o mesmo painel. O mAIg confere que ele também pode ver as vendas e responde com o resultado que já tinha, e o banco não recebe outra consulta. Esse resultado guardado é um <strong>cache</strong>: uma cópia temporária, que só é entregue a quem pode ver o mesmo dado e nunca entra na cópia de segurança. Nenhum painel abre com a ligação fora, porque a receita está na nuvem e os números, no mAIg.</p>
+<h3 class="doc-h3" id="mf-109-teto">O teto da resposta e o limite de pedidos</h3>
+<ul>
+  <li><strong>O teto.</strong> Cada app tem um teto de 200 linhas por resposta. O normal é ir à tela um dado consolidado, como um total por loja ou por mês, e por isso o teto quase nunca atrapalha. O núcleo confere o teto antes de a resposta sair, para que a promessa não dependa só do app, e o registro anota o tamanho de cada resposta. Subir o teto é do owner da organização, no console, app por app, e é um ato sensível: avisa na hora os outros owners da organização e o auditor.</li>
+  <li><strong>As colunas sensíveis</strong>, como CPF, e-mail, telefone e salário, chegam mascaradas. O núcleo sugere as colunas sensíveis de cada banco, já marcadas, e o owner da organização confere no cadastro do banco e marca ou desmarca (<a href="mf-105.html">MF-105</a>). A coluna marcada sai sempre mascarada, para todos os apps; a que o núcleo não sugerir e o owner da organização não marcar sai às claras. Marcar ou desmarcar uma coluna também é ato sensível.</li>
+  <li><strong>Quando a resposta passa do teto,</strong> o núcleo a recusa inteira, com uma mensagem clara, que diz o tamanho da resposta e o teto, e nunca entrega um pedaço como se fosse o resultado inteiro. A pessoa refaz o pedido com um filtro ou pede um total, ou o owner da organização sobe o teto. A recusa fica no registro, com a contagem.</li>
+  <li><strong>O limite de pedidos.</strong> Para que ninguém leve a base em fatias de 200 linhas, cada organização tem também um limite de pedidos por pessoa e por app num período. Ele vem com um valor padrão, e o owner da organização o ajusta no console. Acima do limite, o núcleo recusa, com mensagem clara; perto dele, ou ao atingi-lo, o alerta aparece no painel de alertas do console e chega como aviso de segurança.</li>
+</ul>
+<p>O teto, a máscara, a recusa acima do teto, o limite de pedidos e o cache chegam todos na onda 1.0. <strong>Como se prova que a nuvem não guarda a resposta:</strong> uma empresa de auditoria independente, de um selo que a TI do cliente já conhece, como o SOC 2 ou a ISO 27001, confere que a nuvem dos apps segue a regra. E regras técnicas tornam a promessa verdadeira por construção: a resposta só passa pela memória, e as anotações técnicas da nuvem guardam só o tamanho, a hora e o número do pedido.</p>
+<h3 class="doc-h3" id="mf-109-saidas">As saídas além da resposta pronta</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>O que sai do mAIg</th><th>Onda</th><th>Como funciona</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>A resposta pronta</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>Sai sempre, pela ligação, dentro do teto e com as colunas sensíveis mascaradas.</td></tr>
+      <tr class="zebra"><td><strong>A consulta feita ao banco</strong></td><td><span class="badge badge--info">Onda 1.1</span></td><td>Volta à tela, para a pessoa ver de onde veio o número, e traz só a instrução, sem dado nenhum. O valor de um filtro que toca uma coluna sensível aparece mascarado; os outros, como o período e a cidade, aparecem.</td></tr>
+      <tr class="zebra"><td><strong>A planilha</strong></td><td><span class="badge badge--info">Onda 1.1</span></td><td>Sai direto do mAIg para o navegador da pessoa, sem passar pela nuvem do app e sem esbarrar no teto, mas dentro do limite de cada consulta. As colunas sensíveis saem sempre mascaradas, mesmo com a liberação do owner da organização. Cada planilha baixada fica no registro.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Além da resposta pronta, só sai o que o owner da organização liberar, app por app, e liberar uma saída é ato sensível. Na onda 1.0, só a resposta pronta sai do mAIg, e a pessoa ainda não vê de onde veio o número. A planilha baixada sai do controle do mAIg, porque fica no computador da pessoa.</p>
+
+<h2 class="doc-h2" id="mf-109-garantias">As quatro garantias do isolamento</h2>
+<p>“Isolado” se desdobra em quatro garantias, que a TI do cliente confere quando aprova o mAIg. Elas são como as paredes corta-fogo de um prédio: se uma sala pega fogo, a parede segura o fogo ali, e as outras salas seguem funcionando. Com uma diferença: a parede só segura um estrago, e o isolamento também impede, o tempo todo, que um módulo espie ou alcance o que não é dele, mesmo quando nada dá errado.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Garantia</th><th>O que quer dizer</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>1. Não lê o que é de outro módulo</strong></td><td>O módulo de um app não enxerga o que o módulo de outro app guarda ou está fazendo, nem o contrário.</td></tr>
+      <tr class="zebra"><td><strong>2. Não alcança nada sem passar pelo núcleo</strong></td><td>Nem o banco, nem o provedor de IA, nem o cofre, nem a configuração da organização.</td></tr>
+      <tr class="zebra"><td><strong>3. Não derruba nem trava os outros</strong></td><td>Se um módulo para por um defeito, ou fica lento com um pedido pesado, os outros módulos e o núcleo seguem atendendo.</td></tr>
+      <tr class="zebra"><td><strong>4. Só recebe o que é da organização do pedido</strong></td><td>O núcleo só entrega a um pedido o que é da organização dele: os bancos, a chave de IA e o registro dela. Cada pedido chega com o passe da pessoa, a credencial curta que o mAIg lhe dá ao entrar, assinada com a chave do certificado da organização, e com a identidade do app, e o núcleo confere os dois.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Digamos que a rede de farmácias contrate um segundo app da Maind, e Ana o instale na instância. O módulo dele roda isolado, separado do módulo do primeiro app. Um dia, um defeito faz o segundo módulo parar no meio de uma tarefa. Pela terceira garantia, o módulo do primeiro app continua atendendo, e Carla recebe a resposta dela. Pela primeira, o módulo do segundo app nunca viu os dados de vendas que o primeiro estava usando. Ana vê o estado de cada app instalado, que é o que a administradora da instância acompanha, e não vê o registro da organização.</p>
+<h3 class="doc-h3" id="mf-109-nucleo-e-app">O que o núcleo garante e o que é do app</h3>
+<p>O núcleo garante sozinho que as senhas e as chaves nunca saem dele, que cada pedido é conferido contra a permissão e é de uma organização só, que os bancos são só lidos e que o teto da resposta é conferido antes de qualquer coisa sair. O que o módulo faz por dentro, com o que tem permissão de ler, é do app: como ele monta a pergunta à IA, o que mostra na tela e não misturar as respostas de duas organizações que atende. A regra de quem vê o quê dentro de um banco, pessoa a pessoa, também é do app e roda no módulo dele: no núcleo, a permissão de um app vale pelo banco inteiro (veja <a href="mf-105.html">MF-105</a>). O que é do app se confere pelo registro, que mostra tudo o que ele leu e pediu à IA, pela auditoria de fora e, se ele fizer o que não devia, pela suspensão de emergência.</p>
+
+<h2 class="doc-h2" id="mf-109-organizacoes">Um módulo, várias organizações</h2>
+<p>O app é instalado uma vez por instância e pode servir a várias organizações dela. Cada organização o libera e configura para si, e para uma organização que não liberou o app ele não funciona, mesmo instalado na mesma instância. Cada pedido que chega ao módulo é de uma organização só, que o núcleo reconhece pelo passe da pessoa e pela identidade do app. Quando o módulo pede um dado ou a IA, o núcleo confere as permissões daquela organização, usa o banco e a chave dela e anota no registro dela. Várias organizações na mesma instância chegam na onda 1.0. Isso pesa sobretudo na hospedagem da Maind, onde uma mesma instância pode atender organizações de empresas diferentes, e um mesmo módulo pode receber, no mesmo minuto, pedidos de duas empresas. Como as organizações ficam separadas está em <a href="mf-107.html">Atender várias organizações numa instalação, sem misturá-las (MF-107)</a>.</p>
+<p>Um exemplo: a rede de farmácias tem duas organizações na instância de Ana, a das farmácias, de Marcos, e a da distribuidora do grupo, de Júlia. O contrato do app lista as duas, e Ana instala o app uma vez só. Marcos o libera nas farmácias, com a leitura do banco de vendas, e Júlia, na distribuidora, com a leitura do banco de pedidos. Quando Carla e uma pessoa da distribuidora perguntam ao mesmo tempo, o módulo atende as duas: para Carla, o núcleo só entrega dados do banco de vendas, com a chave de IA das farmácias; para a outra pessoa, só do banco de pedidos, com a chave da distribuidora. Cada pedido vai para o registro da própria organização, e Renata vê os das farmácias, e não os da distribuidora.</p>
+
+<h2 class="doc-h2" id="mf-109-quando-atende">Quando o módulo atende e quando deixa de atender</h2>
+<p>O módulo só atende uma organização que contratou o app e o liberou. O caminho até lá é da contratação e da gestão dos apps: fechada a contratação, a Maind entrega um kit com o certificado do app, o mAIg confirma a contratação com um servidor da Maind, o administrador da instância instala o app, e o owner da organização o libera e configura (<a href="mf-103.html">MF-103</a> e <a href="mf-104.html">MF-104</a>). Na onda 1.0, um app para pela pausa do owner da organização, pela suspensão do administrador da instância, pelo fim da licença ou por uma ação manual da Maind, e nenhum registro é excluído. O módulo deixa de atender aquela organização, e a configuração dela fica guardada até a organização renovar ou o owner da organização apagar. Apagar a configuração guardada e desinstalar o app chegam na onda 1.1; desinstalado, o app sai do mAIg, e os dados dele são excluídos.</p>
+
+<h2 class="doc-h2" id="mf-109-quando-da-errado">Quando dá errado</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>O que acontece</th><th>O que o mAIg faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>O módulo pede o que não pode</strong></td><td>O núcleo não atende, e o pedido fica no registro, à vista do owner da organização e do auditor.</td></tr>
+      <tr class="zebra"><td><strong>O módulo para no meio de um pedido</strong></td><td>Os outros módulos e o núcleo seguem atendendo, e um pedido pesado de um app também não pode atrasar os outros. O que a pessoa vê, e se o pedido se perde ou é refeito, ainda está em definição.</td></tr>
+      <tr class="zebra"><td><strong>A ligação com a Maind cai durante um pedido</strong></td><td>O mAIg religa sozinho e guarda o que estava em andamento por um tempo curto, como 15 minutos (<a href="mf-108.html">MF-108</a>).</td></tr>
+      <tr class="zebra"><td><strong>O app faz o que não devia com o que pode ler</strong></td><td>O isolamento não controla isso. O registro mostra o que o app leu, e o administrador da instância o suspende na instância inteira, sem apagar o registro, que é a prova. Na hospedagem da Maind, quem suspende é a equipe da Maind, com a autorização de duas pessoas.</td></tr>
+      <tr class="zebra"><td><strong>A instância inteira fica fora do ar</strong></td><td>O módulo para junto com ela. A pessoa vê um aviso próprio, e não um erro, e a luz de estado, igual em todos os apps, diz “fora do ar”.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="doc-h2" id="mf-109-ondas">O que chega em cada onda</h2>
+<p>Das 11 capacidades, 9 chegam na onda 1.0 e 2 na onda 1.1. Na segunda versão, o módulo passa a pedir também as ferramentas da empresa para a IA, pela mesma porta (<a href="mf-111.html">MF-111</a>). Como as ondas se dividem está em <a href="como-ler.html#como-ler-ondas">As ondas da primeira versão</a>.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Capacidade</th><th>Onda</th><th>Em poucas palavras</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td>O módulo roda isolado e só alcança os dados, a IA e o registro pedindo ao núcleo</td><td><span class="badge badge--success">Onda 1.0</span></td><td>É o que impede um app de pegar mais do que lhe foi liberado.</td></tr>
+      <tr class="zebra"><td>O módulo não tem saída própria para a internet</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Um módulo com defeito não leva dado para fora.</td></tr>
+      <tr class="zebra"><td>Só a resposta pronta volta à nuvem do app, e ela não é gravada lá</td><td><span class="badge badge--success">Onda 1.0</span></td><td>O dado da empresa não se acumula fora da rede dela.</td></tr>
+      <tr class="zebra"><td>O último resultado de cada painel fica guardado no mAIg, num cache entregue só a quem pode ver o mesmo dado</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Sem ele, cada abertura de painel é uma consulta nova ao banco da empresa.</td></tr>
+      <tr class="zebra"><td>Teto de 200 linhas por resposta, com as colunas sensíveis mascaradas</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Limita o que sai da rede a cada resposta.</td></tr>
+      <tr class="zebra"><td>A resposta que passa do teto é recusada inteira, com mensagem clara, que diz o tamanho da resposta e o teto</td><td><span class="badge badge--success">Onda 1.0</span></td><td>O núcleo nunca entrega um resultado parcial como se fosse inteiro.</td></tr>
+      <tr class="zebra"><td>O owner da organização sobe o teto de um app, num ato sensível</td><td><span class="badge badge--success">Onda 1.0</span></td><td>O teto é regra da empresa, com um padrão seguro.</td></tr>
+      <tr class="zebra"><td>Limite de pedidos por pessoa e por app, com valor padrão e ajuste do owner da organização</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Sem ele, o teto se contornaria em fatias de 200 linhas.</td></tr>
+      <tr class="zebra"><td>Um módulo atende várias organizações, cada pedido com os bancos, a chave e o registro da própria organização, e só as que contrataram e liberaram o app</td><td><span class="badge badge--success">Onda 1.0</span></td><td>O app é instalado uma vez por instância.</td></tr>
+      <tr class="zebra"><td>A consulta feita ao banco volta à tela, só a instrução, sem dado, com o valor do filtro que toca uma coluna sensível mascarado</td><td><span class="badge badge--info">Onda 1.1</span></td><td>É uma saída a mais; na onda 1.0, só sai a resposta pronta.</td></tr>
+      <tr class="zebra"><td>A planilha sai direto do mAIg para o navegador, com as colunas sensíveis sempre mascaradas</td><td><span class="badge badge--info">Onda 1.1</span></td><td>É a outra saída a mais, que o owner da organização libera app por app.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="doc-h2" id="mf-109-bastidores">Nos bastidores, sem complicar</h2>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>O trabalho mais pesado do núcleo.</strong> Saber rodar e isolar os módulos dos apps é a parte do núcleo que mais dá trabalho. Em troca, cada app traz só o que é dele e usa a segurança, o cofre e o registro que já vêm prontos.</li>
+  <li><strong>Só entra módulo assinado.</strong> Toda versão do módulo de um app é assinada pela Maind, e o mAIg confere a assinatura antes de instalar, na primeira vez e em cada atualização (veja <a href="mf-104.html">MF-104</a>). Assim, ninguém põe um módulo falso dentro da rede para ler os bancos.</li>
+  <li><strong>Só o núcleo sai da rede.</strong> Ele sai só pelas saídas que a TI do cliente libera: a Maind, cada provedor de IA que a organização escolheu, o Google, quando a organização entra com a conta Google, e o servidor de e-mail da empresa. O módulo não tem saída própria, e a TI do cliente não libera nenhuma saída a mais por causa dele (<a href="mf-108.html">MF-108</a>).</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-109-limites">O que esta funcionalidade não faz</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>A lógica de cada app e as telas dele</strong></td><td>O que o módulo faz por dentro é do app: como a pergunta é entendida, que consulta se monta e como a resposta é escrita. A parte de fora e as telas também são do app e ficam na nuvem da Maind.</td></tr>
+      <tr class="zebra"><td><strong>Contratar, instalar, pausar, retirar e desinstalar o app</strong></td><td>São de <a href="mf-103.html">MF-103</a> e <a href="mf-104.html">MF-104</a>. Retirar e desinstalar chegam na onda 1.1.</td></tr>
+      <tr class="zebra"><td><strong>A ligação, os bancos, a IA e as organizações</strong></td><td>São de <a href="mf-108.html">MF-108</a>, <a href="mf-105.html">MF-105</a>, <a href="mf-106.html">MF-106</a> e <a href="mf-107.html">MF-107</a>. Aqui está só o caminho que o módulo usa para pedir e o que a separação das organizações pede a ele.</td></tr>
+      <tr class="zebra"><td><strong>Recortar um banco pessoa a pessoa</strong></td><td>É do app, e roda no módulo dele. No núcleo, a permissão de um app vale pelo banco inteiro.</td></tr>
+      <tr class="zebra"><td><strong>Rodar sistemas do próprio cliente ou apps de outras empresas</strong></td><td>Na primeira versão, só apps da Maind rodam como módulo dentro do mAIg, por enquanto.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-109-ligadas">Funcionalidades ligadas a esta</h3>
+<p>O módulo usa quase todos os serviços do núcleo. O nome de cada funcionalidade leva à página dela.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="mf-101.html">Entrar e agir só dentro do que foi permitido (MF-101)</a></td><td>O núcleo confere a permissão de cada pedido do módulo, com o passe da pessoa e a identidade do app.</td></tr>
+      <tr class="zebra"><td><a href="mf-102.html">Saber quem pediu o quê, quando e com que dado (MF-102)</a></td><td>Cada pedido do módulo, inclusive o recusado, e o tamanho de cada resposta ficam no registro.</td></tr>
+      <tr class="zebra"><td><a href="mf-104.html">Instalar, pausar e retirar apps sem refazer nada (MF-104)</a></td><td>A contratação (<a href="mf-103.html">MF-103</a>) libera o app; instalar implanta o módulo, com a assinatura conferida; pausar, suspender e retirar fazem o módulo deixar de atender.</td></tr>
+      <tr class="zebra"><td><a href="mf-105.html">Usar os bancos da empresa sem expor a senha (MF-105)</a></td><td>O núcleo lê o banco pelo módulo, com a senha do cofre; lá estão as colunas sensíveis e o limite de cada consulta.</td></tr>
+      <tr class="zebra"><td><a href="mf-106.html">Controlar quais IAs, quanto e a que custo (MF-106)</a></td><td>O núcleo fala com o provedor de IA pelo módulo, dentro dos modelos e dos limites do app; a pesquisa na web também passa por lá.</td></tr>
+      <tr class="zebra"><td><a href="mf-107.html">Atender várias organizações numa instalação, sem misturá-las (MF-107)</a></td><td>Cada pedido que chega ao módulo é de uma organização só.</td></tr>
+      <tr class="zebra"><td><a href="mf-108.html">Funcionar sem abrir porta de entrada na rede (MF-108)</a></td><td>A pergunta e a resposta passam pela ligação que o mAIg abre para fora.</td></tr>
+      <tr class="zebra"><td><a href="mf-110.html">Configurar tudo num lugar só (MF-110)</a></td><td>No console, o owner da organização escolhe bancos e IAs, sobe o teto, ajusta o limite de pedidos e, na onda 1.1, libera as saídas a mais.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>Como os módulos ficam isolados.</strong> A forma técnica de cumprir as quatro garantias, e quanto da máquina cada módulo pode usar, ainda será definida.</p><p><strong>Uma cópia do módulo ou uma por organização.</strong> Se uma cópia só do módulo de um app atende todas as organizações da instância, ou se cada organização tem a sua cópia rodando à parte, ainda será definido.</p><p><strong>Quanto tempo vale o cache.</strong> O prazo exato do resultado guardado para os painéis, e como ele fica protegido enquanto está guardado, ainda serão definidos.</p><p><strong>Um pedido quando o módulo para.</strong> O que acontece com um pedido quando o módulo para no meio dele ainda será definido. Para a queda da ligação, a regra já existe.</p><p><strong>O valor padrão do limite de pedidos</strong> ainda será definido; o owner da organização o ajusta no console.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-109-faq">Perguntas frequentes</h2>
+<div class="faq">
+  <details open>
+    <summary>O programa da Maind que roda na nossa rede consegue chegar sozinho aos nossos bancos?</summary>
+    <div class="faq-body"><p>Não. O módulo do app não tem a senha de nenhum banco, nem a chave de IA, nem um caminho próprio até eles. Para cada dado, ele pede ao núcleo do mAIg, que confere se o owner da organização liberou aquele banco para o app, lê só para consulta e anota o pedido no registro. Sem permissão, o núcleo não entrega nada, e o pedido recusado também fica anotado.</p></div>
+  </details>
+  <details>
+    <summary>O que sai da nossa rede para a nuvem da Maind?</summary>
+    <div class="faq-body"><p>A pergunta, de ida, e a resposta pronta que a pessoa vê, de volta, com um teto de 200 linhas e as colunas sensíveis mascaradas. Na nuvem, a resposta só passa pela memória e não fica gravada. Na onda 1.1, o owner da organização pode liberar, app por app, a consulta feita ao banco, sem dado, e a planilha, que vai direto do mAIg ao navegador. Com o mAIg hospedado pela Maind, os dados lidos vão da rede da empresa até a instância da Maind.</p></div>
+  </details>
+  <details>
+    <summary>Se um app der defeito, os outros apps param?</summary>
+    <div class="faq-body"><p>Não. Um módulo que para por um defeito, ou que fica lento com um pedido pesado, não pode levar os outros junto: os outros módulos e o núcleo seguem atendendo. Quanto da máquina cada módulo pode usar ainda será definido. Já se a instância inteira ficar fora do ar, todos os apps param, e a pessoa vê um aviso próprio, e não um erro.</p></div>
+  </details>
+  <details>
+    <summary>E se um app fizer mau uso do que tem permissão de ler?</summary>
+    <div class="faq-body"><p>O isolamento separa um módulo dos outros, mas não controla o que ele faz com o que pode ler. O registro mostra tudo o que o app leu e pediu à IA, e o administrador da instância pode suspender o app na instância inteira, numa emergência, sem apagar o registro, que é a prova. Quem decide o que cada app pode ler é o owner da organização.</p></div>
+  </details>
+  <details>
+    <summary>O módulo de um app pode acessar a internet?</summary>
+    <div class="faq-body"><p>Não por conta própria. O único caminho dele para fora são os serviços do núcleo, e o núcleo só sai pelas saídas que a TI do cliente libera: a Maind, cada provedor de IA que a organização escolheu, o Google, quando a organização entra com a conta Google, e o servidor de e-mail da empresa. Quando um app precisa de algo da web, como a cotação do dólar, ele pede ao provedor de IA que faça a pesquisa, sob as regras de IA da organização. A TI do cliente continua liberando só essas saídas.</p></div>
+  </details>
+  <details>
+    <summary>Duas organizações na mesma instância podem ver os dados uma da outra pelo mesmo app?</summary>
+    <div class="faq-body"><p>O núcleo só entrega a cada pedido o que é da organização dele: os bancos, a chave de IA e o registro dela, conferidos pelo passe da pessoa e pela identidade do app. Não misturar, dentro do módulo, as respostas de duas organizações é do app, e isso se confere pelo registro e pela auditoria de fora. Se cada organização terá a sua própria cópia do módulo ainda será definido.</p></div>
+  </details>
+</div>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="mf-108.html"><span class="cat">Anterior</span><h5>Funcionar sem abrir porta de entrada na rede</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="mf-110.html"><span class="cat">Próxima</span><h5>Configurar tudo num lugar só</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.png" alt="Maind AI Gateway (mAIg)" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.png" alt="Maind AI Gateway (mAIg)" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind AI Gateway · Documentação do produto · primeira versão em construção</b></div></div><div class="ftr-center"><span class="ftr-tag">v1 em desenho, sem versão publicada · 11/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Maind AI Gateway (mAIg)</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#mf-109-o-que-e">O que é, em poucas palavras</a></li><li class="lvl-3"><a href="#mf-109-quem-faz">Quem faz o quê</a></li><li><a href="#mf-109-duas-partes">Um app, duas partes</a></li><li><a href="#mf-109-da-pergunta-a-resposta">Da pergunta à resposta, passo a passo</a></li><li><a href="#mf-109-porta-unica">A única porta do módulo</a></li><li class="lvl-3"><a href="#mf-109-o-modulo-nao-faz">O que o módulo não faz</a></li><li><a href="#mf-109-o-que-volta">O que volta à nuvem do app</a></li><li class="lvl-3"><a href="#mf-109-teto">O teto da resposta e o limite de pedidos</a></li><li class="lvl-3"><a href="#mf-109-saidas">As saídas além da resposta pronta</a></li><li><a href="#mf-109-garantias">As quatro garantias do isolamento</a></li><li class="lvl-3"><a href="#mf-109-nucleo-e-app">O que o núcleo garante e o que é do app</a></li><li><a href="#mf-109-organizacoes">Um módulo, várias organizações</a></li><li><a href="#mf-109-quando-atende">Quando o módulo atende e quando deixa de atender</a></li><li><a href="#mf-109-quando-da-errado">Quando dá errado</a></li><li><a href="#mf-109-ondas">O que chega em cada onda</a></li><li><a href="#mf-109-bastidores">Nos bastidores, sem complicar</a></li><li><a href="#mf-109-limites">O que esta funcionalidade não faz</a></li><li class="lvl-3"><a href="#mf-109-ligadas">Funcionalidades ligadas a esta</a></li><li><a href="#mf-109-faq">Perguntas frequentes</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
+</body>
+</html>

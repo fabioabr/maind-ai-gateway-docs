@@ -1,0 +1,230 @@
+<p>Pense num condomínio. No mesmo terreno há vários prédios, e em cada prédio, vários apartamentos. Cada família tem a sua chave e a sua mobília, e uma família pode ter mais de um apartamento. No mAIg, o terreno é a <strong>infraestrutura</strong>, as máquinas e a rede onde ele roda; cada prédio é uma <strong>instância</strong>, uma instalação do mAIg; cada apartamento é uma <strong>organização</strong>, o espaço de um cliente; e a família é a <strong>empresa</strong>, que assina o contrato. <strong>Onde a analogia para:</strong> no condomínio, os vizinhos se cruzam no elevador e ouvem a festa ao lado; no mAIg, uma organização não enxerga nada da outra, mesmo dividindo a instância.</p>
+<p>Esta página conta como uma instância atende várias organizações sem misturá-las, onde ela pode rodar, e como uma organização nasce, fica pronta, é acompanhada e é encerrada. Conta também como o próprio mAIg se atualiza e guarda a cópia de segurança. Quase tudo no mAIg acontece por organização, e por isso esta funcionalidade é a base das outras.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Primeira versão, em construção</b><p>O que está aqui é o que a primeira versão do mAIg vai entregar, em duas ondas: a onda 1.0, o mínimo para o primeiro app funcionar, e a onda 1.1, que completa a governança. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+
+<h3 id="mf-107-o-que-e">O que é, em poucas palavras</h3>
+<p>Esta funcionalidade faz uma instalação do mAIg servir a vários clientes ao mesmo tempo, cada um no seu espaço fechado, e deixa essa instalação rodar onde o cliente preferir. Ela cuida de cinco coisas:</p>
+<ul>
+  <li><strong>Separar as organizações.</strong> Os apps, as regras, os bancos, a IA, as pessoas e o registro de cada organização ficam fechados nela.</li>
+  <li><strong>Rodar em dois lugares:</strong> na casa do cliente, dentro da rede da empresa, ou na hospedagem da Maind, para quem não quer instalar nada.</li>
+  <li><strong>Criar uma organização</strong>, com o usuário do primeiro owner, e deixá-la ativa sozinha quando está pronta, sem ninguém clicar em "ativar".</li>
+  <li><strong>Cuidar da própria instalação:</strong> mostrar ao administrador da instância o estado e as versões, e nunca o registro das organizações; atualizar o mAIg, com a versão conferida e, na casa do cliente, com o aval da TI; e fazer e restaurar a cópia de segurança.</li>
+  <li><strong>Encerrar uma organização</strong> sem tocar nas outras, com volta por 30 dias. Isso chega na onda 1.1.</li>
+</ul>
+<h4 id="mf-107-quem-e-quem">Quem faz o quê</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Administrador da instância</strong></td><td>Cria as organizações e os usuários dos owners, acompanha o painel da instância, dá o aval às versões novas do mAIg na casa do cliente e, a partir da onda 1.1, executa o encerramento e a volta. É a equipe da Maind, na hospedagem dela, e a TI do cliente, na casa do cliente.</td></tr>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Libera e configura os apps, os bancos e a IA da organização, nomeia o auditor, guarda o código de recuperação e, a partir da onda 1.1, pede o encerramento ou a volta.</td></tr>
+      <tr class="zebra"><td><strong>Auditor</strong></td><td>Lê o registro da organização, inclusive depois que ela é encerrada.</td></tr>
+      <tr class="zebra"><td><strong>TI do cliente</strong></td><td>Na casa do cliente, faz o papel de administrador da instância e também instala o mAIg, configura o servidor de e-mail da empresa, instala o certificado do endereço do mAIg e faz a cópia de segurança.</td></tr>
+      <tr class="zebra"><td><strong>Equipe da Maind</strong></td><td>Atesta o certificado de cada organização que nasce. Na hospedagem da Maind, faz também o papel de administrador da instância e a cópia de segurança.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 id="mf-107-sem-misturar">Várias organizações numa instância, sem misturá-las</h3>
+<p>O mAIg é <strong>multi-tenant</strong>, do inglês "tenant", inquilino: uma instalação com vários inquilinos, cada um no seu espaço. O que é de cada organização fica fechado nela; o que é da instância é comum a todas:</p>
+<ul>
+  <li><strong>É de cada organização:</strong> os apps que ela contratou e liberou, as permissões, os bancos que cada app lê, a IA (as chaves dos provedores, os modelos permitidos, os limites e o custo por app), as pessoas que usam os apps e o registro.</li>
+  <li><strong>É da instância, comum a todas:</strong> a instalação física, a versão do mAIg, o estado e os apps instalados, cada um uma vez só, mesmo que várias organizações o usem.</li>
+</ul>
+<p><strong>Instalado não é liberado.</strong> Um app instalado só funciona para a organização que o contratou e cujo owner o liberou. Duas organizações da mesma instância podem usar o mesmo app, cada uma com a sua configuração, ou uma pode usá-lo e a outra não. A contratação está em <a href="#mf-103">Contratar e liberar um app com segurança (MF-103)</a>, e a liberação, em <a href="#mf-104">Instalar, pausar e retirar apps sem refazer nada (MF-104)</a>.</p>
+<p><strong>Organização e empresa não são a mesma coisa.</strong> A empresa é quem assina com a Maind, e um contrato pode listar várias organizações da mesma empresa. Mas não existe um nível "empresa" dentro do mAIg: uma empresa com três organizações tem três espaços independentes, e não um espaço com três divisões. Cada organização contrata, configura e consulta o próprio registro por conta própria. Por exemplo: uma rede de farmácias tem também uma distribuidora, que quer tratar à parte. O contrato lista duas organizações na mesma instância: a das farmácias e a da distribuidora. Marcos, diretor de operações, é o owner da organização das farmácias e não vê o que Júlia, owner da organização da distribuidora, configura, embora as duas sejam da mesma empresa.</p>
+<p><strong>O risco que se aceita.</strong> O cofre e o registro de cada organização ficam cifrados com uma chave dela, e quem copia o disco ou a cópia de segurança não lê nada. Fica como risco aceito que uma invasão da instância, com a máquina ligada, ainda alcance, com muito esforço, o que estiver em uso naquele momento em todas as organizações dela. Quem não aceita esse risco instala o mAIg na própria rede.</p>
+
+<h3 id="mf-107-onde-roda">Na casa do cliente ou na hospedagem da Maind</h3>
+<p>Um cliente pequeno, sem equipe de TI, usa o mAIg sem instalar nada; quem exige tudo dentro de casa instala na própria rede. Numa mesma infraestrutura física pode haver mais de uma instância, para organizações diferentes: elas dividem as máquinas, e não a instalação. O mAIg é o mesmo nos dois lugares, com o mesmo console e as mesmas telas, e o trabalho do owner da organização também: liberar e configurar os apps, os bancos e a IA, com a equipe da Maind só dando suporte. Mudam quem cuida da instância e alguns detalhes:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Sobre</th><th>Na casa do cliente</th><th>Na hospedagem da Maind</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Onde roda, e quem cuida</strong></td><td>Nas máquinas da empresa, dentro da rede dela. O administrador da instância é a TI do cliente.</td><td>Nas máquinas da Maind, separadas da nuvem dos apps, e ali convivem empresas diferentes. A empresa não instala nada, e o administrador da instância é a equipe da Maind.</td></tr>
+      <tr class="zebra"><td><strong>O console</strong></td><td>Só de dentro da rede da empresa ou pela VPN dela.</td><td>De qualquer lugar, pela internet, com login. Fechar essa rede fica para a segunda versão do mAIg, ou depois.</td></tr>
+      <tr class="zebra"><td><strong>A atualização do mAIg</strong></td><td>Espera o aval da TI do cliente.</td><td>Instala-se sozinha, de madrugada, com aviso antes aos owners.</td></tr>
+      <tr class="zebra"><td><strong>A suspensão de emergência de um app</strong></td><td>Um gesto do administrador da instância.</td><td>Pede a autorização de duas pessoas da equipe da Maind.</td></tr>
+      <tr class="zebra"><td><strong>O banco da empresa</strong></td><td>Lido por dentro da rede: a promessa de não expor o banco vale por inteiro.</td><td>Aceita conexão só do endereço fixo da Maind e fica alcançável pela internet por esse endereço.</td></tr>
+      <tr class="zebra"><td><strong>O e-mail dos links e dos avisos</strong></td><td>Sai pelo servidor de e-mail da empresa, que o administrador da instância configura e testa.</td><td>Sai pelo serviço de e-mail da Maind.</td></tr>
+      <tr class="zebra"><td><strong>Uma queda da instância</strong></td><td>Alcança só as organizações daquela instalação.</td><td>Alcança todas as organizações da instância de uma vez.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-107-endereco">O endereço do mAIg na casa do cliente</h4>
+<p>Na instalação, a TI do cliente escolhe o nome do endereço do mAIg na rede dela e instala o certificado desse endereço. O mAIg avisa os administradores da instância antes de esse certificado vencer, e o painel da instância mostra a data. É outro certificado, diferente do certificado da organização, que a Maind atesta. Se ele vencer sem ser trocado, os navegadores recusam o endereço e ninguém entra.</p>
+<p><strong>A ligação com a Maind é obrigatória.</strong> A ligação com a Maind parte sempre do mAIg, e sem ela não há login, licença nem atualização; o que acontece com os apps quando ela cai está em <a href="#mf-108">Funcionar sem abrir porta de entrada na rede (MF-108)</a>. A primeira versão não tem modo sem ligação, e nenhuma versão está marcada para ele: a empresa que não libera a saída da rede até a Maind não usa o mAIg na própria rede. <strong>Mudar de lugar também não entra:</strong> a primeira versão não leva uma organização de uma instância para outra, nem entre a hospedagem da Maind e a casa do cliente, e nenhuma versão está marcada para isso. Quem muda começa uma organização nova e a configura de novo; o registro antigo fica na instância antiga, até o app ser desinstalado nela.</p>
+
+<h3 id="mf-107-criar">Do nascimento ao primeiro uso</h3>
+<p>Digamos que Ana, da TI da rede de farmácias, instalou o mAIg na rede da empresa e é a administradora da instância. Ela vai criar a organização das farmácias, da qual Marcos será o owner.</p>
+<ol class="steps">
+  <li><div><h4>Antes: o e-mail testado e a ligação de pé</h4><p>Na casa do cliente, Ana configura o servidor de e-mail da empresa e faz um envio de teste: sem isso, o console não deixa criar organização, porque é por ele que sai o link de primeiro acesso. E criar uma organização exige a ligação com a Maind de pé: não há certificado provisório.</p></div></li>
+  <li><div><h4>A administradora cria a organização e o primeiro owner</h4><p>O mAIg gera a chave da organização, e a Maind atesta o certificado dela a partir da parte pública, sem nunca receber a chave privada. Para o owner, Ana digita só o e-mail de Marcos: o mAIg manda o link de primeiro acesso direto a ele, e nem Ana vê o link. Os dois atos ficam anotados no registro da nova organização, em nome de Ana.</p></div></li>
+  <li><div><h4>O owner entra e a organização fica ativa</h4><p>Marcos define a própria senha. Com o certificado e um owner com acesso, a organização passa sozinha a ativa. Quando ela nasce, o owner baixa também o código de recuperação dela e o guarda: é o que será pedido para restaurar uma cópia de segurança.</p></div></li>
+  <li><div><h4>O owner prepara cada app, e as pessoas começam a usar</h4><p>Na tela do primeiro app, no console, Marcos vê duas pendências: "falta um banco" e "falta a IA". Cadastra o banco de vendas, depois a chave da IA, e o app entra em uso: Carla, gerente comercial, já pode fazer a primeira pergunta. A organização da distribuidora, criada do mesmo jeito, com Júlia como owner, não vê nada disso.</p></div></li>
+</ol>
+<p>A partir daí, Marcos nomeia o auditor da organização, que só lê o registro: na onda 1.0, um só, de dentro da empresa; o segundo auditor e o auditor de fora da empresa chegam na onda 1.1. Os outros owners, quantos a organização contratar, também são cadastrados pelo administrador da instância. O primeiro acesso e os papéis estão em <a href="#mf-101">Entrar e agir só dentro do que foi permitido (MF-101)</a>.</p>
+<h4 id="mf-107-certificado">O certificado de cada organização</h4>
+<p>O certificado da organização é a carteira de identidade digital dela: todo pedido só passa com o passe da pessoa, assinado com a chave desse certificado, e com a identidade do app. Ele vale 30 dias e se renova sozinho pela ligação. Se a renovação falhar, o certificado atual segue valendo até o fim, e os owners da organização e os administradores da instância são avisados 7 dias antes de ele vencer. Cancelá-lo antes do prazo exige a autorização de duas pessoas da Maind, e o ato fica no registro da organização. Como ele assina todo login, uma falha longa na emissão de certificados da Maind chega a trancar a organização.</p>
+<h4 id="mf-107-ativa">Em configuração e ativa</h4>
+<p>A organização, ou um app nela, fica <strong>em configuração</strong> enquanto existe, mas ainda não atende as pessoas, e <strong>ativa</strong>, ou em uso, quando já atende. A organização fica ativa com o certificado dela e ao menos um owner com acesso; cada app entra em uso quando cumpre o mínimo que declara. O primeiro app, por exemplo, precisa de ao menos um banco e de uma IA.</p>
+<p>O mAIg confere as condições sozinho e muda o estado assim que elas se cumprem: ninguém precisa clicar em "ativar", e nenhum app fica travado por uma condição de que não precisa. Ter um owner com acesso só conta na primeira ativação: a organização ativa que fica sem owner com acesso continua ativa, e o administrador da instância resolve pela troca do owner. Em troca, uma organização ativa pode ainda não ter nenhum app pronto. Na onda 1.0, o owner vê as pendências de cada app na tela do próprio app, no console. O <strong>cockpit de ativação</strong>, a tela única com tudo o que falta para a organização e para cada app, com o passo que resolve cada pendência, chega na onda 1.1. O administrador da instância vê só as pendências que são da instância, como uma organização ainda sem owner com acesso, sem ver a configuração dela.</p>
+
+<h3 id="mf-107-painel">O painel da instância: o estado e as versões, nunca o registro</h3>
+<p>O <strong>painel da instância</strong> é a parte do console usada pelo administrador da instância. Ele funciona como o síndico de um prédio: sabe se o elevador funciona, quantos apartamentos estão ocupados e quando foi a última manutenção, mas não lê a correspondência dos moradores. <strong>Onde a analogia para:</strong> o síndico costuma ter uma chave para emergências; o painel não abre o registro das organizações em situação nenhuma.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>O painel mostra</th><th>O painel não mostra</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td>O estado, as versões e as pendências da instalação.</td><td>O registro de nenhuma organização: nem quem pediu o quê, nem quando, nem por qual app.</td></tr>
+      <tr class="zebra"><td>De cada organização, só contagens, sem nomes, a não ser os dos owners, porque é o administrador da instância quem os gere.</td><td>Os nomes das pessoas que usam os apps.</td></tr>
+      <tr class="zebra"><td>A data da última cópia de segurança e o estado da restauração, a data em que vence o certificado do endereço do mAIg, a lista do que a instância manda à Maind e a falha de envio de e-mail.</td><td>A configuração dos bancos e da IA, que é do owner da organização.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Pelo painel, o administrador da instância também dá o aval às versões novas do mAIg, define a janela em que elas se instalam e, numa emergência, suspende um app na instância inteira, sem apagar a configuração nem o registro. Os atos dele que tocam uma organização, como criá-la, ficam anotados no registro dela: ele escreve essas linhas sem poder lê-las. Tudo isso entra na onda 1.0, e a tela é de <a href="#mf-110">Configurar tudo num lugar só (MF-110)</a>. Por exemplo: se um diretor pede a Ana a lista de quem consultou o banco de vendas na véspera, o painel não tem isso; quem consulta o registro é Marcos ou Renata, a auditora que ele nomeou, como conta <a href="#mf-102">Saber quem pediu o quê, quando e com que dado (MF-102)</a>.</p>
+<h4 id="mf-107-registro-da-instancia">O registro da instância</h4>
+<p>Os atos do administrador da instância que não tocam organização nenhuma ficam no <strong>registro da instância</strong>, que nasce com ela, na onda 1.0, e fica guardado enquanto ela existir. São eles: cadastrar e retirar um administrador da instância; o pedido de troca de senha de um deles; o uso do procedimento da instalação, que destrava a instância quando nenhum administrador tem acesso; configurar e testar o servidor de e-mail; instalar ou trocar o certificado do endereço do mAIg; fazer e restaurar a cópia de segurança; e, na onda 1.1, desinstalar um app. Só os administradores da instância o leem, e ele vai na cópia de segurança.</p>
+
+<h3 id="mf-107-atualizar">Atualizar o próprio mAIg</h3>
+<p>O mAIg tem versões próprias, separadas das dos apps, e cada instância precisa recebê-las. Ele baixa a versão nova sozinho, pela ligação com a Maind, e confere a <strong>assinatura da Maind</strong>, a marca digital que prova que a versão veio da Maind e não foi alterada no caminho; uma versão sem essa assinatura é recusada. A versão é da instância, e não de cada organização: atualizar uma instância atualiza o mAIg para todas as organizações dela de uma vez, e a atualização fica anotada no registro de cada uma. Tudo isso entra na onda 1.0.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Sobre</th><th>Na casa do cliente</th><th>Na hospedagem da Maind</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Quem deixa a versão entrar, e quando</strong></td><td>A TI do cliente, como administradora da instância, dá o aval depois de ver o que mudou, e a versão se instala na janela de horário que ela define.</td><td>A instalação segue sozinha, numa janela de madrugada que a equipe da Maind define para a instância inteira.</td></tr>
+      <tr class="zebra"><td><strong>Quem é avisado antes</strong></td><td>Os administradores da instância, da versão nova à espera do aval e do prazo de adiamento perto do fim.</td><td>O owner de cada organização, 7 dias antes, ou 24 horas antes numa correção de segurança.</td></tr>
+      <tr class="zebra"><td><strong>Se ninguém der o aval</strong></td><td>Uma versão comum pode esperar até 30 dias, e uma correção de segurança, até 7. Depois, os apps recusam a conversa até o aval.</td><td>Os prazos não pesam, porque a instalação segue sozinha.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Passado o prazo, o mAIg segue na versão velha, porque nada se instala sem o aval, mas quem abre um app vê o aviso "Atualização necessária", e o painel da instância mostra o motivo e a versão. A regra é a mesma, por prazo, para o módulo de cada app: com o mAIg vencido, todos os apps param; com o módulo de um app vencido, só aquele app. Os apps seguem sendo atualizados pelo administrador da instância, um a um, como conta a <a href="#mf-104">MF-104</a>. Numa instância da Maind, a atualização alcança empresas diferentes ao mesmo tempo, nenhuma escolhe o horário, e quem trabalha de madrugada sente.</p>
+
+<h3 id="mf-107-copia">A cópia de segurança</h3>
+<p>Sem cópia, um disco queimado leva as senhas dos bancos e o registro, que é a prova do que aconteceu. Por isso quem opera a máquina faz a cópia de segurança: a TI do cliente, na casa do cliente, com uma ferramenta que vem no mAIg, e a Maind, na hospedagem dela. Tudo isso entra na onda 1.0.</p>
+<ul>
+  <li><strong>O que a cópia leva.</strong> O cofre, o registro de cada organização, o registro da instância e a configuração inteira: as organizações, os apps, as pessoas, as permissões e as regras da IA. O que o mAIg guarda só para os painéis abrirem rápido fica de fora. A cópia sai cifrada, e o cofre e o registro de cada organização vão cifrados com a chave dela: quem guarda a cópia não a lê.</li>
+  <li><strong>Restaurar devolve a instância como estava na data da cópia</strong>, sem refazer configuração à mão. O que mudou depois dessa data se perde, inclusive linhas do registro.</li>
+  <li><strong>Cada organização volta com o código de recuperação dela.</strong> A Maind nunca tem esse código, nem na hospedagem dela. A organização sem o código fica sem restaurar, e as outras voltam. Cada restauração fica anotada no registro de cada organização e no registro da instância. Se o certificado de uma organização precisar de um atestado novo da Maind, o mAIg o pede sozinho, e o painel da instância mostra o estado de cada organização até a volta completa.</li>
+</ul>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>O código de recuperação fica só com a organização. Se ela perder o código e o disco ao mesmo tempo, perde o registro e as senhas dos bancos, e ninguém, nem a Maind, consegue recuperá-los. A organização sem equipe de TI precisa guardar bem esse código.</p></div>
+</div>
+
+<h3 id="mf-107-encerrar">Encerrar uma organização</h3>
+<p>O mAIg não exclui uma organização: encerra. Encerrar é a organização deixar de funcionar na instância sem sair dela, e isso chega inteiro na onda 1.1: o pedido, a execução e a volta. Na onda 1.0, a organização que deixa de usar o mAIg fica com os apps pausados ou parados e com a configuração guardada.</p>
+<ul>
+  <li><strong>Quem pede e quem executa.</strong> O owner da organização pede no console, ou a Maind pede, quando todos os contratos da organização acabaram. O administrador da instância executa, e os owners e os auditores da organização são avisados. O owner não recusa antes um encerramento pedido pela Maind: a volta é o caminho de quem discorda.</li>
+  <li><strong>O que sai, e o que fica.</strong> Os apps são retirados, com o aviso e a cópia do registro para o owner, mas a configuração fica guardada durante os 30 dias da volta; só depois deles os apps, os bancos e a IA saem de vez. As pessoas que usam os apps perdem o acesso. Fica o registro da organização, que os owners e os auditores dela continuam lendo no console até o app ser desinstalado: ninguém apaga essa prova, nem a equipe da Maind, nem a TI do cliente, nem o owner.</li>
+  <li><strong>A volta.</strong> Por 30 dias, qualquer owner da organização pede a volta no console, não importa quem pediu o encerramento, e o administrador da instância a executa. Conta a data do pedido, e a configuração fica guardada até a volta ser executada. O app cujo contrato acabou volta parado, e as pessoas que usam os apps só voltam a entrar depois da volta.</li>
+  <li><strong>A desinstalação.</strong> O registro sai quando o app é desinstalado da instância, junto com o das outras organizações que o usavam. A organização encerrada não trava a desinstalação, mas recebe o aviso que vem antes dela, com um prazo para os owners e os auditores baixarem a cópia assinada do registro; só um pedido de volta à espera de execução a segura. O prazo exato desse aviso ainda será definido (veja <a href="#mf-104">MF-104</a>).</li>
+</ul>
+<p>Por exemplo: a rede de farmácias vende a distribuidora, e Júlia, owner da organização da distribuidora, pede o encerramento no console. Ana o executa, e o app é retirado dela, com o aviso e a cópia do registro. A organização das farmácias não sente nada. Um ano depois, alguém pergunta quem leu o banco de pedidos da distribuidora no último mês antes da venda: o owner da organização encerrada, ou um dos auditores dela, abre o registro e responde. E, se Ana encerrasse por engano a organização errada, os owners e os auditores dela seriam avisados na hora, e, dentro de 30 dias, qualquer owner pediria a volta, com a configuração guardada.</p>
+<h4 id="mf-107-saida">A saída do cliente</h4>
+<p>A saída do cliente não tem um gesto próprio: é um roteiro com os gestos que já existem, e vale na onda 1.1. Os owners e os auditores baixam a cópia assinada do registro; os apps são retirados, e as organizações, encerradas; por fim, a TI do cliente apaga a máquina e as cópias de segurança. O mAIg não atesta que tudo foi apagado. Na onda 1.0, não há saída com prova: os apps param com o fim da licença, e, se a TI do cliente apagar a máquina, o registro vai junto, sem cópia assinada. Quem quer levar a prova espera a onda 1.1, ou guarda a máquina ou a cópia de segurança, que só abre com o código de recuperação.</p>
+<p>A vida inteira de uma organização em desenho, do nascimento ao registro apagado, com a volta de 30 dias do encerramento:</p>
+<dx-diagrama ref="mf-107-vida-da-organizacao"></dx-diagrama>
+
+<h3 id="mf-107-ondas">O que chega em cada onda</h3>
+<p>Das 18 capacidades desta funcionalidade, 13 chegam na onda 1.0, 4 na onda 1.1 e 1 não entra.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Capacidade</th><th>Onda</th><th>Em poucas palavras</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Várias organizações na mesma instância, sem que uma veja a outra</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>Cada organização fica fechada no seu espaço desde o primeiro dia.</td></tr>
+      <tr class="zebra"><td><strong>Criar a organização e o usuário do primeiro owner</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>Com a ligação de pé, o certificado atestado pela Maind e, na casa do cliente, o servidor de e-mail testado.</td></tr>
+      <tr class="zebra"><td><strong>O certificado da organização, que se renova sozinho</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>Vale 30 dias e avisa 7 dias antes de vencer.</td></tr>
+      <tr class="zebra"><td><strong>A chave da organização nasce e fica no mAIg</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>A Maind recebe só a parte pública, e ninguém de fora assina em nome da organização.</td></tr>
+      <tr class="zebra"><td><strong>A organização fica ativa sozinha</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>Com o certificado e um owner com acesso, sem ninguém clicar em "ativar".</td></tr>
+      <tr class="zebra"><td><strong>O painel da instância</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>O estado, as versões e as pendências; das organizações, só contagens, sem registro e sem configuração.</td></tr>
+      <tr class="zebra"><td><strong>O endereço do mAIg na rede do cliente</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>A TI escolhe o nome e instala o certificado; o mAIg avisa antes de ele vencer, e o painel mostra a data.</td></tr>
+      <tr class="zebra"><td><strong>Atualizar o mAIg</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>Ele baixa sozinho, confere a assinatura e, na casa do cliente, só se instala com o aval da TI, dentro da janela.</td></tr>
+      <tr class="zebra"><td><strong>Adiar a versão nova</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>Até 30 dias, ou 7 numa correção de segurança; depois, os apps mostram "Atualização necessária".</td></tr>
+      <tr class="zebra"><td><strong>A cópia de segurança da instância</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>O cofre, os registros e a configuração inteira, cifrados, com a ferramenta do mAIg.</td></tr>
+      <tr class="zebra"><td><strong>Restaurar a cópia numa máquina nova</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>A instância volta como estava, cada organização com o código de recuperação dela, e a restauração fica anotada.</td></tr>
+      <tr class="zebra"><td><strong>O atestado novo do certificado depois da restauração</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>O mAIg o pede sozinho, e o painel mostra o estado de cada organização até a volta completa.</td></tr>
+      <tr class="zebra"><td><strong>A data da última cópia no painel da instância</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>Para uma cópia esquecida não ser descoberta tarde demais.</td></tr>
+      <tr class="zebra"><td><strong>O cockpit de ativação</strong></td><td><span class="badge badge--info">Onda 1.1</span></td><td>Uma tela só com tudo o que falta e o passo que resolve; antes dele, a tela de cada app já diz o que falta.</td></tr>
+      <tr class="zebra"><td><strong>Encerrar uma organização</strong></td><td><span class="badge badge--info">Onda 1.1</span></td><td>O owner ou a Maind pede, e o administrador da instância executa.</td></tr>
+      <tr class="zebra"><td><strong>A volta do encerramento</strong></td><td><span class="badge badge--info">Onda 1.1</span></td><td>Por 30 dias, qualquer owner pede, e conta a data do pedido.</td></tr>
+      <tr class="zebra"><td><strong>O roteiro de saída do cliente</strong></td><td><span class="badge badge--info">Onda 1.1</span></td><td>Baixar a cópia assinada, retirar os apps, encerrar as organizações e apagar a máquina e as cópias.</td></tr>
+      <tr class="zebra"><td><strong>Mudar uma organização de instância ou de hospedagem</strong></td><td><span class="badge">Não entra</span></td><td>Quem muda começa uma organização nova; nenhuma versão está marcada para isso.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 id="mf-107-bastidores">Nos bastidores, sem complicar</h3>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Dois certificados em cada pedido.</strong> Um pedido só passa com a identidade do app, um certificado próprio dele, e com o passe da pessoa, assinado com a chave do certificado da organização, que prova de quem é o pedido. É uma segunda trava entre as organizações da mesma instância.</li>
+  <li><strong>A firma reconhecida sem a caneta.</strong> O mAIg gera o par de chaves de cada organização, guarda a chave privada e manda à Maind só a pública, que ela atesta, como um cartório que reconhece a firma sem ter a caneta. Assim, nem a Maind, nem quem a invadir, consegue fabricar o passe de alguém.</li>
+  <li><strong>Cada organização, a sua chave.</strong> O cofre e o registro de cada organização ficam cifrados com uma chave dela, que quem opera a máquina não alcança. Por isso a promessa de que o administrador da instância não lê o registro não é só de tela.</li>
+  <li><strong>O mínimo vai à Maind.</strong> Além do que os apps precisam para funcionar (os pedidos e as respostas, o login, as versões novas, a renovação do certificado e a conferência da licença), a instância manda à Maind só a versão do mAIg e a dos módulos, o estado da ligação e o estado da licença de cada app. Nunca vai dado, nome de pessoa, consulta nem mensagem de erro com valores, e a lista fica à vista da TI do cliente no painel da instância. Em troca, a Maind sabe menos quando algo falha, e o suporte depende de alguém da empresa mostrar a tela, na onda 1.0, ou do acesso de suporte, na onda 1.1.</li>
+</ul>
+
+<h3 id="mf-107-limites">O que esta funcionalidade não faz</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Mudar uma organização de instância ou de hospedagem</strong></td><td>Não entra na primeira versão, e nenhuma versão está marcada para isso. Quem muda começa uma organização nova e a configura de novo.</td></tr>
+      <tr class="zebra"><td><strong>Funcionar sem a ligação com a Maind</strong></td><td>Não entra, e nenhuma versão está marcada para isso. Sem a ligação, não há login, licença nem atualização.</td></tr>
+      <tr class="zebra"><td><strong>Ter um nível "empresa" acima das organizações</strong></td><td>Não existe no mAIg. Cada organização contrata, configura e consulta o registro por conta própria.</td></tr>
+      <tr class="zebra"><td><strong>Mostrar ao administrador da instância o registro ou a configuração de uma organização</strong></td><td>Nunca, em situação nenhuma. O registro é do owner e dos auditores, e a configuração, do owner.</td></tr>
+      <tr class="zebra"><td><strong>Excluir uma organização</strong></td><td>O mAIg encerra, e não exclui: o registro fica até o app ser desinstalado. O encerramento chega na onda 1.1.</td></tr>
+      <tr class="zebra"><td><strong>Separar um app do outro</strong></td><td>É de <a href="#mf-109">Rodar cada app isolado dentro do mAIg (MF-109)</a>. Esta funcionalidade separa uma organização da outra.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-107-ligadas">Funcionalidades ligadas a esta</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="#mf-101">Entrar e agir só dentro do que foi permitido (MF-101)</a></td><td>O primeiro acesso do owner, os papéis e o login, que valem dentro de cada organização.</td></tr>
+      <tr class="zebra"><td><a href="#mf-102">Saber quem pediu o quê, quando e com que dado (MF-102)</a></td><td>O registro de cada organização, que o owner e os auditores consultam e onde ficam os atos do administrador da instância que a tocam.</td></tr>
+      <tr class="zebra"><td><a href="#mf-103">Contratar e liberar um app com segurança (MF-103)</a></td><td>A contratação é por organização, e o certificado da organização nasce quando ela é criada.</td></tr>
+      <tr class="zebra"><td><a href="#mf-104">Instalar, pausar e retirar apps sem refazer nada (MF-104)</a></td><td>O app é instalado uma vez para a instância e liberado por organização; lá ficam a suspensão, a retirada, a desinstalação e a versão do módulo de cada app.</td></tr>
+      <tr class="zebra"><td><a href="#mf-105">Usar os bancos da empresa sem expor a senha (MF-105)</a></td><td>O cofre de cada organização e o caminho até o banco na hospedagem da Maind.</td></tr>
+      <tr class="zebra"><td><a href="#mf-106">Controlar quais IAs, quanto e a que custo (MF-106)</a></td><td>As chaves, os modelos, os limites e o custo da IA, que são de cada organização.</td></tr>
+      <tr class="zebra"><td><a href="#mf-108">Funcionar sem abrir porta de entrada na rede (MF-108)</a></td><td>A ligação que a instância abre com a Maind, a mesma para todas as organizações dela, e o que acontece quando ela cai.</td></tr>
+      <tr class="zebra"><td><a href="#mf-110">Configurar tudo num lugar só (MF-110)</a></td><td>A tela do painel da instância e a do cockpit de ativação.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>Como as organizações ficam separadas por dentro.</strong> Cada pedido já passa com a identidade do app e com o certificado da organização. Como o mAIg usa os dois para guardar cada organização num espaço separado e conferir, a cada pedido, que ele é dela, a forma técnica ainda será definida.</p><p><strong>Uma instância só para uma organização, na hospedagem da Maind.</strong> Quando uma organização ganha uma instância só dela na hospedagem da Maind ainda será definido. Isso não muda o que a primeira versão faz na casa do cliente.</p><p><strong>A volta de uma atualização com defeito.</strong> Se uma versão nova do mAIg não subir direito, a forma técnica de voltar à versão anterior ainda será definida.</p><p><strong>Por dentro da cópia de segurança.</strong> Como a ferramenta faz e restaura a cópia, como cifra cada parte dela e se a chave do certificado de cada organização vai junto ainda serão definidos. Se não for, a restauração pede um atestado novo à Maind, que o mAIg busca sozinho.</p><p><strong>O que fica de pé numa organização encerrada.</strong> Os owners e os auditores seguem entrando para ler o registro; o que mais fica de pé para isso, e quando a organização some de vez, depois de o último app dela ser desinstalado, a forma técnica ainda será definida.</p><p><strong>O certificado do endereço do mAIg.</strong> Que tipo de certificado o mAIg aceita e onde nasce a chave dele ainda serão definidos.</p></div>
+</div>
+
+<h3 id="mf-107-faq">Perguntas frequentes</h3>
+<div class="faq">
+  <details open>
+    <summary>A organização vizinha consegue ver os nossos dados?</summary>
+    <div class="faq-body"><p>Não. Cada organização é um espaço fechado: os apps, as regras, os bancos, a IA, as pessoas e o registro dela não aparecem para outra organização, mesmo da mesma empresa e da mesma instância. Cada pedido passa com o certificado da organização, e o cofre e o registro ficam cifrados com uma chave só dela. E, se a organização vizinha sair do mAIg, as outras seguem como estavam.</p></div>
+  </details>
+  <details>
+    <summary>A nossa TI, ou a equipe da Maind, consegue ler o registro da nossa organização?</summary>
+    <div class="faq-body"><p>Não. Quem cuida da instância, a TI do cliente na casa do cliente ou a equipe da Maind na hospedagem dela, vê o estado, as versões e as pendências e, de cada organização, só contagens, sem nomes, a não ser os dos owners. O registro é lido só pelo owner da organização e pelos auditores. Se um cliente pedir à equipe da Maind uma cópia do registro, ela não tem esse acesso: o caminho é o owner ou o auditor.</p></div>
+  </details>
+  <details>
+    <summary>Quando a nossa organização começa a funcionar?</summary>
+    <div class="faq-body"><p>A organização fica ativa sozinha quando tem o certificado dela, que a Maind atesta na criação, e um owner com acesso. Cada app entra em uso quando cumpre as condições dele: o primeiro app, por exemplo, precisa de um banco e de uma IA. Na onda 1.0, a tela de cada app no console diz o que falta; na onda 1.1, o cockpit de ativação mostra tudo numa tela só.</p></div>
+  </details>
+  <details>
+    <summary>Uma versão nova do mAIg pode entrar sem a nossa TI saber?</summary>
+    <div class="faq-body"><p>Na casa do cliente, não. O mAIg baixa a versão e confere a assinatura da Maind, mas só a instala com o aval da TI, na janela que ela define. A TI pode adiar uma versão comum por até 30 dias e uma correção de segurança por até 7; depois, os apps mostram "Atualização necessária" até o aval. Na hospedagem da Maind, a atualização se instala sozinha, de madrugada, e o owner de cada organização é avisado 7 dias antes, ou 24 horas antes numa correção de segurança.</p></div>
+  </details>
+  <details>
+    <summary>E se a máquina do mAIg queimar?</summary>
+    <div class="faq-body"><p>Quem opera a máquina faz a cópia de segurança: a TI do cliente, com a ferramenta do mAIg, ou a Maind, na hospedagem dela. A restauração numa máquina nova devolve a instância como estava na data da cópia, e cada organização volta quando o owner digita o código de recuperação dela. O que mudou depois da data da cópia se perde, e a organização que perdeu o código não volta.</p></div>
+  </details>
+  <details>
+    <summary>Podemos mudar de hospedagem, ou deixar o mAIg, depois?</summary>
+    <div class="faq-body"><p>Mudar uma organização de instância, ou entre a hospedagem da Maind e a casa do cliente, não entra: quem muda começa uma organização nova e a configura de novo, e o registro antigo fica na instância antiga. Para deixar o mAIg, a organização é encerrada, e não excluída, e o registro segue legível até o app ser desinstalado. O encerramento, a volta em 30 dias e o roteiro de saída chegam na onda 1.1.</p></div>
+  </details>
+</div>

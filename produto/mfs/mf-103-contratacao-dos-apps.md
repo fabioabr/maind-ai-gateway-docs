@@ -74,17 +74,17 @@ Esta mf existe para que essa regra valha sempre do mesmo jeito. Sem ela, cada li
 
 ### O kit de instalação
 
-**Em resumo:** o kit é o pacote que a equipe da Maind entrega ao administrador da instância depois de fechada a contratação. Dentro dele vem o certificado digital que prova a contratação.
+**Em resumo:** o kit é o pacote que a equipe da Maind entrega ao administrador da instância depois de fechada a contratação. Dentro dele vem o certificado digital que identifica o app; o contrato se prova pela licença, que chega depois, pela ligação (decisão 56).
 
 **Quem é quem.**
 
 - **Quem entrega** é a equipe da Maind. **Quem recebe e instala** é o administrador da instância (decisão 10).
 - **Na infraestrutura do cliente,** o administrador da instância é a TI do cliente, e o kit passa de uma empresa para a outra. **Na infraestrutura da Maind,** o administrador da instância é a própria equipe da Maind, que entrega o kit a si mesma.
-- **Um kit vale para um app e uma organização.** Se a empresa contrata dois apps, recebe dois kits. Se um contrato lista duas organizações, cada uma recebe o seu kit. O kit prova a contratação do app; o certificado da organização, que não vem nele, prova de quem é o pedido (decisão 28).
+- **Um kit vale para um app e uma organização.** Se a empresa contrata dois apps, recebe dois kits. Se um contrato lista duas organizações, cada uma recebe o seu kit. O kit identifica o app, e a licença prova o contrato (decisão 56); o certificado da organização, que não vem nele, prova de quem é o pedido (decisão 28).
 
 **Por que é assim.** O kit leva para dentro da instância a prova da contratação, sem que a Maind precise entrar nela. É o administrador da instância quem decide instalar o kit, porque é ele quem controla o que roda na instalação (decisão 10).
 
-**Quando dá errado.** O kit chega a uma instância onde a organização ainda não foi criada: não há para quem liberar o app, e a organização precisa vir antes (MF-107). O kit se perde ou cai em mãos erradas: o certificado dentro dele é o que prova a contratação, e contê-lo depende da política do certificado, ainda em aberto. Mesmo assim, o kit sozinho não abre nada da organização, porque o pedido também exige o certificado dela (decisão 28).
+**Quando dá errado.** O kit chega a uma instância onde a organização ainda não foi criada: não há para quem liberar o app, e a organização precisa vir antes (MF-107). O kit se perde ou cai em mãos erradas: o certificado dentro dele é o que identifica o app, e contê-lo depende da política do certificado, ainda em aberto. Mesmo assim, o kit sozinho não abre nada da organização, porque o pedido também exige o certificado dela (decisão 28).
 
 **O que ainda está em aberto.** O que mais vem no kit, além do certificado, e por que caminho ele chega com segurança ao administrador da instância estão em "O que ainda falta decidir". Também estão lá em que ambientes o mAIg roda e o que um app declara ao núcleo para ser instalado, como a lista dos tipos de ato das linhas informadas pelo app, que chegam na onda 1.1 (decisão 104).
 

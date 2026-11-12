@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="As funcionalidades do mAIg explicadas uma a uma, em linguagem simples: o que cada uma faz, em que onda chega, como funciona na prática e as dúvidas mais comuns." />
+<link rel="icon" href="assets/logo-claro.png" />
+<title>MF-111 · Dar à IA as ferramentas da empresa, só para leitura — Maind AI Gateway (mAIg)</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
+</head>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Maind AI Gateway (mAIg)"><img class="logo-light" src="assets/logo-claro.png" alt="Maind AI Gateway (mAIg)" /><img class="logo-dark" src="assets/logo-escuro.png" alt="Maind AI Gateway (mAIg)" /></a><div class="div"></div><div class="doc-meta"><b>Maind AI Gateway (mAIg) · Documentação</b><small>Documentação do produto</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Maind AI Gateway (mAIg)</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Para começar</h6><ul><li><a href="como-ler.html">Como ler esta documentação</a></li></ul><h6>Primeira versão</h6><ul class="side-sub"><li><a href="mf-101.html">MF-101 · Entrar e agir só dentro do que foi permitido</a></li><li><a href="mf-102.html">MF-102 · Saber quem pediu o quê, quando e com que dado</a></li><li><a href="mf-103.html">MF-103 · Contratar e liberar um app com segurança</a></li><li><a href="mf-104.html">MF-104 · Instalar, pausar e retirar apps sem refazer nada</a></li><li><a href="mf-105.html">MF-105 · Usar os bancos da empresa sem expor a senha</a></li><li><a href="mf-106.html">MF-106 · Controlar quais IAs, quanto e a que custo</a></li><li><a href="mf-107.html">MF-107 · Atender várias organizações numa instalação, sem misturá-las</a></li><li><a href="mf-108.html">MF-108 · Funcionar sem abrir porta de entrada na rede</a></li><li><a href="mf-109.html">MF-109 · Rodar cada app isolado dentro do mAIg</a></li><li><a href="mf-110.html">MF-110 · Configurar tudo num lugar só</a></li></ul><h6>Segunda versão</h6><ul class="side-sub"><li><a href="mf-111.html" class="active">MF-111 · Dar à IA as ferramentas da empresa, só para leitura</a></li><li><a href="mf-112.html">MF-112 · Entrar com o login que a empresa já usa</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Maind AI Gateway (mAIg)</a><span class="sep">/</span><span>Segunda versão</span><span class="sep">/</span><span class="now">Dar à IA as ferramentas da empresa, só para leitura</span></nav><span class="doc-eyebrow">Segunda versão</span><div class="dx-macro-topo"><span class="dx-codigo">MF-111</span><span class="dx-selo">2ª versão</span></div><h1 class="doc-h1">Dar à IA as ferramentas da empresa, só para leitura</h1><p class="doc-lead">O owner da organização libera, uma a uma, as ferramentas de leitura da empresa para a IA dos apps, e o mAIg faz cada chamada no lugar do app e a anota no registro.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#mf-111-o-que-e">O que é, em poucas palavras</a><small>1 tópico</small></h3><ul><li><a href="#mf-111-quem-e-quem">Quem faz o quê</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-111-onde-fica">Onde o servidor fica, e por que a IA só chega a ele pelo mAIg</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-111-cadastro">Do cadastro à primeira resposta</a><small>1 tópico</small></h3><ul><li><a href="#mf-111-ferramentas">Toda ferramenta nasce bloqueada</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-111-so-leitura">O que o “só leitura” garante, e o que fica com a empresa</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-111-quem-usa">Quem pode usar cada servidor</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-111-uma-pergunta">Uma pergunta, passo a passo</a><small>1 tópico</small></h3><ul><li><a href="#mf-111-quando-da-errado">Quando dá errado</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-111-ondas">O que chega em cada onda</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-111-bastidores">Nos bastidores, sem complicar</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-111-limites">O que esta funcionalidade não faz</a><small>1 tópico</small></h3><ul><li><a href="#mf-111-ligadas">Funcionalidades ligadas a esta</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-111-faq">Perguntas frequentes</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><p>Pense no balcão de atendimento de um departamento. Quem chega faz um pedido pronto, como “quanto há deste produto?”, e recebe a resposta sem entrar no arquivo. Parte do que uma empresa sabe mora atrás de balcões assim: em sistemas internos, como o de estoque ou o de chamados, e nas consultas e regras que a TI já montou em volta deles. Um <strong>servidor MCP</strong> é um balcão desses para a inteligência artificial (IA): um programa da empresa que oferece à IA ferramentas prontas para consultar os sistemas internos.</p>
+<p>Esta funcionalidade deixa a IA dos apps usar esses balcões, com o mAIg no meio. O owner da organização cadastra os servidores, libera uma a uma só as ferramentas que leem e escolhe quais apps as usam. O mAIg mostra à IA só o que foi liberado, faz cada chamada no lugar do app e anota tudo no registro. Assim, as respostas passam a juntar o banco de dados e o que só os sistemas internos sabem.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Segunda versão, em construção</b><p>O que está aqui é o que a segunda versão do mAIg vai entregar, depois da primeira. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+<p>A primeira versão do mAIg não chama servidores MCP, mas já deixa pronta a base em que esta funcionalidade se apoia: o owner da organização e as permissões, o registro, o caminho dos bancos, o pedido à IA pelo núcleo e o console. A segunda versão acrescenta o cadastro dos servidores, a liberação das ferramentas e as chamadas (veja <a href="#mf-111-ondas">O que chega em cada onda</a>). Boa parte das regras desta página é um <strong>ponto de partida</strong>, que se confirma no fechamento da segunda versão: quem cadastra os servidores, as ferramentas que nascem bloqueadas, a promessa de só chamar o que foi declarado como leitura e quem pode usar cada servidor.</p>
+
+<h2 class="doc-h2" id="mf-111-o-que-e">O que é, em poucas palavras</h2>
+<p>Dar à IA as ferramentas da empresa é deixar a IA dos apps consultar os sistemas internos, sempre pelo mAIg e só para ler. Esta funcionalidade cuida de quatro coisas:</p>
+<ul>
+  <li><strong>Cadastrar os servidores MCP da empresa.</strong> Pelo ponto de partida, só o owner da organização cadastra, no console do mAIg, como já faz com os bancos e a IA.</li>
+  <li><strong>Liberar, uma a uma, as ferramentas de leitura.</strong> Toda ferramenta nasce bloqueada, e a IA só enxerga e só chama as que o owner liberou.</li>
+  <li><strong>Escolher quem usa cada servidor.</strong> O servidor nasce desligado para todos; o owner escolhe os apps e, dentro deles, quem recebe respostas que o usam.</li>
+  <li><strong>Fazer cada chamada no lugar do app.</strong> O núcleo do mAIg confere a permissão, chama o servidor e anota a chamada no registro.</li>
+</ul>
+<p>Duas palavras novas. <strong>MCP</strong> é um padrão, uma regra combinada entre fabricantes para que as peças de um se encaixem nas do outro, feito para dar à IA ferramentas extras. Uma <strong>ferramenta</strong> é cada coisa que um servidor MCP sabe fazer: pode só trazer informação, como “consultar o estoque”, ou agir, isto é, mudar algo no sistema, como “pedir reposição”. As demais palavras estão em <a href="como-ler.html#glossario">Palavras que aparecem nas páginas</a>.</p>
+<h3 class="doc-h3" id="mf-111-quem-e-quem">Quem faz o quê</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>O que faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Cadastra os servidores, libera as ferramentas de leitura e escolhe os apps e as pessoas que as usam. Responde pela escolha, porque é ele quem declara o que é leitura.</td></tr>
+      <tr class="zebra"><td><strong>TI do cliente</strong></td><td>Mantém o servidor MCP na infraestrutura da empresa e cria a credencial de leitura com que ele entra nos sistemas. Entrega ao owner o endereço e o acesso.</td></tr>
+      <tr class="zebra"><td><strong>Auditor</strong></td><td>Encontra no registro cada chamada de ferramenta, como encontra cada leitura de banco, e não muda nada.</td></tr>
+      <tr class="zebra"><td><strong>Administrador da instância</strong></td><td>Cuida da instalação e não cadastra servidores das organizações, como não cadastra os bancos nem a IA delas. A equipe da Maind dá suporte, sem cadastrar no lugar do owner.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="doc-h2" id="mf-111-onde-fica">Onde o servidor fica, e por que a IA só chega a ele pelo mAIg</h2>
+<p>O servidor MCP fica na infraestrutura da empresa, nas máquinas e na rede dela, e nenhum app fala com ele direto. O pedido passa pelo núcleo do mAIg, pela mesma regra dos bancos e da IA: nenhum app toca uma senha de banco nem uma chave de IA, e todo pedido passa pelo mAIg, que confere a permissão e anota no registro.</p>
+<ul>
+  <li><strong>O banco e o servidor se completam.</strong> O banco responde o que está guardado nele. O servidor traz o que a empresa montou em volta dos sistemas: uma consulta pronta, uma regra de negócio, um sistema cujo banco não está à vista.</li>
+  <li><strong>Um cadastro em cada organização.</strong> Como nada se herda da organização vizinha, o servidor é cadastrado em cada organização que vai usá-lo (veja <a href="mf-107.html">Atender várias organizações numa instalação, sem misturá-las (MF-107)</a>).</li>
+  <li><strong>As duas hospedagens.</strong> Na casa do cliente, o mAIg chama o servidor de dentro da mesma rede, sem abrir porta de entrada nenhuma (veja <a href="mf-108.html">Funcionar sem abrir porta de entrada na rede (MF-108)</a>). Na hospedagem da Maind, o servidor precisa ser alcançável pela Maind, como o banco, e o caminho exato ainda será definido.</li>
+  <li><strong>O resultado fica dentro de casa.</strong> O módulo do app usa o que a ferramenta devolveu, dentro do mAIg, e para fora vai só a resposta pronta, dentro do <a href="como-ler.html#glossario">teto de linhas</a> de toda resposta.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-111-cadastro">Do cadastro à primeira resposta</h2>
+<p>Digamos que uma rede de farmácias tem um sistema de estoque, e a TI dela montou um servidor MCP para ele. Marcos é o owner da organização; Ana é da TI do cliente.</p>
+<ol class="steps">
+  <li><div><h4>A TI entrega o endereço e o acesso</h4><p>Ana entrega a Marcos o endereço do servidor e uma credencial que só lê o sistema de estoque.</p></div></li>
+  <li><div><h4>O owner cadastra o servidor</h4><p>No console do mAIg, Marcos cadastra o servidor “Estoque das farmácias”. O mAIg o avisa de que a garantia de verdade de que nada muda é a credencial de leitura, que é da empresa.</p></div></li>
+  <li><div><h4>O mAIg lista as ferramentas, todas bloqueadas</h4><p>São três: “Consultar estoque”, “Consultar transferências entre farmácias” e “Pedir reposição”. Nenhum app usa o servidor ainda.</p></div></li>
+  <li><div><h4>O owner libera as de leitura</h4><p>As duas consultas vêm com a marca “só leitura” e aparecem pré-selecionadas; Marcos confere com Ana o que cada uma faz e as libera. “Pedir reposição” faz um pedido ao fornecedor, e ele a deixa bloqueada.</p></div></li>
+  <li><div><h4>O owner escolhe quem usa</h4><p>Marcos libera o servidor só para o primeiro app e, dentro dele, para as pessoas da área comercial. Um segundo app da organização não enxerga o servidor, e a IA do primeiro passa a ver só as duas consultas.</p></div></li>
+</ol>
+<p>Se Renata, a auditora, tentar cadastrar um servidor, não consegue: o papel dela só lê o registro. E Ana, quando age como administradora da instância, também não cadastra: ajuda Marcos como TI do cliente.</p>
+<h3 class="doc-h3" id="mf-111-ferramentas">Toda ferramenta nasce bloqueada</h3>
+<p>É como o cardápio que o restaurante entrega na mesa: o garçom só anota o que está nele, e o resto da cozinha não existe para quem pede. Mas o cardápio diz o nome do prato, e não garante a receita: o mAIg controla quais ferramentas a IA pede, e não o que cada uma faz por dentro. Por isso o ponto de partida traz três regras. A ferramenta <strong>bloqueada</strong> nem aparece para a IA, e o mAIg recusa qualquer chamada a ela. A marca <strong>“só leitura”</strong>, que o próprio servidor traz, só deixa a ferramenta pré-selecionada: quem libera é o owner. E a ferramenta <strong>sem a marca</strong> pede um aviso extra, em que o owner confirma que ela só lê. Uma ferramenta liberada pode ser bloqueada de novo no console.</p>
+
+<h2 class="doc-h2" id="mf-111-so-leitura">O que o “só leitura” garante, e o que fica com a empresa</h2>
+<p>Nos bancos, quem lê é o próprio mAIg, que nunca altera nada (veja <a href="mf-105.html">Usar os bancos da empresa sem expor a senha (MF-105)</a>). Num servidor MCP é diferente: o mAIg decide o que pedir, e o servidor decide o que fazer com o pedido. Por isso a promessa do mAIg, pelo ponto de partida, é <strong>só chamar as ferramentas que o owner da organização declarou como leitura</strong>. A garantia de verdade é a <strong>credencial de leitura</strong> do servidor, o acesso com que ele entra nos sistemas que consulta: se ela só permite ler, nenhuma ferramenta consegue mudar nada, mesmo que tente. Quem a cria e a mantém é a TI do cliente.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>O owner da organização responde pela declaração de que uma ferramenta só lê, e o mAIg não consegue provar o que ela faz por dentro. Se uma ferramenta marcada “só leitura” mudar algo, por um erro de quem a fez, e a credencial só permitir ler, o sistema recusa a mudança. Se a credencial permitir escrever, a mudança acontece; a chamada, porém, fica no registro, e o owner bloqueia a ferramenta.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-111-quem-usa">Quem pode usar cada servidor</h2>
+<p>Pelo ponto de partida, um servidor recém-cadastrado nasce desligado para todos, e o owner da organização decide em duas camadas:</p>
+<ul>
+  <li><strong>Os apps.</strong> Quais apps da organização podem pedir as ferramentas do servidor, como ele já diz quais apps leem cada banco e quais modelos de IA cada app usa (veja <a href="mf-106.html">Controlar quais IAs, quanto e a que custo (MF-106)</a>).</li>
+  <li><strong>As pessoas.</strong> Quem, dentro de um app, recebe respostas que usam o servidor. Onde essa escolha fica ainda está em definição. Quem tem a liberação vê tudo o que o servidor devolve: regras pessoa por pessoa ficam com a empresa, que pode dividir a informação em mais de um servidor.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-111-uma-pergunta">Uma pergunta, passo a passo</h2>
+<p>Carla, gerente comercial da rede de farmácias, pergunta ao app: “quais farmácias vão ficar sem o antialérgico mais vendido nesta semana?”. A pergunta junta o banco de vendas e o servidor de estoque.</p>
+<ol class="steps">
+  <li><div><h4>A pergunta chega ao módulo do app</h4><p>Carla digita nas telas do app, na nuvem da Maind, e a pergunta chega ao módulo do app, dentro do mAIg, pela ligação que o próprio mAIg abriu.</p></div></li>
+  <li><div><h4>O núcleo lê o banco e pede a IA</h4><p>O núcleo confere a permissão, tira a senha do cofre, lê as vendas da semana sem alterar nada e anota o pedido. Depois confere o modelo e os limites do app e pede a IA: o modelo enxerga só as ferramentas liberadas, e “Pedir reposição” não aparece.</p></div></li>
+  <li><div><h4>O modelo pede uma ferramenta</h4><p>O modelo pede “Consultar estoque”. O núcleo confere que ela está liberada para o app e para Carla.</p></div></li>
+  <li><div><h4>O núcleo chama o servidor</h4><p>O núcleo chama o servidor, dentro da rede da empresa, e anota a chamada no registro. O servidor devolve o estoque de cada farmácia, e o núcleo o entrega ao módulo.</p></div></li>
+  <li><div><h4>A resposta pronta volta</h4><p>O módulo monta a lista das farmácias que vão ficar sem o produto. À nuvem da Maind volta só essa resposta pronta, e Carla a vê na tela.</p></div></li>
+  <li><div><h4>O auditor confere</h4><p>Mais tarde, Renata encontra no registro a leitura do banco e a chamada da ferramenta, com o app, a pessoa e a hora.</p></div></li>
+</ol>
+<p>A parte da ferramenta em desenho, com quem fala com quem. Repare no que não acontece: o módulo do app não fala com o servidor, “Pedir reposição” não é oferecida ao modelo, e nada muda no sistema de estoque.</p>
+<figure class="dx-diagrama"><figcaption><b>Uma pergunta que usa o servidor MCP</b> <span>Quem fala com quem quando a IA usa uma ferramenta da empresa: o módulo do app pede, o núcleo do mAIg confere, chama o servidor MCP e anota no registro, e só a resposta pronta volta à nuvem do app.</span><a href="media/diagramas/mf-111-da-pergunta-a-ferramenta.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/mf-111-da-pergunta-a-ferramenta.html?embutido=1" title="Uma pergunta que usa o servidor MCP" loading="lazy"></iframe></figure>
+<h3 class="doc-h3" id="mf-111-quando-da-errado">Quando dá errado</h3>
+<ul>
+  <li><strong>O servidor não responde.</strong> O mAIg não recebe o resultado, e o pedido fica no registro. O que a pessoa vê na tela é decisão de cada app, como em qualquer falha de uma fonte.</li>
+  <li><strong>Um app ou uma pessoa sem a liberação.</strong> O app não vê as ferramentas do servidor; a pessoa recebe a resposta sem o que o servidor sabe.</li>
+  <li><strong>O app para no fim do contrato.</strong> A liberação dos servidores para aquele app fica guardada com as outras permissões dele, até a organização renovar ou o owner apagar (veja <a href="mf-104.html">MF-104</a>).</li>
+  <li><strong>O app é desinstalado.</strong> O registro das chamadas dele é excluído com os outros dados do app (veja <a href="mf-102.html">MF-102</a>).</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-111-ondas">O que chega em cada onda</h2>
+<p>Das 3 capacidades, as 3 chegam na segunda versão: nada desta funcionalidade entra na onda 1.0 nem na onda 1.1.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Capacidade</th><th>Onda</th><th>Em poucas palavras</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Cadastrar os servidores MCP da empresa</strong></td><td><span class="badge badge--warning">Segunda versão</span></td><td>O owner da organização cadastra, no console, os programas que oferecem ferramentas à IA.</td></tr>
+      <tr class="zebra"><td><strong>Liberar, uma a uma, as ferramentas de leitura de cada servidor</strong></td><td><span class="badge badge--warning">Segunda versão</span></td><td>Toda ferramenta nasce bloqueada, e o owner libera só as que leem.</td></tr>
+      <tr class="zebra"><td><strong>A IA usar as ferramentas liberadas, com cada chamada no registro</strong></td><td><span class="badge badge--warning">Segunda versão</span></td><td>O núcleo faz cada chamada no lugar do app e a anota no registro.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Fica para depois porque nenhum app usa servidores MCP na primeira versão: ela entrega já na primeira venda a governança, que é o motivo de o mAIg existir, e a segunda versão chega junto com a versão do primeiro app que passa a usar as ferramentas. Até lá, uma organização não leva os sistemas internos para dentro dos apps. A primeira versão já deixa pronto o que esta funcionalidade usa: o papel que cadastra e libera (<a href="mf-101.html">MF-101</a>); o registro e o auditor (<a href="mf-102.html">MF-102</a>); a lista dos apps de cada organização, de onde o owner escolhe os apps de cada servidor (<a href="mf-104.html">MF-104</a>); o caminho dos bancos, cadastrados pelo owner, usados só pelo núcleo e liberados app por app, que o servidor MCP segue (<a href="mf-105.html">MF-105</a>); o pedido à IA pelo núcleo, onde se decide quais ferramentas o modelo enxerga (<a href="mf-106.html">MF-106</a>); e o console (<a href="mf-110.html">MF-110</a>).</p>
+
+<h2 class="doc-h2" id="mf-111-bastidores">Nos bastidores, sem complicar</h2>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Uma peça do núcleo.</strong> Os servidores MCP da empresa fazem parte do núcleo do mAIg, ao lado do cofre dos bancos e das regras de uso da IA. Por isso uma chamada de ferramenta passa pela permissão e pelo registro, como qualquer pedido de um app.</li>
+  <li><strong>O que o mAIg controla é a porta.</strong> Ele não vê o que uma ferramenta faz por dentro; controla o que o modelo enxerga e o que o modelo chama. Por isso tudo nasce fechado e só se abre com uma decisão do owner.</li>
+  <li><strong>O mesmo portão para um servidor novo.</strong> Um servidor novo não abre um caminho paralelo até os sistemas: passa pelo portão que a TI do cliente já aprovou.</li>
+  <li><strong>A lista vale dentro do núcleo.</strong> Mostrar ao modelo só as ferramentas liberadas, recusar as outras e anotar cada chamada é trabalho do núcleo; a forma técnica ainda será definida.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-111-limites">O que esta funcionalidade não faz</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Agir nos sistemas da empresa</strong></td><td>É só de leitura: as ferramentas que mudam algo ficam bloqueadas. Agir exigiria uma decisão nova.</td></tr>
+      <tr class="zebra"><td><strong>Usar servidores MCP da Maind ou na nuvem da Maind</strong></td><td>Entram só os servidores da empresa, cadastrados pela organização.</td></tr>
+      <tr class="zebra"><td><strong>Ligar a parte de fora do app ao mAIg pelo MCP</strong></td><td>Essa conversa corre pela ligação que o mAIg abre para a Maind (<a href="mf-108.html">MF-108</a>).</td></tr>
+      <tr class="zebra"><td><strong>Construir e manter o servidor e a credencial de leitura</strong></td><td>São da empresa, com a TI do cliente.</td></tr>
+      <tr class="zebra"><td><strong>Dizer quem vê o quê dentro do que o servidor devolve, pessoa por pessoa</strong></td><td>Fica com a empresa, que pode dividir a informação em mais de um servidor.</td></tr>
+      <tr class="zebra"><td><strong>Decidir o que o app faz com o resultado</strong></td><td>A lógica é de cada app, no módulo que roda isolado dentro do mAIg (<a href="mf-109.html">MF-109</a>).</td></tr>
+      <tr class="zebra"><td><strong>Receber sistemas do cliente como apps</strong></td><td>Um servidor MCP é uma fonte da organização, e não um app: o mAIg recebe só apps da Maind, por enquanto.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-111-ligadas">Funcionalidades ligadas a esta</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="mf-101.html">Entrar e agir só dentro do que foi permitido (MF-101)</a></td><td>Cria o owner da organização, o único que cadastra os servidores, e as permissões que dizem o que cada um pode fazer.</td></tr>
+      <tr class="zebra"><td><a href="mf-102.html">Saber quem pediu o quê, quando e com que dado (MF-102)</a></td><td>Cada chamada de ferramenta entra no registro, que responde ao auditor “quem fez a IA consultar o quê”.</td></tr>
+      <tr class="zebra"><td><a href="mf-104.html">Instalar, pausar e retirar apps sem refazer nada (MF-104)</a></td><td>O owner libera cada servidor para os apps da organização, e a configuração de um app parado guarda essas liberações.</td></tr>
+      <tr class="zebra"><td><a href="mf-105.html">Usar os bancos da empresa sem expor a senha (MF-105)</a></td><td>O servidor segue o caminho dos bancos: um recurso da empresa usado só pelo núcleo e liberado app por app.</td></tr>
+      <tr class="zebra"><td><a href="mf-106.html">Controlar quais IAs, quanto e a que custo (MF-106)</a></td><td>É no pedido à IA que se decide quais ferramentas o modelo vê, sob as regras de modelos, limites e custo de lá.</td></tr>
+      <tr class="zebra"><td><a href="mf-110.html">Configurar tudo num lugar só (MF-110)</a></td><td>É no console que o owner cadastra os servidores, libera as ferramentas e escolhe quem as usa.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>Onde fica a escolha das pessoas.</strong> Se a liberação de um servidor para as pessoas fica no núcleo do mAIg, valendo para todos os apps, ou dentro de cada app.</p><p><strong>A ferramenta que aparece depois.</strong> A TI do cliente pode atualizar o servidor quando quiser. O ponto de partida é que uma ferramenta nova também nasça bloqueada, para que uma atualização não dê à IA uma ação nova sem ninguém decidir; isso, e se o owner é avisado quando ela surge, ainda está em definição.</p><p><strong>O resultado e o provedor de IA.</strong> O modelo de IA roda no provedor, fora da rede, e costuma precisar ver o resultado de uma ferramenta para usá-lo. Se uma parte do que a ferramenta devolve pode ir ao provedor, e em que <a href="como-ler.html#glossario">camada da IA</a>, ainda será definido.</p><p><strong>Onde fica o acesso a cada servidor.</strong> A credencial de um servidor dá acesso a um sistema da empresa; onde o mAIg a guarda ainda será definido.</p><p><strong>O caminho na hospedagem da Maind.</strong> Como a Maind alcança um servidor da empresa quando o mAIg roda na hospedagem dela.</p><p><strong>O peso no custo e no tempo.</strong> Cada chamada faz o modelo trabalhar mais. Quanto o uso das ferramentas muda o custo da IA, que é contado por app, e o tempo da resposta ainda será definido.</p><p><strong>A prova de que só lê.</strong> O que fazer quando um cliente exigir prova, e não só a declaração do owner, de que uma ferramenta só lê.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-111-faq">Perguntas frequentes</h2>
+<div class="faq">
+  <details open>
+    <summary>A IA vai poder mudar alguma coisa nos sistemas da nossa empresa?</summary>
+    <div class="faq-body"><p>Pelo ponto de partida, o mAIg só deixa a IA chamar as ferramentas que o owner da organização liberou como leitura; as que agem ficam bloqueadas e nem aparecem para ela. A garantia de verdade é a credencial de leitura do servidor, que a TI da empresa cria: se ela só permite ler, nada muda, mesmo que uma ferramenta tente. E toda chamada fica no registro.</p></div>
+  </details>
+  <details>
+    <summary>Os apps falam direto com o nosso servidor MCP?</summary>
+    <div class="faq-body"><p>Não. Quem chama o servidor é o núcleo do mAIg: o módulo do app pede, o núcleo confere a permissão, faz a chamada e a anota no registro. O app usa o resultado dentro do mAIg, e para fora vai só a resposta pronta.</p></div>
+  </details>
+  <details>
+    <summary>Quem decide quais ferramentas a IA pode usar?</summary>
+    <div class="faq-body"><p>Pelo ponto de partida, só o owner da organização, no console do mAIg. Toda ferramenta nasce bloqueada, e ele libera, uma a uma, as de leitura; depois escolhe os apps e as pessoas que usam o servidor. O administrador da instância não cadastra servidores, a equipe da Maind só dá suporte, e o auditor só lê o registro.</p></div>
+  </details>
+  <details>
+    <summary>Precisamos abrir uma porta na rede para o mAIg chegar ao servidor?</summary>
+    <div class="faq-body"><p>Com o mAIg na casa do cliente, não: ele chama o servidor de dentro da mesma rede, sem porta de entrada nenhuma. Com o mAIg na hospedagem da Maind, o servidor precisa ser alcançável pela Maind, como o banco, e o caminho exato ainda será definido.</p></div>
+  </details>
+  <details>
+    <summary>Dá para usar isso já na primeira versão do mAIg?</summary>
+    <div class="faq-body"><p>Não. Esta funcionalidade chega inteira na segunda versão, e nada dela entra na onda 1.0 nem na onda 1.1. A primeira versão já deixa pronta a base em que ela se apoia: o owner da organização e as permissões, o registro, a lista dos apps, o caminho dos bancos, o pedido à IA pelo núcleo e o console.</p></div>
+  </details>
+  <details>
+    <summary>Todo mundo da organização vê o que o servidor devolve?</summary>
+    <div class="faq-body"><p>Não. Pelo ponto de partida, o servidor nasce desligado para todos, e o owner escolhe os apps e, dentro deles, quem recebe respostas que o usam. Quem tem a liberação vê tudo o que o servidor devolve; para separar a informação entre pessoas, a empresa pode dividi-la em mais de um servidor.</p></div>
+  </details>
+</div>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="mf-110.html"><span class="cat">Anterior</span><h5>Configurar tudo num lugar só</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="mf-112.html"><span class="cat">Próxima</span><h5>Entrar com o login que a empresa já usa</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.png" alt="Maind AI Gateway (mAIg)" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.png" alt="Maind AI Gateway (mAIg)" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind AI Gateway · Documentação do produto · primeira versão em construção</b></div></div><div class="ftr-center"><span class="ftr-tag">v1 em desenho, sem versão publicada · 11/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Maind AI Gateway (mAIg)</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#mf-111-o-que-e">O que é, em poucas palavras</a></li><li class="lvl-3"><a href="#mf-111-quem-e-quem">Quem faz o quê</a></li><li><a href="#mf-111-onde-fica">Onde o servidor fica, e por que a IA só chega a ele pelo mAIg</a></li><li><a href="#mf-111-cadastro">Do cadastro à primeira resposta</a></li><li class="lvl-3"><a href="#mf-111-ferramentas">Toda ferramenta nasce bloqueada</a></li><li><a href="#mf-111-so-leitura">O que o “só leitura” garante, e o que fica com a empresa</a></li><li><a href="#mf-111-quem-usa">Quem pode usar cada servidor</a></li><li><a href="#mf-111-uma-pergunta">Uma pergunta, passo a passo</a></li><li class="lvl-3"><a href="#mf-111-quando-da-errado">Quando dá errado</a></li><li><a href="#mf-111-ondas">O que chega em cada onda</a></li><li><a href="#mf-111-bastidores">Nos bastidores, sem complicar</a></li><li><a href="#mf-111-limites">O que esta funcionalidade não faz</a></li><li class="lvl-3"><a href="#mf-111-ligadas">Funcionalidades ligadas a esta</a></li><li><a href="#mf-111-faq">Perguntas frequentes</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
+</body>
+</html>

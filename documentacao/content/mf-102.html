@@ -1,0 +1,229 @@
+<p>Pense no livro de visitas da portaria de um prédio: cada pessoa que entra deixa o nome, a sala que visitou e a hora. Se um dia alguém perguntar quem esteve no quinto andar na sexta à noite, a resposta está ali. O mAIg tem um livro assim, o <strong>registro</strong>. Cada vez que um app pede a ele um dado da empresa ou um trabalho da inteligência artificial (IA), o mAIg anota qual app pediu, em nome de quem, o que foi pedido, quanto, o resultado e a hora.</p>
+<p>A diferença está em quem escreve. No livro de papel, o porteiro pode esquecer ou anotar errado. No mAIg, quem anota é o próprio mAIg, no momento do pedido, e o app não tem como pedir sem deixar a linha. É essa anotação que faz da promessa do mAIg algo que a empresa cliente confere por conta própria, sem pedir nada à Maind.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Primeira versão, em construção</b><p>O que está aqui é o que a primeira versão do mAIg vai entregar, em duas ondas: a onda 1.0, o mínimo para o primeiro app funcionar, e a onda 1.1, que completa a governança. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+
+<h3 id="mf-102-o-que-e">O que é, em poucas palavras</h3>
+<p>O registro junta duas coisas. O <strong>log</strong> é a anotação de tudo o que acontece, no momento em que acontece. A <strong>auditoria</strong> é a conferência dessas anotações, feita depois, por quem não executou a operação. Esta funcionalidade cuida de seis coisas:</p>
+<ul>
+  <li><strong>Anotar cada pedido dos apps</strong>, atendido ou recusado: qual app, em nome de quem, o que foi pedido, quanto, o resultado e a hora.</li>
+  <li><strong>Anotar também quem configura:</strong> os atos do owner da organização e do auditor e, do administrador da instância, os que tocam a organização.</li>
+  <li><strong>Avisar na hora</strong> os owners da organização e o auditor quando acontece um ato sensível, como trocar um banco ou o auditor.</li>
+  <li><strong>Deixar conferir:</strong> o owner da organização e o auditor consultam o registro no console; quem cuida da instalação nunca o lê.</li>
+  <li><strong>Guardar sem que ninguém apague</strong>, cifrado e sem prazo, enquanto o app estiver instalado.</li>
+  <li><strong>Guardar o que foi pedido, nunca os dados:</strong> a consulta feita ao banco e quantas linhas voltaram, e não os números da empresa.</li>
+</ul>
+<p>Quem pede é sempre o <strong>módulo</strong> de um app, a parte dele que roda dentro do mAIg. Quem atende e anota é o <strong>núcleo</strong>, os serviços que vêm prontos no mAIg e servem a todos os apps. Todo acesso aos dados e à IA passa pelo núcleo, e por isso o registro pega tudo, de todos os apps, num lugar só. Os papéis estão explicados em <a href="#como-ler-papeis">Quem é quem</a>, na página Como ler esta documentação.</p>
+<h4 id="mf-102-quem-e-quem">Quem faz o quê</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>O que faz no registro</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Consulta o registro inteiro da organização e nomeia o auditor. Os atos dele também entram no registro, e ele não pode nomear a si mesmo auditor.</td></tr>
+      <tr class="zebra"><td><strong>Auditor</strong></td><td>Consulta o mesmo registro e não muda configuração nenhuma. Costuma ser alguém da área de segurança. Na onda 1.0, a organização tem um auditor só, de dentro da empresa; na onda 1.1, até dois, e um deles pode ser de fora, como o de uma auditoria externa, com um acesso que vence numa data que o owner da organização define.</td></tr>
+      <tr class="zebra"><td><strong>Administrador da instância</strong></td><td>Cuida da instalação do mAIg: na casa do cliente, é a TI do cliente; na hospedagem da Maind, a equipe da Maind. Escreve no registro da organização os atos dele que a tocam, sem poder lê-lo, e lê só o registro da instância.</td></tr>
+      <tr class="zebra"><td><strong>Pessoa que usa o app</strong></td><td>Não consulta o registro. Os pedidos feitos em nome dela viram linhas, com o nome.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 id="mf-102-cada-linha">O que cada linha do registro anota</h3>
+<p>Cada pedido que um app faz ao núcleo vira uma linha:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>A linha diz</th><th>O que é</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Qual app pediu</strong></td><td>Reconhecido pelo certificado, a carteira de identidade digital do app.</td></tr>
+      <tr class="zebra"><td><strong>Em nome de quem</strong></td><td>A pessoa que usava o app quando o pedido nasceu.</td></tr>
+      <tr class="zebra"><td><strong>O que foi pedido</strong></td><td>Ler qual banco, com a consulta feita, ou usar qual modelo de IA.</td></tr>
+      <tr class="zebra"><td><strong>Quanto</strong></td><td>Numa leitura, quantas linhas voltaram; num pedido à IA, o uso e o custo, contados na conta do app (veja <a href="#mf-106">MF-106</a>).</td></tr>
+      <tr class="zebra"><td><strong>O resultado</strong></td><td>Atendido, ou recusado, por exemplo por falta de permissão.</td></tr>
+      <tr class="zebra"><td><strong>Quando</strong></td><td>O dia e a hora.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Um exemplo. Carla, gerente comercial de uma rede de farmácias, pergunta ao primeiro app quanto cada farmácia vendeu em outubro.</p>
+<ol class="steps">
+  <li><div><h4>O app pede os dados do banco de vendas</h4><p>O núcleo confere a permissão, lê o banco sem alterar nada e anota: o app, em nome de Carla, leu o banco de vendas às 10h12; atendido.</p></div></li>
+  <li><div><h4>O app pede à IA que monte a resposta</h4><p>O núcleo confere o modelo e o limite, faz o pedido com a chave de IA da própria empresa e anota: o app, em nome de Carla, usou tal modelo, com tal uso e tal custo, às 10h12; atendido.</p></div></li>
+  <li><div><h4>Na semana seguinte, a auditora confere</h4><p>Carla já viu a tabela na tela. Renata, a auditora da organização, abre o registro e encontra as duas linhas.</p></div></li>
+</ol>
+<p>O mesmo caminho em desenho, com as duas saídas que terminam em recusa: o pedido sem permissão, que vira uma linha “recusado”, e a linha que não consegue ser anotada, que faz o pedido não ser atendido.</p>
+<dx-diagrama ref="mf-102-do-pedido-a-linha"></dx-diagrama>
+<h4 id="mf-102-recusado">O pedido recusado também fica anotado</h4>
+<p>O app pede um banco que Marcos, o owner da organização, não liberou. O núcleo não lê o banco, mas anota a linha com o resultado “recusado”. A recusa também é informação: mostra um app pedindo mais do que lhe foi dado.</p>
+<p><strong>Sem anotar, não atende.</strong> O registro só é completo se nenhum pedido escapa dele. Se, por um problema, o mAIg não consegue anotar a linha, ele recusa o pedido: é melhor uma pergunta sem resposta do que um acesso ao banco sem rastro. A contrapartida é que, se o registro tiver um problema, os apps param de atender até ele voltar.</p>
+<h4 id="mf-102-informadas-pelo-app">O que só o app vê</h4>
+<p>O que acontece só dentro de um app, como baixar uma conversa em PDF ou alterar um painel, o núcleo não vê. Na onda 1.0, o registro só tem o que o núcleo viu. Na onda 1.1, o app passa a poder pedir ao núcleo que anote, e a linha fica marcada como <strong>“informada pelo app”</strong>, separada das que o núcleo viu com os próprios olhos. Ela só tem campos fixos: o tipo do ato, de uma lista que o app declara ao ser instalado; o alvo, por um código; a hora; e a pessoa, que o núcleo tira do passe dela. O núcleo recusa o que foge disso, e a linha diz, por exemplo, “baixou a conversa 4812”, sem o assunto. Assim, o auditor confere tudo num lugar só e sabe o que é prova do núcleo e o que é a palavra do app, que vale menos como prova.</p>
+
+<h3 id="mf-102-em-nome-de-quem">Em nome de quem: a pessoa por trás de cada pedido</h3>
+<p>Quem pede ao núcleo é sempre o módulo de um app, mas ele pede por alguém, e a linha anota as duas coisas. Saber só que “o app leu o banco de vendas” não basta, porque as perguntas que chegam ao auditor costumam ser sobre pessoas: quem viu os números antes da divulgação, quem consultou um banco fora de hora.</p>
+<p><strong>A linha é confiável porque a pessoa vem do próprio mAIg.</strong> O mAIg cadastra as pessoas e faz o login delas, para todos os apps (veja <a href="#mf-101">Entrar e agir só dentro do que foi permitido (MF-101)</a>), e por isso ele mesmo sabe quem está por trás de cada pedido, em vez de anotar o que o app dissesse. Cada pedido leva o <strong>passe</strong> da pessoa, a credencial curta que o mAIg emite quando ela entra e que diz quem ela é. Só o mAIg assina o passe: a nuvem do app não consegue fabricar um.</p>
+<p><strong>A tarefa marcada também tem pessoa.</strong> Um app pode rodar algo numa hora marcada, como um relatório toda segunda-feira às 7h. A tarefa nunca roda em nome do app: o mAIg emite um passe de agendamento só daquela tarefa, em nome de quem a criou, e o guarda só nele, nunca na nuvem. A cada rodada, ele confere se a pessoa ainda tem acesso e permissão, e a linha anota o nome dela. Se ela perdeu o acesso, a tarefa para, e o owner da organização é avisado.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>A linha com o nome de uma pessoa prova que o pedido veio com o passe dela. O mAIg admite um risco: se a nuvem de um app for invadida, quem a invadiu pode pedir, em nome de quem está usando o app e por até 15 minutos depois de a pessoa sair, o que ela já poderia ver, e a linha mostra o nome dela.</p></div>
+</div>
+<p>Um exemplo. A diretoria pergunta a Renata se alguém consultou o banco de vendas na véspera da reunião de resultados. Renata filtra no registro as leituras do banco de vendas naquele dia e encontra três linhas do mesmo app: duas em nome de Carla e uma em nome de um colega da área comercial. Ela responde com os nomes, os horários e o app, sem pedir nada à Maind.</p>
+
+<h3 id="mf-102-quem-configura">Os atos de quem configura também entram</h3>
+<p>O auditor existe para conferir quem configura, porque o owner da organização não audita a si mesmo. Para isso, os atos do owner precisam estar no registro. E a conferência vale nos dois sentidos: o owner vê quando o auditor consultou o registro.</p>
+<p>Entram no registro: liberar, configurar e pausar um app na organização e, a partir da onda 1.1, retirá-lo; dar ou tirar uma permissão, de um app ou de uma pessoa; cadastrar ou mudar um banco ou uma IA, sem a senha e sem a chave, que não entram na linha, só o fato de terem mudado; nomear ou trocar o auditor; e entrar no mAIg, pedir o link de troca de senha e consultar o próprio registro.</p>
+<p>Um exemplo. Numa sexta à tarde, Marcos libera o banco financeiro ao app, a pedido da área financeira, e o registro anota a mudança. Na segunda, Renata vê as primeiras leituras do banco financeiro e, antes delas, a linha em que Marcos o liberou. Ela pergunta a Marcos o motivo, e a pergunta tem resposta porque as duas pontas estão anotadas: a permissão e o uso.</p>
+<h4 id="mf-102-atos-sensiveis">Os atos sensíveis avisam na hora</h4>
+<p>Alguns atos, além de entrar no registro, avisam na hora os owners da organização e o auditor. O aviso só informa: não pede aprovação. Ele aparece no console e chega também por e-mail, só com o tipo do aviso e um link para o console, sem dado nenhum. É um <strong>aviso de segurança</strong>: chega sempre ao auditor, e a organização não o desliga. Na onda 1.0, cada aviso tem destinatário fixo, e ninguém o redireciona. A lista é fixa, e cada ato avisa a partir da onda em que ele existe.</p>
+<p><span class="badge badge--success">Onda 1.0</span> Mudar o que o pedido ao provedor de IA pode levar; cadastrar ou trocar um banco; marcar ou desmarcar uma coluna sensível de um banco; subir o teto da resposta de um app; nomear ou trocar o auditor; mudar os jeitos de entrar; e toda troca de owner da organização, que só o administrador da instância faz.</p>
+<p><span class="badge badge--info">Onda 1.1</span> Baixar a cópia assinada do registro; liberar o acesso de suporte da Maind; liberar uma saída além da resposta pronta, como a planilha, cujos downloads também ficam no registro; e mudar quem recebe aviso.</p>
+<p>Os avisos de segurança ficam reunidos no <strong>painel de alertas</strong> do console, junto com o alerta de quando uma pessoa ou um app chega perto do limite de pedidos. Assim, nada importante muda em silêncio, e o auditor não depende de abrir o registro para saber. Um owner mal-intencionado ainda pode agir, só não escondido.</p>
+<h4 id="mf-102-administrador">Os atos do administrador da instância</h4>
+<p>O administrador da instância não lê o registro das organizações, mas os atos dele que tocam uma organização entram no registro dela, com o nome de quem fez e a hora: criar a organização e o usuário do primeiro owner da organização, com cada envio do link de primeiro acesso; instalar o kit de um app que a organização contratou, e instalar ou atualizar esse app; cadastrar, excluir ou substituir um owner da organização, com a volta em 48 horas; suspender ou retomar um app numa emergência; e atualizar o próprio mAIg, com o aval da TI do cliente ou na janela de atualização da Maind. Cada restauração de uma cópia de segurança também fica anotada. Como um app é instalado uma vez por instância, o mesmo ato vira uma linha em cada organização que o usa.</p>
+<p>Um exemplo. Em março, Ana, da TI da rede de farmácias, no papel de administradora da instância, atualiza o primeiro app para uma versão nova. O registro da organização anota: Ana, administradora da instância, atualizou o app, em 12 de março. Ana não abre o registro: só deixa a linha. Em junho, Renata estranha que o app passou a ler uma tabela nova, encontra a linha de Ana e responde quando ele mudou de versão e quem o mudou, sem pedir nada à Maind. Numa rede de óticas que não tem TI e usa uma instância da Maind, a mesma linha traz o nome da pessoa da equipe da Maind que atualizou o app, e a owner da organização vê quem mexeu no app dela.</p>
+<p>O que não toca organização nenhuma vai para outro lugar: o <strong>registro da instância</strong>, onde só se acrescenta, que os administradores da instância leem e que não tem dado de organização nenhuma. Ele nasce com a instância, na onda 1.0, e fica guardado enquanto ela existir. Ali ficam, com quem fez e quando: cadastrar e retirar um administrador da instância, o pedido de troca de senha dele, o uso do procedimento da instalação, configurar e testar o servidor de e-mail, instalar ou trocar o certificado do endereço do mAIg, fazer e restaurar a cópia de segurança e, a partir da onda 1.1, desinstalar um app.</p>
+
+<h3 id="mf-102-quem-consulta">Quem consulta e quem não vê</h3>
+<p>É a separação de funções: quem movimenta o dinheiro não é quem audita as contas. Dentro da organização, consultam o registro o owner da organização e o auditor, que só lê. A consulta acontece no console do mAIg, a tela única de configuração (veja <a href="#mf-110">Configurar tudo num lugar só (MF-110)</a>), e dá para procurar por app, por pessoa, por banco ou modelo, por resultado e por período.</p>
+<p><strong>Por que o administrador da instância fica de fora.</strong> Numa instância da Maind convivem organizações de empresas diferentes. Se o administrador da instância visse o registro, a equipe da Maind veria de uma vez o de todos os clientes, e o isolamento entre as organizações se quebraria. Pelo mesmo motivo, o painel da instância mostra, de cada organização, só contagens, sem nomes, a não ser os dos owners da organização, que é ele quem gere.</p>
+<p>Um exemplo. Marcos nomeia Renata, da área de segurança, auditora da organização. Renata entra e vê o registro: os pedidos do app e os atos de Marcos. Ela tenta, por engano, mudar o ajuste de um banco, e o mAIg não deixa, porque o papel dela só lê. Ana, no papel de administradora da instância, vê que o app está instalado, funcionando e na versão atual, e não encontra o registro.</p>
+<h4 id="mf-102-sigilo">O sigilo vale também fora da tela</h4>
+<p>O registro de cada organização fica <strong>cifrado</strong>, isto é, embaralhado com uma chave da própria organização, que quem opera a máquina não alcança: nem a equipe da Maind, na hospedagem dela, nem a TI do cliente, na casa do cliente. Quem copia o disco ou a cópia de segurança não lê nada.</p>
+<p><strong>A reserva da chave fica com a organização.</strong> Quando a organização nasce, o owner da organização baixa um <strong>código de recuperação</strong> e o guarda. A Maind nunca tem cópia dele, nem na hospedagem dela. Se a organização perder o código e o disco ao mesmo tempo, perde o registro. A cópia de segurança, feita por quem opera a máquina, leva o registro de cada organização e o registro da instância; numa restauração, cada organização só volta com o código de recuperação dela, e o que mudou depois da data da cópia se perde, inclusive linhas do registro (veja <a href="#mf-107">MF-107</a>).</p>
+<p><strong>O suporte da Maind também não vê.</strong> Quando o owner da organização pede ajuda sobre algo do registro, a equipe da Maind não o abre por ele: o owner ou o auditor mostram o que for preciso. O acesso de suporte que o owner pode liberar, na onda 1.1, mostra só a configuração, nunca o registro. O que fica como risco aceito: quem controla a máquina ligada ainda alcança, com muito esforço, o que estiver em uso naquele momento.</p>
+
+<h3 id="mf-102-guarda">A guarda: nenhuma linha se apaga enquanto o app estiver instalado</h3>
+<p>Um registro que alguém pode editar não prova nada: se o owner da organização pudesse apagar uma linha, o auditor não saberia o que sumiu. Por isso ninguém apaga nem muda uma linha, nem o owner, e o registro de um app fica guardado, sem prazo, enquanto o app estiver instalado no mAIg. Ele só é excluído quando o app é desinstalado, e aí os dados do app saem junto. Na onda 1.0, nenhum app é retirado nem desinstalado, e nenhum registro é excluído: retirar e desinstalar chegam na onda 1.1, junto com a cópia assinada do registro.</p>
+<p><strong>Parar não é desinstalar.</strong> Parar é o app deixar de funcionar para a organização, por exemplo quando a licença vence sem renovação. Desinstalar é tirar o app do mAIg. Com o app parado, o registro continua guardado, e quem renova depois encontra o registro inteiro. Os gestos de cada app estão em <a href="#mf-104">Instalar, pausar e retirar apps sem refazer nada (MF-104)</a>.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quando</th><th>O que acontece com o registro</th><th>Onda</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>O app é pausado, suspenso ou para no fim da licença</strong></td><td>Continua guardado e legível. Se a organização renova, o app volta como estava, e o registro segue do ponto em que parou.</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>Uma pessoa é excluída da organização</strong></td><td>As linhas dela continuam, com o nome, até a desinstalação do app.</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>O owner retira o app da organização</strong></td><td>É avisado de que o registro só sai com a desinstalação e pode baixar a cópia assinada até lá.</td><td><span class="badge badge--info">Onda 1.1</span></td></tr>
+      <tr class="zebra"><td><strong>A organização é encerrada</strong></td><td>O mAIg não exclui uma organização: encerra. O registro segue na instância, e só o owner e o auditor dela continuam podendo lê-lo, até o app ser desinstalado.</td><td><span class="badge badge--info">Onda 1.1</span></td></tr>
+      <tr class="zebra"><td><strong>O app é desinstalado da instância</strong></td><td>O registro dele é excluído, em todas as organizações da instância que o usavam. Reinstalar o app não o traz de volta.</td><td><span class="badge badge--info">Onda 1.1</span></td></tr>
+    </tbody>
+  </table>
+</div>
+<p><strong>Quem sai da organização.</strong> Excluir uma pessoa tira o acesso dela, mas não toca nas linhas em nome dela. Assim, o auditor ainda responde quem leu o banco numa sexta à noite, mesmo que quem leu já tenha saído, e excluir uma pessoa não serve para fazer sumir o rastro dela. Guardar o nome de quem já saiu, sem prazo, pede cuidado com a lei de proteção de dados pessoais: se a pessoa pedir que os dados dela sejam apagados, o pedido é analisado caso a caso, sem regra pronta.</p>
+<p><strong>A desinstalação vale para a instância inteira.</strong> Um app é instalado uma vez por instância, e desinstalá-lo exclui o registro de todas as organizações que o usavam. A desinstalação só se conclui quando nenhuma organização ativa tem mais o app, e começa sempre com um aviso de segurança, com prazo, aos owners da organização e aos auditores de cada organização que tem registro naquele app, também das que já o retiraram e das encerradas. Todas podem baixar a cópia assinada dentro do prazo, e nenhuma organização perde o registro sem ter retirado o app antes.</p>
+<h4 id="mf-102-copia-assinada">A cópia assinada do registro</h4>
+<p>A partir da onda 1.1, o owner da organização e os auditores podem baixar uma cópia do registro num arquivo assinado pelo mAIg. A assinatura prova que a cópia é a original, sem alteração. Cada download fica no registro e avisa os outros papéis. Fora do mAIg, a cópia fica com quem a baixou, e o registro mostra quem baixou e quando. Ela é a única saída do registro: a primeira versão não envia o registro para sistemas de fora. Na onda 1.0, a cópia ainda não existe, e, como nenhum registro é excluído, nada se perde sem ela.</p>
+
+<h3 id="mf-102-conteudo">O que foi pedido, nunca os dados</h3>
+<p>A linha anota o fato e o que foi pedido, mas nunca os dados. O <strong>fato</strong> é o que ela anota sempre: o app, a pessoa, o banco ou o modelo, o quanto, o resultado e a hora. A <strong>consulta</strong> é a instrução que diz ao banco quais dados buscar, como “as vendas de outubro, por loja”. Os <strong>dados</strong> são o que o banco devolveu, os números da empresa.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Sobre o pedido</th><th>Numa leitura de banco</th><th>Num pedido à IA</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>A linha guarda</strong></td><td>O fato, a consulta feita e quantas linhas voltaram.</td><td>O fato, a camada do pedido, isto é, até que ponto ele podia levar dados da empresa (veja <a href="#mf-106">MF-106</a>), e uma descrição do que foi enviado ao provedor, como quais tabelas e quantas linhas.</td></tr>
+      <tr class="zebra"><td><strong>A linha nunca guarda</strong></td><td>Os dados que o banco devolveu.</td><td>O texto inteiro enviado à IA e a resposta dela.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p><strong>O filtro sensível sai mascarado.</strong> Quando um filtro da consulta toca uma coluna sensível, como o CPF, o valor dele aparece mascarado na linha: o auditor vê que houve um filtro por CPF, e não qual CPF. Os outros valores, como o período e a cidade, aparecem. Vale desde a onda 1.0, para as colunas marcadas como sensíveis no cadastro do banco (veja <a href="#mf-105">Usar os bancos da empresa sem expor a senha (MF-105)</a>).</p>
+<p>Assim, o auditor sabe o que foi lido e o que foi à IA, e o registro não vira uma cópia dos dados da empresa guardada sem prazo, um alvo tão sensível quanto o próprio banco. A contrapartida: o auditor não reconstrói palavra por palavra o que a IA recebeu e respondeu.</p>
+<p>Um exemplo. Renata recebe uma denúncia: alguém teria levado para fora da empresa as vendas da loja do centro. Ela procura no registro as leituras do banco de vendas na semana e encontra a consulta “vendas da loja do centro, por dia”, feita pelo app em nome de Jorge numa terça, com 30 linhas devolvidas. Ela não vê os números que Jorge recebeu, mas sabe quem pediu o quê e quando, e leva o caso à área responsável. O que Jorge fez depois com a resposta, fora do mAIg, o registro não mostra.</p>
+
+<h3 id="mf-102-ondas">O que chega em cada onda</h3>
+<p>Das 18 capacidades, 14 chegam na onda 1.0, 2 na onda 1.1 e 2 não entram. As ondas estão explicadas em <a href="#como-ler-ondas">As ondas da primeira versão</a>.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Capacidade</th><th>Onda</th><th>Em poucas palavras</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td>Uma linha no registro para cada pedido: o app, a pessoa, o que foi pedido, o resultado e a hora</td><td><span class="badge badge--success">Onda 1.0</span></td><td>É a prova do que cada app fez.</td></tr>
+      <tr class="zebra"><td>O pedido recusado também fica anotado</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Uma tentativa barrada interessa tanto ao auditor quanto um pedido atendido.</td></tr>
+      <tr class="zebra"><td>Sem anotar, não atende</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Se o mAIg não consegue escrever a linha, recusa o pedido.</td></tr>
+      <tr class="zebra"><td>Os atos do owner da organização e do auditor no console entram no registro, com as entradas e as consultas ao próprio registro</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Quem configura também é conferido, nos dois sentidos.</td></tr>
+      <tr class="zebra"><td>Os atos do administrador da instância que tocam a organização entram no registro dela, sem que ele possa lê-lo</td><td><span class="badge badge--success">Onda 1.0</span></td><td>A organização sabe o que quem cuida da instalação fez com ela.</td></tr>
+      <tr class="zebra"><td>Os atos sensíveis avisam na hora os owners da organização e o auditor</td><td><span class="badge badge--success">Onda 1.0</span></td><td>São avisos de segurança, que a organização não desliga.</td></tr>
+      <tr class="zebra"><td>Painel de alertas no console, com os avisos de segurança e os alertas do limite de pedidos</td><td><span class="badge badge--success">Onda 1.0</span></td><td>É onde a organização vê alguém tirando dado demais.</td></tr>
+      <tr class="zebra"><td>A consulta ao registro no console, por app, pessoa, banco ou modelo, resultado e período</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Um registro que ninguém consegue ler não serve de prova.</td></tr>
+      <tr class="zebra"><td>O administrador da instância nunca lê o registro das organizações</td><td><span class="badge badge--success">Onda 1.0</span></td><td>O sigilo vale também contra quem opera a máquina.</td></tr>
+      <tr class="zebra"><td>Registro cifrado, com a chave de cada organização</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Quem copia o disco não lê nada.</td></tr>
+      <tr class="zebra"><td>O registro fica guardado, sem prazo, enquanto o app estiver instalado, e ninguém apaga nem muda uma linha</td><td><span class="badge badge--success">Onda 1.0</span></td><td>A prova não depende da boa vontade de ninguém.</td></tr>
+      <tr class="zebra"><td>A linha guarda a consulta feita e a contagem, nunca os dados</td><td><span class="badge badge--success">Onda 1.0</span></td><td>O dado da empresa não se copia para o registro.</td></tr>
+      <tr class="zebra"><td>O valor de um filtro que toca uma coluna sensível aparece mascarado; os outros valores aparecem</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Um CPF digitado num filtro não entra no registro pela porta da consulta.</td></tr>
+      <tr class="zebra"><td>O registro da instância, para os atos que não tocam organização nenhuma, lido pelos administradores da instância</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Nasce com a instância e fica enquanto ela existir.</td></tr>
+      <tr class="zebra"><td>As linhas “informadas pelo app”, só com campos fixos</td><td><span class="badge badge--info">Onda 1.1</span></td><td>Completam a história com o que só o app vê.</td></tr>
+      <tr class="zebra"><td>A cópia do registro num arquivo assinado, baixada pelo owner da organização e pelos auditores</td><td><span class="badge badge--info">Onda 1.1</span></td><td>Chega junto com a retirada e a desinstalação de um app.</td></tr>
+      <tr class="zebra"><td>Enviar o registro para sistemas de fora</td><td><span class="badge">Não entra</span></td><td>A saída do registro é a cópia assinada.</td></tr>
+      <tr class="zebra"><td>Alertas automáticos de comportamento estranho</td><td><span class="badge">Não entra</span></td><td>O registro anota e as pessoas conferem; o único alerta automático é o do limite de pedidos.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 id="mf-102-bastidores">Nos bastidores, sem complicar</h3>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Um registro por organização, com a chave dela.</strong> A chave fica fora do alcance de quem opera a máquina e é destruída quando nada da organização precisa mais ser lido: com o registro do último app dela, na desinstalação. Daí em diante, nenhuma cópia de segurança antiga pode ser lida.</li>
+  <li><strong>Só se acrescenta.</strong> O registro aceita linhas novas e não aceita mudar nem apagar as antigas. A forma técnica de guardá-lo assim, mesmo diante de quem opera a máquina, e de mantê-lo rápido de consultar depois de anos ainda será definida.</li>
+  <li><strong>Escrever sem ler.</strong> O administrador da instância tem um caminho de escrita no registro da organização, protegido para não virar um jeito de ler, de apagar ou de escrever uma linha falsa em nome de outra pessoa. A forma técnica ainda será definida.</li>
+  <li><strong>A consulta não passa pela Maind.</strong> Na casa do cliente, o console se abre de dentro da rede da empresa ou pela VPN dela, e a configuração e o registro não passam pela Maind.</li>
+</ul>
+
+<h3 id="mf-102-limites">O que esta funcionalidade não faz</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Guardar os dados que o banco devolveu, o texto enviado à IA ou a resposta</strong></td><td>A linha guarda a consulta, a contagem, a camada e uma descrição, para o registro não virar uma cópia dos dados da empresa.</td></tr>
+      <tr class="zebra"><td><strong>Ver o que acontece só dentro de um app</strong></td><td>O núcleo só vê o que passa por ele. A partir da onda 1.1, o app pode pedir que se anote um ato da lista que declarou ao ser instalado, com a linha marcada como “informada pelo app”.</td></tr>
+      <tr class="zebra"><td><strong>Enviar o registro para sistemas de fora</strong>, como a central de segurança da empresa</td><td>Não entra na primeira versão, e nenhuma versão está marcada para isso. A saída do registro é a cópia assinada, na onda 1.1.</td></tr>
+      <tr class="zebra"><td><strong>Alertar sozinha sobre comportamento estranho</strong></td><td>Não entra na primeira versão, e nenhuma versão está marcada para isso. O registro anota, e quem confere são as pessoas; o único alerta automático é o do limite de pedidos.</td></tr>
+      <tr class="zebra"><td><strong>Cadastrar as pessoas e definir os papéis</strong></td><td>É de <a href="#mf-101">Entrar e agir só dentro do que foi permitido (MF-101)</a>.</td></tr>
+      <tr class="zebra"><td><strong>Somar o consumo e controlar os limites da IA</strong></td><td>O registro anota o quanto de cada pedido; a soma por app fica em <a href="#mf-106">Controlar quais IAs, quanto e a que custo (MF-106)</a>.</td></tr>
+      <tr class="zebra"><td><strong>Pausar, retirar e desinstalar um app</strong></td><td>É de <a href="#mf-104">Instalar, pausar e retirar apps sem refazer nada (MF-104)</a>.</td></tr>
+      <tr class="zebra"><td><strong>Encerrar uma organização</strong> e acompanhar o estado e as versões da instância</td><td>É de <a href="#mf-107">Atender várias organizações numa instalação, sem misturá-las (MF-107)</a>.</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-102-ligadas">Funcionalidades ligadas a esta</h4>
+<p>Quase tudo o que acontece no mAIg deixa uma linha aqui. O nome de cada funcionalidade leva à página dela.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="#mf-101">Entrar e agir só dentro do que foi permitido (MF-101)</a></td><td>De lá vêm os papéis de quem consulta e o “em nome de quem” de cada linha, com o passe que cada pedido leva.</td></tr>
+      <tr class="zebra"><td><a href="#mf-104">Instalar, pausar e retirar apps sem refazer nada (MF-104)</a></td><td>Cada gesto sobre um app entra no registro, e desinstalar um app exclui o registro dele.</td></tr>
+      <tr class="zebra"><td><a href="#mf-105">Usar os bancos da empresa sem expor a senha (MF-105)</a></td><td>Cada leitura de banco vira uma linha, com a consulta e a contagem; marcar uma coluna sensível é ato sensível.</td></tr>
+      <tr class="zebra"><td><a href="#mf-106">Controlar quais IAs, quanto e a que custo (MF-106)</a></td><td>Cada pedido à IA vira uma linha, com a camada, o uso e o custo.</td></tr>
+      <tr class="zebra"><td><a href="#mf-107">Atender várias organizações numa instalação, sem misturá-las (MF-107)</a></td><td>O registro é de cada organização, e a separação entre elas impede uma de ver o registro da outra. O encerramento e a cópia de segurança também são de lá.</td></tr>
+      <tr class="zebra"><td><a href="#mf-109">Rodar cada app isolado dentro do mAIg (MF-109)</a></td><td>O módulo de cada app só alcança os dados e a IA pedindo ao núcleo, e por isso nenhum pedido escapa do registro.</td></tr>
+      <tr class="zebra"><td><a href="#mf-110">Configurar tudo num lugar só (MF-110)</a></td><td>A consulta ao registro, o painel de alertas e os avisos ficam no console.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>O pedido de uma pessoa para apagar os próprios dados.</strong> As linhas de quem saiu da organização ficam com o nome até a desinstalação do app, e cada pedido para apagá-las é analisado caso a caso. Quem analisa, em que prazo responde e o que se faz se a análise mandar apagar ainda serão definidos.</p><p><strong>Como o registro é guardado por dentro.</strong> A forma técnica de guardar o registro sem que ninguém o altere, de manter a chave de cada organização fora do alcance de quem opera a máquina, de restaurá-la com o código de recuperação e de manter o nome de quem saiu ligado às linhas dele ainda será definida.</p><p><strong>O prazo do aviso antes de uma desinstalação.</strong> Na onda 1.1, toda desinstalação começa com um aviso, com prazo. O prazo exato ainda será definido.</p></div>
+</div>
+
+<h3 id="mf-102-faq">Perguntas frequentes</h3>
+<div class="faq">
+  <details open>
+    <summary>A Maind consegue ler o registro da nossa organização?</summary>
+    <div class="faq-body"><p>Não. O administrador da instância, que na hospedagem da Maind é a equipe da Maind, nunca lê o registro das organizações: só escreve nele os atos dele que tocam a organização, sem poder lê-los. O registro fica cifrado com uma chave da própria organização, que quem opera a máquina não alcança, e o código de recuperação fica com o owner da organização, nunca com a Maind. O que fica como risco aceito: quem controla a máquina ligada ainda alcança, com muito esforço, o que estiver em uso naquele momento.</p></div>
+  </details>
+  <details>
+    <summary>Alguém pode apagar ou corrigir uma linha do registro?</summary>
+    <div class="faq-body"><p>Ninguém: nem o owner da organização, nem a TI do cliente, nem a equipe da Maind. O registro de um app só é excluído quando o app é desinstalado do mAIg, o que só existe a partir da onda 1.1 e começa com um aviso, com prazo, para que cada organização baixe a cópia assinada. Excluir uma pessoa da organização também não apaga as linhas dela: elas continuam, com o nome.</p></div>
+  </details>
+  <details>
+    <summary>O registro guarda os dados da nossa empresa?</summary>
+    <div class="faq-body"><p>Não. De cada leitura de banco, a linha guarda a consulta feita e quantas linhas voltaram, nunca os números devolvidos, e o valor de um filtro que toca uma coluna sensível, como o CPF, aparece mascarado. De cada pedido à IA, guarda a camada e uma descrição do que foi enviado, nunca o texto inteiro nem a resposta.</p></div>
+  </details>
+  <details>
+    <summary>Por quanto tempo o registro fica guardado?</summary>
+    <div class="faq-body"><p>Sem prazo, enquanto o app estiver instalado no mAIg. Pausar o app, suspendê-lo ou deixá-lo parar no fim da licença não apaga nada, e quem renova encontra o registro inteiro. Na onda 1.0, nenhum registro é excluído; a partir da onda 1.1, o registro de um app sai com a desinstalação dele.</p></div>
+  </details>
+  <details>
+    <summary>Uma auditoria externa pode consultar o registro?</summary>
+    <div class="faq-body"><p>Na onda 1.0, a organização tem um auditor só, de dentro da empresa, e a auditoria externa pede a ele o que precisar ver. Na onda 1.1, a organização pode ter até dois auditores, e um deles pode ser de fora, com um acesso que vence numa data que o owner da organização define, como o fim da auditoria. Na casa do cliente, o auditor de fora chega ao console pela VPN que a TI do cliente lhe concede. Também na onda 1.1, os auditores podem baixar a cópia assinada do registro.</p></div>
+  </details>
+  <details>
+    <summary>Dá para mandar o registro para a central de segurança da empresa?</summary>
+    <div class="faq-body"><p>Não na primeira versão, e nenhuma versão está marcada para isso. A saída do registro é a cópia assinada, que o owner da organização e os auditores baixam a partir da onda 1.1. Também não há alerta automático de comportamento estranho: o registro anota, e quem confere são as pessoas; o único alerta automático é o do limite de pedidos, no painel de alertas do console.</p></div>
+  </details>
+</div>

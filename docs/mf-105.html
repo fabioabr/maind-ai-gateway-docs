@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="As funcionalidades do mAIg explicadas uma a uma, em linguagem simples: o que cada uma faz, em que onda chega, como funciona na prática e as dúvidas mais comuns." />
+<link rel="icon" href="assets/logo-claro.png" />
+<title>MF-105 · Usar os bancos da empresa sem expor a senha — Maind AI Gateway (mAIg)</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
+</head>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Maind AI Gateway (mAIg)"><img class="logo-light" src="assets/logo-claro.png" alt="Maind AI Gateway (mAIg)" /><img class="logo-dark" src="assets/logo-escuro.png" alt="Maind AI Gateway (mAIg)" /></a><div class="div"></div><div class="doc-meta"><b>Maind AI Gateway (mAIg) · Documentação</b><small>Documentação do produto</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Maind AI Gateway (mAIg)</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Para começar</h6><ul><li><a href="como-ler.html">Como ler esta documentação</a></li></ul><h6>Primeira versão</h6><ul class="side-sub"><li><a href="mf-101.html">MF-101 · Entrar e agir só dentro do que foi permitido</a></li><li><a href="mf-102.html">MF-102 · Saber quem pediu o quê, quando e com que dado</a></li><li><a href="mf-103.html">MF-103 · Contratar e liberar um app com segurança</a></li><li><a href="mf-104.html">MF-104 · Instalar, pausar e retirar apps sem refazer nada</a></li><li><a href="mf-105.html" class="active">MF-105 · Usar os bancos da empresa sem expor a senha</a></li><li><a href="mf-106.html">MF-106 · Controlar quais IAs, quanto e a que custo</a></li><li><a href="mf-107.html">MF-107 · Atender várias organizações numa instalação, sem misturá-las</a></li><li><a href="mf-108.html">MF-108 · Funcionar sem abrir porta de entrada na rede</a></li><li><a href="mf-109.html">MF-109 · Rodar cada app isolado dentro do mAIg</a></li><li><a href="mf-110.html">MF-110 · Configurar tudo num lugar só</a></li></ul><h6>Segunda versão</h6><ul class="side-sub"><li><a href="mf-111.html">MF-111 · Dar à IA as ferramentas da empresa, só para leitura</a></li><li><a href="mf-112.html">MF-112 · Entrar com o login que a empresa já usa</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Maind AI Gateway (mAIg)</a><span class="sep">/</span><span>Primeira versão</span><span class="sep">/</span><span class="now">Usar os bancos da empresa sem expor a senha</span></nav><span class="doc-eyebrow">Primeira versão</span><div class="dx-macro-topo"><span class="dx-codigo">MF-105</span><span class="dx-selo">1ª versão</span></div><h1 class="doc-h1">Usar os bancos da empresa sem expor a senha</h1><p class="doc-lead">O mAIg guarda num cofre as senhas dos bancos da empresa e lê os dados por cada app, só para consulta, depois de conferir a permissão e de anotar o pedido no registro.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#mf-105-o-que-e">O que é, em poucas palavras</a><small>1 tópico</small></h3><ul><li><a href="#mf-105-quem-faz">Quem faz o quê</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-105-cadastro">Cadastrar um banco: a senha entra uma vez e não sai mais</a><small>3 tópicos</small></h3><ul><li><a href="#mf-105-cofre">O cofre</a></li><li><a href="#mf-105-colunas-sensiveis">As colunas sensíveis, no cadastro</a></li><li><a href="#mf-105-tipos">Quais bancos a primeira versão lê</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-105-so-leitura">Só ler, nunca alterar</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-105-permissoes">Quais apps leem cada banco</a><small>1 tópico</small></h3><ul><li><a href="#mf-105-banco-inteiro">A permissão vale pelo banco inteiro</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-105-pedido">O caminho de um pedido de dados</a><small>1 tópico</small></h3><ul><li><a href="#mf-105-o-que-sai">O que sai do mAIg</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-105-vida">A senha muda, o app para, o banco sai do cadastro</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-105-hospedagem">Na casa do cliente ou na hospedagem da Maind</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-105-quando-da-errado">Quando dá errado</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-105-ondas">O que chega em cada onda</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-105-bastidores">Nos bastidores, sem complicar</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-105-limites">O que esta funcionalidade não faz</a><small>1 tópico</small></h3><ul><li><a href="#mf-105-ligadas">Funcionalidades ligadas a esta</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-105-faq">Perguntas frequentes</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><p>Pense no cofre da recepção de um hotel. O hóspede pede o que deixou guardado, o recepcionista abre o cofre e entrega o objeto, e o hóspede nunca recebe a combinação. Com os bancos de dados da empresa, o mAIg faz o papel da recepção: guarda a senha de cada banco num cofre, lê o banco quando um app precisa de um dado e entrega ao app só o que foi lido. A analogia para num ponto: no hotel, o hóspede leva o objeto original; no mAIg, o app recebe só uma cópia do que foi lido, e o banco continua intacto, onde sempre esteve.</p>
+<p>Um <strong>banco de dados</strong> é onde a empresa guarda as informações do dia a dia, como as vendas de cada loja. É o que ela tem de mais sensível, e quase nenhuma empresa o deixa visível de fora. Ao mesmo tempo, os apps da Maind só funcionam se lerem esses dados. Esta funcionalidade desfaz esse nó: a senha mora num lugar só, sob o controle da empresa, quem conversa com o banco é sempre o mAIg, e nada muda nos bancos.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Primeira versão, em construção</b><p>O que está aqui é o que a primeira versão do mAIg vai entregar, em duas ondas: a onda 1.0, o mínimo para o primeiro app funcionar, e a onda 1.1, que completa a governança. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-105-o-que-e">O que é, em poucas palavras</h2>
+<p>Usar os bancos da empresa sem expor a senha é o jeito de o mAIg ler os bancos de dados da empresa em nome dos apps, só para consulta, depois de conferir a permissão e de anotar o pedido. Esta funcionalidade cuida de cinco coisas:</p>
+<ul>
+  <li><strong>Guardar a senha de cada banco num cofre.</strong> Ela é digitada uma vez, no cadastro, e não volta a aparecer em tela nenhuma.</li>
+  <li><strong>Ler só para consulta.</strong> O mAIg nunca grava, muda ou apaga nada nos bancos, e cada consulta tem um limite, para não pesar no banco.</li>
+  <li><strong>Liberar cada banco app por app.</strong> Cadastrar um banco não libera nenhum app: o owner da organização diz quais apps leem cada um.</li>
+  <li><strong>Proteger as colunas sensíveis desde o cadastro</strong>, como o CPF de um cliente, que saem sempre mascaradas.</li>
+  <li><strong>Anotar cada leitura no registro</strong>, à vista do owner da organização e do auditor, e <strong>avisar o owner da organização</strong> quando um banco para de responder.</li>
+</ul>
+<p>Com isso, a TI do cliente pode dizer sim a um app da Maind sem abrir o banco para fora e sem entregar a senha a ninguém: ela aprova uma coisa só, que o mAIg leia, sem alterar nada. Três palavras aparecem na página inteira. O <strong>núcleo</strong> é o que vem pronto no mAIg e serve a todos os apps, e o cofre fica nele. O <strong>módulo</strong> é a parte de cada app que roda isolada dentro do mAIg e pede os dados ao núcleo. O <strong>console</strong> é a tela do mAIg onde se configura tudo, inclusive o cadastro dos bancos (veja <a href="mf-110.html">Configurar tudo num lugar só (MF-110)</a>). As demais estão em <a href="como-ler.html#glossario">Palavras que aparecem nas páginas</a>, os papéis, em <a href="como-ler.html#como-ler-papeis">Quem é quem</a>, e a conferência das permissões, em <a href="mf-101.html">Entrar e agir só dentro do que foi permitido (MF-101)</a>.</p>
+<h3 class="doc-h3" id="mf-105-quem-faz">Quem faz o quê</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Quem</th><th>O que faz com os bancos</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Cadastra os bancos, confere as colunas sensíveis, dá e retira as permissões de cada app, troca a senha quando ela muda e apaga o cadastro que não serve mais. Vê a lista dos bancos e quais apps leem cada um, mas não vê a senha depois de guardada.</td></tr>
+      <tr class="zebra"><td><strong>TI do cliente</strong></td><td>Cuida dos bancos fora do mAIg: cria o usuário que o mAIg vai usar, passa a senha ao owner da organização e troca a senha quando a política da empresa pede. Na casa do cliente, faz também o papel de administrador da instância.</td></tr>
+      <tr class="zebra"><td><strong>Auditor</strong></td><td>A pessoa que o owner da organização nomeia para conferir o registro. Encontra ali cada leitura feita por cada app e não muda nenhuma configuração.</td></tr>
+      <tr class="zebra"><td><strong>Administrador da instância</strong></td><td>Cuida da instalação do mAIg: instala os apps e acompanha o estado e as versões. Não configura os bancos das organizações e não vê o registro delas.</td></tr>
+      <tr class="zebra"><td><strong>Equipe da Maind</strong></td><td>Dá suporte ao owner da organização no cadastro, antes e depois da venda, sem cadastrar no lugar dele. Na hospedagem da Maind, faz o papel de administrador da instância.</td></tr>
+      <tr class="zebra"><td><strong>Quem usa o app</strong></td><td>Recebe as respostas feitas com os dados da empresa. Não vê senhas, cadastros nem permissões.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="doc-h2" id="mf-105-cadastro">Cadastrar um banco: a senha entra uma vez e não sai mais</h2>
+<p>Digamos que uma rede de farmácias instalou o mAIg na própria rede e contratou o primeiro app, que responde perguntas sobre as vendas. Ana, da TI, faz o papel de administradora da instância. Marcos, diretor de operações, é o owner da organização.</p>
+<ol class="steps">
+  <li><div><h4>Ana cria um usuário que só lê</h4><p>No banco de vendas, ela cria um usuário só para o mAIg, com permissão apenas para ler, como o mAIg exige, e passa o usuário e a senha a Marcos, por um canal combinado entre os dois.</p></div></li>
+  <li><div><h4>Marcos cadastra o banco</h4><p>No console, ele informa onde o banco está, o usuário e a senha. O mAIg testa o usuário e recusa o cadastro se ele conseguir gravar.</p></div></li>
+  <li><div><h4>A senha vai para o cofre</h4><p>A tela não volta a mostrá-la, nem a Marcos. Cadastrar o banco avisa na hora os outros owners da organização e o auditor.</p></div></li>
+  <li><div><h4>Marcos confere as colunas sensíveis</h4><p>O console mostra as colunas que o mAIg sugere como sensíveis, já marcadas, como o CPF do cliente. Marcos confere a lista.</p></div></li>
+  <li><div><h4>Marcos libera o banco para o app</h4><p>Ele dá ao app a permissão de ler o banco de vendas. O banco de estoque, ele não cadastra por enquanto.</p></div></li>
+</ol>
+<p><strong>Ninguém vê a senha de volta.</strong> Depois de guardada, ela não aparece para quem usa o app, nem para o auditor, nem para o administrador da instância, nem para quem a cadastrou. Se a senha do banco mudar, o owner da organização digita a nova, que toma o lugar da antiga, e, como a senha mora num lugar só, a troca vale para todos os apps que leem aquele banco. <strong>Quem conhece e quem cadastra.</strong> No exemplo, a senha passou pelas mãos de Marcos, e isso é de propósito. Quem conhece a senha é a TI do cliente, mas quem a cadastra é sempre o owner da organização, a pessoa que a empresa indicou para responder por ela no mAIg: o que ele faz vale como ato da organização. A TI do cliente não ganha um papel próprio para cadastrar a senha. A troca é que a senha passa por alguém que muitas vezes não é da área técnica.</p>
+<h3 class="doc-h3" id="mf-105-cofre">O cofre</h3>
+<p>O cofre é a parte do núcleo onde as senhas ficam trancadas. O cofre de cada organização fica <strong>cifrado</strong>, isto é, embaralhado com uma chave da própria organização, que quem opera a máquina não alcança: nem a equipe da Maind, na hospedagem dela, nem a TI do cliente, na casa do cliente. Quem copia o disco ou a cópia de segurança não lê senha nenhuma. A <strong>cópia de segurança</strong> do cofre é feita por quem opera a máquina e sai cifrada (veja <a href="mf-107.html">Atender várias organizações numa instalação, sem misturá-las (MF-107)</a>). A <strong>cópia de recuperação da chave</strong> fica com a própria organização, e nunca com a Maind: quando a organização nasce, o owner da organização baixa um código de recuperação e o guarda. Se a organização perder o código e o disco ao mesmo tempo, perde as senhas dos bancos guardadas no cofre.</p>
+<h3 class="doc-h3" id="mf-105-colunas-sensiveis">As colunas sensíveis, no cadastro</h3>
+<p>Uma <strong>coluna sensível</strong> guarda um dado que não deve sair às claras, como o CPF de um cliente. No cadastro do banco, o mAIg sugere as colunas sensíveis, já marcadas, e o owner da organização confere e marca ou desmarca. A coluna marcada sai sempre mascarada, para todos os apps. Marcar ou desmarcar é um ato sensível: fica no registro e avisa na hora os outros owners da organização e o auditor. <strong>Atenção:</strong> a coluna que o mAIg não sugerir e o owner da organização não marcar sai às claras.</p>
+<h3 class="doc-h3" id="mf-105-tipos">Quais bancos a primeira versão lê</h3>
+<p>A primeira versão só lê <strong>bancos de tabelas consultados por SQL</strong>, a linguagem de consulta desses bancos, de uma lista única do mAIg, igual para todos os apps, e isso chega na onda 1.0. A lista é feita dos tipos de banco que os clientes de hoje do primeiro app já usam, e os nomes dela ainda serão definidos. Um banco de um tipo fora da lista é recusado no cadastro, com mensagem clara, e um tipo novo entra por versão nova do mAIg. Outros tipos de fonte, como bancos de documentos, arquivos, planilhas e serviços, não entram, e nenhuma versão está marcada para eles. A regra pesa nos dois sentidos: a empresa cujo dado mora noutro tipo de fonte não usa o mAIg na primeira versão, e o cliente novo com um banco fora da lista espera uma versão.</p>
+
+<h2 class="doc-h2" id="mf-105-so-leitura">Só ler, nunca alterar</h2>
+<p>Ler é ver uma informação: quanto cada farmácia vendeu, quais produtos estão em falta. Alterar é mudar o que está guardado: corrigir o estoque de um produto, apagar uma venda, gravar um pedido novo. O mAIg só faz o primeiro. É como a sala de consulta de um arquivo histórico: o pesquisador pede o documento, lê na mesa e devolve, sem levá-lo para casa e sem escrever nele. A diferença é que, no mAIg, o app nem chega perto do banco: quem lê é o núcleo, que entrega ao app uma cópia do que foi pedido. O "só leitura" torna pequeno o pedido à TI do cliente: ela não aprova um sistema que pode mexer nos dados da empresa, só um que pode olhá-los. Um erro num app, ou um pedido malfeito, não estraga um dado, porque o caminho até o banco não grava: um pedido de alteração vindo de um app não é atendido e fica no registro, à vista do owner da organização e do auditor. Em troca, um app que precise gravar num banco da empresa não encontra esse caminho no mAIg.</p>
+<ul>
+  <li><strong>As duas travas.</strong> A primeira é o próprio mAIg, que só faz pedidos de leitura. A segunda é o banco: o usuário cadastrado precisa ser um que só tem permissão para ler, e assim o próprio banco recusa qualquer gravação, mesmo que algo falhe no mAIg. No cadastro, o mAIg testa esse usuário e o recusa se ele conseguir gravar.</li>
+  <li><strong>O limite de cada consulta.</strong> Mesmo só lendo, uma consulta pesada pode deixar lento ou derrubar o banco de produção, como o do caixa das farmácias. Por isso cada consulta tem um limite de tempo e de linhas. Passado o limite, a consulta é interrompida, e o pedido falha com uma mensagem clara de que ela foi grande demais: o app não recebe um pedaço do resultado como se fosse o resultado inteiro. Esse limite protege o banco e é maior que o teto da resposta, que protege o que sai do mAIg (veja <a href="#mf-105-o-que-sai">O que sai do mAIg</a>).</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-105-permissoes">Quais apps leem cada banco</h2>
+<p>O <strong>cadastro do banco</strong> pertence à organização, e um banco cadastrado uma vez pode servir a mais de um app da mesma organização. A <strong>permissão de leitura</strong> é de cada app: sem ela, o mAIg não lê aquele banco para aquele app. O núcleo confere a permissão a cada pedido, e o owner da organização dá e retira as permissões no console. Assim, cada app lê só o que precisa, e o controle fica no mAIg, para todos os apps, e não espalhado em cada produto. As regras são de cada organização: duas organizações na mesma <strong>instância</strong>, isto é, na mesma instalação do mAIg, não enxergam os bancos, as senhas nem as permissões uma da outra (veja <a href="mf-107.html">MF-107</a>).</p>
+<ol class="steps">
+  <li><div><h4>A diretoria quer saber da falta de produtos</h4><p>O app já lê o banco de vendas. Para responder sobre a falta de remédios nas farmácias, precisa ler também o banco de estoque.</p></div></li>
+  <li><div><h4>Marcos cadastra o banco de estoque</h4><p>Ana passa a ele o usuário e a senha de leitura desse banco, e Marcos o cadastra no console.</p></div></li>
+  <li><div><h4>Marcos libera o estoque para o app</h4><p>Ele dá ao app a permissão de ler o banco de estoque. Carla, gerente comercial, pergunta quais farmácias estão sem um remédio, e o app responde.</p></div></li>
+  <li><div><h4>Meses depois, a permissão sai</h4><p>A rede decide que o estoque não deve mais passar por aquele app, e Marcos retira a permissão. Na pergunta seguinte de Carla sobre o estoque, o mAIg não lê o banco para o app, e o pedido recusado fica no registro. O que Carla vê na tela é decidido pelo app; o que o mAIg garante é que não lê sem permissão e que anota o pedido.</p></div></li>
+</ol>
+<h3 class="doc-h3" id="mf-105-banco-inteiro">A permissão vale pelo banco inteiro</h3>
+<p>O app lê tudo o que o usuário cadastrado do banco alcança. Para que ele não veja uma parte, como a folha de pagamento guardada no mesmo banco das vendas, a TI do cliente cria no banco um usuário mais restrito, que só enxerga as vendas, e o owner da organização o cadastra como um banco à parte. O recorte fino fica no banco, que é quem sabe fazê-lo. Em troca, cada recorte pede um usuário novo no banco, e o owner da organização não ajusta o recorte sozinho.</p>
+
+<h2 class="doc-h2" id="mf-105-pedido">O caminho de um pedido de dados</h2>
+<p>Carla pergunta ao app: "quais farmácias venderam menos em outubro do que em setembro?". Entre a pergunta e a resposta, o pedido passa sempre pelo núcleo do mAIg.</p>
+<ol class="steps">
+  <li><div><h4>Carla pergunta nas telas do app</h4><p>As telas ficam na nuvem da Maind, os computadores da Maind alcançados pela internet. A pergunta chega ao módulo do app, dentro do mAIg, pela ligação que o próprio mAIg abriu com a Maind e mantém aberta (veja <a href="mf-108.html">Funcionar sem abrir porta de entrada na rede (MF-108)</a>).</p></div></li>
+  <li><div><h4>O módulo pede os dados ao núcleo</h4><p>Ele precisa dos números de vendas, mas não sabe a senha e não tem como ir sozinho ao banco.</p></div></li>
+  <li><div><h4>O núcleo confere a permissão</h4><p>O app, nesta organização, pode ler o banco de vendas? Pode, porque Marcos deu essa permissão. Sem ela, o núcleo não lê, e o pedido recusado fica no registro.</p></div></li>
+  <li><div><h4>O núcleo lê o banco</h4><p>Usa a senha guardada no cofre e lê o que foi pedido, sem alterar nada. Entrega os dados ao módulo, dentro do mAIg. A senha não sai do núcleo.</p></div></li>
+  <li><div><h4>O núcleo anota no registro</h4><p>Anota que o app leu o banco de vendas, em nome de Carla, e quando, com a consulta feita e quantas linhas voltaram, mas nunca os números devolvidos (veja <a href="mf-102.html">Saber quem pediu o quê, quando e com que dado (MF-102)</a>).</p></div></li>
+  <li><div><h4>O módulo monta a resposta</h4><p>Se precisar da IA para isso, pede ao núcleo, pelo caminho da governança da IA (veja <a href="mf-106.html">Controlar quais IAs, quanto e a que custo (MF-106)</a>).</p></div></li>
+  <li><div><h4>A resposta pronta volta à nuvem</h4><p>Antes de ela sair, o núcleo confere o teto: até 200 linhas, com as colunas sensíveis mascaradas. Ela passa pela nuvem da Maind até a tela de Carla e não fica guardada lá.</p></div></li>
+</ol>
+<p>O mesmo caminho em desenho, com as duas conferências do núcleo: a permissão, antes de ler o banco, e o teto, antes de a resposta sair.</p>
+<figure class="dx-diagrama"><figcaption><b>O caminho de um pedido de dados</b> <span>Da pergunta nas telas do app à resposta pronta, com as duas conferências do núcleo do mAIg: a permissão, antes de ler o banco com a senha do cofre, e o teto, antes de a resposta sair</span><a href="media/diagramas/mf-105-caminho-do-pedido.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/mf-105-caminho-do-pedido.html?embutido=1" title="O caminho de um pedido de dados" loading="lazy"></iframe></figure>
+<p><strong>O que não aconteceu.</strong> O app não viu a senha. Ninguém abriu porta de entrada na rede da empresa. A Maind não recebeu os dados crus de vendas, embora a resposta pronta possa conter números da empresa. E o banco de vendas não mudou em nada. Mais tarde, Renata, da área de segurança, nomeada auditora por Marcos, encontra no registro a leitura feita para essa pergunta.</p>
+<h3 class="doc-h3" id="mf-105-o-que-sai">O que sai do mAIg</h3>
+<p>O <strong>teto da resposta</strong> é de 200 linhas por app, com as colunas sensíveis mascaradas, e o owner da organização pode subi-lo no console. O normal é ir à tela um dado consolidado, como um total por farmácia ou por mês. Quando a resposta passa do teto, o núcleo a recusa inteira, com uma mensagem clara que diz o tamanho da resposta e o teto, e nunca entrega um resultado parcial como se fosse inteiro. A pessoa refaz o pedido com um filtro ou pede um total, ou o owner da organização sobe o teto. A recusa fica no registro, com a contagem.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>O que sai</th><th>Quando</th><th>Em poucas palavras</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>A resposta pronta</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>Até o teto, com as colunas sensíveis mascaradas. Passa pela nuvem da Maind e não fica guardada lá.</td></tr>
+      <tr class="zebra"><td><strong>A consulta feita ao banco</strong></td><td><span class="badge badge--info">Onda 1.1</span></td><td>Volta à tela só com a instrução, sem dado nenhum, para a pessoa ver de onde veio o número. Só sai se o owner da organização liberar, app por app.</td></tr>
+      <tr class="zebra"><td><strong>A planilha</strong></td><td><span class="badge badge--info">Onda 1.1</span></td><td>Vai direto do mAIg ao navegador da pessoa, sem passar pela nuvem do app, com as colunas sensíveis mascaradas. Só sai se o owner da organização liberar, app por app (veja <a href="mf-109.html">MF-109</a>).</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="doc-h2" id="mf-105-vida">A senha muda, o app para, o banco sai do cadastro</h2>
+<p>O cadastro de um banco acompanha a vida da empresa, e a regra de fundo é uma só: o cadastro do banco é da organização, e a permissão é de cada app, de modo que a saída de um app não leva junto o que os outros usam. Pausar, retirar e desinstalar um app estão explicados por inteiro em <a href="mf-104.html">Instalar, pausar e retirar apps sem refazer nada (MF-104)</a>; na onda 1.0, um app só para.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Situação</th><th>O que acontece</th><th>Quando</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>A senha do banco muda</strong></td><td>A TI do cliente troca a senha no banco, e o owner da organização digita a nova no cadastro, num lugar só.</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>O app para</strong></td><td>As permissões dele sobre os bancos ficam guardadas com o resto da configuração dele. Se a organização renovar, o app volta como estava, sem refazer nada. O cadastro do banco continua servindo aos outros apps.</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>O owner apaga a configuração guardada de um app parado, ou o app é desinstalado</strong></td><td>As permissões do app sobre os bancos saem junto; na desinstalação, os dados do app também são excluídos. O cadastro do banco continua na organização, porque pertence a ela, e não ao app.</td><td><span class="badge badge--info">Onda 1.1</span></td></tr>
+      <tr class="zebra"><td><strong>O banco sai do cadastro</strong></td><td>O owner da organização apaga o cadastro. A senha sai do cofre, e nenhum app lê mais aquele banco. As leituras antigas continuam no registro, que segue a regra de guarda dele.</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="doc-h2" id="mf-105-hospedagem">Na casa do cliente ou na hospedagem da Maind</h2>
+<p>O mAIg roda numa instância, que fica na infraestrutura do cliente, nas máquinas e na rede dele, ou na infraestrutura da Maind. As duas existem porque os clientes são diferentes: um cliente pequeno, sem equipe de TI, usa o mAIg sem instalar nada, e quem exige ter tudo dentro de casa instala o mAIg na própria rede. Nas duas, quem cadastra os bancos é o owner da organização, do mesmo jeito, e o registro da organização é lido só por ele e pelo auditor: a equipe da Maind, mesmo cuidando da instância na hospedagem dela, não o vê. Para os bancos, porém, a diferença é grande:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Sobre os bancos</th><th>Na casa do cliente</th><th>Na hospedagem da Maind</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Onde fica o mAIg</strong></td><td>Dentro da rede da empresa. Ele lê o banco por dentro.</td><td>Fora da rede da empresa. Para ler o banco, ele chega até lá de fora.</td></tr>
+      <tr class="zebra"><td><strong>O banco fica visível de fora?</strong></td><td>Não. O mAIg não abre porta de entrada: a TI do cliente libera só saídas, como a do endereço da Maind e as dos provedores de IA que a organização escolher (veja <a href="mf-108.html">MF-108</a>).</td><td>Sim, por um endereço só. A TI do cliente, ou o provedor da nuvem dele, libera o banco apenas para o endereço fixo da Maind, com a conversa cifrada e o usuário que só lê, seja o banco num serviço de nuvem, seja num servidor da empresa.</td></tr>
+      <tr class="zebra"><td><strong>Onde ficam as senhas</strong></td><td>No cofre do mAIg, dentro da casa do cliente.</td><td>No cofre da instância, na infraestrutura da Maind, cifrado com a chave de cada organização, que a equipe da Maind não alcança.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>Na hospedagem da Maind, a promessa de não expor o banco fica menor: ele fica alcançável pela internet, ainda que por um endereço só. Esse caminho de fora até o banco é justamente o que o mAIg veio evitar, e por isso a TI que aceita a hospedagem da Maind precisa saber, antes de aceitar, que caminho é esse e quem pode usá-lo. Se a TI do cliente não aceita nenhum caminho de fora até o banco, a hospedagem da Maind não serve a essa empresa, e o caminho que resta é instalar o mAIg na própria rede.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-105-quando-da-errado">Quando dá errado</h2>
+<p>Quando o mAIg não consegue ler um banco, ou não pode, o pedido não é atendido e fica no registro. Nenhuma falha faz o mAIg entregar uma senha ou alterar um dado. Os casos do cadastro, do pedido sem permissão, do pedido de alteração, da consulta grande demais e da resposta acima do teto já estão nos tópicos acima; os outros são estes:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>O que aconteceu</th><th>O que o mAIg faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>A senha foi digitada errada, ou mudou no banco e não no cadastro</strong></td><td>Não consegue ler o banco. Os pedidos dos apps a esse banco não são atendidos e ficam no registro, até o owner da organização digitar a senha certa no console.</td></tr>
+      <tr class="zebra"><td><strong>O banco está fora do ar</strong></td><td>Não lê, e o pedido fica no registro. Quando o banco volta, as leituras seguintes voltam a funcionar, sem nenhuma mudança no cadastro.</td></tr>
+      <tr class="zebra"><td><strong>O owner retira uma permissão, ou apaga o cadastro de um banco, por engano</strong></td><td>Com a permissão retirada, o app deixa de ler aquele banco, mas nada se perdeu: devolver a permissão resolve. Com o cadastro apagado, a senha sai do cofre, e nenhum app lê mais o banco: é preciso cadastrá-lo de novo, com a senha, e devolver as permissões.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p><strong>Quem é avisado.</strong> Quando um banco para de responder, são avisados os owners da organização, que cuidam dele, no console e por e-mail, sem dado nenhum, para que alguém conserte antes de as pessoas reclamarem. Na onda 1.0, o destinatário é fixo: ninguém desliga nem redireciona esse aviso. As preferências de aviso chegam na onda 1.1.</p>
+
+<h2 class="doc-h2" id="mf-105-ondas">O que chega em cada onda</h2>
+<p>Das 12 capacidades, 10 chegam na onda 1.0 e 2 não entram. Nesta funcionalidade, nada fica para a onda 1.1: o que a página cita da onda 1.1, como a consulta feita, a planilha e a desinstalação de um app, vem de funcionalidades vizinhas.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Capacidade</th><th>Onda</th><th>Em poucas palavras</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>O owner cadastra o banco, e a senha vai para o cofre</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>A senha nunca volta à tela, não passa pela nuvem do app, e a equipe da Maind não precisa conhecê-la.</td></tr>
+      <tr class="zebra"><td><strong>O cofre cifrado por organização</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>Quem tem acesso ao disco não lê as senhas.</td></tr>
+      <tr class="zebra"><td><strong>Só leitura, com duas travas, e o teste do usuário no cadastro</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>A TI não instala algo que possa gravar no banco de produção.</td></tr>
+      <tr class="zebra"><td><strong>O limite de tempo e de linhas de cada consulta</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>Uma consulta pesada não derruba o banco, e a que passa do limite falha com mensagem clara, sem resultado parcial.</td></tr>
+      <tr class="zebra"><td><strong>A permissão de leitura de cada banco, app por app</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>O owner da organização dá e retira; um app só lê o banco que lhe foi liberado.</td></tr>
+      <tr class="zebra"><td><strong>A permissão pelo banco inteiro, com o recorte feito no próprio banco</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>Quem quer recorte usa um usuário mais restrito, criado pela TI no banco.</td></tr>
+      <tr class="zebra"><td><strong>A sugestão das colunas sensíveis, conferida pelo owner no cadastro</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>A sugestão já vem marcada, que é o padrão seguro, e marcar ou desmarcar avisa os outros owners e o auditor.</td></tr>
+      <tr class="zebra"><td><strong>Trocar a senha num lugar só e apagar o cadastro de um banco</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>As senhas mudam, e o que não se usa mais não fica guardado.</td></tr>
+      <tr class="zebra"><td><strong>O aviso ao owner quando um banco para de responder</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>Quem resolve fica sabendo antes de as pessoas reclamarem.</td></tr>
+      <tr class="zebra"><td><strong>A leitura de bancos de tabelas por SQL, de uma lista única</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>A lista é feita dos bancos que os clientes de hoje do primeiro app já usam, e o banco fora dela é recusado no cadastro.</td></tr>
+      <tr class="zebra"><td><strong>A leitura de outros tipos de fonte</strong></td><td><span class="badge">Não entra</span></td><td>Bancos de documentos, arquivos, planilhas e serviços: as regras de proteção da primeira versão não foram pensadas para eles.</td></tr>
+      <tr class="zebra"><td><strong>Gravar nos bancos da empresa</strong></td><td><span class="badge">Não entra</span></td><td>O mAIg só lê.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="doc-h2" id="mf-105-bastidores">Nos bastidores, sem complicar</h2>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>O cofre fica no núcleo, no meio do caminho.</strong> Com ele no núcleo, todo app passa pelo mesmo caminho: pede, o mAIg confere, lê e anota. A TI do cliente avalia um caminho só, e não cada app. Em troca, o núcleo fica maior antes de o primeiro app sair. Entre o módulo do app e o banco há sempre um serviço do núcleo, e por isso todo pedido passa pela conferência e fica no registro. O módulo roda isolado dentro do mAIg e só alcança os dados pedindo ao núcleo (veja <a href="mf-109.html">Rodar cada app isolado dentro do mAIg (MF-109)</a>).</li>
+  <li><strong>O núcleo confere, e não o app.</strong> A permissão, o teto e a máscara são conferidos pelo núcleo antes de qualquer coisa sair, para que a promessa não dependa só do app; e o registro guarda o pedido, nunca os dados devolvidos.</li>
+  <li><strong>O risco aceito.</strong> O cofre de cada organização fica cifrado com a chave dela, e quem copia o disco não lê senha nenhuma. Fica como risco aceito que quem controla a máquina ligada alcance, com muito esforço, o que estiver em uso naquele momento. Quem não aceita esse risco instala o mAIg na própria rede.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-105-limites">O que esta funcionalidade não faz</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Gravar nos bancos da empresa</strong></td><td>O mAIg só lê. Um app que precise gravar num banco não encontra esse caminho no mAIg.</td></tr>
+      <tr class="zebra"><td><strong>Ler outros tipos de fonte</strong></td><td>Bancos de documentos, arquivos, planilhas e serviços não entram na primeira versão, e nenhuma versão está marcada para eles.</td></tr>
+      <tr class="zebra"><td><strong>Decidir quem vê o quê dentro de um banco, pessoa por pessoa</strong></td><td>É de cada app. O mAIg libera o banco inteiro ao app, e o recorte que vale para todos é o do usuário restrito, feito no próprio banco.</td></tr>
+      <tr class="zebra"><td><strong>Transformar a pergunta em consulta e resposta</strong></td><td>É trabalho do módulo de cada app, que roda isolado dentro do mAIg (<a href="mf-109.html">MF-109</a>). As chaves de IA, os modelos e o custo são da governança da IA (<a href="mf-106.html">MF-106</a>).</td></tr>
+      <tr class="zebra"><td><strong>Dar à IA as ferramentas da empresa</strong></td><td>Na segunda versão, além dos bancos, a IA dos apps pode usar ferramentas de leitura da empresa (<a href="mf-111.html">Dar à IA as ferramentas da empresa, só para leitura (MF-111)</a>).</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-105-ligadas">Funcionalidades ligadas a esta</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="mf-101.html">Entrar e agir só dentro do que foi permitido (MF-101)</a></td><td>Sabe quem é o owner da organização, o único que cadastra bancos e dá permissões, e confere, a cada pedido, se o app pode ler aquele banco.</td></tr>
+      <tr class="zebra"><td><a href="mf-102.html">Saber quem pediu o quê, quando e com que dado (MF-102)</a></td><td>Cada leitura fica no registro, com a consulta feita e quantas linhas voltaram, nunca os dados, e o auditor confere ali.</td></tr>
+      <tr class="zebra"><td><a href="mf-104.html">Instalar, pausar e retirar apps sem refazer nada (MF-104)</a></td><td>A permissão de ler um banco vale para um app liberado na organização, fica guardada quando o app para e sai quando ele é desinstalado.</td></tr>
+      <tr class="zebra"><td><a href="mf-106.html">Controlar quais IAs, quanto e a que custo (MF-106)</a></td><td>Quando o módulo precisa de IA para montar a resposta, pede ao núcleo por lá.</td></tr>
+      <tr class="zebra"><td><a href="mf-107.html">Atender várias organizações numa instalação, sem misturá-las (MF-107)</a></td><td>Cada organização tem os próprios bancos, senhas e permissões, sem enxergar os das outras; a cópia de segurança do cofre também mora lá.</td></tr>
+      <tr class="zebra"><td><a href="mf-108.html">Funcionar sem abrir porta de entrada na rede (MF-108)</a></td><td>A pergunta e a resposta pronta passam pela ligação que o mAIg abre, de dentro para fora.</td></tr>
+      <tr class="zebra"><td><a href="mf-109.html">Rodar cada app isolado dentro do mAIg (MF-109)</a></td><td>O módulo do app só alcança os bancos pedindo ao núcleo; na onda 1.1, a planilha vai direto do mAIg ao navegador.</td></tr>
+      <tr class="zebra"><td><a href="mf-110.html">Configurar tudo num lugar só (MF-110)</a></td><td>O cadastro dos bancos, a troca da senha, as colunas sensíveis e as permissões se fazem no console.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>Os bancos da lista.</strong> A regra está decidida: bancos de tabelas consultados por SQL, de uma lista única, feita dos tipos que os clientes de hoje do primeiro app já usam. Os nomes dos bancos da lista ainda serão definidos e escritos nesta página.</p><p><strong>Os limites de cada consulta.</strong> O tempo máximo e o número máximo de linhas de cada consulta ainda serão definidos.</p><p><strong>O teste do usuário no cadastro.</strong> A forma técnica de o mAIg testar se o usuário do banco consegue gravar ainda será definida.</p><p><strong>A sugestão das colunas sensíveis.</strong> A forma técnica de o mAIg montar a sugestão, e de refazê-la quando o banco ganha uma coluna nova, ainda será definida.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-105-faq">Perguntas frequentes</h2>
+<div class="faq">
+  <details open>
+    <summary>Algum app chega a ver a senha do nosso banco?</summary>
+    <div class="faq-body"><p>Não. A senha é digitada uma vez, no cadastro, pelo owner da organização, e vai direto para o cofre do mAIg. Quando um app precisa de um dado, o núcleo do mAIg usa a senha guardada, lê o banco e entrega ao app só o que foi lido. Depois de guardada, a senha não aparece em tela nenhuma, nem para quem a cadastrou.</p></div>
+  </details>
+  <details>
+    <summary>O mAIg pode alterar ou apagar dados dos nossos bancos?</summary>
+    <div class="faq-body"><p>Não. O mAIg só faz pedidos de leitura, e o usuário cadastrado precisa ser um que só lê: no cadastro, o mAIg o testa e o recusa se ele conseguir gravar. Assim, mesmo que algo falhe no mAIg, o próprio banco recusa a gravação. Um pedido de alteração vindo de um app não é atendido e fica no registro.</p></div>
+  </details>
+  <details>
+    <summary>Precisamos deixar o nosso banco visível de fora?</summary>
+    <div class="faq-body"><p>Com o mAIg na rede da empresa, não: ele lê o banco por dentro, e a TI libera só saídas, como a da Maind e as dos provedores de IA escolhidos, sem abrir porta de entrada. Na hospedagem da Maind, sim, por um endereço só: o banco aceita conexão apenas do endereço fixo da Maind, com a conversa cifrada e o usuário que só lê. Se a TI do cliente não aceita nenhum caminho de fora até o banco, o caminho é instalar o mAIg na própria rede.</p></div>
+  </details>
+  <details>
+    <summary>A Maind consegue ver as nossas senhas ou os dados dos bancos?</summary>
+    <div class="faq-body"><p>A equipe da Maind não precisa conhecer as senhas por rotina: quem as cadastra é o owner da organização, e a Maind dá suporte sem cadastrar no lugar dele. O cofre fica cifrado com uma chave da organização, que quem opera a máquina não alcança, nem a Maind na hospedagem dela, e a cópia de recuperação dessa chave fica com a própria organização. Com o mAIg na casa do cliente, os dados crus não saem dela: só a resposta pronta passa pela nuvem do app até a tela, sem ficar guardada lá. Na hospedagem da Maind, o mAIg roda em máquinas da Maind, e fica como risco aceito que quem controla a máquina ligada alcance o que estiver em uso naquele momento.</p></div>
+  </details>
+  <details>
+    <summary>Quais bancos o mAIg consegue ler?</summary>
+    <div class="faq-body"><p>Na primeira versão, bancos de tabelas consultados por SQL, de uma lista única do mAIg, igual para todos os apps e feita dos tipos que os clientes de hoje do primeiro app já usam; os nomes da lista ainda serão definidos. Um banco fora da lista é recusado no cadastro, com mensagem clara, e um tipo novo entra por versão nova do mAIg. Bancos de documentos, arquivos, planilhas e serviços não entram.</p></div>
+  </details>
+  <details>
+    <summary>Como evitar que um app veja uma parte do banco, como a folha de pagamento?</summary>
+    <div class="faq-body"><p>A permissão de um app vale pelo banco inteiro: ele lê tudo o que o usuário cadastrado alcança. Para esconder uma parte, a TI do cliente cria no banco um usuário mais restrito, que só enxerga o que pode ser lido, e o owner da organização o cadastra como um banco à parte. Além disso, as colunas marcadas como sensíveis, como o CPF, saem sempre mascaradas, para todos os apps.</p></div>
+  </details>
+</div>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="mf-104.html"><span class="cat">Anterior</span><h5>Instalar, pausar e retirar apps sem refazer nada</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="mf-106.html"><span class="cat">Próxima</span><h5>Controlar quais IAs, quanto e a que custo</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.png" alt="Maind AI Gateway (mAIg)" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.png" alt="Maind AI Gateway (mAIg)" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind AI Gateway · Documentação do produto · primeira versão em construção</b></div></div><div class="ftr-center"><span class="ftr-tag">v1 em desenho, sem versão publicada · 11/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Maind AI Gateway (mAIg)</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#mf-105-o-que-e">O que é, em poucas palavras</a></li><li class="lvl-3"><a href="#mf-105-quem-faz">Quem faz o quê</a></li><li><a href="#mf-105-cadastro">Cadastrar um banco: a senha entra uma vez e não sai mais</a></li><li class="lvl-3"><a href="#mf-105-cofre">O cofre</a></li><li class="lvl-3"><a href="#mf-105-colunas-sensiveis">As colunas sensíveis, no cadastro</a></li><li class="lvl-3"><a href="#mf-105-tipos">Quais bancos a primeira versão lê</a></li><li><a href="#mf-105-so-leitura">Só ler, nunca alterar</a></li><li><a href="#mf-105-permissoes">Quais apps leem cada banco</a></li><li class="lvl-3"><a href="#mf-105-banco-inteiro">A permissão vale pelo banco inteiro</a></li><li><a href="#mf-105-pedido">O caminho de um pedido de dados</a></li><li class="lvl-3"><a href="#mf-105-o-que-sai">O que sai do mAIg</a></li><li><a href="#mf-105-vida">A senha muda, o app para, o banco sai do cadastro</a></li><li><a href="#mf-105-hospedagem">Na casa do cliente ou na hospedagem da Maind</a></li><li><a href="#mf-105-quando-da-errado">Quando dá errado</a></li><li><a href="#mf-105-ondas">O que chega em cada onda</a></li><li><a href="#mf-105-bastidores">Nos bastidores, sem complicar</a></li><li><a href="#mf-105-limites">O que esta funcionalidade não faz</a></li><li class="lvl-3"><a href="#mf-105-ligadas">Funcionalidades ligadas a esta</a></li><li><a href="#mf-105-faq">Perguntas frequentes</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
+</body>
+</html>

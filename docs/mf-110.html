@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light" data-menu="vertical">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content="DocX 0.4.0" />
+<meta name="description" content="As funcionalidades do mAIg explicadas uma a uma, em linguagem simples: o que cada uma faz, em que onda chega, como funciona na prática e as dúvidas mais comuns." />
+<link rel="icon" href="assets/logo-claro.png" />
+<title>MF-110 · Configurar tudo num lugar só — Maind AI Gateway (mAIg)</title>
+<script>
+(function () {
+  try {
+    var raiz = document.documentElement;
+    var tema = localStorage.getItem('kinto-theme');
+    var escuro = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    raiz.setAttribute('data-theme', tema || (escuro ? 'dark' : 'light'));
+    raiz.setAttribute('data-menu', localStorage.getItem('kinto-menu') || 'vertical');
+    var ws = parseInt(localStorage.getItem('kinto-side-w'), 10);
+    var wt = parseInt(localStorage.getItem('kinto-toc-w'), 10);
+    if (ws) raiz.style.setProperty('--side-w-user', ws + 'px');
+    if (wt) raiz.style.setProperty('--toc-w-user', wt + 'px');
+  } catch (e) { /* localStorage bloqueado: ficam os atributos do <html> */ }
+})();
+</script>
+<link rel="stylesheet" href="assets/docs.css" />
+<link rel="stylesheet" href="assets/brand.css" />
+<link rel="stylesheet" href="assets/docx-kbr.css" />
+</head>
+<body>
+<header class="hdr"><div class="hdr-brand"><a class="hdr-logo" href="index.html" aria-label="Maind AI Gateway (mAIg)"><img class="logo-light" src="assets/logo-claro.png" alt="Maind AI Gateway (mAIg)" /><img class="logo-dark" src="assets/logo-escuro.png" alt="Maind AI Gateway (mAIg)" /></a><div class="div"></div><div class="doc-meta"><b>Maind AI Gateway (mAIg) · Documentação</b><small>Documentação do produto</small></div></div><div class="hdr-center"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-topo" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><div class="hdr-actions"><div class="menu-toggle" role="group" aria-label="Menu"><button data-set="vertical" aria-label="Menu vertical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg></button><button data-set="horizontal" aria-label="Menu horizontal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></button></div><div class="theme-toggle" role="group" aria-label="Tema"><button data-set="light" aria-label="Claro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></button><button data-set="dark" aria-label="Escuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></div></div></header>
+<div class="shell">
+<aside class="side"><nav aria-label="Páginas da documentação"><h6>Maind AI Gateway (mAIg)</h6><ul><li><a href="index.html">Início</a></li></ul><h6>Para começar</h6><ul><li><a href="como-ler.html">Como ler esta documentação</a></li></ul><h6>Primeira versão</h6><ul class="side-sub"><li><a href="mf-101.html">MF-101 · Entrar e agir só dentro do que foi permitido</a></li><li><a href="mf-102.html">MF-102 · Saber quem pediu o quê, quando e com que dado</a></li><li><a href="mf-103.html">MF-103 · Contratar e liberar um app com segurança</a></li><li><a href="mf-104.html">MF-104 · Instalar, pausar e retirar apps sem refazer nada</a></li><li><a href="mf-105.html">MF-105 · Usar os bancos da empresa sem expor a senha</a></li><li><a href="mf-106.html">MF-106 · Controlar quais IAs, quanto e a que custo</a></li><li><a href="mf-107.html">MF-107 · Atender várias organizações numa instalação, sem misturá-las</a></li><li><a href="mf-108.html">MF-108 · Funcionar sem abrir porta de entrada na rede</a></li><li><a href="mf-109.html">MF-109 · Rodar cada app isolado dentro do mAIg</a></li><li><a href="mf-110.html" class="active">MF-110 · Configurar tudo num lugar só</a></li></ul><h6>Segunda versão</h6><ul class="side-sub"><li><a href="mf-111.html">MF-111 · Dar à IA as ferramentas da empresa, só para leitura</a></li><li><a href="mf-112.html">MF-112 · Entrar com o login que a empresa já usa</a></li></ul></nav></aside>
+<main class="content doc">
+<div class="dx-busca-movel"><form class="dx-busca" role="search" data-search-form><input type="search" id="busca-movel" data-search-input placeholder="Buscar na documentação ( / )" autocomplete="off" aria-label="Buscar na documentação" /><div class="dx-busca-res" data-search-results hidden></div><span class="sr-only" role="status" aria-live="polite" data-search-status></span></form></div><nav class="crumbs" aria-label="Trilha"><a href="index.html">Maind AI Gateway (mAIg)</a><span class="sep">/</span><span>Primeira versão</span><span class="sep">/</span><span class="now">Configurar tudo num lugar só</span></nav><span class="doc-eyebrow">Primeira versão</span><div class="dx-macro-topo"><span class="dx-codigo">MF-110</span><span class="dx-selo">1ª versão</span></div><h1 class="doc-h1">Configurar tudo num lugar só</h1><p class="doc-lead">O console é a tela do mAIg onde se ajusta e se consulta tudo, para todos os apps: a parte da instância, a de cada organização, e cada papel vendo só o que lhe cabe.</p><section class="dx-assuntos" aria-labelledby="dx-assuntos-titulo"><h2 id="dx-assuntos-titulo">Explore os assuntos</h2><div class="dx-assuntos-grade"><div class="dx-assunto"><h3><a href="#mf-110-o-que-e">O que é, em poucas palavras</a><small>1 tópico</small></h3><ul><li><a href="#mf-110-quem-entra">Quem entra e o que vê</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-110-primeiro-app">Do console vazio ao primeiro app em uso</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-110-instancia">A parte da instância</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-110-organizacao">A parte da organização</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-110-auditor">O auditor no console</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-110-avisos">Os avisos do console</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-110-fora">O que fica fora do console</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-110-hospedagens">O mesmo console nas duas hospedagens</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-110-suporte">O suporte da equipe da Maind</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-110-quando-da-errado">Quando dá errado</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-110-ondas">O que chega em cada onda</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-110-bastidores">Nos bastidores, sem complicar</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div><div class="dx-assunto"><h3><a href="#mf-110-limites">O que esta funcionalidade não faz</a><small>1 tópico</small></h3><ul><li><a href="#mf-110-ligadas">Funcionalidades ligadas a esta</a></li></ul></div><div class="dx-assunto"><h3><a href="#mf-110-faq">Perguntas frequentes</a></h3><p class="dx-assunto-vazio">Ver o assunto</p></div></div></section><div id="dx-topo"><p>Pense na sala da administração de um prédio comercial. É ali que ficam o quadro de chaves, a lista dos crachás e o livro de visitas: quem quer saber quem tem a chave de qual sala, ou quem entrou ontem, vai a um lugar só. No mAIg, essa sala é o <strong>console</strong>, a tela onde se ajusta e se consulta tudo o que o mAIg faz, para todos os apps. <strong>Onde a analogia para:</strong> no prédio, quem entra na sala vê tudo o que está nela; no console, cada papel vê só a sua parte, e quem cuida da instalação não lê o registro de nenhuma organização.</p>
+<p>Sem o console, cada assunto teria o seu lugar, ou cada app traria as próprias telas de configuração, e a TI do cliente vigiaria vários lugares. Com ele, a resposta a “o que cada app da Maind lê, usa e gasta” fica num lugar só, e o segundo app se configura no mesmo lugar e do mesmo jeito que o primeiro. O console não cria regras: é onde as regras das outras funcionalidades se exercem e se consultam.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Primeira versão, em construção</b><p>O que está aqui é o que a primeira versão do mAIg vai entregar, em duas ondas: a onda 1.0, o mínimo para o primeiro app funcionar, e a onda 1.1, que completa a governança. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-110-o-que-e">O que é, em poucas palavras</h2>
+<p>O console é a tela de configuração de cada instância do mAIg. Ele cuida de cinco coisas:</p>
+<ul>
+  <li><strong>Um lugar só para todos os apps.</strong> Tudo o que o núcleo governa, como os bancos, a IA, as pessoas, as permissões e o registro, se ajusta e se consulta ali, do mesmo jeito para todos os apps.</li>
+  <li><strong>Duas partes.</strong> A parte da instância é do administrador da instância. A parte de cada organização é do owner da organização e do auditor dela.</li>
+  <li><strong>Cada papel vê só a sua parte.</strong> Ninguém vê a parte de outra organização, e o administrador da instância nunca lê o registro das organizações.</li>
+  <li><strong>O mesmo console nas duas hospedagens.</strong> É o mesmo programa, com as mesmas telas, na casa do cliente e na hospedagem da Maind.</li>
+  <li><strong>O que é de cada app fica no app.</strong> Quem usa um app trabalha só nas telas dele e nunca precisa entrar no console.</li>
+</ul>
+<p>Cada assunto tem a sua funcionalidade, que diz a regra; o console é o lugar onde ela se exerce. Por isso esta página aponta, em cada assunto, para a funcionalidade dona dele. Os papéis estão em <a href="como-ler.html#como-ler-papeis">Quem é quem</a>, e o que cada um pode fazer é de <a href="mf-101.html">Entrar e agir só dentro do que foi permitido (MF-101)</a>.</p>
+<h3 class="doc-h3" id="mf-110-quem-entra">Quem entra e o que vê</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Papel</th><th>O que faz no console</th><th>O que não vê nem faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Administrador da instância</strong></td><td>Prepara e cuida da instalação: as organizações, os owners delas, o servidor de e-mail, os kits e os apps, a cópia de segurança, as versões e o painel da instância.</td><td>O registro das organizações, os bancos e a IA delas e os nomes das pessoas delas, fora os dos owners.</td></tr>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Libera e configura os apps; configura os bancos, a IA e as pessoas; nomeia o auditor; consulta o registro e o consumo.</td><td>Nada de outras organizações, nem das que dividem a instância com a dele.</td></tr>
+      <tr class="zebra"><td><strong>Auditor</strong></td><td>Lê o registro da organização que o nomeou e os avisos que recebe.</td><td>Não muda nenhuma configuração e não vê nada de outras organizações.</td></tr>
+      <tr class="zebra"><td><strong>Quem usa um app</strong></td><td>Não entra no console: usa as telas do app.</td><td>As senhas, as chaves, a configuração e o registro.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Um exemplo. Uma rede de farmácias tem o mAIg na própria rede, com duas organizações na mesma instância: a das farmácias e a da distribuidora do grupo. No mesmo dia, três pessoas entram no console. Ana, da TI do cliente, entra como administradora da instância: vê as duas organizações, os apps instalados e o estado e a versão de cada um, mas não encontra o registro de nenhuma das duas. Marcos, diretor de operações, entra como owner da organização das farmácias: vê os apps, os bancos, a IA, as pessoas, o consumo e o registro dela, e nada da distribuidora. Renata, da área de segurança, entra como auditora das farmácias: vê o registro, e nenhum ajuste fica ao alcance dela. Se Renata tenta mudar o limite de gasto de IA de um app, o console não deixa: o auditor só lê. Se Ana procura saber quem perguntou o quê a um app, não encontra: o registro não é dela.</p>
+
+<h2 class="doc-h2" id="mf-110-primeiro-app">Do console vazio ao primeiro app em uso</h2>
+<p>O melhor jeito de ver o console é acompanhar a chegada do primeiro app na rede de farmácias. Cada papel faz a sua parte, no mesmo console.</p>
+<ol class="steps">
+  <li><div><h4>A administradora prepara o e-mail</h4><p>Ana configura o servidor de e-mail da empresa e faz um envio de teste. Sem isso, o console não deixa criar organização, porque o link de primeiro acesso, o link de troca de senha e os avisos saem por esse servidor.</p></div></li>
+  <li><div><h4>Cria a organização e o primeiro owner</h4><p>Ana cria a organização das farmácias e digita só o e-mail de Marcos como owner da organização. A Maind atesta o certificado próprio da organização, sem nunca receber a chave que assina por ela.</p></div></li>
+  <li><div><h4>Instala o kit e o app</h4><p>Ana recebe da Maind o kit do app contratado e o instala; o mAIg confere a contratação com a Maind, e a instalação fica no registro da organização. Depois, Ana instala o app na instância, uma vez só, e daí em diante acompanha só o estado e a versão dele.</p></div></li>
+  <li><div><h4>O owner entra e liga o banco e a IA</h4><p>O link de primeiro acesso chega direto ao e-mail de Marcos, sem que Ana o veja, e ele define a própria senha. Marcos cadastra a ligação só de leitura com o banco de vendas, e a senha vai para o cofre. Cadastra a chave do provedor de IA da empresa, escolhe os modelos que o app pode usar e põe um limite de gasto.</p></div></li>
+  <li><div><h4>Libera o app e as pessoas</h4><p>Marcos libera o app para a organização, permite que ele leia o banco de vendas, cadastra Carla, a gerente comercial que vai usar o app, e lhe dá acesso. Por fim, nomeia Renata auditora.</p></div></li>
+  <li><div><h4>O app entra em uso</h4><p>Carla já usa o app, nas telas dele. Cada pedido fica no registro, onde Renata confere, e, no fim do mês, Marcos vê no console quanto o app gastou de IA.</p></div></li>
+</ol>
+<p>O mesmo caminho em desenho, com quem faz cada passo e o que cada papel deixa de ver:</p>
+<figure class="dx-diagrama"><figcaption><b>Do console vazio ao primeiro app em uso</b> <span>Quem faz cada passo no console, do servidor de e-mail testado à primeira pergunta: o administrador da instância, o owner da organização, quem usa o app e o auditor.</span><a href="media/diagramas/mf-110-primeiro-app.html" target="_blank" rel="noopener">Abrir em tela cheia ↗</a></figcaption><iframe src="media/diagramas/mf-110-primeiro-app.html?embutido=1" title="Do console vazio ao primeiro app em uso" loading="lazy"></iframe></figure>
+<p>Se um app ainda não está pronto para entrar em uso, na onda 1.0 a tela dele, no console, diz o que falta, como “falta um banco” ou “falta a IA”. Na onda 1.1, chega o <strong>cockpit de ativação</strong>, que mostra numa olhada só as pendências da organização e de cada app, com o passo que resolve cada uma. Nas duas ondas, o mAIg marca a organização e os apps como prontos sozinho, sem ninguém clicar em “ativar” (veja <a href="mf-107.html">Atender várias organizações numa instalação, sem misturá-las (MF-107)</a>).</p>
+
+<h2 class="doc-h2" id="mf-110-instancia">A parte da instância</h2>
+<p>A parte da instância é do administrador da instância: na casa do cliente, a TI do cliente; na hospedagem da Maind, a equipe da Maind. Nenhum app novo passa a rodar na instância sem passar por ele.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Assunto</th><th>O que o administrador da instância faz</th><th>Onda</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Servidor de e-mail</strong></td><td>Na casa do cliente, configura o servidor de e-mail da empresa e faz um envio de teste; sem isso, o console não deixa criar organização, e o painel da instância mostra quando um envio falha. Na hospedagem da Maind, o e-mail sai pelo serviço de e-mail da Maind.</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>Organizações</strong></td><td>Cria as organizações da instância. Encerrar uma organização, com a volta em 30 dias, chega na onda 1.1; até lá, a organização que deixa de usar o mAIg fica com os apps pausados ou parados e com a configuração guardada (veja <a href="mf-107.html">MF-107</a>).</td><td><span class="badge badge--success">Onda 1.0</span> <span class="badge badge--info">Onda 1.1</span></td></tr>
+      <tr class="zebra"><td><strong>Owners da organização</strong></td><td>Cria o primeiro owner digitando só o e-mail dele e cadastra, exclui e substitui os owners, quantos a organização contratar. A troca vale na hora e avisa os owners e os auditores; por 48 horas, qualquer um deles pode barrá-la, e, se alguém barra, ela se desfaz sozinha.</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>Outros administradores</strong></td><td>Um cadastra e retira outro, até três por instância, e o último não pode ser retirado. Cada ato fica no registro da instância e avisa os demais.</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>Kits e apps</strong></td><td>Instala o kit de cada app contratado e o próprio app, uma vez só na instância, mesmo que várias organizações o usem. O mAIg só aceita o módulo assinado pela Maind (veja <a href="mf-104.html">MF-104</a>).</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>Versões novas do mAIg</strong></td><td>Na casa do cliente, dá o aval às versões novas e define a janela de horário em que elas se instalam. Pode adiar uma versão comum por até 30 dias e uma correção de segurança por até 7.</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>Cópia de segurança</strong></td><td>Faz e restaura a cópia, com a ferramenta do mAIg; na hospedagem da Maind, quem faz é a Maind. Cada organização só volta com o código de recuperação dela (veja <a href="mf-107.html">MF-107</a>).</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>Suspensão de emergência</strong></td><td>Suspende um app na instância inteira e depois o retoma, sem apagar a configuração nem o registro; os owners de cada organização e o auditor são avisados. Na hospedagem da Maind, suspender pede a autorização de duas pessoas da equipe da Maind.</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>Painel e registro da instância</strong></td><td>O <strong>painel da instância</strong> mostra o estado, as versões e as pendências da instalação e, de cada organização, só contagens; mostra também a data da última cópia de segurança, o vencimento do certificado do endereço do mAIg, a lista do que a instância manda à Maind e as falhas de envio de e-mail. O <strong>registro da instância</strong> guarda os atos que não tocam organização nenhuma, como cadastrar outro administrador, testar o servidor de e-mail e fazer a cópia de segurança, e só os administradores da instância o leem (veja <a href="mf-102.html">MF-102</a>).</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+    </tbody>
+  </table>
+</div>
+<p><strong>O que ele não vê.</strong> O registro das organizações: nem quem pediu o quê, nem quando, nem por qual app. Os atos dele que tocam uma organização, como criá-la ou instalar e atualizar um app dela, ficam anotados no registro dela, e ele só os escreve, sem poder lê-los. Também não configura os bancos e a IA das organizações. No painel, os únicos nomes que ele vê são os dos owners da organização, porque é ele quem os gere. Em troca, a TI do cliente não consegue, pelo painel, dizer quem são as pessoas de uma organização.</p>
+
+<h2 class="doc-h2" id="mf-110-organizacao">A parte da organização</h2>
+<p>A parte da organização é do owner da organização, a pessoa que a empresa indicou para responder por ela no mAIg. É ali que ele põe os apps para funcionar, sozinho, com o apoio da Maind.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Assunto</th><th>O que o owner da organização faz</th><th>Onda</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Os apps</strong></td><td>Libera e configura cada app contratado e já instalado: as permissões, os bancos e as IAs que ele usa e os ajustes. Pausa e retoma um app, sem apagar nada. Retirar um app e apagar a configuração guardada de um app parado chegam na onda 1.1 (veja <a href="mf-104.html">MF-104</a>).</td><td><span class="badge badge--success">Onda 1.0</span> <span class="badge badge--info">Onda 1.1</span></td></tr>
+      <tr class="zebra"><td><strong>Os bancos</strong></td><td>Cadastra a ligação só de leitura com cada banco e diz quais apps leem cada um; a senha vai para o cofre. Confere as colunas sensíveis que o núcleo sugere, já marcadas, e marca ou desmarca; a coluna marcada sai sempre mascarada, para todos os apps (veja <a href="mf-105.html">MF-105</a>).</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>A IA</strong></td><td>Cadastra as chaves dos provedores de IA, escolhe os modelos de cada app e até que camada de dados o pedido de cada app pode levar, põe o limite de gasto e acompanha o consumo e o custo por app. O limite mede dinheiro, vale por app e recomeça a cada mês (veja <a href="mf-106.html">MF-106</a>).</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>O teto e o limite de pedidos</strong></td><td>Sobe, app por app, o teto de linhas da resposta, que começa em 200, e ajusta quantos pedidos uma pessoa ou um app faz num período (veja <a href="mf-109.html">MF-109</a>).</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>O painel de alertas</strong></td><td>Reúne numa tela os avisos de segurança: o volume perto do limite de pedidos, as trocas de owner, as suspensões e os atos sensíveis.</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+      <tr class="zebra"><td><strong>As saídas além da resposta</strong></td><td>Libera, app por app, a consulta feita ao banco, para a pessoa ver a origem do número, e a planilha. Na onda 1.0, só a resposta pronta sai do mAIg.</td><td><span class="badge badge--info">Onda 1.1</span></td></tr>
+      <tr class="zebra"><td><strong>As pessoas</strong></td><td>Cadastra uma a uma as pessoas que usam os apps e dá acesso a elas; o cadastro de várias de uma vez, por uma lista, chega na onda 1.1. Não vê nem define a senha de ninguém, e não cadastra os owners, que são do administrador da instância.</td><td><span class="badge badge--success">Onda 1.0</span> <span class="badge badge--info">Onda 1.1</span></td></tr>
+      <tr class="zebra"><td><strong>Os jeitos de entrar</strong></td><td>Toda organização nasce só com usuário e senha, e o owner liga a conta Google, se quiser. O login da empresa chega na segunda versão, no mesmo lugar (veja <a href="mf-112.html">MF-112</a>).</td><td><span class="badge badge--success">Onda 1.0</span> <span class="badge badge--warning">Segunda versão</span></td></tr>
+      <tr class="zebra"><td><strong>O auditor</strong></td><td>Nomeia um auditor, de dentro da empresa e sem data de vencimento. Na onda 1.1, nomeia até dois, e um pode ser de fora da empresa, com um acesso que vence na data que o owner define. O owner não nomeia a si mesmo.</td><td><span class="badge badge--success">Onda 1.0</span> <span class="badge badge--info">Onda 1.1</span></td></tr>
+      <tr class="zebra"><td><strong>O cockpit de ativação</strong></td><td>Mostra numa olhada só o que falta para a organização e para cada app ficarem prontos.</td><td><span class="badge badge--info">Onda 1.1</span></td></tr>
+      <tr class="zebra"><td><strong>O que a organização permite</strong></td><td>Diz, numa lista, quais funcionalidades a organização permite e para quais papéis, como quem pode receber avisos por e-mail.</td><td><span class="badge badge--info">Onda 1.1</span></td></tr>
+      <tr class="zebra"><td><strong>O registro</strong></td><td>Consulta o registro da organização, com cada pedido dos apps: o que leram, em nome de quem e quando (veja <a href="mf-102.html">MF-102</a>). Baixar a cópia assinada do registro chega na onda 1.1.</td><td><span class="badge badge--success">Onda 1.0</span> <span class="badge badge--info">Onda 1.1</span></td></tr>
+      <tr class="zebra"><td><strong>O fim de um contrato</strong></td><td>É avisado de que um contrato está para acabar, no console e por e-mail (veja <a href="mf-103.html">MF-103</a>).</td><td><span class="badge badge--success">Onda 1.0</span></td></tr>
+    </tbody>
+  </table>
+</div>
+<p><strong>Os atos sensíveis.</strong> Alguns gestos do owner avisam na hora os outros owners e o auditor, além de ficarem no registro como todos: cadastrar ou trocar um banco, mudar o que o pedido à IA pode levar, subir o teto da resposta, nomear ou trocar o auditor, marcar ou desmarcar uma coluna sensível e mudar os jeitos de entrar. Baixar a cópia do registro, liberar uma saída, liberar o acesso de suporte e mudar quem recebe aviso entram na lista quando passam a existir, na onda 1.1. O aviso só informa e não pede aprovação.</p>
+<p><strong>Por que é o owner quem configura.</strong> Cada organização escolhe o que usa, e quem escolhe é alguém dela. Em qualquer hospedagem, quem configura os bancos e a IA é o owner da organização, e a equipe da Maind só dá suporte; assim, ela não precisa conhecer, por rotina, as senhas dos bancos de cada cliente. Quem conhece a senha de um banco costuma ser a TI do cliente, que a passa ao owner; ele a cadastra, e ela vai para o cofre e não aparece mais em tela nenhuma. Em troca, o owner precisa saber configurar um banco e uma IA, com o apoio da Maind.</p>
+<p><strong>Quando dá errado.</strong> Se Marcos tira do app, sem querer, a permissão de ler o banco de vendas, o núcleo passa a recusar os pedidos do app a esse banco, e cada recusa fica no registro; Marcos devolve a permissão no console. Se ele apaga a configuração de um app parado, o que só existe a partir da onda 1.1, uma renovação depois disso não traz o app de volta como estava: a configuração precisa ser refeita.</p>
+
+<h2 class="doc-h2" id="mf-110-auditor">O auditor no console</h2>
+<p>O auditor entra no console para ler o registro da organização que o nomeou: o que cada app pediu, em nome de quem, que banco leu, quanto de IA usou e quando. Lê também os avisos que recebe e, a partir da onda 1.1, baixa a cópia assinada do registro. Não muda nenhuma configuração, nem de um app, nem de um banco, nem da IA, nem de uma pessoa, e não vê o registro de outras organizações. É a separação de funções: quem configura não é quem confere, e a área de segurança do cliente confere tudo sem poder alterar nada.</p>
+<p>Os atos de quem configura também entram no registro: as mudanças de configuração, como liberar um app ou trocar uma permissão, a nomeação do auditor, as entradas no console e as consultas ao próprio registro. Por isso, quando Renata confere a semana, encontra no mesmo registro os pedidos do app, os pedidos recusados ao banco de pessoal, que Marcos nunca liberou ao app, e também se Marcos mudou alguma permissão naquela semana (veja <a href="mf-102.html">Saber quem pediu o quê, quando e com que dado (MF-102)</a>).</p>
+
+<h2 class="doc-h2" id="mf-110-avisos">Os avisos do console</h2>
+<p>Na onda 1.0, cada aviso tem destinatário fixo, aparece sempre no console e vai também por e-mail. O e-mail não leva dado nenhum: traz só o tipo do aviso e a organização, com um link para o console, onde fica o detalhe. Os avisos de segurança, como a troca de um owner, a suspensão de um app e os atos sensíveis, vão aos owners da organização e ao auditor. A queda de um banco ou de uma IA, o limite de gasto, a tarefa marcada que parou e o fim de um contrato vão aos owners. O certificado da organização perto de vencer vai aos owners e aos administradores da instância. E os avisos da instância, como a ligação com a Maind fora, a versão nova à espera de aval e a falha de envio de e-mail, vão a todos os administradores da instância.</p>
+<p>Na onda 1.1, chega a lista <strong>“o que a organização permite”</strong>: o owner diz quais funcionalidades a organização permite e para quais papéis, como quem pode receber avisos por e-mail. Quem é de um papel permitido escolhe, nas próprias preferências, se quer receber; quem não é nem vê a opção. Os avisos de segurança ficam fora dessa lista e chegam sempre, para que ninguém desligue o auditor e aja escondido.</p>
+
+<h2 class="doc-h2" id="mf-110-fora">O que fica fora do console</h2>
+<p>O console reúne o que é comum a todos os apps. Se cada app pusesse nele as suas telas, o console viraria um pedaço de cada app, e a fronteira entre o mAIg e os apps se apagaria. Por isso ficam fora dele a <strong>configuração própria de cada app</strong>, como as regras internas dele e o que cada pessoa vê nas telas dele, e o <strong>trabalho de quem usa um app</strong>, que acontecem no próprio app. Também ficam fora <strong>instalar o mAIg e liberar a saída da rede</strong>, que vêm antes de o console existir (veja <a href="mf-107.html">MF-107</a> e <a href="mf-108.html">MF-108</a>): escolher o nome do endereço do mAIg na rede e instalar o certificado desse endereço é da instalação, feita pela TI do cliente, e o console só mostra, no painel da instância, a data em que o certificado vence.</p>
+<p>Um exemplo: Carla quer um relatório de vendas toda segunda-feira. Ela nunca entra no console: cria o agendamento no próprio app, porque a tarefa nasce lá. O mAIg emite um passe só dessa tarefa, em nome de Carla, e confere a cada segunda-feira se ela ainda tem acesso e permissão. O limite de gasto de IA que vale para o relatório é o que Marcos pôs no console para esse app. Para mudar o limite, Marcos vai ao console; para mudar o dia do relatório, Carla vai ao app.</p>
+<p>O outro lado dessa divisão: o owner trabalha em dois lugares, no console, para o que é do núcleo, e no app, para o que é do app. A senha própria dele abre só o console; para usar um app, ele entra como qualquer pessoa, pelo jeito de entrar que a organização ligou. E não há convite de dentro dos apps: quem quer chamar um colega pede ao owner por fora, e ele cadastra a pessoa no console.</p>
+
+<h2 class="doc-h2" id="mf-110-hospedagens">O mesmo console nas duas hospedagens</h2>
+<p>A instância pode rodar na casa do cliente ou na hospedagem da Maind, e o console é o mesmo programa, com as mesmas telas, nas duas; nenhuma hospedagem tem tela só dela. O owner configura os bancos e a IA do mesmo jeito, no mesmo console. O que muda é quem faz o papel de administrador da instância e alguns detalhes em volta:</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Sobre</th><th>Na casa do cliente</th><th>Na hospedagem da Maind</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>O administrador da instância</strong></td><td>A TI do cliente.</td><td>A equipe da Maind, que também cria o usuário do primeiro owner.</td></tr>
+      <tr class="zebra"><td><strong>Por onde se chega ao console</strong></td><td>De dentro da rede da empresa; quem está fora entra pela VPN que a TI do cliente já mantém. A tela não passa pela Maind.</td><td>De qualquer lugar, com login.</td></tr>
+      <tr class="zebra"><td><strong>O banco da empresa</strong></td><td>Não precisa ficar exposto: o mAIg o lê de dentro da rede.</td><td>Aceita conexão só do endereço fixo da Maind, com a conversa cifrada e o usuário que só lê.</td></tr>
+      <tr class="zebra"><td><strong>A versão nova do mAIg</strong></td><td>Só se instala com o aval da TI do cliente, na janela que ela define.</td><td>Instala-se sozinha, na janela que a equipe da Maind define, com aviso antes.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Nas duas hospedagens, as senhas dos bancos e o registro ficam cifrados com a chave de cada organização, que quem opera a máquina não alcança: a equipe da Maind, na hospedagem dela, e a TI do cliente, na casa do cliente. O risco aceito é que quem controla a máquina ligada ainda alcance, com muito esforço, o que estiver em uso naquele momento.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>Na hospedagem da Maind, na primeira versão, o console fica alcançável pela internet, protegido só pelo login. Como o owner, o auditor e o administrador da instância entram com usuário e senha, e a confirmação em dois passos só chega na segunda versão, uma senha roubada abre o console. Fechar a rede dessa instância, como a TI do cliente fecha a dela, também fica para a segunda versão.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-110-suporte">O suporte da equipe da Maind</h2>
+<p>A equipe da Maind ajuda o owner a configurar, antes e depois da venda, mas não configura no lugar dele: explica, orienta e tira dúvidas, e quem grava cada escolha no console é o owner. Se Marcos não sabe que modelo de IA escolher, chama a equipe da Maind, ouve o que cada modelo faz, escolhe e grava a escolha, e ninguém da Maind mexe na parte da organização. Quando a explicação não basta, o caminho muda conforme a onda. <strong>Na onda 1.0,</strong> a equipe da Maind não entra no console da casa do cliente: quem mostra a tela é o owner da organização ou a TI do cliente, e o suporte é mais lento.</p>
+<p><strong>Na onda 1.1, chega o acesso de suporte.</strong> O owner liga no console um acesso para a equipe da Maind, que vale por um tempo curto, como até o fim do dia, e mostra só a configuração da organização, nunca o registro nem as senhas. Liberar o acesso é um ato sensível: fica no registro e avisa o auditor. Na casa do cliente, a pessoa da Maind chega ao console pela VPN que a TI do cliente concede, e o console avisa o owner disso ao ligar o acesso.</p>
+<p>Por exemplo: um cadastro de banco não funciona. Na onda 1.0, Marcos mostra a tela a Rafael, da equipe da Maind. A partir da onda 1.1, Marcos liga o acesso de suporte até o fim do dia, e o console avisa que Rafael precisa da VPN, que Ana concede. Rafael vê a configuração do banco, sem a senha, e aponta o endereço errado. Renata recebe o aviso de que o acesso foi liberado, e à noite ele se fecha sozinho.</p>
+
+<h2 class="doc-h2" id="mf-110-quando-da-errado">Quando dá errado</h2>
+<ul>
+  <li><strong>Um owner da organização sai da empresa.</strong> Os outros owners seguem configurando. Se a organização só tinha um, o administrador da instância cadastra um novo, com aviso e volta em 48 horas.</li>
+  <li><strong>A instância fica fora do ar.</strong> O console, que é a tela da instância, fica fora junto, e ninguém configura nada até ela voltar. Nas telas dos apps, a pessoa vê a luz de estado e um aviso próprio, e não um erro. A página de status, igual para todos os apps, chega na onda 1.1 (veja <a href="mf-108.html">MF-108</a>).</li>
+  <li><strong>Uma pessoa esquece a senha.</strong> Pede o próprio link de troca de senha na tela de entrada, de uso único, que vai direto ao e-mail do cadastro; ninguém vê nem define a senha de outra pessoa. Se nenhum administrador da instância consegue entrar, vale o procedimento da instalação, feito na máquina do mAIg, com o uso anotado no registro da instância.</li>
+  <li><strong>O certificado do endereço do mAIg vence sem ser trocado.</strong> Os navegadores recusam o endereço, e ninguém entra no console. Para isso não acontecer, o mAIg avisa os administradores da instância antes do vencimento, e o painel da instância mostra a data.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-110-ondas">O que chega em cada onda</h2>
+<p>Aqui ficam só as capacidades do próprio console; a tela de cada assunto das outras funcionalidades chega na onda do assunto, como mostram as tabelas acima. Das 8 capacidades, 6 chegam na onda 1.0 e 2 na onda 1.1.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Capacidade</th><th>Onda</th><th>Em poucas palavras</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Um console só, com a parte da instância e a de cada organização</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>É onde tudo se configura, e cada papel vê só a sua parte. Sem console, nada entra em uso.</td></tr>
+      <tr class="zebra"><td><strong>Na casa do cliente, o console só abre de dentro da rede ou pela VPN</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>A tela que guarda a chave de tudo não fica exposta à internet. Na hospedagem da Maind, abre de qualquer lugar, com login.</td></tr>
+      <tr class="zebra"><td><strong>O mesmo console nas duas hospedagens</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>O mesmo programa, com as mesmas telas; nenhuma hospedagem tem tela só dela.</td></tr>
+      <tr class="zebra"><td><strong>Só o owner configura, e o auditor só lê</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>O auditor entra só para ler o registro e os avisos que recebe: quem confere não configura, e quem configura é conferido.</td></tr>
+      <tr class="zebra"><td><strong>O servidor de e-mail testado antes da primeira organização</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>Na casa do cliente, o administrador da instância configura e testa o servidor da empresa, porque o link de primeiro acesso e os avisos saem por ele.</td></tr>
+      <tr class="zebra"><td><strong>Os avisos com destinatário fixo, no console e por e-mail sem dado</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>Os de segurança e os de quem resolve chegam sempre, porque os freios da onda 1.0 dependem de o aviso chegar.</td></tr>
+      <tr class="zebra"><td><strong>A lista “o que a organização permite” e as preferências de aviso</strong></td><td><span class="badge badge--info">Onda 1.1</span></td><td>Escolher quem recebe o quê é conforto; o destinatário fixo já cobre o essencial.</td></tr>
+      <tr class="zebra"><td><strong>O acesso de suporte da Maind</strong></td><td><span class="badge badge--info">Onda 1.1</span></td><td>Por tempo curto, só à configuração, pela VPN que a TI do cliente concede. Na onda 1.0, quem mostra a tela é o owner ou a TI do cliente.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="doc-h2" id="mf-110-bastidores">Nos bastidores, sem complicar</h2>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>O console mora na instância.</strong> Ele é a tela de cada instalação do mAIg e cai junto com ela.</li>
+  <li><strong>Na casa do cliente, a tela não passa pela Maind.</strong> O mAIg não abre porta de entrada nem passa o console pela ligação com a Maind, e por isso a configuração e o registro não passam por ela.</li>
+  <li><strong>A tela não é a única trava.</strong> O console só mostra a cada papel o que as permissões do núcleo deixam, e o cofre e o registro de cada organização ficam cifrados com a chave dela: a promessa de que o administrador da instância não lê o registro não depende só da tela.</li>
+  <li><strong>Quem configura tem uma entrada própria.</strong> O owner e o administrador da instância entram no console sempre por usuário e senha, mesmo quando o login da empresa chegar, para nunca ficarem trancados do lado de fora se ele falhar.</li>
+</ul>
+
+<h2 class="doc-h2" id="mf-110-limites">O que esta funcionalidade não faz</h2>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Criar as regras de cada assunto</strong></td><td>O console é o lugar; a regra é da funcionalidade dona: as permissões (<a href="mf-101.html">MF-101</a>), o registro (<a href="mf-102.html">MF-102</a>), a contratação (<a href="mf-103.html">MF-103</a>), os apps (<a href="mf-104.html">MF-104</a>), os bancos (<a href="mf-105.html">MF-105</a>), a IA (<a href="mf-106.html">MF-106</a>), as organizações e a instância (<a href="mf-107.html">MF-107</a>), a ligação (<a href="mf-108.html">MF-108</a>) e a execução dos módulos (<a href="mf-109.html">MF-109</a>).</td></tr>
+      <tr class="zebra"><td><strong>Guardar a configuração própria de cada app</strong></td><td>Fica no app, e as telas de quem usa o app também são do app.</td></tr>
+      <tr class="zebra"><td><strong>Instalar o mAIg e liberar a rede</strong></td><td>É da instalação, que vem antes de o console existir (<a href="mf-107.html">MF-107</a> e <a href="mf-108.html">MF-108</a>).</td></tr>
+      <tr class="zebra"><td><strong>Negociar, contratar e cobrar</strong></td><td>É do trâmite comercial entre a Maind e a empresa, fora do mAIg.</td></tr>
+      <tr class="zebra"><td><strong>Pedir a confirmação em dois passos</strong></td><td>Chega na segunda versão, como configuração da entrada. Na primeira, quem entra no console usa usuário e senha.</td></tr>
+      <tr class="zebra"><td><strong>Dar à IA as ferramentas da empresa e ligar o login da empresa</strong></td><td>Chegam na segunda versão (<a href="mf-111.html">MF-111</a> e <a href="mf-112.html">MF-112</a>).</td></tr>
+    </tbody>
+  </table>
+</div>
+<h3 class="doc-h3" id="mf-110-ligadas">Funcionalidades ligadas a esta</h3>
+<p>O console é o lugar onde quase todas as outras funcionalidades se configuram e se consultam. O nome de cada uma leva à página dela.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="mf-101.html">Entrar e agir só dentro do que foi permitido (MF-101)</a></td><td>Quem entra no console e o que cada papel vê nele vêm de lá; o console só mostra a cada um o que as permissões deixam.</td></tr>
+      <tr class="zebra"><td><a href="mf-102.html">Saber quem pediu o quê, quando e com que dado (MF-102)</a></td><td>É o registro que o owner e o auditor consultam no console, onde ficam também os atos de quem configura.</td></tr>
+      <tr class="zebra"><td><a href="mf-103.html">Contratar e liberar um app com segurança (MF-103)</a></td><td>O kit que o administrador da instância instala vem de lá, e também o aviso do fim do contrato que chega ao owner.</td></tr>
+      <tr class="zebra"><td><a href="mf-104.html">Instalar, pausar e retirar apps sem refazer nada (MF-104)</a></td><td>A instalação na instância, a liberação, a pausa, a suspensão e, na onda 1.1, a retirada de cada app acontecem no console.</td></tr>
+      <tr class="zebra"><td><a href="mf-105.html">Usar os bancos da empresa sem expor a senha (MF-105)</a></td><td>O owner cadastra no console a ligação só de leitura com os bancos e confere as colunas sensíveis.</td></tr>
+      <tr class="zebra"><td><a href="mf-106.html">Controlar quais IAs, quanto e a que custo (MF-106)</a></td><td>As chaves, os modelos, a camada, o limite de gasto e o custo por app se configuram e se acompanham no console.</td></tr>
+      <tr class="zebra"><td><a href="mf-107.html">Atender várias organizações numa instalação, sem misturá-las (MF-107)</a></td><td>Dá ao console a parte da instância e a parte de cada organização, a criação das organizações, o painel da instância e a cópia de segurança.</td></tr>
+      <tr class="zebra"><td><a href="mf-108.html">Funcionar sem abrir porta de entrada na rede (MF-108)</a></td><td>A ligação com a Maind, a luz de estado e, na onda 1.1, a página de status.</td></tr>
+      <tr class="zebra"><td><a href="mf-109.html">Rodar cada app isolado dentro do mAIg (MF-109)</a></td><td>O teto da resposta, o limite de pedidos e as saídas além da resposta, que o owner ajusta app por app no console.</td></tr>
+      <tr class="zebra"><td><a href="mf-111.html">Dar à IA as ferramentas da empresa, só para leitura (MF-111)</a></td><td>Na segunda versão, o owner libera no console as ferramentas da empresa para a IA dos apps.</td></tr>
+      <tr class="zebra"><td><a href="mf-112.html">Entrar com o login que a empresa já usa (MF-112)</a></td><td>Na segunda versão, o login da empresa entra como mais um jeito de entrar, no mesmo lugar onde o owner liga e desliga os outros.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>O desenho das telas.</strong> Como o console se apresenta, tela a tela, ainda será definido, depois que as regras de cada funcionalidade fecharem.</p><p><strong>Alguns números.</strong> A antecedência do aviso do fim de um contrato, o valor padrão do limite de pedidos e quantas tentativas erradas bloqueiam uma conta, e por quanto tempo, ainda serão definidos.</p><p><strong>O primeiro administrador e o endereço.</strong> Como nasce o acesso do primeiro administrador da instância, como é o procedimento da instalação para quando nenhum administrador consegue entrar e o tipo do certificado do endereço do mAIg: a forma técnica ainda será definida.</p></div>
+</div>
+
+<h2 class="doc-h2" id="mf-110-faq">Perguntas frequentes</h2>
+<div class="faq">
+  <details open>
+    <summary>A Maind vê o que a nossa organização configura e consulta?</summary>
+    <div class="faq-body"><p>Não: com o mAIg na casa do cliente, a tela do console não passa pela Maind, e, na onda 1.0, a equipe da Maind nem entra nele. Na hospedagem da Maind, ela faz o papel de administrador da instância e vê só a parte da instância, sem ler o registro da organização nem ver os bancos e a IA dela; as senhas e o registro ficam cifrados com a chave da organização, que a equipe da Maind não alcança, e o risco aceito é só o que estiver em uso com a máquina ligada. A partir da onda 1.1, o owner pode ligar um acesso de suporte, por tempo curto, que mostra à Maind só a configuração, nunca o registro nem as senhas.</p></div>
+  </details>
+  <details>
+    <summary>Quem configura os bancos e a IA: nós ou a Maind?</summary>
+    <div class="faq-body"><p>O owner da organização, em qualquer hospedagem. A equipe da Maind explica, orienta e tira dúvidas, antes e depois da venda, mas não configura no lugar dele. A senha do banco costuma vir da TI da empresa, que a passa ao owner; ele a cadastra no console, e ela vai para o cofre e não aparece mais em tela nenhuma.</p></div>
+  </details>
+  <details>
+    <summary>Precisamos estar dentro da rede da empresa para abrir o console?</summary>
+    <div class="faq-body"><p>Com o mAIg na casa do cliente, sim: o console abre de dentro da rede, e quem está fora entra pela VPN que a TI já mantém. Na hospedagem da Maind, ele abre de qualquer lugar, com login. A partir da onda 1.1, o auditor de fora e o suporte da Maind chegam ao console da casa do cliente pela VPN que a TI do cliente concede.</p></div>
+  </details>
+  <details>
+    <summary>As pessoas que usam os apps entram no console?</summary>
+    <div class="faq-body"><p>Não. Elas trabalham só nas telas dos apps, e o cadastro e o login delas ficam no mAIg. Quem as cadastra e lhes dá acesso é o owner da organização, no console; não há convite de dentro dos apps. Para chamar um colega, a pessoa pede ao owner.</p></div>
+  </details>
+  <details>
+    <summary>O auditor pode mudar alguma configuração?</summary>
+    <div class="faq-body"><p>Não. O auditor só lê o registro da organização que o nomeou e os avisos que recebe e, a partir da onda 1.1, baixa a cópia assinada do registro. Quem configura não é quem confere, e os atos de quem configura também ficam no registro, à vista dele. Na onda 1.0, há um auditor só, de dentro da empresa; na onda 1.1, podem ser dois, e um pode ser de fora.</p></div>
+  </details>
+  <details>
+    <summary>Quando chegar o segundo app, vamos configurá-lo em outro lugar?</summary>
+    <div class="faq-body"><p>Não. O segundo app se configura no mesmo console e do mesmo jeito que o primeiro, porque os bancos, a IA, as pessoas e o registro são do núcleo, comuns a todos os apps. O administrador da instância instala o app uma vez só, e o owner o libera e configura para a organização dele. Só o que é próprio de cada app fica nas telas do app.</p></div>
+  </details>
+</div>
+</div><nav class="rel-grid dx-vizinhas" aria-label="Páginas vizinhas"><a class="rel-card dx-anterior" href="mf-109.html"><span class="cat">Anterior</span><h5>Rodar cada app isolado dentro do mAIg</h5><span class="arrow">←</span></a><a class="rel-card dx-proxima" href="mf-111.html"><span class="cat">Próxima</span><h5>Dar à IA as ferramentas da empresa, só para leitura</h5><span class="arrow">→</span></a></nav>
+<footer class="ds-footer"><div class="ftr-brand"><img class="ftr-logo logo-light" src="assets/logo-claro.png" alt="Maind AI Gateway (mAIg)" /><img class="ftr-logo logo-dark" src="assets/logo-escuro.png" alt="Maind AI Gateway (mAIg)" /><div class="ftr-divider"></div><div class="ftr-meta"><b>Maind AI Gateway · Documentação do produto · primeira versão em construção</b></div></div><div class="ftr-center"><span class="ftr-tag">v1 em desenho, sem versão publicada · 11/11/2026</span></div><div class="ftr-author"><div class="avatar">MT</div><div class="ftr-author-info"><b>Maind Tech</b><span>Maind AI Gateway (mAIg)</span></div></div></footer>
+</main>
+<aside class="toc"><h6>Neste artigo</h6><ul><li><a href="#mf-110-o-que-e">O que é, em poucas palavras</a></li><li class="lvl-3"><a href="#mf-110-quem-entra">Quem entra e o que vê</a></li><li><a href="#mf-110-primeiro-app">Do console vazio ao primeiro app em uso</a></li><li><a href="#mf-110-instancia">A parte da instância</a></li><li><a href="#mf-110-organizacao">A parte da organização</a></li><li><a href="#mf-110-auditor">O auditor no console</a></li><li><a href="#mf-110-avisos">Os avisos do console</a></li><li><a href="#mf-110-fora">O que fica fora do console</a></li><li><a href="#mf-110-hospedagens">O mesmo console nas duas hospedagens</a></li><li><a href="#mf-110-suporte">O suporte da equipe da Maind</a></li><li><a href="#mf-110-quando-da-errado">Quando dá errado</a></li><li><a href="#mf-110-ondas">O que chega em cada onda</a></li><li><a href="#mf-110-bastidores">Nos bastidores, sem complicar</a></li><li><a href="#mf-110-limites">O que esta funcionalidade não faz</a></li><li class="lvl-3"><a href="#mf-110-ligadas">Funcionalidades ligadas a esta</a></li><li><a href="#mf-110-faq">Perguntas frequentes</a></li></ul></aside>
+</div>
+<div class="toast" id="toast">Copiado ✓</div>
+<script src="assets/busca.js"></script>
+<script src="assets/docs.js"></script>
+<script src="assets/docx-kbr.js"></script>
+</body>
+</html>

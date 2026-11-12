@@ -234,7 +234,7 @@ O mAIg, ou Maind AI Gateway ("gateway" quer dizer portão, em inglês), é a pla
 **Exemplo.**
 
 1. A Maind lança uma correção de segurança. O mAIg da Farma Vida a baixa pela ligação, mas Marta a deixa esperando o aval enquanto a empresa fecha o mês.
-2. Passados os 7 dias do prazo, a parte de fora do Horus deixa de aceitar a conversa, mesmo com a ligação no ar, e Ana vê a luz vermelha com "Atualização necessária" (decisão 45).
+2. Passados os 7 dias do prazo, a parte de fora do Horus deixa de aceitar a conversa, mesmo com a ligação no ar, e Ana vê o aviso próprio "Atualização necessária", e não um erro (decisões 45 e 109; decisão 121).
 3. Marta vê no painel da instância o motivo e a versão e dá o aval; a correção se instala na janela seguinte, e a conversa volta (decisão 39).
 
 **O que ainda está em aberto.** Como um mAIg novo conversa com um módulo antigo dentro do prazo de adiamento é ponto de Gestão dos apps (MF-104); a atualização do mAIg, com o aval da TI do cliente e a janela de horário, é ponto de Organizações e instâncias (decisão 39, MF-107).
@@ -265,7 +265,7 @@ O mAIg, ou Maind AI Gateway ("gateway" quer dizer portão, em inglês), é a pla
 - **O ponto de conexão da Maind sai do ar.** Todos os mAIg que se conectam a ele ficam sem a ligação ao mesmo tempo; quando ele volta, cada um religa sozinho. Por isso a Maind o mantém sempre de pé. (decisão 6)
 - **Alguém bloqueia a saída no firewall.** O mAIg não consegue religar sozinho; a TI do cliente precisa liberar a saída de novo.
 - **A licença de um app vence sem ser renovada.** O app para para aquela organização, e as outras organizações da instância seguem. (decisão 11, decisões 13 e 56)
-- **O mAIg, ou o módulo de um app, passa do prazo de adiamento.** Com o mAIg vencido, todos os apps recusam a conversa; com o módulo de um app vencido, só aquele app para. A pessoa vê um aviso próprio, e a luz mostra "Atualização necessária" (decisões 45 e 109). No Horus, a recusa era por contagem de versões (D-292 do Horus).
+- **O mAIg, ou o módulo de um app, passa do prazo de adiamento.** Com o mAIg vencido, todos os apps recusam a conversa; com o módulo de um app vencido, só aquele app para. A pessoa vê um aviso próprio, "Atualização necessária", e não um erro (decisões 45 e 109; decisão 121). No Horus, a recusa era por contagem de versões (D-292 do Horus).
 - **A pessoa tenta usar o app com a ligação fora.** Ela vê um aviso próprio, e não um erro, e a luz de estado em vermelho, desde a onda 1.0. A partir da onda 1.1, pode abrir a página de status do mAIg, com o login do mAIg, e ler desde quando a ligação está fora (decisões 70 e 121). No Horus, a página era de cada organização e abria sem login (D-283 do Horus).
 - **Um cliente não libera nem a saída.** O mAIg na rede dele não consegue ligar para a Maind, e a primeira versão não tem modo sem ligação: essa empresa não usa o mAIg na própria rede (decisão 122).
 

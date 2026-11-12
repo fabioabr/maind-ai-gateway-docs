@@ -1,0 +1,230 @@
+<p>Pense na portaria de um prédio comercial. O porteiro confere o documento de quem chega, e o crachá abre só os andares combinados. O mAIg tem uma portaria assim, com duas diferenças: ela confere também os apps, e não só as pessoas, e confere de novo a cada pedido, e não só na entrada. Entrar não dá passe livre.</p>
+<p>O mAIg guarda o que a empresa tem de mais sensível: as senhas dos bancos de dados, as chaves de acesso à inteligência artificial (IA) e o registro do que os apps pediram. Por isso a portaria vem pronta no mAIg e é a mesma para todos os apps: a TI do cliente aprova uma portaria só, e não uma por app. Esta página conta quem entra, por onde, com que papel e o que cada um pode fazer.</p>
+<div class="callout callout--info">
+  <span class="ico">i</span>
+  <div><b>Primeira versão, em construção</b><p>O que está aqui é o que a primeira versão do mAIg vai entregar, em duas ondas: a onda 1.0, o mínimo para o primeiro app funcionar, e a onda 1.1, que completa a governança. O produto ainda está sendo construído, e o texto é revisado conforme as decisões se fecham.</p></div>
+</div>
+
+<h3 id="mf-101-o-que-e">O que é, em poucas palavras</h3>
+<p>Esta funcionalidade é a portaria do mAIg. Ela faz duas perguntas a quem chega: a <strong>autenticação</strong> pergunta “quem está chegando?”, e a <strong>autorização</strong>, “o que essa pessoa ou esse app pode fazer?”. Uma <strong>permissão</strong> é cada item do que se pode fazer, como “este app pode ler o banco de vendas”, e um <strong>papel</strong> é um conjunto pronto de permissões, dado a uma pessoa. A portaria cuida de cinco coisas:</p>
+<ul>
+  <li><strong>Conferir quem chega.</strong> A pessoa entra com usuário e senha ou com a conta Google. O app se apresenta com o certificado, uma espécie de carteira de identidade digital que a Maind atesta para cada app contratado (<a href="#mf-103">MF-103</a>). A senha fica no mAIg, e o app recebe só um passe curto, assinado pelo mAIg, que diz quem é a pessoa e com que papel.</li>
+  <li><strong>Dar a cada um o seu papel.</strong> São quatro: administrador da instância, owner da organização, auditor e pessoa que usa o app.</li>
+  <li><strong>Conferir cada pedido duas vezes.</strong> A pessoa pode usar aquele app? O app pode pedir aquilo? Sem as duas respostas, o pedido é recusado.</li>
+  <li><strong>Fazer a senha nascer sem passar por ninguém.</strong> O link de primeiro acesso e o de troca de senha vão direto ao e-mail da própria pessoa.</li>
+  <li><strong>Guardar as pessoas num lugar só.</strong> O cadastro e o login ficam no mAIg, para todos os apps: a pessoa entra uma vez e usa os apps liberados a ela.</li>
+</ul>
+<p>Quem usa: a <strong>TI do cliente</strong>, que aprova a portaria uma vez para todos os apps; o <strong>owner da organização</strong>, que decide quem entra, quem usa cada app e o que cada app pode pedir; o <strong>administrador da instância</strong>, que cuida da instalação; o <strong>auditor</strong>, que confere sem mudar nada; e a <strong>pessoa que usa o app</strong>, que nunca lida com senha de banco nem com chave de IA. Os papéis também estão resumidos em <a href="#como-ler-papeis">Quem é quem</a>, na página de abertura.</p>
+
+<h3 id="mf-101-portaria">A portaria, pedido a pedido</h3>
+<p>Digamos que Carla, gerente comercial de uma rede de farmácias, quer as vendas de outubro por farmácia. Marcos, o owner da organização, já deu a ela o acesso ao app e liberou ao app o banco de vendas. Carla entra com o usuário e a senha dela, e o mAIg confere que ela é quem diz ser e que pode usar o app. A pergunta chega ao mAIg pela ligação que o próprio mAIg abriu com a Maind (<a href="#mf-108">MF-108</a>), e o mAIg reconhece o app pelo certificado. Quando o módulo do app, a parte dele que roda dentro do mAIg, pede os dados de vendas, o mAIg confere que, nesta organização, o app pode ler esse banco. Só então lê o banco, sem alterar nada, e anota o pedido no registro, o log de tudo o que acontece (<a href="#mf-102">MF-102</a>). A conferência acontece a cada pedido: uma permissão que o owner da organização tira já vale no pedido seguinte. E, quando algo dá errado:</p>
+<ul>
+  <li><strong>A senha está errada.</strong> O mAIg não deixa entrar, e nada do que está dentro fica à vista.</li>
+  <li><strong>Um app pede o que não pode.</strong> O mAIg recusa e anota a recusa no registro, onde o owner da organização e o auditor a veem depois. O app não tem como dar a volta: não tem a senha do banco nem a chave da IA.</li>
+</ul>
+<h4 id="mf-101-senha">Senha esquecida e tentativas erradas</h4>
+<p>Cada pessoa pede o próprio link de troca de senha na tela de entrada. O link é de uso único e vai direto ao e-mail do cadastro, e ninguém vê nem define a senha de outra pessoa. Depois de várias tentativas erradas, a conta fica bloqueada por um tempo, e a própria pessoa é avisada por e-mail. Vale para todos os papéis, e o pedido fica anotado no registro. Quem perdeu também o e-mail procura quem cuida do cadastro dele: o owner da organização, para as pessoas; o administrador da instância, para o owner da organização; outro administrador da instância, para o administrador da instância. O que se abre mão: quem controla a caixa de e-mail de uma pessoa consegue trocar a senha dela, e quem está dentro da rede consegue bloquear por um tempo a conta de outra pessoa.</p>
+
+<h3 id="mf-101-jeitos-de-entrar">Os jeitos de entrar</h3>
+<p>Na primeira versão, entra-se de dois jeitos, os dois desde a onda 1.0. Cada organização nasce só com usuário e senha ligados, e o owner da organização liga a conta Google se quiser. Ligar ou desligar um jeito de entrar é um <strong>ato sensível</strong>: fica no registro e avisa na hora os outros owners da organização e o auditor.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Jeito de entrar</th><th>Quando</th><th>Como funciona</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Usuário e senha</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>A pessoa tem um nome de acesso e uma senha que só ela conhece, conferida a cada entrada. Vale para todos os papéis.</td></tr>
+      <tr class="zebra"><td><strong>Conta Google</strong></td><td><span class="badge badge--success">Onda 1.0</span></td><td>Quem confere a senha é o Google, que confirma ao mAIg quem a pessoa é. O mAIg aceita a confirmação, mas continua decidindo o que ela pode fazer. Nasce desligada.</td></tr>
+      <tr class="zebra"><td><strong>Login da empresa</strong></td><td><span class="badge badge--warning">Segunda versão</span></td><td>A entrada pelo sistema de identidade da própria empresa, onde ela já cadastra os funcionários. Veja <a href="#mf-112">Entrar com o login que a empresa já usa (MF-112)</a>.</td></tr>
+      <tr class="zebra"><td><strong>Confirmação em dois passos</strong></td><td><span class="badge badge--warning">Segunda versão</span></td><td>Uma segunda prova além da senha, como um código no celular. Chega configurável: quem configura a entrada escolhe se a liga e para quem.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p><strong>Ser quem diz ser não dá permissão nenhuma.</strong> Se alguém entra com uma conta Google que o owner da organização não cadastrou, o Google confirma quem a pessoa é, mas o mAIg não a deixa entrar: ela não está entre as pessoas da organização. Com o Google fora do ar, quem entra por ele não começa sessão nova, e quem já entrou segue trabalhando, porque o passe se renova com o mAIg.</p>
+<h4 id="mf-101-senha-do-console">A senha de quem configura tudo</h4>
+<p>O owner da organização e o administrador da instância entram no console, a tela onde se configura tudo (<a href="#mf-110">MF-110</a>), sempre com usuário e senha, mesmo quando o login da empresa chegar. Assim, o acesso de quem tem a chave de tudo não depende de uma conta mantida fora do mAIg e nunca fica trancado do lado de fora se o login da empresa falhar. Essa senha abre só o console: para usar os apps, o owner da organização entra como qualquer pessoa, pelo jeito de entrar que a organização ligou. O que se abre mão: a empresa não impõe a própria política de senha a quem tem a chave de tudo, e a senha de quem deixa a empresa continua valendo até alguém retirá-lo.</p>
+<div class="callout callout--warning">
+  <span class="ico">!</span>
+  <div><b>Ponto de atenção</b><p>Na primeira versão, o owner da organização, o auditor e o administrador da instância entram só com usuário e senha, sem a confirmação em dois passos. A senha é a única barreira deles, e uma senha roubada abre a organização inteira. A conta fica bloqueada por um tempo depois de várias tentativas erradas, e, se alguém entrar com uma senha roubada, os atos sensíveis dele chegam na hora como aviso aos outros owners da organização e ao auditor.</p></div>
+</div>
+
+<h3 id="mf-101-passe">Onde se entra: o endereço do mAIg e o passe</h3>
+<p>A pessoa entra pelo <strong>endereço do mAIg</strong> da organização, e não pela nuvem da Maind, onde fica a parte de fora de cada app. Na casa do cliente, esse endereço fica dentro da rede dele, e a TI do cliente pode deixá-lo visível só de dentro da rede ou pela VPN, o túnel protegido que liga quem está fora à rede da empresa. O mAIg confere a pessoa e entrega ao app só um <strong>passe</strong>: uma credencial curta, assinada pelo mAIg, que diz quem é a pessoa, de que organização e com que papel naquele app.</p>
+<p>Ana, da TI do cliente, deixou o endereço do mAIg visível só por dentro da rede da empresa. Carla trabalha de casa:</p>
+<ol class="steps">
+  <li><div><h4>Carla abre o app</h4><p>Ela liga a VPN da empresa e abre o app, que a manda ao endereço do mAIg.</p></div></li>
+  <li><div><h4>O mAIg confere quem ela é</h4><p>Carla entra com a conta Google. O mAIg confere que ela pode usar o app e manda o navegador às telas do app com um código de uso único, que só serve uma vez.</p></div></li>
+  <li><div><h4>O código vira passe</h4><p>A parte de fora do app troca o código pelo passe pela ligação com o mAIg e confere a assinatura. Carla começa a trabalhar, e cada pedido leva o passe.</p></div></li>
+  <li><div><h4>O passe se renova sozinho</h4><p>O passe vale 15 minutos. O navegador o renova falando direto com o mAIg, sem Carla perceber.</p></div></li>
+  <li><div><h4>Fora da rede, o passe vence</h4><p>Carla desliga a VPN para uma reunião. Em até 15 minutos, a renovação falha, e o app pede que ela entre de novo.</p></div></li>
+</ol>
+<p>Se Carla abre depois outro app, não digita a senha de novo: o mAIg já a conhece e emite outro passe, só para esse app, com o papel dela nele. O passe de um app não abre os outros. O mesmo caminho em desenho, do login ao pedido conferido:</p>
+<dx-diagrama ref="mf-101-do-login-ao-pedido"></dx-diagrama>
+<p><strong>Por que é assim.</strong> A senha da pessoa e a resposta do Google ficam no mAIg e nunca chegam à nuvem da Maind. E, como o passe só se renova pelo mAIg, a regra da TI do cliente de ver o mAIg só de dentro da rede ou pela VPN vale durante todo o uso dos apps, e não só na entrada. O que se abre mão: a máquina da pessoa precisa alcançar o mAIg para entrar e para seguir usando os apps, e quem sai da VPN no meio do trabalho precisa voltar a ela. <strong>Na hospedagem da Maind</strong>, o mAIg fica em máquinas da Maind, separadas da nuvem dos apps, e, na primeira versão, o endereço dele fica aberto na internet, protegido pelo login. Por isso a promessa de ver o mAIg só por dentro da rede ou pela VPN vale, na primeira versão, só na casa do cliente.</p>
+<h4 id="mf-101-certificado">Quando o certificado da organização não se renova</h4>
+<p>O passe é assinado com a chave do certificado da organização (<a href="#mf-107">MF-107</a>), e por isso esse certificado vale em todo login. Ele vale 30 dias e se renova sozinho pela ligação com a Maind. Se a renovação falha, o atual segue valendo até o fim, e os owners da organização e os administradores da instância são avisados 7 dias antes de ele vencer. Só se ele chegar a vencer, o mAIg deixa de assinar passes, e ninguém da organização entra nos apps até a renovação.</p>
+<h4 id="mf-101-tarefas-marcadas">As tarefas marcadas</h4>
+<p>Uma tarefa que roda sozinha numa hora marcada, como um relatório das 7h, não tem o navegador da pessoa para renovar o passe. Por isso, quando a pessoa cria a tarefa no app, o mAIg emite um <strong>passe de agendamento</strong>, só daquela tarefa e em nome dela, e o guarda só nele, nunca na nuvem. Na hora marcada, a parte de fora do app só pede “rode a tarefa”, e o mAIg confere, a cada rodada, se a pessoa ainda tem acesso e permissão. Se ela perdeu o acesso, a tarefa para, e o owner da organização é avisado. A tarefa nunca roda em nome do app, o que pularia a conferência da pessoa. O que se abre mão: a tarefa de quem sai da empresa para, mesmo quando outras pessoas dependem do relatório, e alguém precisa criá-la de novo em nome próprio.</p>
+
+<h3 id="mf-101-papeis">Os quatro papéis e o que cada um vê</h3>
+<p>Três palavras antes dos papéis. A <strong>instância</strong> é cada instalação do mAIg e atende uma ou mais organizações sem misturá-las. A <strong>organização</strong> é o espaço de um cliente dentro dela, com os seus apps e as suas regras. A <strong>empresa</strong> é a companhia que assina o contrato e pode ter várias organizações (veja <a href="#mf-107">MF-107</a>).</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Papel</th><th>Vê e faz</th><th>Não vê nem faz</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Administrador da instância</strong>, até três por instância</td><td>Cria as organizações e, a partir da <span class="badge badge--info">Onda 1.1</span>, executa o encerramento delas. Cadastra, exclui e substitui os owners da organização. Instala os apps na instância, uma vez só. Na casa do cliente, dá o aval às versões novas do mAIg. Suspende um app numa emergência. Faz e restaura a cópia de segurança. Vê o estado, as versões e as pendências da instância e, de cada organização, só contagens, sem nomes, fora os dos owners da organização. Lê o registro da instância e cadastra e retira os outros administradores da instância.</td><td>O registro das organizações e a configuração dos bancos, da IA e das pessoas delas.</td></tr>
+      <tr class="zebra"><td><strong>Owner da organização</strong></td><td>Libera e configura os apps, configura os bancos e a IA, cadastra as pessoas e lhes dá acesso aos apps, nomeia o auditor, liga os jeitos de entrar e consulta o registro.</td><td>Nada de outras organizações, nem das que dividem a mesma instância.</td></tr>
+      <tr class="zebra"><td><strong>Auditor</strong>, um por organização na onda 1.0 e até dois a partir da onda 1.1</td><td>Lê o registro da organização que o nomeou e os avisos que recebe. A partir da <span class="badge badge--info">Onda 1.1</span>, baixa a cópia assinada do registro.</td><td>Não muda nenhuma configuração.</td></tr>
+      <tr class="zebra"><td><strong>Pessoa que usa o app</strong></td><td>Usa o que o app mostra a ela.</td><td>Senhas, chaves, configuração e registro.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p>Quem configura não é quem confere: é a <strong>separação de funções</strong>, a mesma que separa quem movimenta o dinheiro de quem audita as contas. E o administrador da instância não vê o registro: se visse, a equipe da Maind veria o de todos os clientes das instâncias da Maind.</p>
+<p>Veja como fica na rede de farmácias, que instalou o mAIg na própria rede. Ana, da TI do cliente, faz o papel de administradora da instância: cria a organização e o usuário de Marcos como owner da organização. Marcos libera o app, escolhe o banco e a IA, dá acesso a Carla e nomeia Renata, da área de segurança, auditora da organização. Renata vê no registro o que o app pediu em nome de Carla. Ana vê que o app está instalado e funcionando, mas não vê o registro nem o banco escolhido por Marcos.</p>
+<p><strong>A fé pública do owner da organização.</strong> O owner da organização é quem a empresa indicou para responder por ela no mAIg, e o que ele faz vale como ato da organização, como o de um tabelião no cartório. Por isso a senha de um banco pode passar por ele. O freio não é uma segunda aprovação: é o registro, o auditor e os avisos dos atos sensíveis. A mesma pessoa pode fazer mais de um papel, como Marcos, que também usa o app; a exceção é o auditor: o owner da organização não nomeia a si mesmo, porque auditaria o próprio trabalho.</p>
+<h4 id="mf-101-owners">Os owners da organização</h4>
+<p>Uma organização tem tantos owners da organização quantos assentos desse papel contratar. Quem os cadastra, exclui e substitui é o administrador da instância; um owner da organização não cadastra nem retira outro. A troca vale na hora, com volta: os owners da organização e o auditor são avisados e, por 48 horas, qualquer um deles pode barrá-la, e então ela se desfaz sozinha. Na hospedagem da Maind, quem gere os owners da organização é a equipe da Maind, e o freio é essa volta em 48 horas.</p>
+<ul>
+  <li><strong>Um owner da organização sai da empresa.</strong> O administrador da instância o exclui no mesmo dia, com aviso aos owners da organização e ao auditor, e os outros seguem configurando. Se ele era o único, o administrador da instância digita o e-mail do novo owner da organização, e o link de primeiro acesso vai direto para ele.</li>
+  <li><strong>O administrador da instância tenta se pôr no lugar do owner da organização.</strong> Ele não vê o link, que vai direto ao e-mail do novo owner da organização, e os owners da organização e o auditor podem barrar a troca em 48 horas.</li>
+  <li><strong>Alguém rouba a senha de um owner da organização.</strong> O invasor configura o que o owner da organização configura, mas não tira os outros, porque só o administrador da instância os exclui. Os atos sensíveis dele já chegaram como aviso, e os outros owners da organização pedem a exclusão da conta roubada.</li>
+</ul>
+<h4 id="mf-101-auditores">Os auditores</h4>
+<p>Na onda 1.0, cada organização tem um auditor só, de dentro da empresa e sem data de vencimento. Na onda 1.1, chegam o segundo auditor e o auditor de fora da empresa, como o de uma auditoria externa, com um acesso que vence numa data que o owner da organização define, como o fim da auditoria. Na casa do cliente, o auditor de fora chega ao console pela VPN que a TI do cliente concede, e o console avisa disso o owner da organização quando ele o cadastra. Nomear ou trocar um auditor é ato sensível. Até a onda 1.1, uma auditoria externa pede ao auditor da empresa o que precisar ver.</p>
+<h4 id="mf-101-administradores">Os administradores da instância</h4>
+<p>Um administrador da instância cadastra e retira outro, até três por instância, e o último não pode ser retirado. Cada ato fica no registro da instância e avisa os demais: um administrador da instância retira outro sem pedir a ninguém, e o freio é o registro e o aviso. Se nenhum administrador da instância tiver mais acesso, vale o <strong>procedimento da instalação</strong>, feito na máquina do mAIg por quem a opera, com o uso anotado no registro da instância. O administrador da instância entra sempre por usuário e senha e recebe os avisos da instância no e-mail dele. <strong>A equipe da Maind e o console da casa do cliente.</strong> Na onda 1.0, a equipe da Maind não entra no console da casa do cliente: quem mostra a tela à Maind é o owner da organização ou a TI do cliente. Na onda 1.1, o suporte da Maind chega pela VPN que a TI do cliente concede, quando o owner da organização liga o acesso de suporte.</p>
+
+<h3 id="mf-101-permissoes">As duas conferências: quem usa cada app e o que cada app pode pedir</h3>
+<p>Um pedido só é atendido quando passa por duas conferências, e quem dá as duas permissões é o owner da organização. A <strong>permissão da pessoa</strong> diz quais apps ela pode usar na organização. A <strong>permissão do app</strong> diz o que ele pode pedir ao mAIg na organização: de quais bancos lê (<a href="#mf-105">MF-105</a>) e quais IAs usa (<a href="#mf-106">MF-106</a>); o owner da organização a configura quando libera o app (<a href="#mf-104">MF-104</a>). <strong>Por que duas.</strong> Só com a permissão da pessoa, um app liberado leria qualquer banco da organização. Só com a do app, qualquer pessoa usaria qualquer app. E as duas valem por organização: o que Marcos libera ao app na organização dele não vale para outra organização da mesma instância. Digamos que ele liberou ao app só o banco de vendas:</p>
+<ol class="steps">
+  <li><div><h4>Carla pergunta, e a pessoa passa</h4><p>Ela pede ao app as despesas de cada farmácia em outubro. O mAIg confere que Carla pode usar o app. Ela pode.</p></div></li>
+  <li><div><h4>O app pede outro banco</h4><p>O módulo do app pede os dados do banco financeiro.</p></div></li>
+  <li><div><h4>O app não passa</h4><p>Nesta organização, o app só lê o banco de vendas. O mAIg recusa o pedido antes de ler qualquer dado.</p></div></li>
+  <li><div><h4>A recusa vai ao registro</h4><p>Com o app, a pessoa, o banco e a hora (<a href="#mf-102">MF-102</a>).</p></div></li>
+  <li><div><h4>Marcos decide</h4><p>Ele vê a recusa, conversa com a área financeira e decide se libera o banco financeiro ao app. O que a tela de Carla mostra enquanto isso é assunto do app.</p></div></li>
+</ol>
+<p><strong>O que fica com o app.</strong> A permissão vale pelo banco inteiro: o mAIg confere se o app pode ler o banco, e o app decide o que mostra a cada pessoa. O que cada pessoa vê dentro de um banco, como só as vendas da própria região, não é conferido pelo mAIg. Para que um app não veja uma parte do banco, como a tabela de salários, a TI do cliente cria no banco um usuário mais restrito, e o owner da organização o cadastra como um banco à parte (veja <a href="#mf-105">MF-105</a>). E o módulo de um app não tem como chegar ao banco sem passar pelo mAIg: ele não tem a senha e só usa os serviços do mAIg (<a href="#mf-109">MF-109</a>).</p>
+
+<h3 id="mf-101-primeiro-acesso">O primeiro acesso do owner da organização</h3>
+<p>O administrador da instância cria o usuário do primeiro owner da organização, e o mAIg manda direto ao e-mail dele um <strong>link de primeiro acesso</strong>, de uso único e que vale por pouco tempo, para ele definir a própria senha. Quem cria o usuário só digita o e-mail e nunca vê o link. É como a chave provisória que a imobiliária entrega ao novo morador para trocar o segredo da fechadura, com uma diferença: o link para de funcionar sozinho, depois do primeiro uso ou de pouco tempo.</p>
+<ol class="steps">
+  <li><div><h4>Ana cria o usuário</h4><p>Ela cria a organização e o usuário de Marcos como owner da organização, e digita o e-mail dele.</p></div></li>
+  <li><div><h4>O link vai direto a Marcos</h4><p>O mAIg manda o link ao e-mail de Marcos. Ana não vê o link, e o envio fica anotado no registro da organização.</p></div></li>
+  <li><div><h4>Marcos define a senha</h4><p>Ana não a vê em momento nenhum. Marcos também baixa o <strong>código de recuperação</strong> da organização e o guarda fora do mAIg: sem ele, a cópia de segurança não é restaurada.</p></div></li>
+  <li><div><h4>O link deixa de funcionar</h4><p>Daqui em diante, Marcos entra com usuário e senha.</p></div></li>
+</ol>
+<p><strong>Quando dá errado.</strong> Se o link vence antes de ser aberto, Ana pede um link novo para o mesmo usuário, que vai de novo ao e-mail de Marcos. Se Ana digita o e-mail errado, o link vai para outra pessoa: Marcos não recebe nada e avisa Ana, que corrige o e-mail e pede um link novo; o primeiro deixa de valer, e o registro mostra os dois envios. E, se outra pessoa abre o link antes de Marcos, ele o encontra já usado: é o sinal de que o link vazou, e o acesso é refeito antes que quem o abriu use a conta.</p>
+<p><strong>O servidor de e-mail vem antes.</strong> O link sai pelo servidor de e-mail da própria empresa ou, na hospedagem da Maind, pelo serviço de e-mail da Maind. Na casa do cliente, na onda 1.0, o administrador da instância configura o servidor de e-mail da empresa e faz um envio de teste, na instalação; sem isso, o console não deixa criar organização, e o painel da instância mostra quando um envio falha. Como quem opera o servidor de e-mail ainda poderia alcançar o link, o sinal de um uso indevido é o owner da organização encontrar o link já usado.</p>
+
+<h3 id="mf-101-pessoas">As pessoas que usam os apps</h3>
+<p>O owner da organização cadastra as pessoas no console e dá a cada uma o acesso aos apps. Não há convite de dentro dos apps: quem quer chamar um colega pede ao owner da organização, que faz o cadastro. Como o cadastro e o login ficam no mAIg, e não em cada app, isso dá três coisas. O <strong>login único</strong>: a pessoa entra uma vez e usa os apps da organização com a mesma conta; quando chega um segundo app, Marcos só marca quem pode usá-lo, e Carla entra nele com a conta que já tem. O <strong>“em nome de quem” conferido</strong>: o mAIg sabe, ele mesmo, em nome de quem cada pedido é feito, e o registro não depende do que o app informa. E o <strong>dado pessoal num lugar só</strong>: o nome e o e-mail de cada pessoa ficam no mAIg, e a saída de uma pessoa se resolve ali.</p>
+<p>O que se abre mão: o mAIg passa a guardar nome e e-mail de pessoas e a responder por eles perante a lei de proteção de dados pessoais; se a ligação com a Maind cair, ninguém entra em app nenhum, porque a entrada mora no mAIg; e um app não pode ter as próprias pessoas. Na onda 1.0, o owner da organização cadastra as pessoas uma a uma; o cadastro de várias de uma vez, por uma lista que ele sobe no console, chega na onda 1.1.</p>
+<h4 id="mf-101-saida">Quando uma pessoa sai</h4>
+<p>O owner da organização tira o acesso dela, e, em até 15 minutos, a renovação do passe falha e ela perde os apps. Se ela entrava pelo Google com a conta da empresa e a empresa desliga essa conta, também deixa de entrar por ele; com uma conta Google pessoal, ela só deixa de entrar quando o owner da organização tira o acesso. As linhas do registro em nome dela seguem, com o nome, até o app ser desinstalado (<a href="#mf-102">MF-102</a>).</p>
+<h4 id="mf-101-duas-organizacoes">Uma pessoa em duas organizações</h4>
+<p>Cada conta mora numa organização, e o mesmo e-mail pode aparecer nas duas. Carla usa o app na rede de farmácias e na distribuidora do mesmo grupo, duas organizações na mesma instância, e tem uma conta em cada: Marcos cuida da conta dela na rede de farmácias, e Júlia, owner da organização da distribuidora, da outra. Na tela de entrada, Carla escolhe a organização, e o login único vale dentro de cada uma. Quando ela deixa de trabalhar com a distribuidora, Júlia tira o acesso dela, e Carla continua usando o app na rede de farmácias. O que se abre mão: a pessoa tem duas senhas e escolhe a organização ao entrar.</p>
+
+<h3 id="mf-101-ondas">O que chega em cada onda</h3>
+<p>Das 24 capacidades, 20 chegam na onda 1.0, 2 na onda 1.1, 1 na segunda versão e 1 não entra. As ondas estão explicadas em <a href="#como-ler-ondas">As ondas da primeira versão</a>.</p>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Capacidade</th><th>Onda</th><th>Em poucas palavras</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td>Entrar com usuário e senha</td><td><span class="badge badge--success">Onda 1.0</span></td><td>O jeito de entrar que vale para todos os papéis.</td></tr>
+      <tr class="zebra"><td>Entrar com a conta Google, que nasce desligada em cada organização</td><td><span class="badge badge--success">Onda 1.0</span></td><td>O owner da organização liga o Google se quiser.</td></tr>
+      <tr class="zebra"><td>O owner da organização liga e desliga cada jeito de entrar</td><td><span class="badge badge--success">Onda 1.0</span></td><td>É ato sensível: avisa os outros owners da organização e o auditor.</td></tr>
+      <tr class="zebra"><td>A senha do owner da organização e do administrador da instância abre só o console</td><td><span class="badge badge--success">Onda 1.0</span></td><td>A chave de tudo não circula pelos apps.</td></tr>
+      <tr class="zebra"><td>O login no endereço do mAIg, com o código de uso único e o passe de 15 minutos</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Prova ao app quem é a pessoa sem a senha sair da rede da empresa.</td></tr>
+      <tr class="zebra"><td>O login único, com um passe por app e o papel da pessoa em cada um</td><td><span class="badge badge--success">Onda 1.0</span></td><td>A pessoa entra uma vez, e cada app recebe o seu passe.</td></tr>
+      <tr class="zebra"><td>O passe de agendamento, para uma tarefa marcada rodar em nome de uma pessoa</td><td><span class="badge badge--success">Onda 1.0</span></td><td>A pessoa é conferida a cada rodada, e o registro não perde o “quem”.</td></tr>
+      <tr class="zebra"><td>Os quatro papéis</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Administrador da instância, owner da organização, auditor e pessoa que usa o app.</td></tr>
+      <tr class="zebra"><td>As duas conferências a cada pedido</td><td><span class="badge badge--success">Onda 1.0</span></td><td>A pessoa pode usar o app, e o app pode pedir aquilo.</td></tr>
+      <tr class="zebra"><td>O administrador da instância cadastra, exclui e substitui os owners da organização</td><td><span class="badge badge--success">Onda 1.0</span></td><td>A troca vale na hora, com volta em 48 horas.</td></tr>
+      <tr class="zebra"><td>Até três administradores da instância, que cadastram e retiram uns aos outros</td><td><span class="badge badge--success">Onda 1.0</span></td><td>O último não pode ser retirado.</td></tr>
+      <tr class="zebra"><td>O procedimento da instalação, para quando nenhum administrador da instância tem acesso</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Feito na máquina do mAIg, com o uso anotado no registro da instância.</td></tr>
+      <tr class="zebra"><td>Um auditor por organização, de dentro da empresa, que só lê o registro</td><td><span class="badge badge--success">Onda 1.0</span></td><td>O owner da organização não nomeia a si mesmo.</td></tr>
+      <tr class="zebra"><td>O segundo auditor e o auditor de fora da empresa, com acesso que vence numa data</td><td><span class="badge badge--info">Onda 1.1</span></td><td>O de fora chega pela VPN que a TI do cliente concede.</td></tr>
+      <tr class="zebra"><td>O owner da organização cadastra as pessoas no console, uma a uma</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Sem convite pelos apps.</td></tr>
+      <tr class="zebra"><td>O cadastro das pessoas em lote, por uma lista</td><td><span class="badge badge--info">Onda 1.1</span></td><td>O owner da organização sobe a lista no console.</td></tr>
+      <tr class="zebra"><td>O link de primeiro acesso, direto ao e-mail da pessoa</td><td><span class="badge badge--success">Onda 1.0</span></td><td>A senha nasce sem passar pelas mãos de ninguém, e cada envio fica no registro.</td></tr>
+      <tr class="zebra"><td>O código de recuperação, baixado quando a organização nasce</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Sem ele, a cópia de segurança não é restaurada.</td></tr>
+      <tr class="zebra"><td>Excluir uma pessoa</td><td><span class="badge badge--success">Onda 1.0</span></td><td>Ela perde o acesso, e as linhas dela no registro seguem com o nome.</td></tr>
+      <tr class="zebra"><td>Duas contas para quem está em duas organizações</td><td><span class="badge badge--success">Onda 1.0</span></td><td>A pessoa escolhe a organização na tela de entrada.</td></tr>
+      <tr class="zebra"><td>O bloqueio por um tempo depois de várias tentativas erradas de senha</td><td><span class="badge badge--success">Onda 1.0</span></td><td>A própria pessoa é avisada por e-mail.</td></tr>
+      <tr class="zebra"><td>A troca da senha esquecida, pedida pela própria pessoa na tela de entrada</td><td><span class="badge badge--success">Onda 1.0</span></td><td>O link vai ao e-mail do cadastro, e o pedido fica no registro.</td></tr>
+      <tr class="zebra"><td>A confirmação em dois passos</td><td><span class="badge badge--warning">Segunda versão</span></td><td>Configurável: quem configura a entrada escolhe se a liga e para quem.</td></tr>
+      <tr class="zebra"><td>A regra de quem vê o quê dentro de um banco, pessoa a pessoa</td><td><span class="badge">Não entra</span></td><td>É lógica de cada app: o mAIg libera o banco inteiro ao app.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 id="mf-101-bastidores">Nos bastidores, sem complicar</h3>
+<p>Só o bastante da tecnologia para a história fazer sentido:</p>
+<ul>
+  <li><strong>Uma portaria só, no núcleo.</strong> A autenticação e a autorização fazem parte do núcleo do mAIg, os serviços que vêm prontos nele e servem a todos os apps. Configuram-se uma vez e valem para todos, e um app novo não traz um jeito próprio de dar permissão aos dados e à IA.</li>
+  <li><strong>O passe tem um carimbo que não sai do mAIg.</strong> A chave que assina o passe nasce dentro do mAIg e nunca sai dele; a Maind recebe só a parte pública, que serve para conferir a assinatura, como um cartório que reconhece a firma sem ter a caneta. Por isso nem a Maind, nem quem invadisse a nuvem dela, consegue fabricar o passe de alguém.</li>
+  <li><strong>Uma ligação só, aberta de dentro para fora.</strong> A nuvem dos apps fala com o mAIg só pela ligação que o próprio mAIg abre com a Maind, a mesma para todas as pessoas. Cada pedido leva o passe de quem pediu, e o mAIg o confere em todo pedido (<a href="#mf-108">MF-108</a>).</li>
+  <li><strong>O app não tem o que levar.</strong> Nenhum app toca uma senha de banco ou uma chave de IA: pede ao mAIg, que confere a permissão antes de atender. O módulo de cada app roda isolado e só usa os serviços do mAIg (<a href="#mf-109">MF-109</a>).</li>
+  <li><strong>Tudo vai ao registro.</strong> O pedido atendido e o recusado, os envios do link de primeiro acesso, os pedidos de troca de senha e os atos sensíveis ficam anotados (<a href="#mf-102">MF-102</a>).</li>
+</ul>
+
+<h3 id="mf-101-limites">O que esta funcionalidade não faz</h3>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Não faz</th><th>Por quê, e onde isso fica</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><strong>Entrar pelo login da empresa</strong></td><td>Chega na segunda versão, em <a href="#mf-112">Entrar com o login que a empresa já usa (MF-112)</a>. Na primeira versão, os jeitos de entrar são usuário e senha e conta Google.</td></tr>
+      <tr class="zebra"><td><strong>Decidir o que cada pessoa vê dentro de um banco</strong></td><td>É do app, e não do mAIg, que libera o banco inteiro ao app. O recorte se faz no próprio banco, com um usuário mais restrito (<a href="#mf-105">MF-105</a>).</td></tr>
+      <tr class="zebra"><td><strong>Guardar os papéis de dentro de cada app</strong></td><td>Os papéis internos de cada app são do app. O mAIg tem os quatro papéis desta página.</td></tr>
+      <tr class="zebra"><td><strong>Aceitar convites feitos de dentro dos apps</strong></td><td>Só o owner da organização cadastra as pessoas, direto no console (<a href="#mf-110">MF-110</a>).</td></tr>
+    </tbody>
+  </table>
+</div>
+<h4 id="mf-101-ligadas">Funcionalidades ligadas a esta</h4>
+<div class="table-wrap">
+  <table class="t">
+    <thead><tr><th>Funcionalidade</th><th>Como se liga a esta</th></tr></thead>
+    <tbody>
+      <tr class="zebra"><td><a href="#mf-102">Saber quem pediu o quê, quando e com que dado (MF-102)</a></td><td>Todo pedido conferido aqui, atendido ou recusado, vai ao registro, que o owner da organização e o auditor consultam.</td></tr>
+      <tr class="zebra"><td><a href="#mf-103">Contratar e liberar um app com segurança (MF-103)</a></td><td>O app se apresenta à portaria com o certificado que nasce da contratação.</td></tr>
+      <tr class="zebra"><td><a href="#mf-104">Instalar, pausar e retirar apps sem refazer nada (MF-104)</a></td><td>É ao liberar e configurar o app numa organização que o owner da organização lhe dá as permissões.</td></tr>
+      <tr class="zebra"><td><a href="#mf-105">Usar os bancos da empresa sem expor a senha (MF-105)</a></td><td>A permissão do app diz de quais bancos ele lê; a senha de cada banco fica no cofre.</td></tr>
+      <tr class="zebra"><td><a href="#mf-106">Controlar quais IAs, quanto e a que custo (MF-106)</a></td><td>A permissão do app diz quais IAs ele usa, com os modelos e os limites.</td></tr>
+      <tr class="zebra"><td><a href="#mf-107">Atender várias organizações numa instalação, sem misturá-las (MF-107)</a></td><td>Os papéis e as permissões valem por organização, e o passe é assinado com o certificado da organização.</td></tr>
+      <tr class="zebra"><td><a href="#mf-108">Funcionar sem abrir porta de entrada na rede (MF-108)</a></td><td>Os pedidos dos apps e a troca do código pelo passe passam pela ligação que o mAIg abre.</td></tr>
+      <tr class="zebra"><td><a href="#mf-109">Rodar cada app isolado dentro do mAIg (MF-109)</a></td><td>O módulo do app só alcança os dados e a IA pedindo ao mAIg.</td></tr>
+      <tr class="zebra"><td><a href="#mf-110">Configurar tudo num lugar só (MF-110)</a></td><td>É no console que o owner da organização cadastra as pessoas, dá as permissões e liga os jeitos de entrar.</td></tr>
+      <tr class="zebra"><td><a href="#mf-112">Entrar com o login que a empresa já usa (MF-112)</a></td><td>Na segunda versão, mais um jeito de entrar, sem tirar a senha do owner da organização e do administrador da instância.</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="callout callout--neutral">
+  <span class="ico">•</span>
+  <div><b>Ainda em definição</b><p><strong>As tentativas erradas.</strong> O bloqueio por um tempo já está decidido; quantas tentativas erradas bloqueiam a conta, e por quanto tempo, ainda será definido.</p><p><strong>A confirmação em dois passos.</strong> Ela chega na segunda versão, configurável; a forma técnica ainda será definida.</p><p><strong>O primeiro administrador da instância.</strong> Como nasce o acesso dele, quando o mAIg é instalado, e como é o procedimento da instalação que devolve o acesso quando nenhum administrador da instância consegue entrar: a forma técnica ainda será definida.</p><p><strong>A rede da hospedagem da Maind.</strong> Na primeira versão, o endereço do mAIg na hospedagem da Maind fica aberto na internet, protegido pelo login. Como fechá-lo, na segunda versão ou depois, ainda será definido.</p><p><strong>A renovação do passe nos navegadores novos.</strong> Os navegadores mais novos pedem permissão à pessoa quando um site da internet fala com um endereço interno. Como a renovação do passe lida com esse pedido, sem incomodar a pessoa a cada 15 minutos, a forma técnica ainda será definida.</p></div>
+</div>
+
+<h3 id="mf-101-faq">Perguntas frequentes</h3>
+<div class="faq">
+  <details open>
+    <summary>A nuvem da Maind fica com a senha das nossas pessoas?</summary>
+    <div class="faq-body"><p>Não. A senha de cada pessoa e a resposta do Google ficam no mAIg e nunca chegam à nuvem da Maind. A nuvem recebe só o passe, que o mAIg assina com uma chave que nasce dentro dele e nunca sai. Por isso a nuvem não consegue fabricar um passe, e quem a invadisse não se passaria por ninguém diante do mAIg.</p></div>
+  </details>
+  <details>
+    <summary>Um app consegue ler um banco que não foi liberado a ele?</summary>
+    <div class="faq-body"><p>Não. Cada pedido passa por duas conferências: a pessoa pode usar aquele app, e o app pode pedir aquele banco naquela organização. Se uma falha, o mAIg recusa e anota a recusa no registro, onde o owner da organização e o auditor a veem. E o app não tem como dar a volta, porque não tem a senha do banco nem a chave da IA.</p></div>
+  </details>
+  <details>
+    <summary>Dá para entrar com a conta Google? E com o login da empresa?</summary>
+    <div class="faq-body"><p>Com a conta Google, sim, desde a onda 1.0: cada organização nasce só com usuário e senha, e o owner da organização liga o Google se quiser. Mesmo pelo Google, só entra quem está cadastrado na organização. O login da empresa chega na segunda versão, com a funcionalidade <a href="#mf-112">Entrar com o login que a empresa já usa (MF-112)</a>.</p></div>
+  </details>
+  <details>
+    <summary>Precisamos estar na rede da empresa para usar os apps?</summary>
+    <div class="faq-body"><p>Depende de como a TI do cliente configurar. Na casa do cliente, ela pode deixar o endereço do mAIg visível só de dentro da rede ou pela VPN, e isso vale durante todo o uso: o passe se renova pelo mAIg a cada 15 minutos, e quem sai da VPN perde os apps em até 15 minutos. Na hospedagem da Maind, na primeira versão, o endereço fica aberto na internet, protegido pelo login.</p></div>
+  </details>
+  <details>
+    <summary>O que acontece quando alguém sai da empresa?</summary>
+    <div class="faq-body"><p>O owner da organização tira o acesso da pessoa no console, e, em até 15 minutos, ela perde os apps, porque a renovação do passe falha. As tarefas marcadas em nome dela param, e o owner da organização é avisado. As linhas do registro em nome dela seguem, com o nome, até o app ser desinstalado.</p></div>
+  </details>
+  <details>
+    <summary>E se o owner da organização esquecer a senha ou sair da empresa?</summary>
+    <div class="faq-body"><p>A senha esquecida se troca na tela de entrada: ele pede o link, que vai ao e-mail do cadastro. Se perdeu também o e-mail, ou saiu da empresa, quem resolve é o administrador da instância, que cadastra, exclui e substitui os owners da organização. A troca vale na hora, e os owners da organização e o auditor podem barrá-la por 48 horas. E a organização pode ter mais de um owner, tantos quantos assentos desse papel contratar.</p></div>
+  </details>
+</div>

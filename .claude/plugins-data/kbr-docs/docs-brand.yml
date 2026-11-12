@@ -12,7 +12,7 @@
 
 projeto:
   nome: "Maind AI Gateway (mAIg)"
-  subtitulo: "Visão do produto"
+  subtitulo: "Documentação do produto"
   area: "Produto"
   classificacao: "Público"
 
@@ -34,7 +34,7 @@ marca:
 
 textos:
   cabecalho: ""
-  rodape: "Maind AI Gateway · Visão do produto · primeira versão em desenho"
+  rodape: "Maind AI Gateway · Documentação do produto · primeira versão em construção"
 
 autoria:
   autor: ""
