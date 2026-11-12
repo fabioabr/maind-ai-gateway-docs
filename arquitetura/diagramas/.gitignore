@@ -1,0 +1,6 @@
+# Artefatos e recibos das verificações do Archify (ficam fora da publicação; trazem caminhos da máquina)
+fontes/*.archify.html
+fontes/*.archify.*.json
+fontes/*-review-*/
+fontes/review-*/
+fontes/*-review-*.stdout.json

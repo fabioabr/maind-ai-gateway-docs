@@ -194,7 +194,8 @@ mAIg trabalham a partir delas, e o que elas ainda não respondem fica como ponto
     certificado da organização foram decididos depois (decisão 44). Criar uma organização exige a ligação com a Maind
     de pé (decisão 41).
     Foi decidido depois: a organização nasce no Gerenciador do mAIg, e o certificado dela é emitido quando o arquivo
-    assinado chega à instância, no fim do setup (decisão 128); o kit do app não traz certificado pronto (decisão 138).
+    assinado chega à instância, logo depois de a chave temporária ser digitada na etapa 2 da interface de setup (decisão
+    128); o kit do app não traz certificado pronto (decisão 138).
 29. **Os atos do administrador da instância que tocam uma organização também são anotados no registro dela.** Criar a
     organização e o usuário do primeiro owner da organização, e instalar ou atualizar um app que ela contratou, viram
     linhas no registro da organização, com o nome de quem fez e a hora. O administrador da instância só escreve essas
@@ -315,7 +316,9 @@ pela VPN dela.
     segurança, pontos do dono da Maind. Os dois prazos foram decididos depois (decisão 45).
     Foi decidido depois: atualizar é trocar a caixa do contêiner (decisão 142); no Kubernetes, o núcleo manda o cluster
     trocar a caixa, depois do aval e dentro da janela, com permissão só no próprio namespace (decisão 144); e o app
-    autorizado depois do setup espera o clique do administrador da instância (decisão 137).
+    autorizado depois do setup espera o clique do administrador da instância (decisão 137). Pela ligação chegam só o
+    aviso da versão nova, o manifesto e o bilhete; a imagem do mAIg é baixada do registro de imagens da Maind, no
+    mesmo nome, pelo zelador ou pelo cluster (decisões 134 e 149).
 40. **O login começa pelo app e usa o jeito de entrar configurado no mAIg, e o papel vale por app.** A pessoa abre um
     app, o app a manda à tela de entrada do mAIg, e o mAIg usa o jeito de entrar que a organização configurou, inclusive
     o login da empresa. O passe sai só para aquele app, com o papel da pessoa nele. Se depois ela abre outro app, não
@@ -933,6 +936,8 @@ versão, na parte que fica na casa do cliente. Elas valem como as outras, e o do
     servidor de e-mail; instalar ou trocar o certificado do endereço do mAIg; fazer e restaurar a cópia de segurança; e,
     na onda 1.1, desinstalar um app. Só os administradores da instância o leem (decisão 81), e ele vai na cópia de
     segurança (decisão 116). Abre-se mão de: é mais um registro para guardar e proteger desde o primeiro dia.
+    Na arquitetura de 12/11/2026, o registro da instância nasce no primeiro acesso à interface de setup, antes de
+    qualquer outro ato, e anota cada etapa do setup (decisão 132).
 103. **No registro e na consulta devolvida à tela, o valor de um filtro aparece mascarado quando o filtro toca uma
     coluna sensível.** Os outros valores, como o período e a cidade, aparecem. Vale no registro desde a onda 1.0 e na
     consulta devolvida à tela na onda 1.1. Abre-se mão de: quem lê o registro vê que houve um filtro por CPF, mas não
@@ -1110,17 +1115,19 @@ decisões anteriores; a decisão que muda recebe uma nota, e o texto dela segue 
 128. **A organização nasce na Maind, no Gerenciador do mAIg, e chega à instância pela ligação.** O Gerenciador do mAIg é
     o cockpit da Maind para controlar e cobrar os clientes: roda na nuvem da Maind, separado de qualquer app, e não é o
     primeiro app. A equipe da Maind cria nele a organização, com o e-mail do primeiro owner da organização e os apps
-    contratados, e o Gerenciador assina o arquivo da organização, que o mAIg busca pela ligação no fim do setup e
-    instala sozinho (decisão 132). O administrador da instância deixa de criar a organização no console: o gesto dele
-    passa a ser digitar a chave temporária na interface de setup ou, para uma organização a mais numa instância que já
-    roda, no console. O que as decisões antigas dizem sobre "criar a organização" passa a valer para esse gesto: a
-    ligação de pé (decisão 41), o e-mail testado (decisão 125), a linha no registro (decisão 29) e o certificado emitido
-    quando o arquivo chega (decisão 28). A nuvem de cada app conhece a organização pelo Gerenciador, que é a origem, e o
-    passe assinado pelo mAIg continua provando a pessoa (decisão 32). Assim, não há um segundo cadastro que possa
-    divergir, e a Maind é quem diz quais organizações existem e o que cada uma pode ter. Ficaram de fora a parte de fora
-    do app criar a organização ao vê-la pela primeira vez e o servidor das contratações avisar a nuvem. Abre-se mão de:
-    a Maind ganha uma peça inteira para construir, o Gerenciador, e nenhuma organização existe sem passar por ela, nem
-    na casa do cliente.
+    contratados, e o Gerenciador assina o arquivo da organização, que o mAIg busca pela ligação logo depois que a TI do
+    cliente digita a chave temporária, na etapa 2 das cinco da interface de setup; em seguida chega o manifesto do que a
+    organização pode ter, e o fim do setup é a criação do usuário do primeiro owner da organização (decisões 132 e 136).
+    O administrador da instância deixa de criar a organização no console: o gesto dele passa a ser digitar a chave
+    temporária na interface de setup ou, para uma organização a mais numa instância que já roda, no console. O que as
+    decisões antigas dizem sobre "criar a organização" passa a valer para esse gesto: a ligação de pé (decisão 41), o
+    e-mail testado (decisão 125), a linha no registro (decisão 29) e o certificado emitido quando o arquivo chega
+    (decisão 28). A nuvem de cada app conhece a organização pelo Gerenciador, que é a origem, e o passe assinado pelo
+    mAIg continua provando a pessoa (decisão 32). Assim, não há um segundo cadastro que possa divergir, e a Maind é quem
+    diz quais organizações existem e o que cada uma pode ter. Ficaram de fora a parte de fora do app criar a organização
+    ao vê-la pela primeira vez e o servidor das contratações avisar a nuvem. Abre-se mão de: a Maind ganha uma peça
+    inteira para construir, o Gerenciador, e nenhuma organização existe sem passar por ela, nem na casa do cliente.
+    Ajustada em 12/11/2026 ao fechar a arquitetura.
 129. **A primeira versão não tem portal do cliente: a entrega é um PDF protegido por senha, enviado ao e-mail oficial da
     organização.** O dono da Maind escolheu primeiro um portal da Maind com login, onde o administrador da instância
     baixaria o pacote e o kit, e no mesmo dia o revisou, para simplificar. O Gerenciador do mAIg gera o PDF com as
@@ -1133,11 +1140,13 @@ decisões anteriores; a decisão que muda recebe uma nota, e o texto dela segue 
     organização, para não parecer golpe. Abre-se mão de: um passo manual da equipe da Maind a cada organização, e um PDF
     que não abre, porque a senha se perdeu, pede outro, gerado no Gerenciador.
 131. **O PDF traz as instruções e um código de ativação de uso único, que vence; nenhum arquivo instalável viaja por
-    e-mail.** No fim do setup, a TI do cliente digita o código, e o mAIg, pela ligação, busca na Maind o arquivo
-    assinado da organização e faz o handshake. O arquivo é um só, e quem o traz é o mAIg. O dono da Maind disse nesta
-    decisão que o mesmo caminho valeria para o kit de cada app, com um PDF por app; o fluxo do setup, decidido em
-    seguida, vale sobre isso: os apps contratados entram no setup sem PDF por app (decisões 132 e 134). Abre-se mão de:
-    o código é o elo mais humano da cadeia, e a TI do cliente tem de tratá-lo como senha.
+    e-mail.** A TI do cliente digita o código na etapa 2 das cinco da interface de setup, e o mAIg, pela ligação, busca
+    na Maind o arquivo assinado da organização e o manifesto do que ela pode ter, e faz o handshake; o console só recebe
+    o código de uma organização a mais numa instância que já roda (decisão 128). O arquivo é um só, e quem o traz é o
+    mAIg. O dono da Maind disse nesta decisão que o mesmo caminho valeria para o kit de cada app, com um PDF por app; o
+    fluxo do setup, decidido em seguida, vale sobre isso: os apps contratados entram no setup sem PDF por app (decisões
+    132 e 134). Abre-se mão de: o código é o elo mais humano da cadeia, e a TI do cliente tem de tratá-lo como senha.
+    Ajustada em 12/11/2026 ao fechar a arquitetura.
 132. **O setup do mAIg tem cinco passos, e a instalação segue no estilo de um gerenciador de pacotes.** (1) A Maind cria
     a organização no Gerenciador do mAIg, e o Gerenciador gera chaves temporárias, de duração curta. (2) A Maind gera o
     PDF com as instruções da primeira etapa de configuração no ambiente do cliente, o cluster ou a máquina, e o manda ao
@@ -1161,10 +1170,14 @@ decisões anteriores; a decisão que muda recebe uma nota, e o texto dela segue 
 134. **O setup instala o núcleo e, junto, os apps que a organização já tem contratados no dia, sem um PDF nem um clique
     por app.** O aval da TI do cliente está no próprio setup, que ela executa. O que a organização está autorizada a ter
     vem do Gerenciador num manifesto assinado, e cada módulo entra com a assinatura da Maind conferida (decisão 88).
-    "Instalado o kit" passa a ser "chegado o manifesto", e a instalação de cada app continua anotada no registro da
-    organização (decisão 82). Os apps contratados depois chegam como "app autorizado" (decisão 137). Confirma a segunda
-    leitura do arquiteto. Abre-se mão de: a instalação dos primeiros apps deixa de ser um gesto à parte do administrador
-    da instância; é o setup.
+    Pela ligação chegam só o manifesto e um bilhete de download para cada módulo; a imagem do módulo, a caixa com o
+    programa, não passa pela ligação: é baixada, com o bilhete, do registro de imagens da Maind, que fica no mesmo nome
+    de internet da ligação (decisão 149), pelo zelador, a peça do mAIg que cuida das caixas, no formato Docker, ou pelo
+    próprio cluster, no Kubernetes (decisão 144). "Instalado o kit" passa a ser "chegado o manifesto", e a instalação de
+    cada app continua anotada no registro da organização (decisão 82). Os apps contratados depois chegam como "app
+    autorizado" (decisão 137). Confirma a segunda leitura do arquiteto. Abre-se mão de: a instalação dos primeiros apps
+    deixa de ser um gesto à parte do administrador da instância; é o setup. Ajustada em 12/11/2026 ao fechar a
+    arquitetura.
 135. **Instalado não quer dizer liberado: depois do setup, o owner da organização libera e configura cada app no
     console.** Ele diz quais bancos o app lê, quais IAs usa e quem da organização o usa, e o app fica ativo sozinho
     quando o mínimo está configurado (decisões 11 e 12; decisão 72). Confirma a terceira leitura do arquiteto; os dois
@@ -1286,10 +1299,11 @@ decisões anteriores; a decisão que muda recebe uma nota, e o texto dela segue 
     guarda das chaves, como as carteiras frias de criptomoedas.
 153. **A visão do consumo mostra o custo informado pelo provedor, quando ele informa, e, nos outros, uma estimativa
     marcada como "estimado", com a data da tabela de preços da Maind.** A estimativa é o uso vezes a tabela de preços da
-    Maind, que se atualiza pela ligação, sem versão nova. O limite de gasto (decisão 112) trava pelo número que aparece,
-    informado ou estimado. Ficaram de fora o owner da organização preencher a tabela, que ninguém manteria, e a tabela
-    da Maind editável por ele. Abre-se mão de: a estimativa pode divergir da fatura por descontos, cache e
-    arredondamentos do provedor.
+    Maind, que se atualiza pela ligação, sem versão nova: a tabela chega assinada pelo Gerenciador do mAIg, e quem a
+    entrega pela ligação é o servidor das contratações da Maind. O limite de gasto (decisão 112) trava pelo número que
+    aparece, informado ou estimado. Ficaram de fora o owner da organização preencher a tabela, que ninguém manteria, e a
+    tabela da Maind editável por ele. Abre-se mão de: a estimativa pode divergir da fatura por descontos, cache e
+    arredondamentos do provedor. Ajustada em 12/11/2026 ao fechar a arquitetura.
 154. **A ligação com a Maind tem dois caminhos já na onda 1.0, e o mAIg troca sozinho para o alternativo quando o
     intermediário da empresa não deixa o principal passar.** O caminho principal é o da ligação de sempre; o
     alternativo, por WebSocket, um jeito de conversa que os intermediários corporativos deixam passar, entra quando o
